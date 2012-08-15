@@ -31,12 +31,11 @@
 	background: #FFF url('images/ico/loading.gif') no-repeat center center;
 	overflow: hidden;
     position:relative;
-    border:1px solid #000;
 }
 #fond-slider>img,
 #fond-slider>div,
 #fond-slider>a { display: none; }
-#fond-slider .slide1 {width:936px; height:296px;  font:12px 'Arial'; color:#FFF;}
+#fond-slider .slide1 {width:999px; padding:0 0 0 47px; height:256px;  font:12px 'Arial'; background:#FFF;}
     #fond-slider .miniblock {width:387px; margin-left:75px; vertical-align:top; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
     #fond-slider .miniblock:first-child {margin:0;}
         #fond-slider .miniblock dt {float:left; background:url(images/css/miniblock_img_bg.png) 2px 2px no-repeat; height:106px; width:106px;}

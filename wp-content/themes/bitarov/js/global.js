@@ -4,7 +4,7 @@ $(window).load(function() {
      $('#featured').orbit({
      animation: 'horizontal-push',        // вид анимации: fade, horizontal-slide, vertical-slide, horizontal-push
      animationSpeed: 300,                // скорость анимации в мс
-     timer: false,              // показывать таймер: true или false
+     timer: true,              // показывать таймер: true или false
      advanceSpeed: 4000,          // если таймер включен, то указываетс€ врем€ между переходами в мс 
      pauseOnHover: false,          // пауза слайдера при наведении курсора
      startClockonmouseout: true,      // запускать часы при выводе курсора из области слайдера
@@ -21,18 +21,18 @@ $(window).load(function() {
 	
 // Orbit Slider
      $('#fond-slider').orbit({
-     animation: 'horizontal-push',        // вид анимации: fade, horizontal-slide, vertical-slide, horizontal-push
+     animation: 'horizontal-slide',        // вид анимации: fade, horizontal-slide, vertical-slide, horizontal-push
      animationSpeed: 300,                // скорость анимации в мс
      timer: false,              // показывать таймер: true или false
      advanceSpeed: 4000,          // если таймер включен, то указываетс€ врем€ между переходами в мс 
-     pauseOnHover: false,          // пауза слайдера при наведении курсора
+     pauseOnHover: true,          // пауза слайдера при наведении курсора
      startClockonmouseout: true,      // запускать часы при выводе курсора из области слайдера
      startClockonmouseoutAfter: 1,      // через какое врем€ после вывода курсора из области слайдера таймер запуститс€
      directionalNav: true,          // ручна€ навигаци€
      captions: true,              // использовать заголовки?
      captionAnimation: 'slideOpen',          // анимаци€ дл€ заголовков: fade, slideOpen, none
      captionAnimationSpeed: 800,      // скорость анимации заголовков в мс
-     bullets: true,             // true или false дл€ активации навигации с миниатюрами
+     bullets: false,             // true или false дл€ активации навигации с миниатюрами
      bulletThumbs: false,         // миниатюры дл€ "точек"
      bulletThumbLocation: '',         // путь до местонахождени€ миниатюр
      afterSlideChange: function(){}      // пуста€ функци€
