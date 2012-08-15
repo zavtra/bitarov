@@ -1,4 +1,6 @@
 .braen {font-size:10px; color:#F00;}
+.pascal {font-weight:bold}
+
 @font-face {
     font-family: 'PFDinTextCondPro-b';
     src: url('fonts/PFD/PFDinTextCondPro-Medium.eot');
