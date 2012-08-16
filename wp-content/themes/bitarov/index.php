@@ -4,24 +4,15 @@
     <div class='content'>
         <div class='wrap'>
             <div id='featured'>
-                <div class='slide1' style='background-image:url(wp-content/themes/bitarov/images/slider/1.png)'>
-                    <h4>Город нашей мечты</h4>
-                    <div class='content'>Сегодня у нас есть все возможности
-                    сделать Иркутск лучше. И мы уверенно
-                    двигаемся в этом направлении</div>
+<?php
+$res = db_query("SELECT id, caption, text FROM pref_bt_slider ORDER BY pos, id");
+while (extract(db_result($res, 'i,h,h'))) echo <<<HTML
+                <div class='slide1' style='background-image:url(wp-content/uploads/slider/$id.jpg)'>
+                    <h4>$caption</h4>
+                    <div class='content'>$text</div>
                 </div>
-                <div class='slide1' style='background-image:url(wp-content/themes/bitarov/images/slider/1.png)'>
-                    <h4>Город нашей мечты</h4>
-                    <div class='content'>Сегодня у нас есть все возможности
-                    сделать Иркутск лучше. И мы уверенно
-                    двигаемся в этом направлении</div>
-                </div>
-                <div class='slide1' style='background-image:url(wp-content/themes/bitarov/images/slider/1.png)'>
-                    <h4>Город нашей мечты</h4>
-                    <div class='content'>Сегодня у нас есть все возможности
-                    сделать Иркутск лучше. И мы уверенно
-                    двигаемся в этом направлении</div>
-                </div>
+HTML;
+?>
             </div>
             <div class='rightside'> <!-- правая колонка -->
                 <div class='advice'>
