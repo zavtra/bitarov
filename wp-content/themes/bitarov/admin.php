@@ -59,6 +59,8 @@ function bt_options()
  $bt_opinion_h1 = get_option('bt_opinion_w1', BT_OPINION_W1);
  $bt_opinion_w1 = get_option('bt_opinion_h1', BT_OPINION_H1);
 
+// $cats = wp_list_categories();
+
  return print <<<HTML
 <form method='POST' name='form1' action='' class='wrap'>
   <div id='icon-options-general' class='icon32'></div>
@@ -71,6 +73,7 @@ function bt_options()
   <tr><td>Средняя картинка события, высота:</td><td><input type='text' name='bt_event_h2' size='5' value='$bt_event_h2'> px</td></tr>
   <tr><td>Мнение, ширина:</td><td><input type='text' name='bt_opinion_h1' size='5' value='$bt_opinion_h1'> px</td></tr>
   <tr><td>Мнение, высота:</td><td><input type='text' name='bt_opinion_w1' size='5' value='$bt_opinion_w1'> px</td></tr>
+  <tr><td>Мнение, рубрика:</td><td><input type='text' name='bt_opinion_w1' size='5' value='$bt_opinion_w1'> px</td></tr>
   <tr><td colspan='2'><input type='submit' class='button-primary' value='Сохранить настройки'></td></tr>
   </table>
 </form>

@@ -215,9 +215,10 @@ function optlist($items, $default=false, $escape=true)
 function imagecreatefromfile($filename)
  {
  if (!file_exists($filename) or !is_readable($filename)) return false;
- if (is_resource($ih=imagecreatefromjpeg($filename))) $type = IMG_JPG;
- elseif (is_resource($ih=imagecreatefromgif($filename))) $type = IMG_GIF;
- elseif (is_resource($ih=imagecreatefrompng($filename))) $type = IMG_PNG;
+ $type = getimagesize($filename);
+ if ($type[2]===1) {$type=IMG_GIF; $ih=imagecreatefromgif($filename);}
+ elseif ($type[2]===2) {$type=IMG_JPG; $ih=imagecreatefromjpeg($filename);}
+ elseif ($type[2]===3) {$type=IMG_PNG; $ih=imagecreatefrompng($filename);}
  else return false;
  return array(
    'ih' => $ih,

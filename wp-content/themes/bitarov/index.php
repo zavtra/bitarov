@@ -1,42 +1,4 @@
-<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
-<html xmlns='http://www.w3.org/1999/xhtml'>
-<head>
-<title>Битаров - главная</title>
-<base href='<?php echo SITE_URL ?>' />
-<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
-<link href='wp-content/themes/bitarov/styles.css' rel='stylesheet' type='text/css' />
-<link href='wp-content/themes/bitarov/template.css' rel='stylesheet' type='text/css' />
-<link href='wp-content/themes/bitarov/orbit-1.2.3.css' rel='stylesheet' type='text/css' />
-<link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
-<script src='wp-content/themes/bitarov/js/jquery.min.js'></script>
-<script src='wp-content/themes/bitarov/js/jquery.orbit-1.2.3.min.js'></script>
-<script src='wp-content/themes/bitarov/js/global.js'></script>
-</head>
-<body>
-
-<div class='container'>
-<!-- шапка -->
-    <div class='header'>
-        <div class='wrap'>
-            <ul class='h_menu-right'>
-                <li><a href='#'>события</a></li>
-                <li><a href='#'>сми</a></li>
-                <li><a href='#'>контактная информация</a></li>
-                <li class='helper'></li>
-            </ul>
-            <div class='wrp_h_owner'>
-                <div class='h_owner'>
-
-                </div>
-            </div>
-            <ul class='h_menu-left'>
-                <li><a href='#'>биография</a></li>
-                <li><a href='#'>мнение</a></li>
-                <li><a href='#'>благотворительный фонд</a></li>
-                <li class='helper'></li>
-            </ul>
-        </div>
-    </div>
+<?php get_header(); ?>
 
 <!-- контент -->
     <div class='content'>
@@ -116,32 +78,61 @@
                 <div class='clear'></div>
                 <div class='body'>
                     <div class='top_news'>
-                        <div class='tdate'>12 июля 2012</div><div class='ttag'><a href='#'>События</a></div>
-                        <div class='title'><a href='#'>Заголовок большой новости большого сайта</a></div>
-                        <div class='photo'><img src='wp-content/themes/bitarov/images/news/main-top-news.png' width='589' height='198' alt='' /></div>
+<?php
+$posts_big = new WP_Query(array('meta_key'=>'bt_event-big', 'meta_value'=>'1', 'posts_per_page'=>1));
+$big_ids = array(); // Потом может несколько будет выводиться
+if ($posts_big->have_posts())
+ {
+ $posts_big->the_post();
+ $big_ids[] = $posts_big->post->ID;
+ $title = get_the_title();
+ $link = get_permalink();
+ $excerpt = get_the_excerpt();
+ $cat_id = bt_post_category($posts_big->post->ID);
+ $cat_name = get_cat_name($cat_id);
+ $cat_link = get_category_link($cat_id);
+ $date = bt_date(strtotime($posts_big->post->post_date));
+ echo <<<HTML
+                    <div class='top_news'>
+                        <div class='tdate'>$date</div><div class='ttag'><a href='$cat_link'>$cat_name</a></div>
+                        <div class='title'><a href='$link'>$title</a></div>
+                        <div class='photo'><img src='wp-content/uploads/event/{$posts_big->post->ID}-big.jpg' width='589' height='198' alt='' /></div>
                         <div class='text'>
-                        В апреле нынешнего года на фестивале «Своими силами - 2012» Фонд поддержки гражданских инициатив Александра Битарова откликнулся на просьбу группы инициативной молодежи  установить несколько специализированных спортивных площадок во дворах Иркутска.
+                        $excerpt
                         </div>
                     </div>
+HTML;
+ }
+unset($posts_big);
+?>
+                    </div>
                     <div class='other_news'>
+<?php
+$posts_med = new WP_Query(array('meta_key'=>'bt_event-med', 'meta_value'=>'1', 'posts_per_page'=>2, 'exclude'=>$big_ids));
+while ($posts_med->have_posts())
+ {
+ $posts_med->the_post();
+ $title = get_the_title();
+ $link = get_permalink();
+ $excerpt = get_the_excerpt();
+ $cat_id = bt_post_category($posts_med->post->ID);
+ $cat_name = get_cat_name($cat_id);
+ $cat_link = get_category_link($cat_id);
+ $date = bt_date(strtotime($posts_med->post->post_date));
+ echo <<<HTML
                         <div class='item'>
-                            <div class='odate'>31 мая 2012</div><div class='otag'><a href='#'>Благотворительный фонд</a></div>
+                            <div class='odate'>$date</div><div class='otag'><a href='$cat_link'>$cat_name</a></div>
                             <div class='clear'></div>
-                            <div class='title'><a href='#'>Детям - внимание, Взрослым - понимание</a></div>
-                            <div class='photo'><img src='wp-content/themes/bitarov/images/news/1.png' alt='' /></div>
+                            <div class='title'><a href='$link'>$title</a></div>
+                            <div class='photo'><img src='wp-content/uploads/event/{$posts_med->post->ID}-med.jpg' alt='' /></div>
                             <div class='text'>
-                            В Иркутске более 20 тысяч детей живут в малообеспеченных семьях, домах интернатах, приютах и других социальных учреждениях. Многие из них лишены ласки и заботы.
+                            $excerpt
                             </div>
                         </div>
-                        <div class='item'>
-                            <div class='odate'>8 августа 2012</div><div class='otag'><a href='#'>СМИ</a></div>
-                            <div class='clear'></div>
-                            <div class='title'><a href='#'>С Международным Днем защиты детей!</a></div>
-                            <div class='photo'><img src='wp-content/themes/bitarov/images/news/2.png' alt='' /></div>
-                            <div class='text'>
-                            В череде событий есть дата, которая заставляет нас, взрослых, обратить пристальное внимание на подрастающее поколение – это День защиты детей.
-                            </div>
-                        </div>
+HTML;
+ }
+unset($posts_med);
+?>
                     </div>
                     <div class='clear'></div>
                 </div>
@@ -149,26 +140,4 @@
         </div>
     </div>
 
-
-<!-- подвал -->
-    <div class='footer'>
-        <div class='wrap'>
-            <div class='vendor'>
-                <a href='http://zavtradigital.ru/'>Разработка сайта</a> &mdash; <span>digital-агентство &#171;Zavtra&#187;</span>
-            </div>
-            <div class='footer-menu'>
-                <ul>
-                    <li><a href='#'>Биография</a></li>
-                    <li><a href='#'>Мнение</a></li>
-                    <li><a href='#'>События</a></li>
-                    <li><a href='#'>СМИ</a></li>
-                    <li><a href='#'>Благотворительный Фонд</a></li>
-                    <li><a href='#'>Контактная информация</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-</body>
-</html>
+<?php get_footer(); ?>

@@ -1,18 +1,22 @@
-<?php
-/**
- * @package WordPress
- * @subpackage Classic_Theme
- */
-?>
-<!-- begin footer -->
+<!-- подвал -->
+    <div class='footer'>
+        <div class='wrap'>
+            <div class='vendor'>
+                <a href='http://zavtradigital.ru/'>Разработка сайта</a> &mdash; <span>digital-агентство &#171;Zavtra&#187;</span>
+            </div>
+            <div class='footer-menu'>
+                <ul>
+                    <li><a href='#'>Биография</a></li>
+                    <li><a href='#'>Мнение</a></li>
+                    <li><a href='#'>События</a></li>
+                    <li><a href='#'>СМИ</a></li>
+                    <li><a href='#'>Благотворительный Фонд</a></li>
+                    <li><a href='#'>Контактная информация</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
-<?php get_sidebar(); ?>
-
-<p class="credit"><!--<?php echo get_num_queries(); ?> queries. <?php timer_stop(1); ?> seconds. --> <cite><?php echo sprintf(__("Powered by <a href='http://wordpress.org/' title='%s'><strong>WordPress</strong></a>"), __("Powered by WordPress, state-of-the-art semantic personal publishing platform.")); ?></cite></p>
-
-</div>
-
-<?php wp_footer(); ?>
 </body>
 </html>
