@@ -84,7 +84,7 @@
             .strip_news dt {float:left; margin:4px 0 0 0;}
             .strip_news dd {display:block;margin:0 0 0 41px; padding:0;}
                 .strip_news dd span { padding-right:442px; border-bottom:2px solid #333; text-transform:uppercase;font:24px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
-            .strip_news .body {margin-top:14px; padding:15px 19px 23px 23px; width:597px; background:url(images/css/index-body_bg.png) no-repeat;;}
+            .strip_news .body {margin-top:14px; padding:15px 19px 23px 23px; min-height:729px; width:597px; background:url(images/css/index-body_bg.png) no-repeat;;}
                 .top_news {margin-bottom:28px;font:15px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
                     .top_news .tdate {display: -moz-inline-box; display: inline-block; margin-bottom:4px;color:#838c94; zoom: 1; *display: inline;}
                     .top_news .ttag {display: -moz-inline-box; display: inline-block; margin-left:12px;color:#7da87a; zoom: 1; *display: inline;}

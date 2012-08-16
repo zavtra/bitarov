@@ -129,6 +129,7 @@ unset($posts_med);
                 </div>
             </div>
         </div>
+        <div class='clear'></div>
     </div>
 
 <?php get_footer(); ?>
