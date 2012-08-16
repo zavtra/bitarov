@@ -36,26 +36,26 @@
                     </div>
                     <div class='clear'></div>
                     <div class='news_views'>
+<?php
+$bt_opinion_cat = $cats = get_option('bt_opinion_cat', 1);
+$bt_opinion_cats_arr = get_categories(array('child_of'=>$bt_opinion_cat));
+foreach ($bt_opinion_cats_arr as $cat) $cats .= ',' . $cat->term_id;
+$bt_opinion_pp = get_option('bt_opinion_pp', 5);
+$posts_op = new WP_Query(array('cat'=>$cats, 'posts_per_page'=>$bt_opinion_pp));
+while ($posts_op->have_posts())
+ {
+ $posts_op->the_post();
+ $title = get_the_title();
+ $link = get_permalink();
+ $date = rusdate('d F', strtotime($posts_op->post->post_date));
+echo <<<HTML
                             <div class='view'>
-                                <a href='#'>Нужно активнее сотрудничать с крупными предприятиями и финансово- промышленными группами</a>
-                                <span class='date'>1 августа</span>
+                                <a href='$link'>$title</a>
+                                <span class='date'>$date</span>
                             </div>
-                            <div class='view'>
-                                <a href='#'>Нового Министра строительства будем оценивать по реальным делам</a>
-                                <span class='date'>18 июля</span>
-                            </div>
-                            <div class='view'>
-                                <a href='#'>Другую должность не рассматривал</a>
-                                <span class='date'>12 декабря 2011 года</span>
-                            </div>
-                            <div class='view'>
-                                <a href='#'>Нового Министра строительства будем оценивать по реальным делам</a>
-                                <span class='date'>18 июля</span>
-                            </div>
-                            <div class='view'>
-                                <a href='#'>Другую должность не рассматривал</a>
-                                <span class='date'>12 декабря 2011 года</span>
-                            </div>
+HTML;
+ }
+?>
                     </div>
                 </div>
 
@@ -91,7 +91,7 @@ if ($posts_big->have_posts())
  $cat_id = bt_post_category($posts_big->post->ID);
  $cat_name = get_cat_name($cat_id);
  $cat_link = get_category_link($cat_id);
- $date = bt_date(strtotime($posts_big->post->post_date));
+ $date = rusdate('d F Y', strtotime($posts_big->post->post_date));
  echo <<<HTML
                     <div class='top_news'>
                         <div class='tdate'>$date</div><div class='ttag'><a href='$cat_link'>$cat_name</a></div>
@@ -118,7 +118,7 @@ while ($posts_med->have_posts())
  $cat_id = bt_post_category($posts_med->post->ID);
  $cat_name = get_cat_name($cat_id);
  $cat_link = get_category_link($cat_id);
- $date = bt_date(strtotime($posts_med->post->post_date));
+ $date = rusdate('d F Y', strtotime($posts_med->post->post_date));
  echo <<<HTML
                         <div class='item'>
                             <div class='odate'>$date</div><div class='otag'><a href='$cat_link'>$cat_name</a></div>

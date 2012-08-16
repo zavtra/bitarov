@@ -34,21 +34,24 @@ function bt_options()
  {
  $okmsg = '';
 
- if (chkpost('bt_event_w1,bt_event_h1,bt_event_w2,bt_event_h2,bt_opinion_h1,bt_opinion_w1'))
+ if (chkpost('bt_event_w1,bt_event_h1,bt_event_w2,bt_event_h2,bt_opinion_h1,bt_opinion_w1,bt_opinion_cat,bt_opinion_pp'))
   {
-  extract(ep('bt_event_w1>>i,bt_event_h1>>i,bt_event_w2>>i,bt_event_h2>>i,bt_opinion_h1>>i,bt_opinion_w1>>i'));
+  extract(ep('bt_event_w1>>i,bt_event_h1>>i,bt_event_w2>>i,bt_event_h2>>i,bt_opinion_h1>>i,bt_opinion_w1>>i,bt_opinion_cat>>i,bt_opinion_pp>>i'));
   if ($bt_event_w1<10) $bt_event_w1 = BT_EVENT_W1;
   if ($bt_event_h1<10) $bt_event_h1 = BT_EVENT_H1;
   if ($bt_event_w2<10) $bt_event_w2 = BT_EVENT_W2;
   if ($bt_event_h2<10) $bt_event_h2 = BT_EVENT_H2;
   if ($bt_opinion_h1<10) $bt_opinion_h1 = BT_OPINION_W1;
   if ($bt_opinion_w1<10) $bt_opinion_w1 = BT_OPINION_H1;
+  if ($bt_opinion_pp<1) $bt_opinion_pp = 5;
   update_option('bt_event_w1', $bt_event_w1);
   update_option('bt_event_h1', $bt_event_h1);
   update_option('bt_event_w2', $bt_event_w2);
   update_option('bt_event_h2', $bt_event_h2);
   update_option('bt_opinion_w1', $bt_opinion_w1);
   update_option('bt_opinion_h1', $bt_opinion_h1);
+  update_option('bt_opinion_cat', $bt_opinion_cat);
+  update_option('bt_opinion_pp', $bt_opinion_pp);
   $okmsg = okmsg('Настройки сохранены');
   }
 
@@ -58,8 +61,12 @@ function bt_options()
  $bt_event_h2 = get_option('bt_event_h2', BT_EVENT_H2);
  $bt_opinion_h1 = get_option('bt_opinion_w1', BT_OPINION_W1);
  $bt_opinion_w1 = get_option('bt_opinion_h1', BT_OPINION_H1);
+ $bt_opinion_cat = get_option('bt_opinion_cat', 1);
+ $bt_opinion_pp = get_option('bt_opinion_pp', 5);
 
-// $cats = wp_list_categories();
+ $cats_arr = get_categories(array('hide_empty'=>0));
+ $cats = '';
+ foreach ($cats_arr as $cat) $cats .= "<option value='" . intval($cat->term_id) . "'".($cat->term_id==$bt_opinion_cat ? ' selected' : '').">" . htmltext($cat->name) . "</option>";
 
  return print <<<HTML
 <form method='POST' name='form1' action='' class='wrap'>
@@ -71,9 +78,10 @@ function bt_options()
   <tr><td>Большая картинка события, высота:</td><td><input type='text' name='bt_event_h1' size='5' value='$bt_event_h1'> px</td></tr>
   <tr><td>Средняя картинка события, ширина:</td><td><input type='text' name='bt_event_w2' size='5' value='$bt_event_w2'> px</td></tr>
   <tr><td>Средняя картинка события, высота:</td><td><input type='text' name='bt_event_h2' size='5' value='$bt_event_h2'> px</td></tr>
-  <tr><td>Мнение, ширина:</td><td><input type='text' name='bt_opinion_h1' size='5' value='$bt_opinion_h1'> px</td></tr>
-  <tr><td>Мнение, высота:</td><td><input type='text' name='bt_opinion_w1' size='5' value='$bt_opinion_w1'> px</td></tr>
-  <tr><td>Мнение, рубрика:</td><td><input type='text' name='bt_opinion_w1' size='5' value='$bt_opinion_w1'> px</td></tr>
+  <tr><td>Мнение, ширина картинки:</td><td><input type='text' name='bt_opinion_h1' size='5' value='$bt_opinion_h1'> px</td></tr>
+  <tr><td>Мнение, высота картинки:</td><td><input type='text' name='bt_opinion_w1' size='5' value='$bt_opinion_w1'> px</td></tr>
+  <tr><td>Мнение, рубрика:</td><td><select name='bt_opinion_cat'>$cats</select></td></tr>
+  <tr><td>Мнение, заголовков на главной:</td><td><input type='text' name='bt_opinion_pp' size='5' value='$bt_opinion_pp'></td></tr>
   <tr><td colspan='2'><input type='submit' class='button-primary' value='Сохранить настройки'></td></tr>
   </table>
 </form>

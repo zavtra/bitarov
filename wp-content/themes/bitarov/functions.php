@@ -15,26 +15,29 @@ define('BT_SLIDE_H', 296);
 define('BT_THANK_W', 97);
 define('BT_THANK_H', 97);
 
-function bt_date($timestamp)
+function rusdate($format, $timestamp)
  {
- $d = date('d', $timestamp);
- $m = strtolower(date('F', $timestamp));
- $y = date('Y', $timestamp);
- switch ($m):
- case 'january': return "$d января $y";
- case 'february': return "$d февраля $y";
- case 'march': return "$d марта $y";
- case 'april': return "$d апреля $y";
- case 'may': return "$d мая $y";
- case 'june': return "$d июня $y";
- case 'july': return "$d июля $y";
- case 'august': return "$d августа $y";
- case 'september': return "$d сентября $y";
- case 'october': return "$d октября $y";
- case 'november': return "$d ноября $y";
- case 'december': return "$d декабря $y";
- default: return "$d $m $y";
- endswitch;
+ $months = array(
+   'january' => 'января',
+   'february' => 'февраля',
+   'march' => 'марта',
+   'april' => 'апреля',
+   'may' => 'мая',
+   'june' => 'июня',
+   'july' => 'июля',
+   'august' => 'августа',
+   'september' => 'сентября',
+   'october' => 'октября',
+   'november' => 'ноября',
+   'december' => 'декабря'
+ );
+ $result = date($format, $timestamp);
+ foreach ($months as $month_en=>$month_ru)
+  {
+  $month_en = preg_quote($month_en, '/');
+  $result = preg_replace("/$month_en/iu", $month_ru, $result);
+  }
+ return $result;
  }
 
 function bt_post_category($id_post)
