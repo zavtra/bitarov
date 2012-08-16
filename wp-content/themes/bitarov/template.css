@@ -108,7 +108,7 @@
                         .other_news .item .text {margin:7px 0 0 1px; padding-bottom:14px;width:273px; font:16px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial';  line-height:17px;}
 
     /* События! */
-    .event-header {padding:19px 0 0 0; height:65px;background:url('images/css/header-event-bg.png') repeat-x;}
+    .event-header {padding:13px 0 6px 0; height:65px;background:url('images/css/header-event-bg.png') repeat-x;}
         .event-header.fixed-top {margin-top:102px;}
             .event-header .paginator {float:right; margin-right:202px;}
                 .event-header .paginator ul {margin:0; padding:0;}
@@ -140,7 +140,7 @@
                     .event-header .smi-parts-top a.current {background:url('images/css/smi-parts-top_bg.png') repeat-x #3f9d35; color:#FFF;}
                     .event-header .smi-parts-top a.current span {border:none;}
 
-            .event-header h2 {display:block;margin:5px 0 0 0; padding:0; font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
+            .event-header h2 {display:block;margin:2px 0 0 0; padding:0; font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
     .event-body {margin-bottom:0px;}
         .wrp-rubrikator {float:right; margin-top:11px;width:291px;}
             .wrp-rubrikator.fixed {position:fixed; top:199px; right:162px;}
@@ -348,9 +348,16 @@
 
     /* Контакты */
     .contacts {margin-top:25px;}
-        .wrp-karta {float:right; width:605px; height:282px; background:url(images/css/karta_bg.png) 0 0px no-repeat;}
+        .wrp-karta {float:right; width:605px; margin-top:6px; height:282px; background:url(images/css/karta_bg.png) 0 0px no-repeat;}
             .karta img {width:600px; height:277px; margin:-3px 0 0 -6px; border:1px solid #e1ddce;}
-        .rekviziti {float:left; width:214px; border:1px solid #000;}
+        .rekviziti {float:left; width:224px;}
+            .rekviziti h5 {font:16px 'Arial'; color:#333;}
+            .rekviziti .phone {position:relative; color:#000;}
+                .rekviziti .phone .img {background:url(images/ico/phone.png) no-repeat; padding:0px 10px; width:23px; height:24px; position:absolute; top:3px;}
+                .rekviziti .phone span {font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial'; padding-left:27px;}
+                .rekviziti .phone .remark {font:12px 'Arial'; color:#333; margin:4px 0 15px 0;}
+            .rekviziti .email {font:14px 'Arial'; color:#434343;}
+                .rekviziti .email a {color:#333;}
 
 /*  Подвал!  */
     .footer {position:absolute; bottom:-78px; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
