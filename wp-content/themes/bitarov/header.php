@@ -19,9 +19,9 @@
     <div class='header'>
         <div class='wrap'>
             <ul class='h_menu-right'>
-                <li><a href='#'>события</a></li>
-                <li><a href='#'>сми</a></li>
-                <li><a href='#'>контактная информация</a></li>
+                <li><a href='/event/'>события</a></li>
+                <li><a href='/media/'>сми</a></li>
+                <li><a href='/contacts/'>контактная информация</a></li>
                 <li class='helper'></li>
             </ul>
             <div class='wrp_h_owner'>
@@ -30,9 +30,9 @@
                 </div>
             </div>
             <ul class='h_menu-left'>
-                <li><a href='#'>биография</a></li>
-                <li><a href='#'>мнение</a></li>
-                <li><a href='#'>благотворительный фонд</a></li>
+                <li><a href='/biography/'>биография</a></li>
+                <li><a href='/opinion/'>мнение</a></li>
+                <li><a href='/fund/'>благотворительный фонд</a></li>
                 <li class='helper'></li>
             </ul>
         </div>
