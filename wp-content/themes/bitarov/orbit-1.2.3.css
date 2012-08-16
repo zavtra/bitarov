@@ -19,7 +19,7 @@
 #featured>img,
 #featured>div,
 #featured>a { display: none; }
-#featured .slide1 {padding-top:39px; background:url(images/slider/1.png) no-repeat; width: 1016px; height: 296px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#FFF;}
+#featured .slide1 {padding-top:39px; width: 1016px; height: 296px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#FFF;}
     #featured .slide1 h4 {font:36px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial'; margin:0 0 0 127px;}
     #featured .slide1 .content {position:absolute; top:64px; font-size:24px; line-height:28px; padding:54px 77px 10px 126px; width:380px; height:173px; background-size:cover; background:url(images/css/slider-content-bg.png) 18px -15px no-repeat;}
 

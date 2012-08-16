@@ -4,7 +4,7 @@ $(window).load(function() {
      $('#featured').orbit({
      animation: 'horizontal-push',        // вид анимации: fade, horizontal-slide, vertical-slide, horizontal-push
      animationSpeed: 300,                // скорость анимации в мс
-     timer: true,              // показывать таймер: true или false
+     timer: false,              // показывать таймер: true или false
      advanceSpeed: 4000,          // если таймер включен, то указывается время между переходами в мс 
      pauseOnHover: false,          // пауза слайдера при наведении курсора
      startClockonmouseout: true,      // запускать часы при выводе курсора из области слайдера

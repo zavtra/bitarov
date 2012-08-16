@@ -4,19 +4,19 @@
     <div class='content'>
         <div class='wrap'>
             <div id='featured'>
-                <div class='slide1'>
+                <div class='slide1' style='background-image:url(wp-content/themes/bitarov/images/slider/1.png)'>
                     <h4>Город нашей мечты</h4>
                     <div class='content'>Сегодня у нас есть все возможности
                     сделать Иркутск лучше. И мы уверенно
                     двигаемся в этом направлении</div>
                 </div>
-                <div class='slide1'>
+                <div class='slide1' style='background-image:url(wp-content/themes/bitarov/images/slider/1.png)'>
                     <h4>Город нашей мечты</h4>
                     <div class='content'>Сегодня у нас есть все возможности
                     сделать Иркутск лучше. И мы уверенно
                     двигаемся в этом направлении</div>
                 </div>
-                <div class='slide1'>
+                <div class='slide1' style='background-image:url(wp-content/themes/bitarov/images/slider/1.png)'>
                     <h4>Город нашей мечты</h4>
                     <div class='content'>Сегодня у нас есть все возможности
                     сделать Иркутск лучше. И мы уверенно
