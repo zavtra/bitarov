@@ -128,9 +128,9 @@
             .event-header .b-top-left {float:left; min-width:300px;}
             .event-header .breadcrumbs {margin:3px 0 0 0; padding:0; height:22px; font:12px 'Tahoma';}
                 .event-header .breadcrumbs span {position:relative; float:left; margin-right:-2px; padding: 2px 15px 2px 20px; height:16px; border-top:1px solid #ebf4f5; border-bottom:1px solid #d0dcde;background:url('images/css/breadcrumbs-bg.png') 0 0 repeat-x #e5f1f2;}
-                    .event-header .breadcrumbs span.current {position:relative; z-index:9999; margin-right:-12px; padding-right:14px; padding-left:25px; width:55px; height:18px; border:none;background:url('images/css/breadcrumbs-current-bg.png') no-repeat;}
+                    .event-header .breadcrumbs span.current {position:relative; padding-top:3px; z-index:9999; margin-right:-12px; padding-right:14px; padding-left:25px; width:55px; height:18px; border:none; background:url('images/css/breadcrumbs-current-bg.png') no-repeat;}
                     .event-header .breadcrumbs span.current a {color:#143244;}
-                    .event-header .breadcrumbs span a { display:block;margin:0; padding:0; color:#666666; text-decoration:none;}
+                    .event-header .breadcrumbs span a {margin:0; padding:0; color:#666666; text-decoration:none;}
                     .event-header .breadcrumbs span a:hover {text-decoration:underline;}
                     .event-header .breadcrumbs span ins.r {position:absolute; top:0; right:-11px; z-index:9999; width:11px; height:21px;background:url('images/css/breadcrumbs-right.png') no-repeat;}
                     .event-header .breadcrumbs span a ins {position:absolute; top:3px; left:6px;width:14px; height:14px; background:url('images/ico/home.png') no-repeat;}
