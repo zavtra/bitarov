@@ -19,7 +19,7 @@
     <div class='header'>
         <div class='wrap'>
             <ul class='h_menu-right'>
-                <li><a href='/event/'>события</a></li>
+                <li><a href='/events/'>события</a></li>
                 <li><a href='/media/'>сми</a></li>
                 <li><a href='/contacts/'>контактная информация</a></li>
                 <li class='helper'></li>
