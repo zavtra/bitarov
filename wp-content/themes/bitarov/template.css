@@ -350,7 +350,7 @@
     /* Контакты */
     .contacts {margin-top:25px;}
         .wrp-karta {float:right; width:605px; margin-top:6px; height:282px; background:url('images/css/karta_bg.png') 0 0px no-repeat;}
-            .karta img {width:600px; height:277px; margin:-3px 0 0 -6px; border:1px solid #e1ddce;}
+            .karta div {width:600px; height:277px; margin:-3px 0 0 -6px; border:1px solid #e1ddce;}
         .rekviziti {float:left; width:224px;}
             .rekviziti h5 {font:16px 'Arial'; color:#333;}
             .rekviziti .phone {position:relative; color:#000;}
