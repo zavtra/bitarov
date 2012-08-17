@@ -173,7 +173,7 @@ div.slider-nav {
 
 div.slider-nav span {
     width: 69px;
-    height: 69px;
+    height: 70px;
     text-indent: -9999px;
     position: absolute;
     z-index: 1000;
@@ -182,13 +182,15 @@ div.slider-nav span {
     cursor: pointer; }
 
 div.slider-nav span.right {
-    background: url(images/ico/right-arrow.png) no-repeat;
+    background: url(images/css/slider-arrows.png) -96px -4px no-repeat;
     right: 26px; }
-
+div.slider-nav span.right:hover {
+    background: url(images/css/slider-arrows.png) -96px -82px no-repeat;}
 div.slider-nav span.left {
-    background: url(images/ico/left-arrow.png) no-repeat;
+    background: url(images/css/slider-arrows.png) -6px -2px no-repeat;
     left: 26px; }
-
+div.slider-nav span.left:hover {
+    background: url(images/css/slider-arrows.png) -6px -81px no-repeat;}
 /* BULLET NAV
    ================================================== */
 
