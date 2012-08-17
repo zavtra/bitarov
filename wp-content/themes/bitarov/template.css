@@ -196,11 +196,11 @@
         .fond-header .content {max-height:70px; width:593px; color:#000; font:13px 'Arial'; line-height:16px;}
     .fond-body {position:relative;}
         .fond-body .wrp-send-message { }
-            .fond-body .wrp-send-message .send_message {position:relative;}
-                .fond-body .wrp-send-message .send_message img {float:left; margin-right:5px;}
-                .fond-body .wrp-send-message .send_message a {border-bottom:1px dotted #0088c0; color:#0088c0; text-decoration:none;font:14px 'Arial';}
-                .fond-body .wrp-send-message .send_message a:hover {border-bottom:none;}
-                .fond-body .wrp-send-message .send_message span {padding-left:4px;font:14px 'Arial';}
+            .wrp-send-message .send_message {position:relative;}
+                .wrp-send-message .send_message img {float:left; margin-right:5px;}
+                .wrp-send-message .send_message a {border-bottom:1px dotted #0088c0; color:#0088c0; text-decoration:none;font:14px 'Arial';}
+                .wrp-send-message .send_message a:hover {border-bottom:none;}
+                .wrp-send-message .send_message span {padding-left:4px;font:14px 'Arial';}
         .fond-body .menu {width:100%; position:relative; margin:26px 0;height:53px; border-top:1px solid #e6ebee; border-right:1px solid #e6e6e5; border-bottom:1px solid #dbdbdb; border-left:1px solid #ebeff1; background:url('images/css/fond-menu.png') repeat-x;}
             .fond-body .menu img {position:absolute; bottom:-23px; left:50%; width:980px; height:22px; margin-left:-459px;}
             .fond-body .menu ul {margin:0; padding:11px 0 0 47px;}
@@ -264,6 +264,7 @@
                     .wrp-activity .content .item dd {margin:-3px 0 0 287px; line-height:20px;}
                 .wrp-activity .content .item p {margin:0 0 16px 0; line-height:20px; }
             .wrp-send_comment {padding:0 0 0 27px;}
+                .wrp-send_comment.normal {padding:0;}
                 .wrp-send_comment .send_comment {padding-bottom:4px;font:14px 'Arial';}
                     .wrp-send_comment .send_comment img {float:left; margin-right:6px;}
                     .wrp-send_comment .send_comment a {border-bottom:1px dotted #7b848d;color:#4d5358; text-decoration:none;}
@@ -397,6 +398,28 @@
                 .wrp_substrate .bottom {background:url('images/css/substrate_bottom.png') no-repeat; width:680px; height:9px;}
             .article_text {margin-top:17px;}
                 .article_text p {font:14px 'Arial'; color:#333; line-height:20px;}
+                .article_text .tag {background:url(images/css/article-text_border-bottom.png) 0 top repeat-x; padding-top:12px; margin:24px 0 47px 0;}
+                    .article_text .tag img {float:left; margin-top:2px;}
+                    .article_text .tag a {padding-left:4px; color:#7b848d; font:11px 'Arial';}
+        /* комментарий к статье */
+        .wrp-artic-comment {width:679px; height:251px; border:1px solid #000; padding:15px 16px 12px 14px; position:absolute; z-index:1000; left:0px; top:25px; background:url('images/css/artic-comment_bg.png') no-repeat;}
+                .artic-comment {position:relative;}
+                    .artic-comment form .msg {width:497px; height:116px; margin-bottom:32px;}
+                        .artic-comment form .msg textarea {width:497px; height:116px; resize:vertical; max-height:116px; padding:11px 0 0 10px; font:14px 'Arial'; margin-bottom:16px; -webkit-box-shadow:2px 2px 1px #e8e8e8 inset; -moz-box-shadow:2px 2px 1px #e8e8e8 inset; box-shadow:2px 2px 1px #e8e8e8 inset;  border-left:1px solid #cfd6d7; border-top:1px solid #cfd6d7; border-right:1px solid #c0c8d0; border-bottom:1px solid #c0c8d0;}
+                            .artic-comment form .msg:hover textarea {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8;}
+                            .artic-comment form .msg .active {border:1px solid #0088c0; color:#000;}
+                        .artic-comment form textarea {color:#7b848d;}
+                    .artic-comment form input {font:13px 'Arial'; padding-left:11px; border-left:1px solid #cfd6d7; border-top:1px solid #cfd6d7; border-right:1px solid #c0c8d0; border-bottom:1px solid #c0c8d0;}
+                        .artic-comment form input {color:#7b848d; -webkit-box-shadow:2px 2px 1px #e8e8e8 inset; -moz-box-shadow:2px 2px 1px #e8e8e8 inset; box-shadow:2px 2px 1px #e8e8e8 inset;}
+                        .artic-comment form .active {border:1px solid #0088c0; color:#000;}
+                            .artic-comment form .name input {width:231px; height:22px; float:left; margin-right:23px;}
+                                .artic-comment form .name:hover input {border:1px solid #0088c0;}
+                            .artic-comment form .email input {width:230px; height:22px;}
+                                .artic-comment form .email:hover input {border:1px solid #0088c0;}
+                            .artic-comment form .send {margin:13px 0 0 0px; width:148px;}
+                                .artic-comment form .send input {width:148px; height:35px; box-shadow:none; border:none; background:url('images/css/buttons-pack.png') -4px -2px no-repeat;}
+                                .artic-comment form .send:hover input {background:url('images/css/buttons-pack.png') -4px -43px no-repeat; cursor:pointer;}
+                                .artic-comment form .send:active input {background:url('images/css/buttons-pack.png') -4px -86px no-repeat;}
 
 /*  Подвал!  */
     .footer {position:absolute; bottom:-78px; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
