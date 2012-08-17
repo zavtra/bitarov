@@ -389,5 +389,6 @@ if (LIBPASCAL) return;
 
 define('BASEDIR', rtrim(str_replace('\\', '/', dirname(dirname(dirname(dirname(__FILE__))))), '/') . '/');
 define('SITE_URL', rtrim(get_site_url(), '/') . '/');
+define('REQUEST_HOST', strtolower(preg_replace('/^www\./i', '', $_SERVER['HTTP_HOST'])));
 
 ?>

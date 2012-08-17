@@ -6,14 +6,16 @@
             <div class='wrap'>
                 <div class='b-top-left'>
                     <div class='breadcrumbs'>
-                        <span class='current'><a href='/'><ins></ins><?php echo preg_replace('/^www\./', '', $_SERVER['HTTP_HOST']); ?></a></span>
-                        <span><a href='/fund/'>Благотворительный фонд</a><ins class='r'></ins></span>
+                        <span class='current'><a href='<?php echo SITE_URL; ?>'><ins></ins><?php echo REQUEST_HOST; ?></a></span>
+                        <span><a href='http://bitarov/fund/'>Благотворительный фонд</a><ins class='r'></ins></span>
                     </div>
                     <h2>Благотворительный фонд Александра Битарова</h2>
                 </div>
                 <div class='clear'></div>
             </div>
         </div>
+        <div class='event-bottom-img'></div>
+
         <div class='wrap'>
         <div class='overLayer blago' style='display:none'>
         </div>
