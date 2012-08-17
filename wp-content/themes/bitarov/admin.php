@@ -419,6 +419,31 @@ function bt_event_metabox($post)
 HTML;
  }
 
+function bt_fund_announce_metabox($post)
+ {
+ $d = intval(get_post_meta($post->ID, 'bt_fund_announce_d', true));
+ $m = intval(get_post_meta($post->ID, 'bt_fund_announce_m', true));
+ $days = array(0=>'<День>', 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31);
+ $mons = array(
+   0  => '<Месяц>',
+   1  => 'Января',
+   2  => 'Февраля',
+   3  => 'Марта',
+   4  => 'Апреля',
+   5  => 'Мая',
+   6  => 'Июня',
+   7  => 'Июля',
+   8  => 'Августа',
+   9  => 'Сентября',
+   10 => 'Октября',
+   11 => 'Ноября',
+   12 => 'Декабря'
+ );
+ $days = optlist($days, $d);
+ $mons = optlist($mons, $m);
+ echo "Дата: <select name='bt_fund_announce_d'>$days</select> <select name='bt_fund_announce_m'>$mons</select>";
+ }
+
 function bt_opinion_matabox($post)
  {
  $bt_opinion_w1 = get_option('bt_opinion_w1', BT_OPINION_W1);
@@ -540,6 +565,16 @@ function bt_post_saved($id_post)
   }
  if ($id_media>0) update_post_meta($id_post, 'bt_id_media', $id_media);
  else delete_post_meta($id_post, 'bt_id_media');
+
+ // --- Благотворительный фонд, анонс
+ if (chkpost('bt_fund_announce_d,bt_fund_announce_m'))
+  {
+  extract(ep('bt_fund_announce_d>>i,bt_fund_announce_m>>i'));
+  if ($bt_fund_announce_d>=1 and $bt_fund_announce_d<=31) update_post_meta($id_post, 'bt_fund_announce_d', $bt_fund_announce_d);
+  else delete_post_meta($id_post, 'bt_fund_announce_d');
+  if ($bt_fund_announce_m>=1 and $bt_fund_announce_m<=12) update_post_meta($id_post, 'bt_fund_announce_m', $bt_fund_announce_m);
+  else delete_post_meta($id_post, 'bt_fund_announce_m');
+  }
  }
 
 // --------------------------------------------------------------- Инициализация
@@ -558,6 +593,7 @@ function bt_metaboxes()
  {
  add_meta_box('bt_opinion_matabox', 'Мнение', 'bt_opinion_matabox', 'post');
  add_meta_box('bt_event_metabox', 'Картинки для главной страницы', 'bt_event_metabox', 'post');
+ add_meta_box('bt_fund_announce_metabox', 'Благотворительный фонд, анонс', 'bt_fund_announce_metabox', 'post');
  add_meta_box('bt_media', 'Новость из СМИ', 'bt_media_metabox', 'post');
  }
 
