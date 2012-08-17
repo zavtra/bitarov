@@ -507,6 +507,20 @@ function bt_postform_improve()
  echo ' enctype="multipart/form-data"';
  }
 
+function post_submitbox_improve()
+ {
+ global $post;
+ if ($post->post_type!='page') return;
+ $bt_page_breadcrumbs = intval(get_post_meta($post->ID, 'bt_page_breadcrumbs', true)) ? ' checked' : '';
+ $bt_page_title = intval(get_post_meta($post->ID, 'bt_page_title', true)) ? ' checked' : '';
+ echo <<<HTML
+<div class='misc-pub-section'>
+  <div><label><input type='checkbox' name='bt_page_breadcrumbs'$bt_page_breadcrumbs> Добавить полосу навигации</label></div>
+  <div><label><input type='checkbox' name='bt_page_title'$bt_page_title> Добавить заголовок страницы</label></div>
+</div>
+HTML;
+ }
+
 function bt_post_saved($id_post)
  {
  global $medias;
@@ -575,6 +589,12 @@ function bt_post_saved($id_post)
   if ($bt_fund_announce_m>=1 and $bt_fund_announce_m<=12) update_post_meta($id_post, 'bt_fund_announce_m', $bt_fund_announce_m);
   else delete_post_meta($id_post, 'bt_fund_announce_m');
   }
+
+ // --- Параметры статической страницы
+ if (chkpost('bt_page_breadcrumbs')) update_post_meta($id_post, 'bt_page_breadcrumbs', 1);
+ else delete_post_meta($id_post, 'bt_page_breadcrumbs');
+ if (chkpost('bt_page_title')) update_post_meta($id_post, 'bt_page_title', 1);
+ else delete_post_meta($id_post, 'bt_page_title');
  }
 
 // --------------------------------------------------------------- Инициализация
@@ -610,6 +630,7 @@ add_action('admin_head', 'bt_head');
 add_action('edit_post', 'bt_post_saved');
 add_action('add_meta_boxes', 'bt_metaboxes');
 add_action('post_edit_form_tag', 'bt_postform_improve');
+add_action('post_submitbox_misc_actions', 'post_submitbox_improve');
 add_action('shutdown', 'bt_shutdown'); // Для тестов
 
 ?>
