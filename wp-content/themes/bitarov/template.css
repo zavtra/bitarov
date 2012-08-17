@@ -52,6 +52,7 @@
 
 /* Индекс! */
     .content {padding-bottom:70px;}
+        .content.bf {background:#f6fafc;}
         .content .wrap.event {overflow:visible; margin-top:14px; overflow:hidden;}
         .rightside {float:right; margin:8px 0 50px 0;width:331px;}
             .advice {padding:23px 32px 5px 21px;width:277px; border:1px solid #c1d4de; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; background:#f0f5f8; -webkit-box-shadow:1px 1px 1px rgba(232, 237, 239, 0.8); -moz-box-shadow:1px 1px 1px rgba(232, 237, 239, 0.8); box-shadow:1px 1px 1px rgba(232, 237, 239, 0.8);}
@@ -305,19 +306,19 @@
         .slider_container .orbit-wrapper {margin:0; width:1006px; border:none; padding-bottom:0;}
             .slider_container .slider-nav .right {height:50px; width:26px; right:-3px; background:url('images/css/fond-slider-buttons.png') -46px 0 no-repeat;}
             .slider_container .slider-nav .right:hover {background:url('images/css/fond-slider-buttons.png') -46px -62px no-repeat;}
-            .slider_container .slider-nav .left {height:50px; width:26px; left:0px; background:url(images/css/fond-slider-buttons.png) 0 0 no-repeat;}
+            .slider_container .slider-nav .left {height:50px; width:26px; left:0px; background:url('images/css/fond-slider-buttons.png') 0 0 no-repeat;}
             .slider_container .slider-nav .left:hover {background:url('images/css/fond-slider-buttons.png') 0 -62px no-repeat;}
          .slider_container .border-bottom {width:100%; margin:0 0 0 1px;}
 
     /* Окно обращение с overlay */
-    .overLayer {height:100%; width:102%; margin:0 -8px; position:absolute; z-index:1; display:block; left:0; top:0; opacity:0.97; filter: alpha(opacity = 97); background:url(images/css/Overlayer_bg.png);}
+    .overLayer {height:100%; width:102%; margin:0 -8px; position:absolute; z-index:1; display:block; left:0; top:0; opacity:0.97; filter: alpha(opacity = 97); background:url('images/css/Overlayer_bg.png');}
         .overLayer.blago {}
         .overLayer.smi {position:absolute; width:100%; left:17px;}
             .wrp-window-comment {width:504px; height:227px; display:block; padding:15px 16px 12px 14px; position:absolute; z-index:1000; left:0px; top:25px; background:url('images/css/window-comment_bg.png') no-repeat;}
                 .window-comment {position:relative;}
-                    .window-comment .exit {width:33px; height:32px; text-decoration:none; border:none!important; background:url(images/css/buttons-pack.png) -186px -1px no-repeat; top:-32px; right:-31px; position:absolute;}
-                    .window-comment .exit:hover {background:url(images/css/buttons-pack.png) -186px -44px no-repeat; text-decoration:none;}
-                    .window-comment .exit:active {background:url(images/css/buttons-pack.png) -186px -87px no-repeat;}
+                    .window-comment .exit {width:33px; height:32px; text-decoration:none; border:none!important; background:url('images/css/buttons-pack.png') -186px -1px no-repeat; top:-32px; right:-31px; position:absolute;}
+                    .window-comment .exit:hover {background:url('images/css/buttons-pack.png') -186px -44px no-repeat; text-decoration:none;}
+                    .window-comment .exit:active {background:url('images/css/buttons-pack.png') -186px -87px no-repeat;}
                     .window-comment form .msg textarea {width:491px; height:116px; resize:vertical; max-height:116px; padding:11px 0 0 10px; font:14px 'Arial'; margin-bottom:16px; -webkit-box-shadow:2px 2px 1px #e8e8e8 inset; -moz-box-shadow:2px 2px 1px #e8e8e8 inset; box-shadow:2px 2px 1px #e8e8e8 inset;  border-left:1px solid #cfd6d7; border-top:1px solid #cfd6d7; border-right:1px solid #c0c8d0; border-bottom:1px solid #c0c8d0;}
                         .window-comment form .msg:hover textarea {border:1px solid #0088c0;}
                         .window-comment form .msg .active {border:1px solid #0088c0; color:#000;}
@@ -332,13 +333,13 @@
                             .window-comment form .email input {width:139px; height:22px; float:right;}
                                 .window-comment form .email:hover input {border:1px solid #0088c0;}
                             .window-comment form .send {margin:13px 0 0 0px; width:148px;}
-                                .window-comment form .send input {width:148px; height:35px; box-shadow:none; border:none; background:url(images/css/buttons-pack.png) -4px -2px no-repeat;}
-                                .window-comment form .send:hover input {background:url(images/css/buttons-pack.png) -4px -43px no-repeat; cursor:pointer;}
-                                .window-comment form .send:active input {background:url(images/css/buttons-pack.png) -4px -86px no-repeat;}
+                                .window-comment form .send input {width:148px; height:35px; box-shadow:none; border:none; background:url('images/css/buttons-pack.png') -4px -2px no-repeat;}
+                                .window-comment form .send:hover input {background:url('images/css/buttons-pack.png') -4px -43px no-repeat; cursor:pointer;}
+                                .window-comment form .send:active input {background:url('images/css/buttons-pack.png') -4px -86px no-repeat;}
     /* Окно видео с overlay */
-    .video-window {width:973px; height:359px; position:absolute; z-index:10000; left:10px; top:-57px; margin:0 -10px; padding:26px 21px 23px 21px; background:url(images/css/window-video_bg.png) repeat-x; border-left:1px solid #edf2f4; border-top:1px solid #ebf0f3; border-right:1px solid #ebf0f3; border-bottom:1px solid #e3e9ec;}
-        .video-window .exit {width:27px; height:27px; border:1px solid #000; border:none!important; text-decoration:none; background:url(images/css/video-window-exitt.png) no-repeat; top:17px; right:14px; position:absolute;}
-        .video-window .exit:hover {background:url(images/css/video-window-exitt_hover.png) no-repeat;}
+    .video-window {width:973px; height:359px; position:absolute; z-index:10000; left:10px; top:-57px; margin:0 -10px; padding:26px 21px 23px 21px; background:url('images/css/window-video_bg.png') repeat-x; border-left:1px solid #edf2f4; border-top:1px solid #ebf0f3; border-right:1px solid #ebf0f3; border-bottom:1px solid #e3e9ec;}
+        .video-window .exit {width:27px; height:27px; border:1px solid #000; border:none!important; text-decoration:none; background:url('images/css/video-window-exitt.png') no-repeat; top:17px; right:14px; position:absolute;}
+        .video-window .exit:hover {background:url('images/css/video-window-exitt_hover.png') no-repeat;}
         .video-window .video-left_b {float:left; width:482px; height:358px; overflow:hidden; position:relative; background:#e7f0f5; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
             .video-left_b img {position:relative; width:482px; height:358px;}
         .video-window .text-right_b {margin-left:521px;}
@@ -348,16 +349,32 @@
 
     /* Контакты */
     .contacts {margin-top:25px;}
-        .wrp-karta {float:right; width:605px; margin-top:6px; height:282px; background:url(images/css/karta_bg.png) 0 0px no-repeat;}
+        .wrp-karta {float:right; width:605px; margin-top:6px; height:282px; background:url('images/css/karta_bg.png') 0 0px no-repeat;}
             .karta img {width:600px; height:277px; margin:-3px 0 0 -6px; border:1px solid #e1ddce;}
         .rekviziti {float:left; width:224px;}
             .rekviziti h5 {font:16px 'Arial'; color:#333;}
             .rekviziti .phone {position:relative; color:#000;}
-                .rekviziti .phone .img {background:url(images/ico/phone.png) no-repeat; padding:0px 10px; width:23px; height:24px; position:absolute; top:3px;}
+                .rekviziti .phone .img {background:url('images/ico/phone.png') no-repeat; padding:0px 10px; width:23px; height:24px; position:absolute; top:3px;}
                 .rekviziti .phone span {font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial'; padding-left:27px;}
                 .rekviziti .phone .remark {font:12px 'Arial'; color:#333; margin:4px 0 15px 0;}
             .rekviziti .email {font:14px 'Arial'; color:#434343;}
                 .rekviziti .email a {color:#333;}
+
+    /* Биорграфия */
+    .bf_body {padding-top:27px;}
+        .bf_body h1 {font:28px 'Georgia', 'Arial'; margin-bottom:25px;}
+        .bf_body .block1 {}
+            .bf_body .block1 {}
+                .goda_block {width:269px; height:244px; float:left; padding:22px 48px 0 19px; font:12px 'Arial'; background:url('images/css/goda_block-bg.png') no-repeat;}
+                .block1 .lemma {font:16px 'Arial'; margin-left:388px; line-height:19px; padding-right:5px; color:#000;}
+        .bf_body .block2 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story1.jpg') no-repeat;}
+        .bf_body .block3 {}
+            .wrp-goda_block_scroll {width:332px; height:261px; border:1px solid #dde4e8; background:#FFF; float:left;}
+                .wrp-goda_block_scroll .scroll-pane {position:relative; z-index:1; overflow:hidden; height:261px;}
+                    .goda_block_scroll {width:290px; padding:17px 23px 3px 19px; font:12px 'Arial';}
+                        .goda_block_scroll p {margin-bottom:12px; background:#f9fafa;}
+            .block3 .lemma {width:595px; float:right; margin-right:9px; font:16px 'Arial'; color:#000;}
+
 
 /*  Подвал!  */
     .footer {position:absolute; bottom:-78px; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
