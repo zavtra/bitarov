@@ -52,8 +52,8 @@
 
 /* Индекс! */
     .content {padding-bottom:70px;}
-        .content.bf {background:#f6fafc;}
-        .content .wrap.event {overflow:visible; margin-top:14px; overflow:hidden;}
+        .content.bf {background:#f6fafc; padding-bottom:0;}
+        .content .wrap.event {overflow:visible; margin-top:14px;}
         .rightside {float:right; margin:8px 0 50px 0;width:331px;}
             .advice {padding:23px 32px 5px 21px;width:277px; border:1px solid #c1d4de; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; background:#f0f5f8; -webkit-box-shadow:1px 1px 1px rgba(232, 237, 239, 0.8); -moz-box-shadow:1px 1px 1px rgba(232, 237, 239, 0.8); box-shadow:1px 1px 1px rgba(232, 237, 239, 0.8);}
             .advice {*padding-bottom:20px;}
@@ -109,8 +109,10 @@
                         .other_news .item .text {margin:7px 0 0 1px; padding-bottom:14px;width:273px; font:16px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial';  line-height:17px;}
 
     /* События! */
-    .event-header {padding:13px 0 6px 0; height:65px;background:url('images/css/header-event-bg.png') repeat-x;}
+    .event-header {padding:13px 0 2px 0; background:url('images/css/header-event-bg.png') repeat-x #fafafa;}
+        .event-bottom-img {height:13px; background:url('images/css/event-header_bottom-bg.png') 0 bottom repeat-x;}
         .event-header.fixed-top {margin-top:102px;}
+        .event-header.artic {background:url('images/css/event-header_artic-bg.png') repeat-x;}
             .event-header .paginator {float:right; margin-right:202px;}
                 .event-header .paginator ul {margin:0; padding:0;}
                     .event-header .paginator li {float:left;margin:0 0 8px 3px; padding:0;  font:16px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
@@ -141,7 +143,7 @@
                     .event-header .smi-parts-top a.current {background:url('images/css/smi-parts-top_bg.png') repeat-x #3f9d35; color:#FFF;}
                     .event-header .smi-parts-top a.current span {border:none;}
 
-            .event-header h2 {display:block;margin:2px 0 0 0; padding:0; font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
+            .event-header h2 {display:block; line-height: 26px!important; max-width:658px; margin:6px 0 0 0; padding:0; font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
     .event-body {margin-bottom:0px;}
         .wrp-rubrikator {float:right; margin-top:11px;width:291px;}
             .wrp-rubrikator.fixed {position:fixed; top:199px; right:162px;}
@@ -368,12 +370,33 @@
             .bf_body .block1 .lemma {font:16px 'Arial'; margin-left:388px; line-height:19px; padding-right:5px; color:#000;}
         .bf_body .block2 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story1.jpg') no-repeat;}
         .bf_body .block3 {}
-            .wrp-goda_block_scroll {width:332px; height:261px; border:1px solid #dde4e8; background:#FFF; float:left;}
+            .wrp-goda_block_scroll {width:332px; height:261px; border:1px solid #dde4e8; background:#FFF; float:left; position:relative;}
+                .wrp-goda_block_scroll .fade {position:absolute; bottom:0; left:0; z-index:99999;}
                 .wrp-goda_block_scroll .scroll-pane {position:relative; z-index:1; overflow:hidden; height:261px;}
-                    .goda_block_scroll {width:290px; padding:17px 23px 3px 19px; font:12px 'Arial';}
-                        .goda_block_scroll p {margin-bottom:12px; background:#f9fafa;}
+                    .goda_block_scroll {width:290px; padding:17px 23px 8px 19px; font:12px 'Arial';}
+                        .goda_block_scroll p {margin-bottom:12px; background:#f9fafa; line-height:17px;}
             .block3 .lemma {width:595px; float:right; margin-right:9px; font:16px 'Arial'; color:#000;}
          .bf_body .block4 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story2.jpg') no-repeat;}
+
+    /* Статья */
+    .wrp_article {margin-top:18px;}
+        .like_records {float:right; width:276px;}
+            .like_records h3 {margin:0 0 1px 0; color:#000; font:20px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; text-transform:uppercase;}
+            .like_records span {color:#000; font:20px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                .like_records span a {color:#718c4f;}
+            .like_records ul {margin:14px 0 0 0; list-style:none;}
+                .like_records li {font:15px 'Arial'; margin-bottom:7px;}
+                    .like_records li a {color:#33a0cd;}
+        .article {float:left; width:682px;}
+            .article .date {font:14px 'Arial Narrow', 'Arial'; color:#7b848d; margin-bottom:10px;}
+            .wrp_substrate {width:680px; margin-left:2px;}
+                .wrp_substrate .top {background:url('images/css/substrate_top.png') no-repeat; width:680px; height:8px;}
+                .substrate {width:669px; padding:6px 0 7px 11px; background:url(images/css/substrate_center.png);}
+                    .substrate dt {width:55px; height:62px; background:url(images/css/substrate_owner.png) no-repeat; float:left;}
+                    .substrate dd {width:518px; margin-left:80px; font:16px 'Arial';}
+                .wrp_substrate .bottom {background:url('images/css/substrate_bottom.png') no-repeat; width:680px; height:9px;}
+            .article_text {margin-top:17px;}
+                .article_text p {font:14px 'Arial'; color:#333; line-height:20px;}
 
 /*  Подвал!  */
     .footer {position:absolute; bottom:-78px; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
