@@ -228,6 +228,7 @@ function imagecreatefromfile($filename)
  );
  }
 
+/*
 function thumb($ih_src, $maxW, $maxH)
  {
  $maxH = intval($maxH);
@@ -236,6 +237,29 @@ function thumb($ih_src, $maxW, $maxH)
  if (!is_resource($ih_src) or get_resource_type($ih_src)!='gd') return false;
  $height = $new_h = imagesy($ih_src);
  $width = $new_w = imagesx($ih_src);
+ $k = $height / $width;
+ if ($new_w>$maxW) {$new_w=$maxW; $new_h=round($new_w*$k);}
+ if ($new_h>$maxH) {$new_h=$maxH; $new_w=round($new_h/$k);}
+ if ($new_h<1 or $new_w<1) return false;
+ if (!is_resource($ih_dst=imagecreatetruecolor($new_w, $new_h))) return false;
+ if ($width<=$maxW and $height<=$maxH)
+   {if (imagecopy($ih_dst, $ih_src, 0, 0, 0, 0, $width, $height)) return array('h'=>$new_h, 'w'=>$new_w, 'ih'=>$ih_dst, 'resized'=>false);}
+ elseif (imagecopyresampled($ih_dst, $ih_src, 0, 0, 0, 0, $new_w, $new_h, $width, $height)) return array('h'=>$new_h, 'w'=>$new_w, 'ih'=>$ih_dst, 'resized'=>true);
+ imagedestroy($ih_dst);
+ return false;
+ }
+*/
+
+function thumb($ih_src, $maxW, $maxH)
+ {
+ $maxH = intval($maxH);
+ $maxW = intval($maxW);
+ if ($maxH<1 and $maxW<1) return false;
+ if (!is_resource($ih_src) or get_resource_type($ih_src)!='gd') return false;
+ $height = $new_h = imagesy($ih_src);
+ $width = $new_w = imagesx($ih_src);
+ if ($maxW<1) $maxW = $width;
+ if ($maxH<1) $maxH = $height;
  $k = $height / $width;
  if ($new_w>$maxW) {$new_w=$maxW; $new_h=round($new_w*$k);}
  if ($new_h>$maxH) {$new_h=$maxH; $new_w=round($new_h/$k);}

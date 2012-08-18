@@ -71,11 +71,11 @@ HTML;
                     <div class='top_news'>
 <?php
 $posts_big = new WP_Query(array('meta_key'=>'bt_event-big', 'meta_value'=>'1', 'posts_per_page'=>1));
-$big_ids = array(); // Потом может несколько будет выводиться
+$big_ids = 0; // Потом может несколько будет выводиться
 if ($posts_big->have_posts())
  {
  $posts_big->the_post();
- $big_ids[] = $posts_big->post->ID;
+ $big_ids = $posts_big->post->ID;
  $title = get_the_title();
  $link = get_permalink();
  $excerpt = get_the_excerpt();
