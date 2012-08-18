@@ -7,9 +7,12 @@
 <link href='wp-content/themes/bitarov/styles.css' rel='stylesheet' type='text/css' />
 <link href='wp-content/themes/bitarov/template.css' rel='stylesheet' type='text/css' />
 <link href='wp-content/themes/bitarov/orbit-1.2.3.css' rel='stylesheet' type='text/css' />
+<link href='wp-content/themes/bitarov/jscrollpane.css' rel='stylesheet' type='text/css' />
 <link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
 <script src='wp-content/themes/bitarov/js/jquery.min.js'></script>
 <script src='wp-content/themes/bitarov/js/jquery.orbit-1.2.3.min.js'></script>
+<script src='wp-content/themes/bitarov/js/jmousewhell.min.js'></script>
+<script src='wp-content/themes/bitarov/js/jscroll.min.js'></script>
 <script src='wp-content/themes/bitarov/js/global.js'></script>
 </head>
 <body>
