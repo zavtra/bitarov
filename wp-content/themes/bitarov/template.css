@@ -447,7 +447,7 @@
                                 .artic-comment form .send:active input {background:url('images/css/buttons-pack.png') -4px -86px no-repeat;}
 
 /*  Подвал!  */
-    .footer {position:absolute; bottom:-78px; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
+    .footer {position:absolute; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
         .footer .wrap {padding-top:34px;}
             .vendor {float:right;width:235px; text-align:right; font:13px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
                 .vendor a {color:#1572c6;}
