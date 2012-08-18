@@ -1,5 +1,6 @@
 
 <!-- подвал -->
+    <div class='clear'></div>
     <div class='footer'>
         <div class='wrap'>
             <div class='vendor'>
