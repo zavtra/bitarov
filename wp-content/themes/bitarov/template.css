@@ -56,7 +56,7 @@
 /* Индекс! */
     .content {padding-bottom:70px;}
         .content.bf {background:#f6fafc; padding-bottom:0;}
-        .content .wrap.event {overflow:visible; margin-top:14px;}
+        .content .wrap.event {overflow:visible; margin-top:14px; position:relative!important;}
         .rightside {float:right; margin:8px 0 50px 0;width:331px;}
             .advice {padding:23px 32px 5px 21px;width:277px; border:1px solid #c1d4de; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; background:#f0f5f8; -webkit-box-shadow:1px 1px 1px rgba(232, 237, 239, 0.8); -moz-box-shadow:1px 1px 1px rgba(232, 237, 239, 0.8); box-shadow:1px 1px 1px rgba(232, 237, 239, 0.8);}
             .advice {*padding-bottom:20px;}
@@ -122,19 +122,6 @@
     .event-header {padding:13px 0 2px 0; background:url('images/css/header-event-bg.png') repeat-x #fafafa;}
         .event-bottom-img {height:13px; background:url('images/css/event-header_bottom-bg.png') 0 bottom repeat-x;}
         .event-header.artic {background:url('images/css/event-header_artic-bg.png') repeat-x;}
-            .wrp_paginator-fix {position:fixed; right:175px; top:139px; z-index:9999;}
-            .event-header .paginator {float:right; margin-right:202px;  width:80px;}
-                .event-header .paginator ul {margin:0; padding:0;}
-                    .event-header .paginator li {float:left;margin:0 0 8px 3px; padding:0;  font:16px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
-                    .event-header .paginator li:first-child { }
-                    .event-header .paginator li a {padding:0 3px;}
-                    .event-header .paginator li.current {margin:0 0 0 3px; padding:0 0;background:#f6f6f6;}
-                    .event-header .paginator li.current:first-child {margin-left:0;}
-                        .event-header .paginator li.current a {color:#333; text-decoration:none;}
-                    .event-header .paginator .visual {position:relative;border-bottom:4px solid #ebebeb;}
-                        .event-header .paginator .visual div {position:absolute; width:11px; height:4px;background:#6b6b6b;}
-                            .event-header .paginator .visual div ins {position:relative; width:1px 2px; width:70px; background: #FFF;}
-
             .event-header .b-top-left {float:left; min-width:300px;}
             .event-header .breadcrumbs {margin:3px 0 0 0; padding:0; height:22px; font:12px 'Tahoma';}
                 .event-header .breadcrumbs span {position:relative; float:left; margin-right:-2px; padding: 2px 15px 2px 20px; height:16px; border-top:1px solid #ebf4f5; border-bottom:1px solid #d0dcde;background:url('images/css/breadcrumbs-bg.png') 0 0 repeat-x #e5f1f2;}
@@ -154,21 +141,31 @@
                     .event-header .smi-parts-top a.current span {border:none;}
 
             .event-header h2 {display:block; line-height: 26px!important; max-width:658px; margin:6px 0 0 0; padding:0; font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
-    .event-body {margin-bottom:0px;}
-        .wrp-rubrikator {float:right; margin-top:11px;width:291px;}
-            .wrp-rubrikator.fixed {position:fixed; top:199px; right:162px;}
-                .wrp-rubrikator .rubrikator.advice {width:289px;background:#f0f5f8;}
-                .wrp-rubrikator .rubrikator {padding:5px 0 13px 0; border:1px solid #c6d9e5; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px; background:#f9f9f9;}
-                .wrp-rubrikator .rubrikator ul {margin:-5px 0 0 12px; padding:0;}
-                    .wrp-rubrikator .rubrikator li { margin:0; padding:0;font:17px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
-                        .wrp-rubrikator .rubrikator li a {color:#333; text-decoration:underline;}
-                        .wrp-rubrikator .rubrikator li a:hover {text-decoration:none;}
-                        .wrp-rubrikator .rubrikator li span {display:block; margin:2px 0 0 0; padding:7px 0 0px 0;}
-                        .wrp-rubrikator .rubrikator li.current span {position:relative; z-index:5;  margin:2px 14px -9px -29px; padding:7px 0 9px 29px; width:284px;background:url('images/css/rubrikator-current-bg.png') no-repeat;}
-                            .wrp-rubrikator .rubrikator li.current a {color:#779ca4;text-decoration:none; text-shadow: 0 1px 1px rgba(255, 255, 255, 1); cursor:default;}
-                .wrp-rubrikator .podate {margin-top:20px;}
-                    .wrp-rubrikator .podate span {display:block; margin-bottom:7px; color:#8c8c8c; font:12px 'Arial';}
-                    .wrp-rubrikator .podate a {display: -moz-inline-box; display: inline-block; margin-right:5px;color:#404040; font:18px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
+    .event-body {margin-bottom:0px; padding-right:321px; width: 677px;}
+            .wrp-rubrikator-fixed {top: 0; left: 0; position:fixed; width: 100%;}
+                .wrp-rubrikator-fixed .paginator {width:80px; margin:0 auto; position:relative; top:140px; left:252px;}
+                    .wrp-rubrikator-fixed .paginator ul {margin:0; padding:0;}
+                        .wrp-rubrikator-fixed .paginator li {float:left;margin:0 0 8px 3px; padding:0;  font:16px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                            .wrp-rubrikator-fixed .paginator li a {padding:0 3px;}
+                            .wrp-rubrikator-fixed .paginator li.current {margin:0 0 0 3px; padding:0 0;background:#f6f6f6;}
+                            .wrp-rubrikator-fixed .paginator li.current:first-child {margin-left:0;}
+                            .wrp-rubrikator-fixed .paginator li.current a {color:#333; text-decoration:none;}
+                            .wrp-rubrikator-fixed .paginator .visual {position:relative;border-bottom:4px solid #ebebeb;}
+                                .wrp-rubrikator-fixed .paginator .visual div {position:absolute; width:11px; height:4px;background:#6b6b6b;}
+                                    .wrp-rubrikator-fixed .paginator .visual div ins {position:relative; width:1px 2px; width:70px; background: #FFF;}
+                .rubrikator-fixed.advice {width:289px; background:#f0f5f8;}
+                .rubrikator-fixed {padding:5px 0 13px 0; width:288px; position:relative; margin:0 auto; top:210px; left:353px; background:#f9f9f9; border:1px solid #c6d9e5; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;}
+                .rubrikator-fixed ul {margin:-5px 0 0 12px; padding:0;}
+                    .rubrikator-fixed li { margin:0; padding:0;font:17px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                        .rubrikator-fixed li a {color:#333; text-decoration:underline;}
+                        .rubrikator-fixed li a:hover {text-decoration:none;}
+                        .rubrikator-fixed li span {display:block; margin:2px 0 0 0; padding:7px 0 0px 0;}
+                        .rubrikator-fixed li.current span {position:relative; z-index:5; margin:2px 14px -9px -29px; padding:7px 0 9px 29px; width:284px; background:url('images/css/rubrikator-current-bg.png') no-repeat;}
+                        .rubrikator-fixed li.current a {color:#779ca4;text-decoration:none; text-shadow: 0 1px 1px rgba(255, 255, 255, 1); cursor:default;}
+                .wrp-rubrikator-fixed .podate {margin-top:20px;}
+                    .wrp-rubrikator-fixed .podate span {display:block; margin-bottom:7px; color:#8c8c8c; font:12px 'Arial';}
+                    .wrp-rubrikator-fixed .podate a {display: -moz-inline-box; display: inline-block; margin-right:5px;color:#404040; font:18px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
+                .rubrikator-advanced {position:relative; margin:0 auto; width:281px; top:210px; left:353px;}
                 #back-top {position:fixed; bottom:90px; /* отступ кнопки снизу */margin-right:-150px; /* отступ кнопки слева */}
                     #back-top a {display: block;width:85px; height:31px; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s;}
                     #back-top a:hover { }
@@ -177,7 +174,7 @@
                     #back-top a:hover span {background:url('images/css/back-top-buttons.png') 0px -39px no-repeat;}
                     #back-top a:active span {background:url('images/css/back-top-buttons.png') 0px -79px no-repeat;}
 
-        .event-body .list_items {float:left; margin:-7px 0 0 0; padding-bottom:50px; width:677px;}
+        .event-body .list_items {float:left; margin:-7px 0 0 0; padding-bottom:50px; position:relative; z-index:10;}
             .event-body .item {margin:4px 0 0 -19px; padding:12px 16px 16px 18px;width:661px; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;}
                 .event-body .item:hover {margin:3px 0 -1px -20px;border:1px solid #e5ecf1; background:#f9fdff; box-shadow:2px 2px 1px #f6f7f8, -1px 0 1px #f1f7fb inset;}
                 .event-body .item:hover {*margin:3px 0 -1px -20px;}
@@ -195,11 +192,12 @@
                     .event-body .item .tag { }
                         .event-body .item .tag img {float:left; margin-top:2px;}
                         .event-body .item .tag a {padding-left:4px; color:#8d949c; font:11px 'Arial';}
-            .event-body .button-show-old {margin:22px 0 0 0;}
-                .event-body .button-show-old a {float:left; margin:8px 6px 0 0; width:273px; height:40px;background:url('images/css/button-show-old-event.png') 0 0 no-repeat;}
-                .event-body .button-show-old a:hover {margin-right:5px; width:274px; height:40px;background:url('images/css/button-show-old-event.png') 0 -44px no-repeat;}
-                .event-body .button-show-old a:active {background:url('images/css/button-show-old-event.png') 0 -87px no-repeat;}
-                .event-body .button-show-old img {display:block;}
+            .button-show-old {margin:22px 0 0 0;}
+                .button-show-old .button {}
+                    .event-body .button-show-old a {font:16px 'Georgia', 'Arial'; color:#FFF; text-decoration:none; float:left; padding:8px 0 0 19px; margin:6px 6px 0 0; width:257px; height:35px; background:url('images/css/buttons-pack.png') -2px -145px no-repeat; display:block;}
+                    .event-body .button-show-old a:hover {text-decoration:underline; background:url('images/css/buttons-pack.png') -2px -189px no-repeat; text-decoration:none;}
+                    .event-body .button-show-old a:active {background:url('images/css/buttons-pack.png') -2px -232px no-repeat;}
+                    .event-body .button-show-old img {display:block;}
 
     /* Благотворительный фонд! */
     .fond-header {overflow:hidden; margin-bottom:7px; padding:18px 0 0 16px; height:96px;background:url('images/css/fond-header.png') no-repeat;}
