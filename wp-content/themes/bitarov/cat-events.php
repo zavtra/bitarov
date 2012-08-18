@@ -44,28 +44,43 @@ HTML;
                     </div>
                 </div>
                 <div class='wrp-rubrikator-fixed'>
+<?php
+
+if ($category_paginagor)
+ {
+ $pages_html = '';
+ foreach ($category_paginagor as $p)
+   if ($p==$current_page) $pages_html .= "<li class='current'><a href='$current_cat_link/page/$p/'>$p</a></li>";
+   elseif ($p=='<') $pages_html .= "<li><a href='$current_cat_link/'>&laquo;</a></li>";
+   elseif ($p=='>') $pages_html .= "<li><a href='$current_cat_link/page/$pages_count/'>&raquo;</a></li>";
+   else $pages_html .= "<li><a href='$current_cat_link/page/$p/'>$p</a></li>";
+ echo <<<HTML
                     <div class='paginator'>
-                        <ul>
-                            <li class='current'><a href='#'>1</a></li>
-                            <li><a href='#'>2</a></li>
-                            <li><a href='#'>3</a></li>
-                            <li><a href='#'>4</a></li>
-                            <li><a href='#'>5</a></li>
-                        </ul>
+                        <ul>$pages_html</ul>
                         <div class='clear'></div>
                         <div class='visual'>
                             <div><ins></ins></div>
                         </div>
                     </div>
+HTML;
+ }
+
+if ($subcategories)
+ {
+ $subcategories_html = '                            ';
+ foreach ($subcategories as $cat)
+   if ($cat['id']<>$id_cat) $subcategories_html .= "<li><span><a href='$cat[link]'>$cat[name]</a></span></li>\n                            ";
+   else $subcategories_html .= "<li class='current'><span><a href='$cat[link]'>$cat[name]</a></span></li>\n                            ";
+echo <<<HTML
                     <div class='rubrikator-fixed'>
                         <ul>
-                            <li class='current'><span><a href='#'>Все записи</a></span></li>
-                            <li><span><a href='#'>Политическая деятельность</a></span></li>
-                            <li><span><a href='#'>Благотворительный фонд</a></span></li>
-                            <li><span><a href='#'>Поздравления</a></span></li>
-                            <li><span><a href='#'>Строительство</a></span></li>
+                        $subcategories_html
                         </ul>
                     </div>
+HTML;
+ }
+
+?>
                     <div class='rubrikator-advanced'>
                         <div class='podate'>
                             <span>по годам:</span>

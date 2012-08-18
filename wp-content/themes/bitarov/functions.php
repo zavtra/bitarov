@@ -80,6 +80,17 @@ function bt_installed()
  db_query("CREATE TABLE wp_bt_thanks(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, pos TINYINT UNSIGNED, caption VARCHAR(50), text BLOB)");
  }
 
+function gen_pages($current_page, $pages_count, $range)
+ {
+ $left = $current_page - $range;
+ $right = $current_page + $range;
+ $result = array();
+ if ($left-$range>0) $result[] = '<';
+ for ($p=$left; $p<=$right; $p++) if ($p>0 and $p<= $pages_count) $result[] = $p;
+ if ($right+$range<$pages_count) $result[] = '>';
+ return $result;
+ }
+
 register_sidebar(array(
   'before_widget' => '<li id="%1$s" class="widget %2$s">',
   'after_widget' => '</li>',
