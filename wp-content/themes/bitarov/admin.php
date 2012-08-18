@@ -525,14 +525,9 @@ function bt_post_saved($id_post)
  {
  global $medias;
 
- $bt_event_w1 = get_option('bt_event_w1', BT_EVENT_W1);
- $bt_event_h1 = get_option('bt_event_h1', BT_EVENT_H1);
- $bt_event_w2 = get_option('bt_event_w2', BT_EVENT_W2);
- $bt_event_h2 = get_option('bt_event_h2', BT_EVENT_H2);
+ // --- Мнение
  $bt_opinion_h1 = get_option('bt_opinion_w1', BT_OPINION_W1);
  $bt_opinion_w1 = get_option('bt_opinion_h1', BT_OPINION_H1);
-
- // --- Мнение
  if (empty($_POST['bt_opinion'])) delete_post_meta($id_post, 'bt_opinion');
  else update_post_meta($id_post, 'bt_opinion', stripslashes($_POST['bt_opinion']));
  if (chkpost('opinionpic-del'))
@@ -547,6 +542,8 @@ function bt_post_saved($id_post)
      update_post_meta($id_post, 'bt_opinionpic', 1);
 
  // --- Событие, большая картинка
+ $bt_event_w1 = get_option('bt_event_w1', BT_EVENT_W1);
+ $bt_event_h1 = get_option('bt_event_h1', BT_EVENT_H1);
  if (chkpost('delbig'))
   {
   unlink(BASEDIR . "wp-content/uploads/event/$id_post-big.jpg");
@@ -554,11 +551,14 @@ function bt_post_saved($id_post)
   }
  elseif (!empty($_FILES['bigpic']['tmp_name']))
   if (is_array($ih_src=imagecreatefromfile($_FILES['bigpic']['tmp_name'])))
-   if (is_array($ih_dst=thumb($ih_src['ih'], $bt_event_w1, $bt_event_h1)))
-    if (imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-big.jpg"))
-     update_post_meta($id_post, 'bt_event-big', 1);
+   if (is_array($ih_dst=thumb($ih_src['ih'], $bt_event_w1, 0)))
+    if (is_resource($ih_dst['ih']=centrize($ih_dst['ih'], $bt_event_w1, $bt_event_h1)))
+     if (imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-big.jpg"))
+      update_post_meta($id_post, 'bt_event-big', 1);
 
  // --- Событие, средняя картинка
+ $bt_event_w2 = get_option('bt_event_w2', BT_EVENT_W2);
+ $bt_event_h2 = get_option('bt_event_h2', BT_EVENT_H2);
  if (chkpost('delmed'))
   {
   unlink(BASEDIR . "wp-content/uploads/event/$id_post-med.jpg");
@@ -566,9 +566,10 @@ function bt_post_saved($id_post)
   }
  if (!empty($_FILES['medpic']['tmp_name']))
   if (is_array($ih_src=imagecreatefromfile($_FILES['medpic']['tmp_name'])))
-   if (is_array($ih_dst=thumb($ih_src['ih'], $bt_event_w2, $bt_event_h2)))
-    if (imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-med.jpg"))
-     update_post_meta($id_post, 'bt_event-med', 1);
+   if (is_array($ih_dst=thumb($ih_src['ih'], $bt_event_w2, 0)))
+    if (is_resource($ih_dst['ih']=centrize($ih_dst['ih'], $bt_event_w2, $bt_event_h2)))
+     if (imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-med.jpg"))
+      update_post_meta($id_post, 'bt_event-med', 1);
 
  // --- Новость из СМИ
  $id_media = chkpost('bt_id_media') ? intval($_POST['bt_id_media']) : 0;
