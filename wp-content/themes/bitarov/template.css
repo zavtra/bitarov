@@ -365,13 +365,15 @@
         .video-window .exit:hover {background:url('images/css/video-window-exitt_hover.png') no-repeat;}
         .video-window .video-left_b {float:left; width:482px; height:358px; overflow:hidden; position:relative; background:#e7f0f5; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
             .video-left_b img {position:relative; width:482px; height:358px;}
-        .video-window .wrp-text-right_b {margin-left:521px;}
-            .wrp-text-right_b .scroll-pane {height:355px; overflow:scroll;}
-            .video-window .text-right_b {height:355px; overflow:auto}
+        .video-window .wrp-text-right_b {margin-left:511px;}
+            .wrp-text-right_b .scroll-pane {height:355px; overflow:scroll; }
+            .video-window .text-right_b {height:355px; overflow:auto; padding-left:0px;}
+                .video-window .text-right_b .padding {padding-left:10px;}
                 .text-right_b h1 {font:28px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#333; margin:0 0 4px 4px; width:430px;}
                 .text-right_b .date {font:14px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; color:#666666; margin-bottom:18px;}
                 .text-right_b p {font:16px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; line-height:18px; color:#222; margin-bottom:12px;}
-
+                .video-window .text-right_b .jspVerticalBar {left:0;}
+                .video-window .text-right_b .jspPane {margin-left:10px!important;}
     /* Контакты */
     .contacts {margin-top:25px;}
         .wrp-karta {float:right; width:605px; margin-top:6px; height:282px; background:url('images/css/karta_bg.png') 0 0px no-repeat;}
