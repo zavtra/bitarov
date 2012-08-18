@@ -553,7 +553,7 @@ function bt_post_saved($id_post)
   if (is_array($ih_src=imagecreatefromfile($_FILES['bigpic']['tmp_name'])))
    if (is_array($ih_dst=thumb($ih_src['ih'], $bt_event_w1, 0)))
     if (is_resource($ih_dst['ih']=centrize($ih_dst['ih'], $bt_event_w1, $bt_event_h1)))
-     if (imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-big.jpg"))
+     if (imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-big.jpg", 90))
       update_post_meta($id_post, 'bt_event-big', 1);
 
  // --- Событие, средняя картинка
@@ -568,7 +568,7 @@ function bt_post_saved($id_post)
   if (is_array($ih_src=imagecreatefromfile($_FILES['medpic']['tmp_name'])))
    if (is_array($ih_dst=thumb($ih_src['ih'], $bt_event_w2, 0)))
     if (is_resource($ih_dst['ih']=centrize($ih_dst['ih'], $bt_event_w2, $bt_event_h2)))
-     if (imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-med.jpg"))
+     if (imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-med.jpg", 90))
       update_post_meta($id_post, 'bt_event-med', 1);
 
  // --- Новость из СМИ
