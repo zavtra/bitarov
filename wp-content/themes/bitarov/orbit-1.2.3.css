@@ -53,6 +53,10 @@ div.orbit-wrapper {
     border:1px solid #dbdbdb;
     margin:26px 0 35px 0; }
 
+div.orbit-wrapper:hover .slider-nav {
+    display:block;
+}
+
 div.orbit {
     width: 1px;
     height: 1px;
@@ -169,7 +173,7 @@ span.pause.active {
    ================================================== */
 
 div.slider-nav {
-    display: block }
+    display: none }
 
 div.slider-nav span {
     width: 69px;
@@ -184,12 +188,12 @@ div.slider-nav span {
 div.slider-nav span.right {
     background: url(images/css/slider-arrows.png) -96px -4px no-repeat;
     right: 26px; }
-div.slider-nav span.right:hover {
+div.slider-nav span.right:active {
     background: url(images/css/slider-arrows.png) -96px -82px no-repeat;}
 div.slider-nav span.left {
     background: url(images/css/slider-arrows.png) -6px -2px no-repeat;
     left: 26px; }
-div.slider-nav span.left:hover {
+div.slider-nav span.left:active {
     background: url(images/css/slider-arrows.png) -6px -81px no-repeat;}
 /* BULLET NAV
    ================================================== */
