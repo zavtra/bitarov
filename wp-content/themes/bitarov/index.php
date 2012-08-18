@@ -18,10 +18,11 @@ HTML;
                 <div class='advice'>
                     <div class='head'>
                         <dl>
-                            <dt><img src='wp-content/themes/bitarov/images/css/rightside-owner.png' width='98' height='110' alt='' /></dt>
+                            <dt><img src="wp-content/themes/bitarov/images/css/index_owner-mnenie.jpg" width="98" height="111" alt="" /></dt>
                             <dd>
-                            <a href='#'>Мнение</a>
-                            <div>Александра Битарова</div>
+                            <a href='#'><span class='head'>Мнение</span>
+                            <span class='owner'>Александра Битарова</span>
+                            </a>
                             </dd>
                         </dl>
                     </div>
@@ -68,6 +69,8 @@ HTML;
                 </dl>
                 <div class='clear'></div>
                 <div class='body'>
+                <div class='top'></div>
+                <div class="substrate">
                     <div class='top_news'>
 <?php
 $posts_big = new WP_Query(array('meta_key'=>'bt_event-big', 'meta_value'=>'1', 'posts_per_page'=>1));
@@ -126,6 +129,8 @@ unset($posts_med);
 ?>
                     </div>
                     <div class='clear'></div>
+                </div>
+                <div class='bottom'></div>
                 </div>
             </div>
         </div>

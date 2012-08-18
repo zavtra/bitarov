@@ -37,19 +37,6 @@
     <div class='content'>
         <div class='event-header'>
             <div class='wrap'>
-                <div class='paginator'>
-                    <ul>
-                        <li class='current'><a href='#'>1</a></li>
-                        <li><a href='#'>2</a></li>
-                        <li><a href='#'>3</a></li>
-                        <li><a href='#'>4</a></li>
-                        <li><a href='#'>5</a></li>
-                    </ul>
-                    <div class='clear'></div>
-                    <div class='visual'>
-                        <div><ins></ins></div>
-                    </div>
-                </div>
                 <div class='b-top-left'>
                     <div class='breadcrumbs'>
                         <span class='current'><a href='#'><ins></ins>bitarov.as</a></span>
@@ -63,8 +50,21 @@
         <div class='event-bottom-img'></div>
         <div class='wrap event'>
             <div class='event-body'>
-                <div class='wrp-rubrikator fixed'>
-                    <div class='rubrikator advice'>
+                <div class='wrp-rubrikator-fixed'>
+                    <div class='paginator'>
+                        <ul>
+                            <li class='current'><a href='#'>1</a></li>
+                            <li><a href='#'>2</a></li>
+                            <li><a href='#'>3</a></li>
+                            <li><a href='#'>4</a></li>
+                            <li><a href='#'>5</a></li>
+                        </ul>
+                        <div class='clear'></div>
+                        <div class='visual'>
+                            <div><ins></ins></div>
+                        </div>
+                    </div>
+                    <div class='rubrikator-fixed advice'>
                         <ul>
                             <li><span><a href='#'>Все записи</a></span></li>
                             <li class='current'><span><a href='#'>Политическая деятельность</a></span></li>
@@ -73,13 +73,15 @@
                             <li><span><a href='#'>Благотворительность</a></span></li>
                         </ul>
                     </div>
-                    <div class='podate'>
-                        <span>по годам:</span>
-                        <a href='#'>2012</a> <a href='#'>2011</a> <a href='#'>2010</a>
+                    <div class='rubrikator-advanced'>
+                        <div class='podate'>
+                            <span>по годам:</span>
+                            <a href='#'>2012</a> <a href='#'>2011</a> <a href='#'>2010</a>
+                        </div>
+                        <p id='back-top'>
+                            <a href='#top'><span></span></a>
+                        </p>
                     </div>
-                    <p id='back-top'>
-                    	<a href='#top'><span></span></a>
-                    </p>
                 </div>
                 <div class='list_items'>
                     <div class='item'>
@@ -175,7 +177,10 @@
                     </div>
 
 
-                    <div class='button-show-old'><a href='#'></a> <img src='wp-content/themes/bitarov/images/ico/loading.gif' width='50' height='50' alt='' /></div>
+                    <div class='button-show-old'>
+                        <a href='#'>Показать предыдущие события</a>
+                        <img src='wp-content/themes/bitarov/images/ico/loading.gif' width='50' height='50' alt='' />
+                    </div>
                     <div class='clear'></div>
                 </div>
             </div>
