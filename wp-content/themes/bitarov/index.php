@@ -74,11 +74,11 @@ HTML;
                     <div class='top_news'>
 <?php
 $posts_big = new WP_Query(array('meta_key'=>'bt_event-big', 'meta_value'=>'1', 'posts_per_page'=>1));
-$big_ids = 0; // Потом может несколько будет выводиться
+$big_ids = array(); // Потом может несколько будет выводиться
 if ($posts_big->have_posts())
  {
  $posts_big->the_post();
- $big_ids = $posts_big->post->ID;
+ $big_ids[] = $posts_big->post->ID;
  $title = get_the_title();
  $link = get_permalink();
  $excerpt = get_the_excerpt();
@@ -102,7 +102,7 @@ unset($posts_big);
                     </div>
                     <div class='other_news'>
 <?php
-$posts_med = new WP_Query(array('meta_key'=>'bt_event-med', 'meta_value'=>'1', 'posts_per_page'=>2, 'exclude'=>$big_ids));
+$posts_med = new WP_Query(array('meta_key'=>'bt_event-med', 'meta_value'=>'1', 'posts_per_page'=>2, 'post__not_in'=>$big_ids));
 while ($posts_med->have_posts())
  {
  $posts_med->the_post();
