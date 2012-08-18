@@ -50,6 +50,25 @@ function bt_post_category($id_post)
  return $cats[key($cats)];
  }
 
+function get_cat_path($id_cat)
+ {
+ $id_cat = intval($id_cat);
+ static $cache;
+ if (isset($cache[$id_cat])) return $cache[$id_cat];
+ $cache[$id_cat] = array();
+ $result = &$cache[$id_cat];
+ for ($j=0; $j<32; $j++)
+  {
+  $cat = get_category($id_cat);
+  if (!$cat) break;
+  $result[] = $cat;
+  if ($cat->category_parent<=1) break;
+  $id_cat = $cat->category_parent;
+  }
+ $result = array_reverse($result);
+ return $result;
+ }
+
 function bt_installed()
  {
  if (!defined('WP_ADMIN') or !chkget('activated')) return;
