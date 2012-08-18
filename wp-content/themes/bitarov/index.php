@@ -53,9 +53,9 @@ HTML;
                 <div class='fond-main'>
                     <div class='fond'>
                         <img src='wp-content/themes/bitarov/images/css/index-fond.png' width='230' height='94' alt='' />
-                        <div class='send'><a href='#'>оставить обращение</a></div>
+                        <div class='send'><a href='/fund/#message'>оставить обращение</a></div>
                         <dl>
-                            <dt><a href='#'><img src='wp-content/themes/bitarov/images/ico/twit.png' width='39' height='31' alt='' /></a> <a href='#'><img src='wp-content/themes/bitarov/images/ico/facebook.png' width='33' height='33' alt='' /></a></dt>
+                            <dt><a href='https://twitter.com/bitarovas'><img src='wp-content/themes/bitarov/images/ico/twit.png' width='39' height='31' alt='' /></a> <a href='http://www.facebook.com/bitarovas'><img src='wp-content/themes/bitarov/images/ico/facebook.png' width='33' height='33' alt='' /></a></dt>
                             <dd>Представительства <br />в социальных медиа</dd>
                         </dl>
                     </div>
