@@ -63,10 +63,10 @@ HTML;
                 </div>
             </div> <!-- off правая колонка -->
             <div class='strip_news'>
-                <dl>
-                    <dt><img src='wp-content/themes/bitarov/images/ico/i-strip.png' width='28' height='26' alt='' /></dt>
-                    <dd><span>лента событий</span></dd>
-                </dl>
+                <div class='dl'>
+                    <div class='ikonka'><img src='wp-content/themes/bitarov/images/ico/i-strip.png' width='28' height='26' alt='' /></div>
+                    <div class='lenta-top'>лента событий</div>
+                </div>
                 <div class='clear'></div>
                 <div class='body'>
                 <div class='top'></div>
