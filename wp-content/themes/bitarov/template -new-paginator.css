@@ -28,6 +28,12 @@
          url('fonts/DIN/DinDisplayPro-Reg.ttf') format('truetype'),
          url('fonts/DIN/DinDisplayPro-Reg.svg#DinDisplayPro-Reg') format('svg');
 }
+@font-face {
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Sans Narrow'), local('PTSans-Narrow'), url(http://themes.googleusercontent.com/static/fonts/ptsansnarrow/v3/UyYrYy3ltEffJV9QueSi4S4mX3cpNo8MnLri8k21-rs.woff) format('woff');
+}
 /* Шапка! */
 .wrap {position:relative; margin:0 auto; padding: 0 10px 0 10px; width:1000px;}
 .container {position:relative; min-height:100%; height:100%; height:auto!important;}
@@ -62,12 +68,12 @@
             .advice .head {width:235px;}
                 .advice .head dl {height:111px; margin-bottom:10px;}
                 .advice .head dt {float:left; width:98px; height:111px; background:#0ff1f6;}
-                .advice .head dd {margin-left:120px; width:112px; font:27px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                .advice .head dd {margin-left:120px; width:112px; font:27px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                     .advice .head dd a {color:#010101; text-decoration:none; font-family:'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
-                    .advice .head dd a span.head {border-bottom:1px solid #000;}
-                    .advice .head dd a:hover {border-bottom:1px solid #000; text-decoration:none;}
-                    .advice .head dd a:hover span {border-bottom:1px solid #000;}
-                    .advice .head dd a span.owner {text-decoration:none; margin-top:5px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                    .advice .head dd a span.head {border-bottom:1px solid #000; margin-bottom:12px; display:block; width:82px;}
+                    .advice .head dd a:hover {text-decoration:none; color:#555;}
+                    .advice .head dd a:hover span {text-decoration:none;}
+                    .advice .head dd a span.owner {text-decoration:none;  font-family:'PT Sans Narrow', 'Arial Narrow', 'Arial'; line-height:20px;}
                 .news_views {margin-top:8px;}
                     .news_views {*margin-top:10px;}
                     .news_views {margin-top:11px\9;}
@@ -84,23 +90,23 @@
                     .fond dl {height:65px;background:url('images/css/fond-border.png') 0 100% no-repeat;}
                         .fond dt {float:right; padding:6px 19px 0 14px;}
                             .fond dt img { display: -moz-inline-box; display: inline-block;margin-left:17px; zoom: 1; *display: inline;}
-                        .fond dd { float:left;width:167px; text-align:left; font:22px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
-        .strip_news {float:left; width:642px; padding-bottom:140px;}
-            .strip_news dl {margin:0; padding:0;}
-            .strip_news dt {float:left; margin:5px 0 0 0;}
-            .strip_news dd {display:block; margin:0 0 0 41px; padding:0;}
-                .strip_news dd span {padding-right:435px; padding-bottom:1px; border-bottom:2px solid #333; text-transform:uppercase; font:24px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
+                        .fond dd { float:left;width:167px; text-align:left; font:22px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
+        .strip_news {float:left; width:642px;}
+            .strip_news .dl {margin:0; padding:0;}
+            .strip_news .ikonka {margin:0 0 0 0; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:bottom;}
+            .strip_news .lenta-top {margin:0 0 0 8px; padding:0; width:593px; padding-bottom:1px; border-bottom:2px solid #333; text-transform:uppercase; font:24px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial'; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top;}
+                .strip_news dd span {padding-right:435px;}
             .strip_news .body {margin-top:14px; min-height:729px; width:597px;}
                 .strip_news .body .top {background:url('images/css/index-body-top_bg.png'); height:12px; width:639px;}
-                .strip_news .body .substrate {background:url('images/css/index-bodysubstrate_bg.png') repeat-y; width:597px; padding:15px 19px 0 23px;}
+                .strip_news .body .substrate {background:url('images/css/index-bodysubstrate_bg.png') repeat-y; width:597px; padding:15px 19px 93px 23px;}
                 .strip_news .body .bottom {background:url(images/css/index-body-bottom_bg.png) no-repeat; width:639px; height:16px;}
 
-                .top_news {margin-bottom:28px;font:15px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                .top_news {margin-bottom:28px;font:15px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                     .top_news .tdate {display: -moz-inline-box; display: inline-block; margin-bottom:4px;color:#838c94; zoom: 1; *display: inline;}
                     .top_news .ttag {display: -moz-inline-box; display: inline-block; margin-left:12px;color:#7da87a; zoom: 1; *display: inline;}
                         .top_news .ttag a {color:#7da87a; text-decoration:underline;}
                         .top_news .ttag a:hover {text-decoration:none;}
-                    .top_news .title {margin:0 0 3px 3px; font:24px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                    .top_news .title {margin:0 0 3px 3px; font:24px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                     .top_news .photo {width:596px; height:205px; background:url('images/css/top_news-photo-bg.png') no-repeat; text-align:center;}
                         .top_news .photo img {margin:3px auto 0 1px;width:589px; height:198px;}
                     .top_news .text {margin:10px 0 0 4px; padding-bottom:14px; width:589px; background:url('images/css/top-news_border-bottom.png') 0 100% no-repeat; font:16px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial';  line-height:17px;}
@@ -108,10 +114,10 @@
                     .other_news .item {float:left; margin-left:45px;width:276px;}
                     .other_news .item:first-child {margin:0;}
                         .other_news .item .odate {float:left; margin:0 12px 2px 0;color:#838c94; font:13px 'Helvetica', 'Arial';}
-                        .other_news .item .otag {color:#7da87a; font:15px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                        .other_news .item .otag {color:#7da87a; font:15px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                             .other_news .item .otag a {color:#7da87a; text-decoration:underline;}
                             .other_news .item .otag a:hover {text-decoration:none;}
-                        .other_news .item .title {margin-bottom:6px; font:20px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                        .other_news .item .title {margin-bottom:6px; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                             .other_news .item .title a {line-height:22px;}
                         .other_news .item .photo {width:276px; height:179px; background:url('images/css/other_news-photo-bg.png') no-repeat;}
                             .other_news .item .photo img {margin-left:1px;width:271px; height:174px;}
@@ -131,7 +137,7 @@
                     .event-header .breadcrumbs span ins.r {position:absolute; top:0; right:-11px; z-index:9999; width:11px; height:21px;background:url('images/css/breadcrumbs-right.png') no-repeat;}
                     .event-header .breadcrumbs span a ins {position:absolute; top:3px; left:6px;width:14px; height:14px; background:url('images/ico/home.png') no-repeat;}
 
-            .event-header .smi-parts-top {float:right; margin:27px 372px 0 auto;width:233px; font:18px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+            .event-header .smi-parts-top {float:right; margin:27px 372px 0 auto;width:233px; font:18px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .event-header .smi-parts-top span { }
                     .event-header .smi-parts-top a {display: -moz-inline-box; display: inline-block;padding:3px 10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; color:#000; text-decoration:none; zoom: 1; *display: inline;}
                     .event-header .smi-parts-top a:hover span {border:none;}
@@ -141,21 +147,42 @@
 
             .event-header h2 {display:block; line-height: 26px!important; max-width:658px; margin:6px 0 0 0; padding:0; font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
     .event-body {margin-bottom:0px; padding-right:321px; width: 677px;}
-            .wrp-rubrikator-fixed {top: 0; left: 0; position:fixed; width: 100%;}
-                .wrp-rubrikator-fixed .paginator {width:80px; margin:0 auto; position:relative; top:140px; left:252px;}
+            .wrp-rubrikator-fixed {top: 0; left: 0; position:fixed; width: 100%; overflow:hidden;}
+                .pagination-top-fixed {width:192px; height:38px; margin:20px 0 0 20px;}
+                    .pagination-top-fixed .top-fixed {}
+                        .pagination-top-fixed .wrp-line {width:101px; margin:0 2px; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
+                        .pagination-top-fixed .wrp-line {*margin:0 6px;}
+                            .pagination-top-fixed .wrp-line a {padding:1px 5px; color:#3fa5cf; font-size:16px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
+                            .pagination-top-fixed .wrp-line a:hover {background:#f5f5f5;}
+                                .pagination-top-fixed .wrp-line a.current {background:#f5f5f5; color:#818181; text-decoration:none;}
+                            .pagination-top-fixed .poloska {height:4px; width:98%; margin-top:7px; background:#ebebeb; position:relative;}
+                                .pagination-top-fixed .poloska .underline {height:11px; width:24px; margin-left:-1px; background:url(images/ico/page-current.png) no-repeat; position:absolute;}
+                            .pagination-top-fixed .top-fixed .next {width:35px; height:17px; text-align:left; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin-top:5px;}
+                                .pagination-top-fixed .top-fixed .next a {background:url(images/css/pagination_buttons.png) -47px 0 no-repeat; width:35px; height:17px; display:block;}
+                                .pagination-top-fixed .top-fixed .next a:hover {background:url(images/css/pagination_buttons.png) -47px -21px no-repeat;}
+                                .pagination-top-fixed .top-fixed .next a:active {background:url(images/css/pagination_buttons.png) -47px -42px no-repeat;}
+                                .pagination-top-fixed .top-fixed .next span {font-size:12px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#919191;}
+                            .pagination-top-fixed .top-fixed .prew {width:35px; height:17px; text-align:left; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin-top:5px;}
+                                .pagination-top-fixed .top-fixed .prew a {background:url(images/css/pagination_buttons.png) 0px 0 no-repeat; width:35px; height:17px; display:block;}
+                                .pagination-top-fixed .top-fixed .prew a:hover {background:url(images/css/pagination_buttons.png) 0px -21px no-repeat;}
+                                .pagination-top-fixed .top-fixed .prew a:active {background:url(images/css/pagination_buttons.png) 0px -42px no-repeat;}
+                                .pagination-top-fixed .top-fixed .prew span {font-size:12px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#919191;}
+
+                    .pagination-top-fixed .bottom {}
+                        .pagination-top-fixed .bottom .wrp-line {}
+                /*.wrp-rubrikator-fixed .paginator {width:80px; margin:0 auto; position:relative; top:140px; left:252px;}
                     .wrp-rubrikator-fixed .paginator ul {margin:0; padding:0;}
-                        .wrp-rubrikator-fixed .paginator li {float:left;margin:0 0 8px 3px; padding:0;  font:16px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
-                            .wrp-rubrikator-fixed .paginator li a {padding:0 3px;}
-                            .wrp-rubrikator-fixed .paginator li.current {margin:0 0 0 3px; padding:0 0;background:#f6f6f6;}
-                            .wrp-rubrikator-fixed .paginator li.current:first-child {margin-left:0;}
+                        .wrp-rubrikator-fixed .paginator li {float:left; margin:0 3px 8px 0; padding:0;  font:16px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
+                            .wrp-rubrikator-fixed .paginator li a {padding:0 5px;}
+                            .wrp-rubrikator-fixed .paginator li.current {margin:0; padding:0; background:#f6f6f6;}
                             .wrp-rubrikator-fixed .paginator li.current a {color:#333; text-decoration:none;}
                             .wrp-rubrikator-fixed .paginator .visual {position:relative;border-bottom:4px solid #ebebeb;}
                                 .wrp-rubrikator-fixed .paginator .visual div {position:absolute; width:11px; height:4px;background:#6b6b6b;}
-                                    .wrp-rubrikator-fixed .paginator .visual div ins {position:relative; width:1px 2px; width:70px; background: #FFF;}
+                                    .wrp-rubrikator-fixed .paginator .visual div ins {position:relative; width:1px 2px; width:70px; background: #FFF;}*/
                 .rubrikator-fixed.advice {width:289px; background:#f0f5f8;}
                 .rubrikator-fixed {padding:5px 0 13px 0; width:288px; position:relative; margin:0 auto; top:210px; left:353px; background:#f9f9f9; border:1px solid #c6d9e5; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;}
                 .rubrikator-fixed ul {margin:-5px 0 0 12px; padding:0;}
-                    .rubrikator-fixed li { margin:0; padding:0;font:17px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                    .rubrikator-fixed li { margin:0; padding:0;font:17px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                         .rubrikator-fixed li a {color:#333; text-decoration:underline;}
                         .rubrikator-fixed li a:hover {text-decoration:none;}
                         .rubrikator-fixed li span {display:block; margin:2px 0 0 0; padding:7px 0 0px 0;}
@@ -163,9 +190,9 @@
                         .rubrikator-fixed li.current a {color:#779ca4;text-decoration:none; text-shadow: 0 1px 1px rgba(255, 255, 255, 1); cursor:default;}
                 .wrp-rubrikator-fixed .podate {margin-top:20px;}
                     .wrp-rubrikator-fixed .podate span {display:block; margin-bottom:7px; color:#8c8c8c; font:12px 'Arial';}
-                    .wrp-rubrikator-fixed .podate a {display: -moz-inline-box; display: inline-block; margin-right:5px;color:#404040; font:18px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
+                    .wrp-rubrikator-fixed .podate a {display: -moz-inline-box; display: inline-block; margin-right:5px;color:#404040; font:18px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
                 .rubrikator-advanced {position:relative; margin:0 auto; width:281px; top:210px; left:353px;}
-                #back-top {position:fixed; bottom:90px; /* отступ кнопки снизу */margin-right:-150px; /* отступ кнопки слева */}
+                #back-top {position:fixed; bottom:70px; /* отступ кнопки снизу */margin-right:-150px; /* отступ кнопки слева */}
                     #back-top a {display: block;width:85px; height:31px; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s;}
                     #back-top a:hover { }
                     /* иконка стрелки (тег span) */
@@ -190,7 +217,7 @@
                         .event-body .item .more a {color:#777; font:12px 'Arial';}
                     .event-body .item .date {float:left; margin-right:40px; color:#898989;font:13px 'Arial Narrow', 'Arial';}
                     .event-body .item .tag { }
-                        .event-body .item .tag img {float:left; margin-top:2px;}
+                        .event-body .item .tag img {float:left; margin-top:2px; width:22px; height:11px}
                         .event-body .item .tag a {padding-left:4px; color:#8d949c; font:11px 'Arial';}
             .button-show-old {margin:22px 0 0 0;}
                 .button-show-old .button {}
@@ -202,7 +229,7 @@
     /* Благотворительный фонд! */
     .fond-header {overflow:hidden; margin-bottom:7px; padding:18px 0 0 16px; height:96px;background:url('images/css/fond-header.png') no-repeat;}
         .fond-header .content {max-height:70px; width:593px; color:#000; font:13px 'Arial'; line-height:16px;}
-    .fond-body {position:relative; padding-bottom:50px;}
+    .fond-body {position:relative;}
         .fond-body .wrp-send-message { }
             .wrp-send-message .send_message {position:relative;}
                 .wrp-send-message .send_message img {float:left; margin-right:5px;}
@@ -212,7 +239,7 @@
         .fond-body .menu {width:100%; position:relative; margin:26px 0;height:53px; border-top:1px solid #e6ebee; border-right:1px solid #e6e6e5; border-bottom:1px solid #dbdbdb; border-left:1px solid #ebeff1; background:url('images/css/fond-menu.png') repeat-x;}
             .fond-body .menu img {position:absolute; bottom:-23px; left:50%; width:980px; height:22px; margin-left:-459px;}
             .fond-body .menu ul {margin:0; padding:11px 0 0 47px;}
-                .fond-body .menu li {display: -moz-inline-box; display: inline-block;margin-right:45px; font:25px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
+                .fond-body .menu li {display: -moz-inline-box; display: inline-block;margin-right:45px; font:25px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
                     .fond-body .menu li a {border-bottom:1px dotted #333;color:#707070; text-decoration:none;}
                     .fond-body .menu li a:hover {border:none;text-decoration:none;}
                         .fond-body .menu li a.current {border:none; color:#1a9150;}
@@ -263,7 +290,7 @@
                 .smi-body .block .video-more:hover span {margin-bottom:1px;border:none;}
         .smi-body .paginator {margin-top:16px; padding-right:14px; width:320px;}
             .smi-body .paginator ul {margin:8px 0 0 0;}
-                .smi-body .paginator li {float:left; margin-left:5px; font:16px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                .smi-body .paginator li {float:left; margin-left:5px; font:16px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .smi-body .paginator li:first-child {margin:0;}
                     .smi-body .paginator li a { padding:3px 4px 4px 4px; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;color:#2097c8;}
                     .smi-body .paginator li a:hover {background:#e7e7e7; text-decoration:underline;}
@@ -276,7 +303,7 @@
     .wrp-activity {overflow:hidden; height:600px; border-top:1px solid #d9e2e9; border-right:1px solid #d9e2e9; border-bottom:1px solid #d9e2e9; border-left:1px solid #efefef;}
         .wrp-activity .content {overflow:hidden; padding:0 0 200px 0!important; background:url('images/css/activity_content-item-bordertop.png') repeat-x;}
             .independen-item {overflow:hidden; padding:13px 0 25px 22px; width:680px; font:14px 'Arial';}
-                .independen-item h1 {margin:0 0 18px 2px; padding:0; font:28px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                .independen-item h1 {margin:0 0 18px 2px; padding:0; font:28px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .independen-item dl {overflow:hidden; margin-bottom:10px;}
                     .independen-item dt {float:left; max-width:259px;}
                         .independen-item dt img {margin:0;padding:0;}
@@ -290,7 +317,7 @@
                     .wrp-send_comment .send_comment a {border-bottom:1px dotted #7b848d;color:#4d5358; text-decoration:none;}
                     .wrp-send_comment .send_comment a:hover {border:none;}
                 .wrp-send_comment .list {margin-top:29px;padding:12px 0 0 0; background:url(images/css/send_comment-border_bottom.png) 0 top no-repeat;}
-                    .list .number_comments {margin-top:3px; color:#444444; font:20px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                    .list .number_comments {margin-top:3px; color:#444444; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                         .list .number_comments span {color:#5fab00;}
                     .list .wrp-comment_div {margin-top:15px;width:680px;}
                         .list .comment_div {margin-bottom:10px;}
@@ -309,7 +336,7 @@
                     .wrp-activity .left-menu .list_news .news .date {color:#828282;font:13px 'Arial';}
                 .wrp-activity .left-menu .list_news .paginator {margin-top:16px; padding-right:14px; width:220px;border-top:1px solid #e1e1e1;}
                     .wrp-activity .left-menu .list_news .paginator ul {margin:8px 0 0 0;}
-                        .wrp-activity .left-menu .list_news .paginator li {float:left; margin-left:5px; font:16px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                        .wrp-activity .left-menu .list_news .paginator li {float:left; margin-left:5px; font:16px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                         .wrp-activity .left-menu .list_news .paginator li:first-child {margin:0;}
                             .wrp-activity .left-menu .list_news .paginator li a { padding:3px 4px 4px 4px; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;color:#333;}
                             .wrp-activity .left-menu .list_news .paginator li a:hover {background:#e7e7e7; text-decoration:underline;}
@@ -369,7 +396,7 @@
             .wrp-text-right_b .scroll-pane {height:355px; overflow:scroll; }
             .video-window .text-right_b {height:355px; overflow:auto; padding-left:0px;}
                 .video-window .text-right_b .padding {padding-left:10px;}
-                .text-right_b h1 {font:28px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#333; margin:0 0 4px 4px; width:430px;}
+                .text-right_b h1 {font:28px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; color:#333; margin:0 0 4px 4px; width:430px;}
                 .text-right_b .date {font:14px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; color:#666666; margin-bottom:18px;}
                 .text-right_b p {font:16px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; line-height:18px; color:#222; margin-bottom:12px;}
                 .video-window .text-right_b .jspVerticalBar {left:0;}
@@ -407,8 +434,8 @@
     /* Статья */
     .wrp_article {margin-top:18px; padding-bottom:150px;}
         .like_records {float:right; width:276px;}
-            .like_records h3 {margin:0 0 1px 0; color:#000; font:20px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; text-transform:uppercase;}
-            .like_records span {color:#000; font:20px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+            .like_records h3 {margin:0 0 1px 0; color:#000; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; text-transform:uppercase;}
+            .like_records span {color:#000; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .like_records span a {color:#718c4f;}
             .like_records ul {margin:14px 0 0 0; list-style:none;}
                 .like_records li {font:15px 'Arial'; margin-bottom:12px;}
@@ -449,9 +476,9 @@
 /*  Подвал!  */
     .footer {position:absolute; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
         .footer .wrap {padding-top:34px;}
-            .vendor {float:right;width:235px; text-align:right; font:13px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+            .vendor {float:right;width:235px; text-align:right; font:13px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .vendor a {color:#1572c6;}
-            .footer-menu {float:left; font:14px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+            .footer-menu {float:left; font:14px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .footer-menu ul {margin:-1px 0 0 0; padding:0;}
                 .footer-menu li {display: -moz-inline-box; display: inline-block; margin-right:20px;padding:0; zoom: 1; *display: inline;}
                     .footer-menu ul li a {color:#54a5d4; text-decoration:underline;}

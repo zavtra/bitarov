@@ -50,8 +50,11 @@ HTML;
                     </div>
                 </div>
                 <div class='wrp-rubrikator-fixed'>
-<?php
 
+тут вставляй пагинатор
+
+<?php
+/*
 if ($category_paginagor)
  {
  $pages_html = '';
@@ -70,6 +73,7 @@ if ($category_paginagor)
                     </div>
 HTML;
  }
+*/
 
 if ($subcategories)
  {
