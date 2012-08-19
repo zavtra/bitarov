@@ -60,6 +60,7 @@
 
 /* Индекс! */
     .content {padding-bottom:70px;}
+        .overlay {background:url(images/css/Overlayer_bg.png); height:440px; width:100%; position:absolute; z-index:9999;}
         .content.bf {background:#f6fafc; padding-bottom:0;}
         .content .wrap.event {overflow:visible; margin-top:14px; position:relative!important;}
         .rightside {float:right; margin:8px 0 50px 0;width:331px;}
@@ -127,7 +128,7 @@
     .event-header {padding:13px 0 2px 0; background:url('images/css/header-event-bg.png') repeat-x #fafafa;}
         .event-bottom-img {height:13px; background:url('images/css/event-header_bottom-bg.png') 0 bottom repeat-x;}
         .event-header.artic {background:url('images/css/event-header_artic-bg.png') repeat-x;}
-            .event-header .b-top-left {float:left; min-width:300px;}
+            .event-header .b-top-left {float:left; min-width:300px; position: relative; z-index: 9999;}
             .event-header .breadcrumbs {margin:3px 0 0 0; padding:0; height:22px; font:12px 'Tahoma';}
                 .event-header .breadcrumbs span {position:relative; float:left; margin-right:-2px; padding: 2px 15px 2px 20px; height:16px; border-top:1px solid #ebf4f5; border-bottom:1px solid #d0dcde;background:url('images/css/breadcrumbs-bg.png') 0 0 repeat-x #e5f1f2;}
                     .event-header .breadcrumbs span.current {position:relative; padding-top:3px; z-index:9999; margin-right:-12px; padding-right:14px; padding-left:25px; width:55px; height:18px; border:none; background:url('images/css/breadcrumbs-current-bg.png') no-repeat;}
@@ -148,10 +149,10 @@
             .event-header h2 {display:block; line-height: 26px!important; max-width:658px; margin:6px 0 0 0; padding:0; font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
     .event-body {margin-bottom:0px; padding-right:321px; width: 677px;}
             .wrp-rubrikator-fixed {top: 0; left: 0; position:fixed; width: 100%;}
-                .wrp-rubrikator-fixed .paginator {width:192px; height:38px; margin:0 auto; position:relative; top:140px; left:302px;}
+                .wrp-rubrikator-fixed .paginator {width:220px; height:38px; margin:0 auto; position:relative; top:135px; left:320px;}
                     .paginator .top-fixed {}
-                        .paginator .wrp-line {width:101px; margin:0 2px; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
-                        .paginator .wrp-line {*margin:0 6px;}
+                        .paginator .wrp-line {width:101px; margin:0 30px 0 0; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
+                        .paginator .wrp-line {*margin:0 30px 0 0;}
                             .paginator .wrp-line a {padding:1px 5px; color:#3fa5cf; font-size:16px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
                             .paginator .wrp-line a:hover {background:#f5f5f5;}
                                 .paginator .wrp-line a.current {background:#f5f5f5; color:#818181; text-decoration:none;}
@@ -161,21 +162,20 @@
                                 .paginator .top-fixed .next a {background:url(images/css/pagination_buttons.png) -47px 0 no-repeat; width:35px; height:17px; display:block;}
                                 .paginator .top-fixed .next a:hover {background:url(images/css/pagination_buttons.png) -47px -21px no-repeat;}
                                 .paginator .top-fixed .next a:active {background:url(images/css/pagination_buttons.png) -47px -42px no-repeat;}
-                                .paginator .top-fixed .next span {font-size:12px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#919191;}
                             .paginator .top-fixed .prew {width:35px; height:17px; text-align:left; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin-top:5px;}
                                 .paginator .top-fixed .prew a {background:url(images/css/pagination_buttons.png) 0px 0 no-repeat; width:35px; height:17px; display:block;}
                                 .paginator .top-fixed .prew a:hover {background:url(images/css/pagination_buttons.png) 0px -21px no-repeat;}
                                 .paginator .top-fixed .prew a:active {background:url(images/css/pagination_buttons.png) 0px -42px no-repeat;}
-                                .paginator .top-fixed .prew span {font-size:12px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#919191;}
+
 
                 .rubrikator-fixed.advice {width:289px; background:#f0f5f8;}
                 .rubrikator-fixed {padding:5px 0 13px 0; width:288px; position:relative; margin:0 auto; top:210px; left:353px; background:#f9f9f9; border:1px solid #c6d9e5; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;}
                 .rubrikator-fixed ul {margin:-5px 0 0 12px; padding:0;}
-                    .rubrikator-fixed li { margin:0; padding:0;font:17px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                    .rubrikator-fixed li { margin:0; padding:0;font:18px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
                         .rubrikator-fixed li a {color:#333; text-decoration:underline;}
                         .rubrikator-fixed li a:hover {text-decoration:none;}
-                        .rubrikator-fixed li span {display:block; margin:2px 0 0 0; padding:7px 0 0px 0;}
-                        .rubrikator-fixed li.current span {position:relative; z-index:5; margin:2px 14px -9px -29px; padding:7px 0 9px 29px; width:284px; background:url('images/css/rubrikator-current-bg.png') no-repeat;}
+                        .rubrikator-fixed li span {display:block; margin:0 0 0 0; padding:7px 0 0px 0;}
+                        .rubrikator-fixed li.current span {position:relative; z-index:5; margin:8px 14px 0 -29px; padding:7px 0 9px 29px; width:284px; background:url('images/css/rubrikator-current-bg.png') no-repeat;}
                         .rubrikator-fixed li.current a {color:#779ca4;text-decoration:none; text-shadow: 0 1px 1px rgba(255, 255, 255, 1); cursor:default;}
                 .wrp-rubrikator-fixed .podate {margin-top:20px;}
                     .wrp-rubrikator-fixed .podate span {display:block; margin-bottom:7px; color:#8c8c8c; font:12px 'Arial';}
@@ -198,7 +198,7 @@
                     .event-body .item .breadcrumbs {color:#a1ac93; font:14px 'Arial';}
                         .event-body .item .breadcrumbs a {color:#a1ac93; text-decoration:none;}
                         .event-body .item .breadcrumbs a:hover {text-decoration:underline;}
-                    .event-body .item h3 {margin:3px 0 0 0;}
+                    .event-body .item h3 {margin:3px 0 0 0; font-size:24px; font-family:'DinDisplayPro-Reg','Arial'}
                         .event-body .item h3 a {border-bottom:1px solid #bdd9ea; text-decoration:none;}
                         .event-body .item h3 a:hover {color:#60b5d8;}
                     .event-body .item p {margin:9px 0; color:#333; font:14px 'Arial'; line-height:20px;}
@@ -248,7 +248,7 @@
         .event-body .item { }
             .event-body .item dl { }
                 .event-body .item dt {float:left;text-align:left;}
-                    .event-body .item dt div {width:56px; height:63px; background:url('images/ico/advice-ava.png') no-repeat;}
+                    .event-body .item dt div {width:56px; height:63px;}
                     .event-body .item dt span {display:block; margin-top:7px; color:#7b848d; font:12px 'Arial Narrow', 'Arial';}
                 .event-body .item dd {margin-left:81px;}
                     .event-body .item dd strong {display:block; padding-top:5px;width:100%; font:13px 'Arial'; font-weight:bold;}
@@ -377,12 +377,12 @@
                                 .window-comment form .send:active input {background:url('images/css/buttons-pack.png') -4px -86px no-repeat;}
     /* Окно видео с overlay */
     .video-window {width:973px; height:359px; display:block; position:absolute; z-index:10000; left:10px; top:-57px; margin:0 -10px; padding:26px 21px 23px 21px; background:url('images/css/window-video_bg.png') repeat-x; border-left:1px solid #edf2f4; border-top:1px solid #ebf0f3; border-right:1px solid #ebf0f3; border-bottom:1px solid #e3e9ec;}
-        .video-window .exit {width:27px; height:27px; border:1px solid #000; border:none!important; text-decoration:none; background:url('images/css/video-window-exitt.png') no-repeat; top:17px; right:14px; position:absolute;}
+        .video-window .exit {width:27px; height:27px; border:1px solid #000; border:none!important; text-decoration:none; background:url('images/css/video-window-exitt.png') no-repeat; top:17px; right:14px; position:absolute; z-index:999;}
         .video-window .exit:hover {background:url('images/css/video-window-exitt_hover.png') no-repeat;}
         .video-window .video-left_b {float:left; width:482px; height:358px; overflow:hidden; position:relative; background:#e7f0f5; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
             .video-left_b img {position:relative; width:482px; height:358px;}
-        .video-window .wrp-text-right_b {margin-left:511px;}
-            .wrp-text-right_b .scroll-pane {height:355px; overflow:scroll; }
+        .video-window .wrp-text-right_b {margin-left:511px; overflow:hidden;}
+            .wrp-text-right_b .scroll-pane {height:355px; overflow:scroll;}
             .video-window .text-right_b {height:355px; overflow:auto; padding-left:0px;}
                 .video-window .text-right_b .padding {padding-left:10px;}
                 .text-right_b h1 {font:28px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; color:#333; margin:0 0 4px 4px; width:430px;}
@@ -392,15 +392,15 @@
                 .video-window .text-right_b .jspPane {margin-left:10px!important;}
     /* Контакты */
     .contacts {margin-top:25px;}
-        .wrp-karta {float:right; width:605px; margin-top:6px; height:282px; background:url('images/css/karta_bg.png') 0 0px no-repeat;}
+        .wrp-karta {float:right; width:605px; margin:6px 79px 0 0; height:282px; background:url('images/css/karta_bg.png') 0 0px no-repeat;}
             .karta div {width:600px; height:277px; margin:-3px 0 0 -6px; border:1px solid #e1ddce;}
         .rekviziti {float:left; width:224px;}
             .rekviziti h5 {font:16px 'Arial'; color:#333;}
-            .rekviziti .phone {position:relative; color:#000;}
+            .rekviziti .phone {position:relative; color:#000; margin-top:17px;}
                 .rekviziti .phone .img {background:url('images/ico/phone.png') no-repeat; padding:0px 10px; width:23px; height:24px; position:absolute; top:3px;}
                 .rekviziti .phone span {font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial'; padding-left:27px;}
-                .rekviziti .phone .remark {font:12px 'Arial'; color:#333; margin:4px 0 15px 0;}
-            .rekviziti .email {font:14px 'Arial'; color:#434343;}
+                .rekviziti .phone .remark {font:12px 'Arial'; color:#333; margin:2px 0 13px 0;}
+            .rekviziti .email {font:14px 'Arial'; color:#434343; margin-bottom:22px;}
                 .rekviziti .email a {color:#333;}
 
     /* Биорграфия */
@@ -465,6 +465,7 @@
     .not_found {width:365px; height:187px; margin:66px auto 0 auto;}
         .not_found .img {background:url('images/css/404.png') 50% 0 no-repeat; width:184px; height:96px; margin:0 auto;}
         .not_found .message {}
+            .not_found .message h1 {font-size:36px;}
 
 /*  Подвал!  */
     .footer {position:absolute; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
