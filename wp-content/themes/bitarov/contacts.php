@@ -5,6 +5,7 @@ get_header();
 
 <!-- контент -->
     <div class='content'>
+    <div class='overlay'></div>
 <?php
 $bt_page_breadcrumbs = intval(get_post_meta($post->ID, 'bt_page_breadcrumbs', true));
 $bt_page_title = intval(get_post_meta($post->ID, 'bt_page_title', true));
