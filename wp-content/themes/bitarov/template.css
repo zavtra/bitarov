@@ -71,10 +71,10 @@
                 .advice .head dt {float:left; width:98px; height:111px; background:#0ff1f6;}
                 .advice .head dd {margin-left:120px; width:112px; font:27px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                     .advice .head dd a {color:#010101; text-decoration:none; font-family:'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
-                    .advice .head dd a span.head {border-bottom:1px solid #000; margin-bottom:12px; display:block; width:82px;}
+                    .advice .head dd a:hover .owner {text-decoration:none;}
+                    .advice .head dd a span.head {text-decoration:underline; margin-bottom:12px; display:block; width:82px;}
                     .advice .head dd a:hover {text-decoration:none; color:#555;}
-                    .advice .head dd a:hover span {text-decoration:none;}
-                    .advice .head dd a span.owner {text-decoration:none;  font-family:'PT Sans Narrow', 'Arial Narrow', 'Arial'; line-height:20px;}
+                    .advice .head dd a span.owner {text-decoration:none;  font-family:'PT Sans Narrow', 'Arial Narrow', 'Arial'; line-height:27px;}
                 .news_views {margin-top:8px;}
                     .news_views {*margin-top:10px;}
                     .news_views {margin-top:11px\9;}
@@ -404,22 +404,28 @@
                 .rekviziti .email a {color:#333;}
 
     /* Биорграфия */
-    .bf_body {padding-top:27px;}
-        .bf_body h1 {font:28px 'Georgia', 'Arial'; margin-bottom:25px;}
-        .bf_body .block1 {}
-            .goda_block {width:269px; height:244px; float:left; padding:22px 48px 0 19px; font:12px 'Arial'; background:url('images/css/goda_block-bg.png') no-repeat;}
-            .bf_body .block1 .lemma {font:16px 'Arial'; margin-left:388px; line-height:19px; padding-right:5px; color:#000;}
-        .bf_body .block2 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story1.jpg') no-repeat;}
-        .bf_body .block3 {}
+    .bf_body {padding-top:27px; padding-bottom:40px;}
+        .goda_block {width:269px; height:244px; float:left; padding:22px 48px 0 19px; font-size:12px; background:url('images/css/goda_block-bg.png') no-repeat;}
             .wrp-goda_block_scroll {width:332px; height:261px; border:1px solid #dde4e8; background:#FFF; float:left; position:relative;}
                 .wrp-goda_block_scroll.one {border:none; height:244px!important; width:346px!important;}
                 .wrp-goda_block_scroll .fade {position:absolute; bottom:0; left:0; z-index:99999;}
                 .wrp-goda_block_scroll .scroll-pane {position:relative; z-index:1; overflow:hidden; height:261px;}
-                    .goda_block_scroll {width:290px; padding:17px 23px 8px 19px; font:12px 'Arial';}
+                    .goda_block_scroll {width:290px; padding:17px 23px 8px 19px; font-size:12px;}
                         .goda_block_scroll p {margin-bottom:12px;}
-            .block3 .lemma {width:595px; float:right; margin-right:9px; font:16px 'Arial'; color:#000;}
-         .bf_body .block4 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story2.jpg') no-repeat;}
-
+        .bf_body h1 {font-size:28px 'Georgia', 'Arial'; margin-bottom:25px;}
+        .bf_body .block1 {}
+            .bf_body .block1 .lemma {font-size:16px; margin-left:388px; line-height:19px; padding-right:5px; color:#000;}
+         .bf_body .block2 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story1.jpg') no-repeat;}
+        .bf_body .block3 {}
+            .bf_body .block3 .lemma {font-size:16px; margin-left:388px; line-height:19px; padding-right:5px; color:#000;}
+        .bf_body .block4 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story1.jpg') no-repeat;}
+        .bf_body .block5 {}
+            .block5 .lemma {width:595px; float:right; margin-right:9px; font-size:16px; color:#000;}
+         .bf_body .block6 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story2.jpg') no-repeat;}
+         .bf_body .block7 {}
+            .bf_body .block7 td {vertical-align:top;}
+                .bf_body .block7 td p {text-align:justify; width:90%; font-size:16px;}
+         .bf_body .block8 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story2.jpg') no-repeat;}
     /* Статья */
     .wrp_article {margin-top:18px; padding-bottom:150px;}
         .like_records {float:right; width:276px;}
@@ -429,7 +435,7 @@
             .like_records ul {margin:14px 0 0 0; list-style:none;}
                 .like_records li {font:15px 'Arial'; margin-bottom:12px;}
                     .like_records li a {color:#33a0cd;}
-        .article {float:left; width:682px;}
+        .article {float:left; width:682px; background:url(images/css/article-text_border-bottom.png) 0 bottom repeat-x; padding-bottom:26px; margin-bottom:12px;}
             .article .date {font:14px 'Arial Narrow', 'Arial'; color:#7b848d; margin-bottom:10px;}
             .wrp_substrate {width:680px; margin-left:2px;}
                 .wrp_substrate .top {background:url('images/css/substrate_top.png') no-repeat; width:680px; height:8px;}
@@ -439,7 +445,7 @@
                 .wrp_substrate .bottom {background:url('images/css/substrate_bottom.png') no-repeat; width:680px; height:9px;}
             .article_text {margin-top:17px;}
                 .article_text p {font:14px 'Arial'; color:#333; line-height:20px;}
-                .article_text .tag {background:url(images/css/article-text_border-bottom.png) 0 top repeat-x; padding-top:12px; margin:24px 0 47px 0;}
+                .article_text .tag {margin:5px 0 47px 0;}
                     .article_text .tag img {float:left; margin-top:2px;}
                     .article_text .tag a {padding-left:4px; color:#7b848d; font:11px 'Arial';}
         /* комментарий к статье */
