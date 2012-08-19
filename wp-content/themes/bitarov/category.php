@@ -17,7 +17,7 @@ if ($per_page>0 and $total_posts>0)
  if (is_float($pages_count)) $pages_count = intval($pages_count)+1;
  }
 else $pages_count = 1;
-$category_paginagor = ($pages_count>1) ? gen_pages($current_page, $total_posts, 3) : array();
+$category_paginagor = ($pages_count>1) ? gen_pages($current_page, $pages_count, 3) : array();
 
 // Подкатегории
 $cats = get_categories(array('parent'=>$id_cat, 'hide_empty'=>0));

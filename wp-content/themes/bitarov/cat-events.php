@@ -54,50 +54,36 @@ HTML;
                     </div>
                 </div>
                 <div class='wrp-rubrikator-fixed'>
-                    <div class='paginator'>
-        <div class='top-fixed'>
-            <div class='prew'>
-                <a href="#"></a>
-                <span>новее</span>
-            </div>
-            <div class='wrp-line'>
-                <a href='#' class='current'>1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <div class='poloska'>
-                    <div class='underline'><ins></ins></div>
-                </div>
-            </div>
-            <div class='next'>
-                <a href="#"></a>
-                <span>старее</span>
-            </div>
-        </div>
-    </div>
 
 <?php
-/*
+
 if ($category_paginagor)
  {
  $pages_html = '';
+ $prev = $next = '';
+ $margin = ($current_page-1)*21;
+ $width = count($category_paginagor)*21;
  foreach ($category_paginagor as $p)
-   if ($p==$current_page) $pages_html .= "<li class='current'><a href='$current_cat_link/page/$p/'>$p</a></li>";
-   elseif ($p=='<') $pages_html .= "<li><a href='$current_cat_link/'>&laquo;</a></li>";
-   elseif ($p=='>') $pages_html .= "<li><a href='$current_cat_link/page/$pages_count/'>&raquo;</a></li>";
-   else $pages_html .= "<li><a href='$current_cat_link/page/$p/'>$p</a></li>";
+   if ($p==$current_page) $pages_html .= "<a class='current' href='$current_cat_link/page/$p/'>$p</a>\n";
+   elseif ($p=='<') {$prev="<div class='prew'><a href='$current_cat_link/'></a></div>"; $width-=21;}
+   elseif ($p=='>') {$next="<div class='next'><a href='$current_cat_link/page/$pages_count/'></a></div>"; $width-=21;}
+   else $pages_html .= "<a href='$current_cat_link/page/$p/'>$p</a>\n";
  echo <<<HTML
                     <div class='paginator'>
-                        <ul>$pages_html</ul>
-                        <div class='clear'></div>
-                        <div class='visual'>
-                            <div><ins></ins></div>
+                        <div class='top-fixed'>
+                            $prev
+                            <div class='wrp-line'>
+$pages_html
+                                <div class='poloska' style='width:{$width}px'>
+                                    <div class='underline' style='margin-left:{$margin}px'><ins></ins></div>
+                                </div>
+                            </div>
+                            $next
                         </div>
                     </div>
 HTML;
  }
-*/
+
 if ($subcategories)
  {
  $subcategories_html = '';
