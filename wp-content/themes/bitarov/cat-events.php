@@ -33,7 +33,7 @@ while (have_posts())
  $date = rusdate('j F Y', strtotime($post->post_date));
  $tags = '';
  if (is_array($tags_arr=get_the_tags())) foreach ($tags_arr as $tag)
-   $tags .= "<div class='tag'><img src='wp-content/themes/bitarov/images/ico/event-tag.png' alt='' /><a href='" . get_tag_link($tag->term_id) . "'>{$tag->name}</a></div> ";
+   $tags .= "<div class='tag'><a href='" . get_tag_link($tag->term_id) . "'>{$tag->name}</a></div> ";
 
  echo <<<HTML
                     <div class='item'>
@@ -54,8 +54,28 @@ HTML;
                     </div>
                 </div>
                 <div class='wrp-rubrikator-fixed'>
-
-тут вставляй пагинатор
+                    <div class='paginator'>
+        <div class='top-fixed'>
+            <div class='prew'>
+                <a href="#"></a>
+                <span>новее</span>
+            </div>
+            <div class='wrp-line'>
+                <a href='#' class='current'>1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <div class='poloska'>
+                    <div class='underline'><ins></ins></div>
+                </div>
+            </div>
+            <div class='next'>
+                <a href="#"></a>
+                <span>старее</span>
+            </div>
+        </div>
+    </div>
 
 <?php
 /*
@@ -78,7 +98,6 @@ if ($category_paginagor)
 HTML;
  }
 */
-
 if ($subcategories)
  {
  $subcategories_html = '';

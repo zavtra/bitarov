@@ -19,10 +19,7 @@ function okmsg($msg, $escape=true)
 global $medias;
 $medias = array(
   1 => 'Газета',
-  2 => 'Телеканал',
-  3 => 'Информ. агентство',
-  4 => 'Веб-сайт',
-  5 => 'Журнал'
+  2 => 'Телеканал'
 );
 
 // ------------------------------------------------------------------- Настройки
@@ -37,9 +34,9 @@ function bt_options()
  {
  $okmsg = '';
 
- if (chkpost('bt_event_w1,bt_event_h1,bt_event_w2,bt_event_h2,bt_opinion_h1,bt_opinion_w1,bt_opinion_cat,bt_opinion_pp,bt_liked_pp'))
+ if (chkpost('bt_event_w1,bt_event_h1,bt_event_w2,bt_event_h2,bt_opinion_h1,bt_opinion_w1,bt_opinion_cat,bt_opinion_pp'))
   {
-  extract(ep('bt_event_w1>>i,bt_event_h1>>i,bt_event_w2>>i,bt_event_h2>>i,bt_opinion_h1>>i,bt_opinion_w1>>i,bt_opinion_cat>>i,bt_opinion_pp>>i,bt_liked_pp>>i'));
+  extract(ep('bt_event_w1>>i,bt_event_h1>>i,bt_event_w2>>i,bt_event_h2>>i,bt_opinion_h1>>i,bt_opinion_w1>>i,bt_opinion_cat>>i,bt_opinion_pp>>i'));
   if ($bt_event_w1<10) $bt_event_w1 = BT_EVENT_W1;
   if ($bt_event_h1<10) $bt_event_h1 = BT_EVENT_H1;
   if ($bt_event_w2<10) $bt_event_w2 = BT_EVENT_W2;
@@ -47,7 +44,6 @@ function bt_options()
   if ($bt_opinion_h1<10) $bt_opinion_h1 = BT_OPINION_W1;
   if ($bt_opinion_w1<10) $bt_opinion_w1 = BT_OPINION_H1;
   if ($bt_opinion_pp<1) $bt_opinion_pp = 5;
-  if ($bt_liked_pp<1) $bt_liked_pp = 5;
   update_option('bt_event_w1', $bt_event_w1);
   update_option('bt_event_h1', $bt_event_h1);
   update_option('bt_event_w2', $bt_event_w2);
@@ -56,7 +52,6 @@ function bt_options()
   update_option('bt_opinion_h1', $bt_opinion_h1);
   update_option('bt_opinion_cat', $bt_opinion_cat);
   update_option('bt_opinion_pp', $bt_opinion_pp);
-  update_option('bt_liked_pp', $bt_liked_pp);
   $okmsg = okmsg('Настройки сохранены');
   }
 
@@ -68,7 +63,6 @@ function bt_options()
  $bt_opinion_w1 = get_option('bt_opinion_h1', BT_OPINION_H1);
  $bt_opinion_cat = get_option('bt_opinion_cat', 1);
  $bt_opinion_pp = get_option('bt_opinion_pp', 5);
- $bt_liked_pp = get_option('bt_liked_pp', 5);
 
  $cats_arr = get_categories(array('hide_empty'=>0));
  $cats = '';
@@ -88,7 +82,6 @@ function bt_options()
   <tr><td>Мнение, высота картинки:</td><td><input type='text' name='bt_opinion_w1' size='5' value='$bt_opinion_w1'> px</td></tr>
   <tr><td>Мнение, рубрика:</td><td><select name='bt_opinion_cat'>$cats</select></td></tr>
   <tr><td>Мнение, заголовков на главной:</td><td><input type='text' name='bt_opinion_pp' size='5' value='$bt_opinion_pp'></td></tr>
-  <tr><td>Пост, число похожих записей:</td><td><input type='text' name='bt_liked_pp' size='5' value='$bt_liked_pp'></td></tr>
   <tr><td colspan='2'><input type='submit' class='button-primary' value='Сохранить настройки'></td></tr>
   </table>
 </form>
