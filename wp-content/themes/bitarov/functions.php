@@ -72,11 +72,11 @@ function get_cat_path($id_cat)
 function bt_installed()
  {
  if (!defined('WP_ADMIN') or !chkget('activated')) return;
- db_query("DROP TABLE pref_bt_media");
+ //db_query("DROP TABLE pref_bt_media");
  db_query("CREATE TABLE pref_bt_media(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, typ TINYINT UNSIGNED, name VARCHAR(50))");
- db_query("DROP TABLE pref_bt_slider");
+ //db_query("DROP TABLE pref_bt_slider");
  db_query("CREATE TABLE wp_bt_slider(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, pos TINYINT UNSIGNED, caption VARCHAR(255), text BLOB)");
- db_query("DROP TABLE pref_bt_thanks");
+ //db_query("DROP TABLE pref_bt_thanks");
  db_query("CREATE TABLE wp_bt_thanks(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, pos TINYINT UNSIGNED, caption VARCHAR(50), text BLOB)");
  }
 
