@@ -56,10 +56,6 @@ HTML;
                 <div class='wrp-rubrikator-fixed'>
                     <div class='paginator'>
         <div class='top-fixed'>
-            <div class='prew'>
-                <a href="#"></a>
-                <span>новее</span>
-            </div>
             <div class='wrp-line'>
                 <a href='#' class='current'>1</a>
                 <a href="#">2</a>
@@ -70,9 +66,11 @@ HTML;
                     <div class='underline'><ins></ins></div>
                 </div>
             </div>
+            <div class='prew'>
+                <a href="#" title='предыдущая страница'></a>
+            </div>
             <div class='next'>
-                <a href="#"></a>
-                <span>старее</span>
+                <a href="#" title='следующая страница'></a>
             </div>
         </div>
     </div>
