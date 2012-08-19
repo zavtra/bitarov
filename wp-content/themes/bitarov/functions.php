@@ -85,9 +85,9 @@ function gen_pages($current_page, $pages_count, $range)
  $left = $current_page - $range;
  $right = $current_page + $range;
  $result = array();
- if ($left-$range>0) $result[] = '<';
+ //if ($left-$range>0) $result[] = '<';
  for ($p=$left; $p<=$right; $p++) if ($p>0 and $p<= $pages_count) $result[] = $p;
- if ($right+$range<$pages_count) $result[] = '>';
+ //if ($right+$range<$pages_count) $result[] = '>';
  return $result;
  }
 

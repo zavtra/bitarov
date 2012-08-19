@@ -156,7 +156,7 @@
                             .paginator .wrp-line a {padding:1px 5px; color:#3fa5cf; font-size:16px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
                             .paginator .wrp-line a:hover {background:#f5f5f5;}
                                 .paginator .wrp-line a.current {background:#f5f5f5; color:#818181; text-decoration:none;}
-                            .paginator .poloska {height:4px; width:98%; margin-top:7px; background:#ebebeb; position:relative;}
+                            .paginator .poloska {height:4px; margin-top:7px; background:#ebebeb; position:relative;}
                                 .paginator .poloska .underline {height:11px; width:24px; margin-left:-1px; background:url(images/ico/page-current.png) no-repeat; position:absolute;}
                             .paginator .top-fixed .next {width:35px; height:17px; text-align:left; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin-top:5px;}
                                 .paginator .top-fixed .next a {background:url(images/css/pagination_buttons.png) -47px 0 no-repeat; width:35px; height:17px; display:block;}
