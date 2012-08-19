@@ -26,13 +26,19 @@ while (have_posts())
  $title = get_the_title();
  $excerpt = get_the_excerpt();
  $link = get_permalink($post->ID);
+ $date = rusdate('j F Y', strtotime($post->post_date));
+ $tags = '';
+ if (is_array($tags_arr=get_the_tags())) foreach ($tags_arr as $tag)
+   $tags .= "<div class='tag'><img src='wp-content/themes/bitarov/images/ico/event-tag.png' alt='' /><a href='" . get_tag_link($tag->term_id) . "'>{$tag->name}</a></div> ";
+
  echo <<<HTML
                     <div class='item'>
                         <div class='breadcrumbs'><a href='#'>Фонд Битарова</a> &rarr;</div>
                         <h3><a href='$link'>$title</a></h3>
                         <p>$excerpt</p>
                         <div class='more'><a href='$link'>подробнее</a></div>
-                        <div class='date'>12 июня 2012</div> <div class='tag'><img src='wp-content/themes/bitarov/images/ico/event-tag.png' width='22' height='11' alt='' /><a href='#'>Спортивные сооружения</a></div>
+                        <div class='date'>$date</div>
+                        $tags
                     </div>
 HTML;
  }
@@ -67,7 +73,7 @@ HTML;
 
 if ($subcategories)
  {
- $subcategories_html = '                            ';
+ $subcategories_html = '';
  foreach ($subcategories as $cat)
    if ($cat['id']<>$id_cat) $subcategories_html .= "<li><span><a href='$cat[link]'>$cat[name]</a></span></li>\n                            ";
    else $subcategories_html .= "<li class='current'><span><a href='$cat[link]'>$cat[name]</a></span></li>\n                            ";

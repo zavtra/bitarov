@@ -1,7 +1,6 @@
 <?php
 get_header();
-
-echo <<<HTML
+?>
 
 <!-- контент -->
     <div class='content'>
@@ -9,10 +8,17 @@ echo <<<HTML
             <div class='wrap'>
                 <div class='b-top-left'>
                     <div class='breadcrumbs'>
-                        <span class='current'><a href='#'><ins></ins>bitarov.as</a></span>
-                        <span><a href='#'>Мнение</a><ins class='r'></ins></span>
+<?php
+$current_post_id = $post->ID;
+$post_category = bt_post_category($post->ID);
+$categories_path = get_cat_path($post_category);
+$breadcrumbs = "<span class='current'><a href='" . SITE_URL . "'><ins></ins>bitarov.as</a></span>";
+foreach ($categories_path as $cat)
+  $breadcrumbs .= "<span><a href='" . get_category_link($cat->term_id) . "'>{$cat->name}</a><ins class='r'></ins></span>";
+echo "                    $breadcrumbs";
+?>
                     </div>
-                    <h2>Нужно активнее сотрудничать с крупными предприятиями и финансово-промышленными группам</h2>
+                    <h2><?php the_title() ?></h2>
                 </div>
                 <div class='clear'></div>
             </div>
@@ -20,35 +26,27 @@ echo <<<HTML
         <div class='event-bottom-img'></div>
         <div class='wrap'>
             <div class='wrp_article'>
+<?php
+$liked_arr = new WP_Query(array('posts_per_page'=>get_option('bt_liked_pp'), 'cat'=>$post_category, 'post__not_in'=>array($current_post_id)));
+$liked = '';
+while ($liked_arr->have_posts())
+ {
+ $liked_arr->the_post();
+ $liked .= "<li><a href='" . get_permalink($post->ID) . "'>" . get_the_title() . "</a></li>\n                        ";
+ }
+if ($liked) echo <<<HTML
                 <div class='like_records'>
                     <h3><strong>похожие записи</strong></h3>
                     <span>из рубрики <a href="#">Политическая ситуация</a></span>
                     <ul>
-                        <li><a href="#">Нужно активнее сотрудничать с крупными предприятиями и финансово- промышленными группами</a></li>
-                        <li><a href="#">Нового министра строительства будем оценивать по реальным делам</a></li>
-                        <li><a href="#">Другую должность даже не рассматривал</a></li>
+                        $liked
                     </ul>
                 </div>
+HTML;
+?>
                 <div class='article'>
-                    <div class='date'>31 сентября 2012</div>
-                    <div class='wrp_substrate'>
-                        <div class='top'></div>
-                        <div class='substrate'>
-                            <dl>
-                                <dt></dt>
-                                <dd>Комментарии советника губернатора Иркутской области Александра Битарова относительно позиции главы Приангарья о деятельности финансово-промышленных групп и крупных предприятий в регионе.</dd>
-                            </dl>
-                        </div>
-                        <div class='bottom'></div>
-                    </div>
-
-                    <div class='article_text'>
-                        <p>Уверен, что для многих россиян появление новой широкой общественной коалиции стало неожиданным, но это, как ни странно, внесло свежую струю в политическую жизнь России накануне выборов в Государственную Думу. Похоже, вместе с экономикой модернизация началась и в политике. Политике противопоказана стагнация и в партии «Единая Россия» это понимают. Сегодня нам необходима и модернизация гражданского общества, которое не должно оставаться в стороне от принятия стратегических решений по развитию страны. </p>
-                        <p>Создание Общероссийского народного фронта – это путь к обновлению. Любая партия состоит из людей, и если они подолгу засиживаются на своих местах, развитие прекращается. Общероссийский народный фронт – это отличный «банк» честных, энергичных, целеустремленных людей, которые любят свою родину и готовы отдать все свои силы, чтобы каждому в нашей стране жилось лучше. </p>
-                        <p><strong>Сегодня «Единая Россия»</strong> своим примером демонстрирует открытость и демократичность в выборе кандидатов в депутаты Государственной думы. Идет реализация трех инициатив: «Народная программа», «Народный бюджет» и «Народное предварительное голосование». </p>
-
-                        <div class='tag'><img width="22" height="11" alt="" src="wp-content/themes/bitarov/images/ico/event-tag.png"> <a href="#">строительство в Иркутской области</a></div>
-                    </div>
+                    <div class='date'><?php echo rusdate('j F Y', strtotime($post->post_date)); ?></div>
+                    <?php the_post(); the_content(); ?>
                 </div>
                 <div class='clear'></div>
                 <div class='wrp-send_comment normal'>
@@ -103,7 +101,5 @@ echo <<<HTML
             <div class='clear'></div>
         </div>
     </div>
-HTML;
 
-get_footer();
-?>
+<? get_footer(); ?>

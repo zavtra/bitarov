@@ -92,7 +92,7 @@
                 .strip_news dd span {padding-right:435px; padding-bottom:1px; border-bottom:2px solid #333; text-transform:uppercase; font:24px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
             .strip_news .body {margin-top:14px; min-height:729px; width:597px;}
                 .strip_news .body .top {background:url('images/css/index-body-top_bg.png'); height:12px; width:639px;}
-                .strip_news .body .substrate {background:url('images/css/index-bodysubstrate_bg.png') repeat-y; width:597px; padding:15px 19px 23px 23px;}
+                .strip_news .body .substrate {background:url('images/css/index-bodysubstrate_bg.png') repeat-y; width:597px; padding:15px 19px 93px 23px;}
                 .strip_news .body .bottom {background:url(images/css/index-body-bottom_bg.png) no-repeat; width:639px; height:16px;}
 
                 .top_news {margin-bottom:28px;font:15px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
@@ -190,7 +190,7 @@
                         .event-body .item .more a {color:#777; font:12px 'Arial';}
                     .event-body .item .date {float:left; margin-right:40px; color:#898989;font:13px 'Arial Narrow', 'Arial';}
                     .event-body .item .tag { }
-                        .event-body .item .tag img {float:left; margin-top:2px;}
+                        .event-body .item .tag img {float:left; margin-top:2px; width:22px; height:11px}
                         .event-body .item .tag a {padding-left:4px; color:#8d949c; font:11px 'Arial';}
             .button-show-old {margin:22px 0 0 0;}
                 .button-show-old .button {}

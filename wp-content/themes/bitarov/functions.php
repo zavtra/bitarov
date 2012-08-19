@@ -40,14 +40,13 @@ function rusdate($format, $timestamp)
  return $result;
  }
 
-function bt_post_category($id_post)
+function bt_post_category($id_post, $excess=array())
  {
  $cats = wp_get_post_categories($id_post);
  if (count($cats)<1) return -1;
- foreach ($cats as $k=>$v) if ($v<=1) unset($cats[$k]);
- if (count($cats)<1) return -2;
- reset($cats);
- return $cats[key($cats)];
+ $result = 0;
+ foreach ($cats as $cat) if ($cat>$result) $result = $cat;
+ return $result;
  }
 
 function get_cat_path($id_cat)

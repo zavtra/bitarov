@@ -39,7 +39,7 @@ while ($posts_op->have_posts())
  $posts_op->the_post();
  $title = get_the_title();
  $link = get_permalink();
- $date = rusdate('d F', strtotime($posts_op->post->post_date));
+ $date = rusdate('j F', strtotime($posts_op->post->post_date));
 echo <<<HTML
                             <div class='view'>
                                 <a href='$link'>$title</a>
@@ -85,7 +85,7 @@ if ($posts_big->have_posts())
  $cat_id = bt_post_category($posts_big->post->ID);
  $cat_name = get_cat_name($cat_id);
  $cat_link = get_category_link($cat_id);
- $date = rusdate('d F Y', strtotime($posts_big->post->post_date));
+ $date = rusdate('j F Y', strtotime($posts_big->post->post_date));
  echo <<<HTML
                     <div class='top_news'>
                         <div class='tdate'>$date</div><div class='ttag'><a href='$cat_link'>$cat_name</a></div>
@@ -112,7 +112,7 @@ while ($posts_med->have_posts())
  $cat_id = bt_post_category($posts_med->post->ID);
  $cat_name = get_cat_name($cat_id);
  $cat_link = get_category_link($cat_id);
- $date = rusdate('d F Y', strtotime($posts_med->post->post_date));
+ $date = rusdate('j F Y', strtotime($posts_med->post->post_date));
  echo <<<HTML
                         <div class='item'>
                             <div class='odate'>$date</div><div class='otag'><a href='$cat_link'>$cat_name</a></div>
