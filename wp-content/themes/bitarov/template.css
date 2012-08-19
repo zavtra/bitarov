@@ -472,6 +472,10 @@
                                 .artic-comment form .send input {width:148px; height:35px; box-shadow:none; border:none; background:url('images/css/buttons-pack.png') -4px -2px no-repeat;}
                                 .artic-comment form .send:hover input {background:url('images/css/buttons-pack.png') -4px -43px no-repeat; cursor:pointer;}
                                 .artic-comment form .send:active input {background:url('images/css/buttons-pack.png') -4px -86px no-repeat;}
+    /* 404 */
+    .not_found {width:365px; height:187px; margin:66px auto 0 auto;}
+        .not_found .img {background:url('images/css/404.png') 50% 0 no-repeat; width:184px; height:96px; margin:0 auto;}
+        .not_found .message {}
 
 /*  Подвал!  */
     .footer {position:absolute; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
