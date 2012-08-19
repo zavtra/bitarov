@@ -90,7 +90,7 @@
                     .fond dl {height:65px;background:url('images/css/fond-border.png') 0 100% no-repeat;}
                         .fond dt {float:right; padding:6px 19px 0 14px;}
                             .fond dt img { display: -moz-inline-box; display: inline-block;margin-left:17px; zoom: 1; *display: inline;}
-                        .fond dd { float:left;width:167px; text-align:left; font:22px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                        .fond dd { float:left;width:167px; text-align:left; font:22px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
         .strip_news {float:left; width:642px;}
             .strip_news .dl {margin:0; padding:0;}
             .strip_news .ikonka {margin:0 0 0 0; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:bottom;}
@@ -101,23 +101,23 @@
                 .strip_news .body .substrate {background:url('images/css/index-bodysubstrate_bg.png') repeat-y; width:597px; padding:15px 19px 23px 23px;}
                 .strip_news .body .bottom {background:url(images/css/index-body-bottom_bg.png) no-repeat; width:639px; height:16px;}
 
-                .top_news {margin-bottom:28px; font-size:15px;}
-                    .top_news .tdate {display: inline; margin-bottom:4px;color:#838c94; vertical-align:top;}
-                    .top_news .ttag {display: inline; margin-left:12px;color:#7da87a; vertical-align:top;}
+                .top_news {margin-bottom:28px;font:15px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
+                    .top_news .tdate {display: -moz-inline-box; display: inline-block; margin-bottom:4px;color:#838c94; zoom: 1; *display: inline;}
+                    .top_news .ttag {display: -moz-inline-box; display: inline-block; margin-left:12px;color:#7da87a; zoom: 1; *display: inline;}
                         .top_news .ttag a {color:#7da87a; text-decoration:underline;}
                         .top_news .ttag a:hover {text-decoration:none;}
-                    .top_news .title {margin:0 0 3px 3px; font:24px 'DinDisplayPro-Reg', 'Arial';}
+                    .top_news .title {margin:0 0 3px 3px; font:24px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                     .top_news .photo {width:596px; height:205px; background:url('images/css/top_news-photo-bg.png') no-repeat; text-align:center;}
                         .top_news .photo img {margin:3px auto 0 1px;width:589px; height:198px;}
-                    .top_news .text {margin:10px 0 0 4px; padding-bottom:14px; width:589px; background:url('images/css/top-news_border-bottom.png') 0 100% no-repeat; font-size:16px;}
+                    .top_news .text {margin:10px 0 0 4px; padding-bottom:14px; width:589px; background:url('images/css/top-news_border-bottom.png') 0 100% no-repeat; font:16px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial';  line-height:17px;}
                 .other_news { }
                     .other_news .item {float:left; margin-left:45px;width:276px;}
                     .other_news .item:first-child {margin:0;}
-                        .other_news .item .odate {display: inline; vertical-align:middle; margin:0px 12px 2px 0;color:#838c94; font-size:13px;}
-                        .other_news .item .otag {color:#7da87a; font:15px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; display: inline; vertical-align:middle;}
+                        .other_news .item .odate {float:left; margin:0 12px 2px 0;color:#838c94; font:13px 'Helvetica', 'Arial';}
+                        .other_news .item .otag {color:#7da87a; font:15px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                             .other_news .item .otag a {color:#7da87a; text-decoration:underline;}
                             .other_news .item .otag a:hover {text-decoration:none;}
-                        .other_news .item .title {margin-bottom:6px; font:20px 'DinDisplayPro-Reg','Arial';}
+                        .other_news .item .title {margin-bottom:6px; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                             .other_news .item .title a {line-height:22px;}
                         .other_news .item .photo {width:276px; height:179px; background:url('images/css/other_news-photo-bg.png') no-repeat;}
                             .other_news .item .photo img {margin-left:1px;width:271px; height:174px;}
@@ -147,31 +147,42 @@
 
             .event-header h2 {display:block; line-height: 26px!important; max-width:658px; margin:6px 0 0 0; padding:0; font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
     .event-body {margin-bottom:0px; padding-right:321px; width: 677px;}
-            .wrp-rubrikator-fixed {top: 0; left: 0; position:fixed; width: 100%;}
-                .wrp-rubrikator-fixed .paginator {width:192px; height:38px; margin:0 auto; position:relative; top:140px; left:302px;}
-                    .paginator .top-fixed {}
-                        .paginator .wrp-line {width:101px; margin:0 2px; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
-                        .paginator .wrp-line {*margin:0 6px;}
-                            .paginator .wrp-line a {padding:1px 5px; color:#3fa5cf; font-size:16px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
-                            .paginator .wrp-line a:hover {background:#f5f5f5;}
-                                .paginator .wrp-line a.current {background:#f5f5f5; color:#818181; text-decoration:none;}
-                            .paginator .poloska {height:4px; width:98%; margin-top:7px; background:#ebebeb; position:relative;}
-                                .paginator .poloska .underline {height:11px; width:24px; margin-left:-1px; background:url(images/ico/page-current.png) no-repeat; position:absolute;}
-                            .paginator .top-fixed .next {width:35px; height:17px; text-align:left; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin-top:5px;}
-                                .paginator .top-fixed .next a {background:url(images/css/pagination_buttons.png) -47px 0 no-repeat; width:35px; height:17px; display:block;}
-                                .paginator .top-fixed .next a:hover {background:url(images/css/pagination_buttons.png) -47px -21px no-repeat;}
-                                .paginator .top-fixed .next a:active {background:url(images/css/pagination_buttons.png) -47px -42px no-repeat;}
-                                .paginator .top-fixed .next span {font-size:12px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#919191;}
-                            .paginator .top-fixed .prew {width:35px; height:17px; text-align:left; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin-top:5px;}
-                                .paginator .top-fixed .prew a {background:url(images/css/pagination_buttons.png) 0px 0 no-repeat; width:35px; height:17px; display:block;}
-                                .paginator .top-fixed .prew a:hover {background:url(images/css/pagination_buttons.png) 0px -21px no-repeat;}
-                                .paginator .top-fixed .prew a:active {background:url(images/css/pagination_buttons.png) 0px -42px no-repeat;}
-                                .paginator .top-fixed .prew span {font-size:12px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#919191;}
+            .wrp-rubrikator-fixed {top: 0; left: 0; position:fixed; width: 100%; overflow:hidden;}
+                .pagination-top-fixed {width:192px; height:38px; margin:20px 0 0 20px;}
+                    .pagination-top-fixed .top-fixed {}
+                        .pagination-top-fixed .wrp-line {width:101px; margin:0 2px; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
+                        .pagination-top-fixed .wrp-line {*margin:0 6px;}
+                            .pagination-top-fixed .wrp-line a {padding:1px 5px; color:#3fa5cf; font-size:16px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
+                            .pagination-top-fixed .wrp-line a:hover {background:#f5f5f5;}
+                                .pagination-top-fixed .wrp-line a.current {background:#f5f5f5; color:#818181; text-decoration:none;}
+                            .pagination-top-fixed .poloska {height:4px; width:98%; margin-top:7px; background:#ebebeb; position:relative;}
+                                .pagination-top-fixed .poloska .underline {height:11px; width:24px; margin-left:-1px; background:url(images/ico/page-current.png) no-repeat; position:absolute;}
+                            .pagination-top-fixed .top-fixed .next {width:35px; height:17px; text-align:left; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin-top:5px;}
+                                .pagination-top-fixed .top-fixed .next a {background:url(images/css/pagination_buttons.png) -47px 0 no-repeat; width:35px; height:17px; display:block;}
+                                .pagination-top-fixed .top-fixed .next a:hover {background:url(images/css/pagination_buttons.png) -47px -21px no-repeat;}
+                                .pagination-top-fixed .top-fixed .next a:active {background:url(images/css/pagination_buttons.png) -47px -42px no-repeat;}
+                                .pagination-top-fixed .top-fixed .next span {font-size:12px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#919191;}
+                            .pagination-top-fixed .top-fixed .prew {width:35px; height:17px; text-align:left; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin-top:5px;}
+                                .pagination-top-fixed .top-fixed .prew a {background:url(images/css/pagination_buttons.png) 0px 0 no-repeat; width:35px; height:17px; display:block;}
+                                .pagination-top-fixed .top-fixed .prew a:hover {background:url(images/css/pagination_buttons.png) 0px -21px no-repeat;}
+                                .pagination-top-fixed .top-fixed .prew a:active {background:url(images/css/pagination_buttons.png) 0px -42px no-repeat;}
+                                .pagination-top-fixed .top-fixed .prew span {font-size:12px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#919191;}
 
+                    .pagination-top-fixed .bottom {}
+                        .pagination-top-fixed .bottom .wrp-line {}
+                /*.wrp-rubrikator-fixed .paginator {width:80px; margin:0 auto; position:relative; top:140px; left:252px;}
+                    .wrp-rubrikator-fixed .paginator ul {margin:0; padding:0;}
+                        .wrp-rubrikator-fixed .paginator li {float:left; margin:0 3px 8px 0; padding:0;  font:16px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
+                            .wrp-rubrikator-fixed .paginator li a {padding:0 5px;}
+                            .wrp-rubrikator-fixed .paginator li.current {margin:0; padding:0; background:#f6f6f6;}
+                            .wrp-rubrikator-fixed .paginator li.current a {color:#333; text-decoration:none;}
+                            .wrp-rubrikator-fixed .paginator .visual {position:relative;border-bottom:4px solid #ebebeb;}
+                                .wrp-rubrikator-fixed .paginator .visual div {position:absolute; width:11px; height:4px;background:#6b6b6b;}
+                                    .wrp-rubrikator-fixed .paginator .visual div ins {position:relative; width:1px 2px; width:70px; background: #FFF;}*/
                 .rubrikator-fixed.advice {width:289px; background:#f0f5f8;}
                 .rubrikator-fixed {padding:5px 0 13px 0; width:288px; position:relative; margin:0 auto; top:210px; left:353px; background:#f9f9f9; border:1px solid #c6d9e5; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px;}
                 .rubrikator-fixed ul {margin:-5px 0 0 12px; padding:0;}
-                    .rubrikator-fixed li { margin:0; padding:0;font:17px 'PFDinTextCondPro', 'Arial Narrow', 'Arial';}
+                    .rubrikator-fixed li { margin:0; padding:0;font:17px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                         .rubrikator-fixed li a {color:#333; text-decoration:underline;}
                         .rubrikator-fixed li a:hover {text-decoration:none;}
                         .rubrikator-fixed li span {display:block; margin:2px 0 0 0; padding:7px 0 0px 0;}
@@ -179,9 +190,9 @@
                         .rubrikator-fixed li.current a {color:#779ca4;text-decoration:none; text-shadow: 0 1px 1px rgba(255, 255, 255, 1); cursor:default;}
                 .wrp-rubrikator-fixed .podate {margin-top:20px;}
                     .wrp-rubrikator-fixed .podate span {display:block; margin-bottom:7px; color:#8c8c8c; font:12px 'Arial';}
-                    .wrp-rubrikator-fixed .podate a {display: -moz-inline-box; display: inline-block; margin-right:5px;color:#404040; font:18px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
+                    .wrp-rubrikator-fixed .podate a {display: -moz-inline-box; display: inline-block; margin-right:5px;color:#404040; font:18px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
                 .rubrikator-advanced {position:relative; margin:0 auto; width:281px; top:210px; left:353px;}
-                #back-top {position:fixed; bottom:90px; /* отступ кнопки снизу */margin-right:-150px; /* отступ кнопки слева */}
+                #back-top {position:fixed; bottom:70px; /* отступ кнопки снизу */margin-right:-150px; /* отступ кнопки слева */}
                     #back-top a {display: block;width:85px; height:31px; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s;}
                     #back-top a:hover { }
                     /* иконка стрелки (тег span) */
@@ -204,10 +215,10 @@
                     .event-body .item p {margin:9px 0; color:#333; font:14px 'Arial'; line-height:20px;}
                     .event-body .item .more {display:none;float:right; margin:3px 2px 0 0;}
                         .event-body .item .more a {color:#777; font:12px 'Arial';}
-                    .event-body .item .date {margin-right:40px; color:#898989;font:13px 'Arial Narrow', 'Arial'; display:inline;}
-                    .event-body .item .tag {display:inline;}
-                        .event-body .item .tag img {}
-                        .event-body .item .tag a {background:url(images/ico/event-tag.png) 0 1px no-repeat; padding-left:25px; margin-right:10px; color:#8d949c; font:11px 'Arial'; display:inline; vertical-align:top;}
+                    .event-body .item .date {float:left; margin-right:40px; color:#898989;font:13px 'Arial Narrow', 'Arial';}
+                    .event-body .item .tag { }
+                        .event-body .item .tag img {float:left; margin-top:2px;}
+                        .event-body .item .tag a {padding-left:4px; color:#8d949c; font:11px 'Arial';}
             .button-show-old {margin:22px 0 0 0;}
                 .button-show-old .button {}
                     .event-body .button-show-old a {font:16px 'Georgia', 'Arial'; color:#FFF; text-decoration:none; float:left; padding:9px 0 0 19px; margin:6px 6px 0 0; width:257px; height:34px; background:url('images/css/buttons-pack.png') -2px -145px no-repeat; display:block;}
