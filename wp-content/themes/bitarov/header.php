@@ -28,9 +28,7 @@
                 <li class='helper'></li>
             </ul>
             <div class='wrp_h_owner'>
-                <div class='h_owner'>
-
-                </div>
+                <a href="http://bitarov.zavtradigital.ru/"><div class='h_owner'></div></a>
             </div>
             <ul class='h_menu-left'>
                 <li><a href='/biography/'>биография</a></li>
