@@ -392,7 +392,7 @@
                 .video-window .text-right_b .jspPane {margin-left:10px!important;}
     /* Контакты */
     .contacts {margin-top:25px;}
-        .wrp-karta {float:right; width:605px; margin-top:6px; height:282px; background:url('images/css/karta_bg.png') 0 0px no-repeat;}
+        .wrp-karta {float:right; width:605px; margin:6px 79px 0 0; height:282px; background:url('images/css/karta_bg.png') 0 0px no-repeat;}
             .karta div {width:600px; height:277px; margin:-3px 0 0 -6px; border:1px solid #e1ddce;}
         .rekviziti {float:left; width:224px;}
             .rekviziti h5 {font:16px 'Arial'; color:#333;}
