@@ -6,8 +6,12 @@
             <div class='wrap'>
                 <div class='b-top-left'>
                     <div class='breadcrumbs'>
-                        <span class='current'><a href='#'><ins></ins>bitarov.as</a></span>
-                        <span><a href='#'>События</a><ins class='r'></ins></span>
+<?php
+echo "                        <span class='current'><a href='" . SITE_URL . "'><ins></ins>bitarov.as</a></span>\n";
+$categories_path = get_cat_path($id_cat);
+foreach ($categories_path as $cat)
+  echo "                        <span><a href='" . get_category_link($cat->term_id) . "'>{$cat->name}</a><ins class='r'></ins></span>\n";
+?>
                     </div>
                     <h2>События</h2>
                 </div>

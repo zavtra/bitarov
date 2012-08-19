@@ -10,11 +10,17 @@ get_header();
                     <div class='breadcrumbs'>
 <?php
 $current_post_id = $post->ID;
-$post_category = bt_post_category($post->ID);
-$categories_path = get_cat_path($post_category);
+$post_category_id = bt_post_category($post->ID);
+$post_category_link = get_category_link($post_category_id);
+$categories_path = get_cat_path($post_category_id);
 $breadcrumbs = "<span class='current'><a href='" . SITE_URL . "'><ins></ins>bitarov.as</a></span>";
 foreach ($categories_path as $cat)
-  $breadcrumbs .= "<span><a href='" . get_category_link($cat->term_id) . "'>{$cat->name}</a><ins class='r'></ins></span>";
+ {
+ $cat_link = get_category_link($cat->term_id);
+ $breadcrumbs .= "<span><a href='$cat_link'>{$cat->name}</a><ins class='r'></ins></span>";
+ if ($post_category_id==$cat->term_id) $post_category = $cat;
+ }
+if (empty($post_category)) $post_category = get_category($post_category_id);
 echo "                    $breadcrumbs";
 ?>
                     </div>
@@ -27,7 +33,7 @@ echo "                    $breadcrumbs";
         <div class='wrap'>
             <div class='wrp_article'>
 <?php
-$liked_arr = new WP_Query(array('posts_per_page'=>get_option('bt_liked_pp'), 'cat'=>$post_category, 'post__not_in'=>array($current_post_id)));
+$liked_arr = new WP_Query(array('posts_per_page'=>get_option('bt_liked_pp'), 'cat'=>$post_category_id, 'post__not_in'=>array($current_post_id)));
 $liked = '';
 while ($liked_arr->have_posts())
  {
@@ -37,7 +43,7 @@ while ($liked_arr->have_posts())
 if ($liked) echo <<<HTML
                 <div class='like_records'>
                     <h3><strong>похожие записи</strong></h3>
-                    <span>из рубрики <a href="#">Политическая ситуация</a></span>
+                    <span>из рубрики <a href="$post_category_link">{$post_category->name}</a></span>
                     <ul>
                         $liked
                     </ul>
