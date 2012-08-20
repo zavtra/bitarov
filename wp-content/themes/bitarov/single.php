@@ -1,56 +1,19 @@
 <?php
 get_header();
-?>
 
-<!-- контент -->
-    <div class='content'>
-        <div class='event-header'>
-            <div class='wrap'>
-                <div class='b-top-left'>
-                    <div class='breadcrumbs'>
-<?php
-$post_category_id = bt_post_category($post->ID);
-$breadcrumbs = "<span class='current'><a href='" . SITE_URL . "'><ins></ins>bitarov.as</a></span>";
-foreach (get_cat_path($post_category_id) as $cat)
-  $breadcrumbs .= "<span><a href='" . get_category_link($cat->term_id) . "'>{$cat->name}</a><ins class='r'></ins></span>";
-echo "                    $breadcrumbs";
+// --- Информация о текущем посте
 the_post();
-?>
-                    </div>
-                    <h2><?php the_title() ?></h2>
-                </div>
-                <div class='clear'></div>
-            </div>
-        </div>
-        <div class='event-bottom-img'></div>
-        <div class='wrap'>
-            <div class='wrp_article'>
-<?php
+$post_id = $post->ID;
+$post_category_id = bt_post_category($post->ID);
 $post_category = get_category($post_category_id);
 $post_category_link = get_category_link($post_category_id);
-$liked_arr = new WP_Query(array('posts_per_page'=>get_option('bt_liked_pp', 5), 'cat'=>$post_category_id, 'post__not_in'=>array($post->ID)));
-$liked = '';
-while ($liked_arr->have_posts())
- {
- $liked_arr->the_post();
- $liked .= "<li><a href='" . get_permalink($post->ID) . "'>" . get_the_title() . "</a></li>\n                        ";
- }
-if ($liked) echo <<<HTML
-                <div class='like_records'>
-                    <h3><strong>похожие записи</strong></h3>
-                    <span>из рубрики <a href="$post_category_link">{$post_category->name}</a></span>
-                    <ul>
-                        $liked
-                    </ul>
-                </div>
-HTML;
-?>
-                <div class='article'>
-                    <div class='date'><?php echo rusdate('j F Y', strtotime($post->post_date)); ?></div>
-<?php
+$post_title = get_the_title();
+$post_content = get_the_content();
+$post_date = rusdate('j F Y', strtotime($post->post_date));
 
-$opinion = get_post_meta($post->ID, 'bt_opinion', true);
-if ($opinion) echo <<<HTML
+// --- Мнение (если есть)
+$opinion = get_post_meta($post_id, 'bt_opinion', true);
+if ($opinion) $opinion = <<<HTML
                     <div class='wrp_substrate'>
                         <div class='top'></div>
                         <div class='substrate'><dl>
@@ -61,8 +24,62 @@ if ($opinion) echo <<<HTML
                     </div>
 HTML;
 
-the_content();
-?>
+// --- Хлебные крошки
+$siteurl = SITE_URL;
+$breadcrumbs = "<span class='current'><a href='$siteurl'><ins></ins>bitarov.as</a></span>";
+foreach (get_cat_path($post_category_id) as $cat)
+ {
+ $breadcrumb_link = get_category_link($cat->term_id);
+ $breadcrumb_text = $cat->name;
+ $breadcrumbs .= "<span><a href='$breadcrumb_link'>$breadcrumb_text</a><ins class='r'></ins></span>";
+ }
+
+// --- Похожие посты
+$liked_raw = new WP_Query(array('posts_per_page'=>get_option('bt_liked_pp', 5), 'cat'=>$post_category_id, 'post__not_in'=>array($post->ID)));
+$liked = '';
+while ($liked_raw->have_posts())
+ {
+ $liked_raw->the_post();
+ $liked_link = get_permalink($liked_raw->post->ID);
+ $liked_title = get_the_title();
+ $liked .= "<li><a href='$liked_link'>$liked_title</a></li>\n                        ";
+ }
+if ($liked) $liked = <<<HTML
+                <div class='right_float_article'>
+                    <div class='like_records'>
+                        <h3><strong>похожие записи</strong></h3>
+                        <span>из рубрики <a href="$post_category_link">{$post_category->name}</a></span>
+                        <ul>
+                            $liked
+                        </ul>
+                    </div>
+                </div>
+HTML;
+
+echo <<<HTML
+
+<!-- контент -->
+    <div class='content'>
+        <div class='event-header'>
+            <div class='wrap'>
+                <div class='b-top-left'>
+                    <div class='breadcrumbs'>
+$breadcrumbs
+                    </div>
+                    <h2>$post_title</h2>
+                </div>
+                <div class='clear'></div>
+            </div>
+        </div>
+        <div class='event-bottom-img'></div>
+        <div class='wrap'>
+            <div class='wrp_article'>
+$liked
+            <div class='left_float_article'>
+                <div class='article'>
+                    <div class='date'>$post_date</div>
+$opinion
+$post_content
                 </div>
                 <div class='clear'></div>
                 <div class='wrp-send_comment normal'>
@@ -113,9 +130,13 @@ the_content();
                     </div>
                     </div>
                 </div>
+        </div>
             </div>
             <div class='clear'></div>
         </div>
     </div>
 
-<? get_footer(); ?>
+HTML;
+
+get_footer();
+?>
