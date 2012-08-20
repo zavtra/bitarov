@@ -60,7 +60,7 @@
 
 /* Индекс! */
     .content {padding-bottom:70px;}
-        .overlay {background:url(images/css/Overlayer_bg.png); height:440px; width:100%; position:absolute; z-index:9999;}
+        .overlay {background:url(images/css/Overlayer_bg.png); height:440px; width:100%; display:none; position:absolute; z-index:9999;}
         .content.bf {background:#f6fafc; padding-bottom:0;}
         .content .wrap.event {overflow:visible; margin-top:14px; position:relative!important;}
         .rightside {float:right; margin:8px 0 50px 0;width:331px;}
@@ -435,9 +435,9 @@
             .like_records ul {margin:14px 0 0 0; list-style:none;}
                 .like_records li {font:15px 'Arial'; margin-bottom:12px;}
                     .like_records li a {color:#33a0cd;}
-        .article {float:left; width:682px; background:url(images/css/article-text_border-bottom.png) 0 bottom repeat-x; padding-bottom:26px; margin-bottom:12px;}
+        .article {float:left; width:682px; background:url(images/css/article-text_border-bottom.png) 0 bottom repeat-x; padding-bottom:26px; margin-bottom:12px; font-size:14px;}
             .article .date {font:14px 'Arial Narrow', 'Arial'; color:#7b848d; margin-bottom:10px;}
-            .wrp_substrate {width:680px; margin-left:2px;}
+            .wrp_substrate {width:680px; margin:0 0 18px 2px;}
                 .wrp_substrate .top {background:url('images/css/substrate_top.png') no-repeat; width:680px; height:8px;}
                 .wrp_substrate .substrate {width:669px; padding:6px 0 7px 11px; overflow:hidden; background:url(images/css/substrate_center.png);}
                      .wrp_substrate .substrate dt {width:55px; height:62px; background:url(images/css/substrate_owner.png) no-repeat; float:left;}
