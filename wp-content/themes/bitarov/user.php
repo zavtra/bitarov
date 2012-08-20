@@ -10,15 +10,22 @@ function drop_filters()
  }
 //add_action('init', 'drop_filters');
 
-function set_year()
+function bt_init()
+ {
+ if (chkget('bt_json'))
+  {
+  require TEMPLATEPATH . '/json.php';
+  exit;
+  }
+ }
+add_action('init', 'bt_init');
+
+function bt_modify_query()
  {
  global $wp_query;
- //$wp_query->set('year', 2011);
- //print_r($wp_query->query_vars);exit;
- //print_r($_GET);
  if (chkget('posts-year')) $wp_query->set('year', intval($_GET['posts-year']));
  }
-add_action('parse_query', 'set_year');
+add_action('parse_query', 'bt_modify_query');
 
 global $posts_year;
 if (preg_match('/\/year([0-9]+)(\/|$)/', $_SERVER['REQUEST_URI'], $year))
