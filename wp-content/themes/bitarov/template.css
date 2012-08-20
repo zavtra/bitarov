@@ -60,7 +60,7 @@
 
 /* Индекс! */
     .content {padding-bottom:70px;}
-        .overlay {background:url(images/css/Overlayer_bg.png); height:440px; width:100%; position:absolute; z-index:9999;}
+        .overlay {background:url(images/css/Overlayer_bg.png); height:440px; width:100%; display:none; position:absolute; z-index:9999;}
         .content.bf {background:#f6fafc; padding-bottom:0;}
         .content .wrap.event {overflow:visible; margin-top:14px; position:relative!important;}
         .rightside {float:right; margin:8px 0 50px 0;width:331px;}
@@ -177,11 +177,11 @@
                         .rubrikator-fixed li span {display:block; margin:0 0 0 0; padding:7px 0 0px 0;}
                         .rubrikator-fixed li.current span {position:relative; z-index:5; margin:8px 14px 0 -29px; padding:7px 0 9px 29px; width:284px; background:url('images/css/rubrikator-current-bg.png') no-repeat;}
                         .rubrikator-fixed li.current a {color:#779ca4;text-decoration:none; text-shadow: 0 1px 1px rgba(255, 255, 255, 1); cursor:default;}
-                .wrp-rubrikator-fixed .podate {margin-top:20px;}
+                .wrp-rubrikator-fixed .podate {margin:0 0 20px 0;}
                     .wrp-rubrikator-fixed .podate span {display:block; margin-bottom:7px; color:#8c8c8c; font:12px 'Arial';}
                     .wrp-rubrikator-fixed .podate a {display: -moz-inline-box; display: inline-block; margin-right:5px;color:#404040; font:18px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
-                .rubrikator-advanced {position:relative; margin:0 auto; width:281px; top:210px; left:353px;}
-                #back-top {position:fixed; bottom:90px; /* отступ кнопки снизу */margin-right:-150px; /* отступ кнопки слева */}
+                .rubrikator-advanced {position:relative; margin:0 auto; width:281px; top:220px; left:353px;}
+                #back-top {bottom:70px; /* отступ кнопки снизу */}
                     #back-top a {display: block;width:85px; height:31px; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s;}
                     #back-top a:hover { }
                     /* иконка стрелки (тег span) */
@@ -404,43 +404,68 @@
                 .rekviziti .email a {color:#333;}
 
     /* Биорграфия */
-    .bf_body {padding-top:27px; padding-bottom:40px;}
-        .goda_block {width:269px; height:244px; float:left; padding:22px 48px 0 19px; font-size:12px; background:url('images/css/goda_block-bg.png') no-repeat;}
-            .wrp-goda_block_scroll {width:332px; height:261px; border:1px solid #dde4e8; background:#FFF; float:left; position:relative;}
-                .wrp-goda_block_scroll.one {border:none; height:244px!important; width:346px!important;}
-                .wrp-goda_block_scroll .fade {position:absolute; bottom:0; left:0; z-index:99999;}
-                .wrp-goda_block_scroll .scroll-pane {position:relative; z-index:1; overflow:hidden; height:261px;}
+    .bf_body { padding-bottom:75px;}
+        .goda_block {width:269px; max-height:244px; float:left; padding:22px 48px 0 19px; font-size:12px; background:url('images/css/goda_block-bg.png') no-repeat;}
+            .wrp-goda_block_scroll {width:332px; max-height:261px; border:1px solid #dde4e8; background:#FFF; float:left; position:relative;}
+                .wrp-goda_block_scroll.one {border:none; max-height:244px!important; width:346px!important;}
+                .wrp-goda_block_scroll .fade {position:absolute; width:322px; height:23px; bottom:0; left:0; z-index:99999; background:url('images/css/goda_block_overlay.png') repeat-x 0 0;}
+                .wrp-goda_block_scroll .scroll-pane {position:relative; z-index:1; overflow:hidden; max-height:261px;}
                     .goda_block_scroll {width:290px; padding:17px 23px 8px 19px; font-size:12px;}
                         .goda_block_scroll p {margin-bottom:12px;}
-        .bf_body h1 {font-size:28px 'Georgia', 'Arial'; margin-bottom:25px;}
-        .bf_body .block1 {}
-            .bf_body .block1 .lemma {font-size:16px; margin-left:388px; line-height:19px; padding-right:5px; color:#000;}
-         .bf_body .block2 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story1.jpg') no-repeat;}
-        .bf_body .block3 {}
-            .bf_body .block3 .lemma {font-size:16px; margin-left:388px; line-height:19px; padding-right:5px; color:#000;}
-        .bf_body .block4 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story1.jpg') no-repeat;}
-        .bf_body .block5 {}
-            .block5 .lemma {width:595px; float:right; margin-right:9px; font-size:16px; color:#000;}
-         .bf_body .block6 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story2.jpg') no-repeat;}
-         .bf_body .block7 {}
-            .bf_body .block7 td {vertical-align:top;}
-                .bf_body .block7 td p {text-align:justify; width:90%; font-size:16px;}
-         .bf_body .block8 {height:671px; width:1240px!important; margin:39px 0 36px -120px; background:#e0e0e0; border-top:1px solid #a6a7a8; background:url('images/css/story2.jpg') no-repeat;}
+        
+		.bf_body h1 {font:28px Georgia, 'Arial'; margin-bottom:25px;}
+        .bf_body .lemma {font-size:16px; margin-left:388px;padding-right:5px; color:#000;}
+		.text-bio p { line-height:1.5; }
+		.text-bio h4 { font-size:1.1em; line-height:1.3;}
+		
+		.img-bio-1 {	background:url('images/css/story1.jpg') no-repeat;}
+		.img-bio-2 {	background:url('images/css/story2.jpg') no-repeat;}
+		.img-bio-3 {	background:url('images/css/story3.jpg') no-repeat;}
+		.img-bio-4 {	background:url('images/css/story4.jpg') no-repeat;}
+		
+		.section-bio {overflow:hidden;}
+		.imageHolder {
+			display: block;
+			text-align: center;
+			z-index: 80;
+			position: relative;
+			height: 600px;
+			overflow: hidden;
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+			background-attachment: fixed;
+		}	
+		.text-bio { 
+			font-size:16px;
+			line-height:1.5;			
+			overflow:hidden;
+			margin:0 auto; 
+			padding: 30px 10px 30px 10px; 
+			width:1000px;
+			min-height:500px;
+	
+		}
+
+       #section-bio4 td {vertical-align:top; }
+       #section-bio4 td p {text-align:justify; width:90%; font-size:16px;}
+
     /* Статья */
     .wrp_article {margin-top:18px; padding-bottom:150px;}
-        .like_records {float:right; width:276px;}
+        .right_float_article {float:right;}
+        .like_records {width:276px; margin-bottom:30px;}
             .like_records h3 {margin:0 0 1px 0; color:#000; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; text-transform:uppercase;}
             .like_records span {color:#000; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .like_records span a {color:#718c4f;}
             .like_records ul {margin:14px 0 0 0; list-style:none;}
                 .like_records li {font:15px 'Arial'; margin-bottom:12px;}
                     .like_records li a {color:#33a0cd;}
-        .article {float:left; width:682px; background:url(images/css/article-text_border-bottom.png) 0 bottom repeat-x; padding-bottom:26px; margin-bottom:12px;}
+        .left_float_article {float:left; width:682px; margin-bottom:100px;}
+        .article {width:682px; background:url('images/css/article-text_border-bottom.png') 0 bottom repeat-x; padding-bottom:26px; margin-bottom:12px; font-size:14px;}
             .article .date {font:14px 'Arial Narrow', 'Arial'; color:#7b848d; margin-bottom:10px;}
-            .wrp_substrate {width:680px; margin-left:2px;}
+            .wrp_substrate {width:680px; margin:0 0 18px 2px;}
                 .wrp_substrate .top {background:url('images/css/substrate_top.png') no-repeat; width:680px; height:8px;}
-                .wrp_substrate .substrate {width:669px; padding:6px 0 7px 11px; overflow:hidden; background:url(images/css/substrate_center.png);}
-                     .wrp_substrate .substrate dt {width:55px; height:62px; background:url(images/css/substrate_owner.png) no-repeat; float:left;}
+                .wrp_substrate .substrate {width:669px; padding:6px 0 7px 11px; overflow:hidden; background:url('images/css/substrate_center.png');}
+                     .wrp_substrate .substrate dt {width:55px; height:62px; background:url('images/css/substrate_owner.png') no-repeat; float:left;}
                     .wrp_substrate .substrate dd {width:518px; margin-left:80px; font:16px 'Arial';}
                 .wrp_substrate .bottom {background:url('images/css/substrate_bottom.png') no-repeat; width:680px; height:9px;}
             .article_text {margin-top:17px;}
