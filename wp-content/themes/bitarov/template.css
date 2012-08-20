@@ -250,7 +250,7 @@
         .event-body .item { }
             .event-body .item dl { }
                 .event-body .item dt {float:left;text-align:left;}
-                    .event-body .item dt div {width:56px; height:63px;}
+                    .event-body .item dt div {width:56px; height:63px; background:url('images/css/substrate_owner.png') no-repeat}
                     .event-body .item dt span {display:block; margin-top:7px; color:#7b848d; font:12px 'Arial Narrow', 'Arial';}
                 .event-body .item dd {margin-left:81px;}
                     .event-body .item dd strong {display:block; padding-top:5px;width:100%; font:13px 'Arial'; font-weight:bold;}
@@ -454,7 +454,7 @@
     /* Статья */
     .wrp_article {margin-top:18px; padding-bottom:150px;}
         .right_float_article {float:right;}
-        .like_records {width:276px; margin-bottom:30px;}
+        .like_records {width:276px; margin-bottom:30px; float:right}
             .like_records h3 {margin:0 0 1px 0; color:#000; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; text-transform:uppercase;}
             .like_records span {color:#000; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .like_records span a {color:#718c4f;}

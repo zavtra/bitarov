@@ -88,7 +88,7 @@ while (have_posts())
  if (isset($mons[$m]) and $d>=1 and $d<=31) $date = "$d<span>$mons[$m]</span>";
  else $date = '';
  $title = get_the_title();
- $content = get_the_content();
+ $content = bt_post_content();
  echo <<<HTML
                     <dl>
                         <dt><div>$date</div></dt>

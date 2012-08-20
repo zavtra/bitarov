@@ -96,7 +96,18 @@ $(window).ready(function() {
   else if (div=elem('years-fixed')) fixed_top = $(div).position().top;
   fixed_top -= 20;
   fixed_div = elem('wrap-fixed');
+
+  if (location.hash=='#comments') $('.wrp-artic-comment').css('display', 'block');
+
 });
+
+function newcomment()
+ {
+ var display = $('.wrp-artic-comment').css('display');
+ if (display=='none') $('.wrp-artic-comment').fadeIn();
+ else $('.wrp-artic-comment').fadeOut();
+ return false;
+ }
 
 // -------------------------------------------------- Показать предыдущие записи
 
@@ -136,14 +147,15 @@ function showmore()
   snipet = post_template.replace(/__POST_LINK__/, response.items[num].post_link);
   snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
   snipet = snipet.replace(/__POST_TITLE__/, response.items[num].post_title);
+  snipet = snipet.replace(/__CATEGORY_NAME__/, response.items[num].category_name);
+  snipet = snipet.replace(/__CATEGORY_LINK__/, response.items[num].category_link);
   snipet = snipet.replace(/__POST_EXCERPT__/, response.items[num].post_excerpt);
-  snipet = snipet.replace(/__POST_DATE__/, response.items[num].post_date);
+  snipet = snipet.replace(/__OPINION__/, response.items[num].opinion);
+  snipet = snipet.replace(/__POST_DATE__/, response.items[num].post_dm + ' ' + response.items[num].post_y);
+  snipet = snipet.replace(/__POST_DATE_DM__/, response.items[num].post_date_dm);
+  snipet = snipet.replace(/__POST_DATE_Y__/, response.items[num].post_date_y);
   snipet = snipet.replace(/__TAGS__/, response.items[num].tags);
-  /*
-  snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
-  snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
-  snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
-  */
+  snipet = snipet.replace(/__COMMENTS_COUNT__/, response.items[num].comments_count);
   div.innerHTML = snipet;
   posts_list.appendChild(div);
   }

@@ -374,7 +374,7 @@ function xplode($delimiter, $string, $limit)
  return $result;
  }
 
-function numberic($number, $words)
+function numberic($number, $words, $word_only=false)
  {
  /* Пример параметра $words
  $words = array(
@@ -386,15 +386,15 @@ function numberic($number, $words)
  if (!is_array($words) or !isset($words[0]) or !isset($words[1]) or !isset($words[2])) return false;
  $num = intval($number);
  if ($num<0) $num = -$num;
- if ($num===0) return $number . " $words[0]";
- if ($num===1) return $number . " $words[1]";
- if ($num>=2 and $num<=4) return $number . " $words[2]";
- if ($num>=5 and $num<=19) return $number . " $words[0]";
+ if ($num===0) return $word_only ? $words[0] : "$number $words[0]";
+ if ($num===1) return $word_only ? $words[1] : "$number $words[1]";
+ if ($num>=2 and $num<=4) return $word_only ? $words[2] : "$number $words[2]";
+ if ($num>=5 and $num<=19) return $word_only ? $words[0] : "$number $words[0]";
  $num = intval(substr($num, strlen($num)-1));
- if ($num===0) return $number . " $words[0]";
- if ($num===1) return $number . " $words[1]";
- if ($num>=2 and $num<=4) return $number . " $words[2]";
- return $number . " $words[0]";
+ if ($num===0) return $word_only ? $words[0] : "$number $words[0]";
+ if ($num===1) return $word_only ? $words[1] : "$number $words[1]";
+ if ($num>=2 and $num<=4) return $word_only ? $words[2] : "$number $words[2]";
+ return $word_only ? $words[0] : "$number $words[0]";
  }
 
 // --------------------------------------------------------------- Инициализация
