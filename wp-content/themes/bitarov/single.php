@@ -75,6 +75,7 @@ $breadcrumbs
         <div class='wrap'>
             <div class='wrp_article'>
 $liked
+            <div class='left_float_article'>
                 <div class='article'>
                     <div class='date'>$post_date</div>
 $opinion
@@ -129,6 +130,7 @@ $post_content
                     </div>
                     </div>
                 </div>
+        </div>
             </div>
             <div class='clear'></div>
         </div>
