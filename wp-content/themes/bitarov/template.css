@@ -177,11 +177,11 @@
                         .rubrikator-fixed li span {display:block; margin:0 0 0 0; padding:7px 0 0px 0;}
                         .rubrikator-fixed li.current span {position:relative; z-index:5; margin:8px 14px 0 -29px; padding:7px 0 9px 29px; width:284px; background:url('images/css/rubrikator-current-bg.png') no-repeat;}
                         .rubrikator-fixed li.current a {color:#779ca4;text-decoration:none; text-shadow: 0 1px 1px rgba(255, 255, 255, 1); cursor:default;}
-                .wrp-rubrikator-fixed .podate {margin-top:20px;}
+                .wrp-rubrikator-fixed .podate {margin:0 0 20px 0;}
                     .wrp-rubrikator-fixed .podate span {display:block; margin-bottom:7px; color:#8c8c8c; font:12px 'Arial';}
                     .wrp-rubrikator-fixed .podate a {display: -moz-inline-box; display: inline-block; margin-right:5px;color:#404040; font:18px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
-                .rubrikator-advanced {position:relative; margin:0 auto; width:281px; top:240px; left:353px;}
-                #back-top {bottom:90px; /* отступ кнопки снизу */}
+                .rubrikator-advanced {position:relative; margin:0 auto; width:281px; top:220px; left:353px;}
+                #back-top {bottom:70px; /* отступ кнопки снизу */}
                     #back-top a {display: block;width:85px; height:31px; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s;}
                     #back-top a:hover { }
                     /* иконка стрелки (тег span) */
