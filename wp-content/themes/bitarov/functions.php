@@ -43,11 +43,10 @@ function rusdate($format, $timestamp)
 function bt_post_category($id_post)
  {
  $cats = wp_get_post_categories($id_post);
- if (count($cats)<1) return -1;
- foreach ($cats as $k=>$v) if ($v<=1) unset($cats[$k]);
- if (count($cats)<1) return -2;
- reset($cats);
- return $cats[key($cats)];
+ if (count($cats)<1) return false;
+ $result = 0;
+ foreach ($cats as $cat) if ($cat>$result) $result = $cat;
+ return $result;
  }
 
 function get_cat_path($id_cat)
@@ -78,6 +77,9 @@ function bt_installed()
  db_query("CREATE TABLE wp_bt_slider(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, pos TINYINT UNSIGNED, caption VARCHAR(255), text BLOB)");
  //db_query("DROP TABLE pref_bt_thanks");
  db_query("CREATE TABLE wp_bt_thanks(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, pos TINYINT UNSIGNED, caption VARCHAR(50), text BLOB)");
+
+ db_query("DROP TABLE wp_bt_category_cache");
+ db_query("CREATE TABLE wp_bt_category_cache(id_cat INTEGER UNSIGNED, expire INTEGER UNSIGNED, data VARCHAR(255))");
  }
 
 function gen_pages($current_page, $pages_count, $range)
@@ -89,6 +91,24 @@ function gen_pages($current_page, $pages_count, $range)
  for ($p=$left; $p<=$right; $p++) if ($p>0 and $p<= $pages_count) $result[] = $p;
  //if ($right+$range<$pages_count) $result[] = '>';
  return $result;
+ }
+
+function get_years($id_cat)
+ {
+ $id_cat = intval($id_cat);
+ $res = db_query("SELECT expire, data FROM pref_bt_category_cache WHERE id_cat='?1'", $id_cat);
+ if ($res['cnt']>0)
+  {
+
+  }
+
+ $res = db_query("SELECT DISTINCT year(post_date) AS year
+ FROM pref_posts, pref_term_relationships
+ WHERE pref_term_relationships.object_id=pref_posts.ID AND pref_term_relationships.term_taxonomy_id='?1'", $id_cat);
+ $years = array();
+ while (extract(db_result($res, 'i'))) $years[] = $year;
+ db_query();
+ return $years;
  }
 
 register_sidebar(array(

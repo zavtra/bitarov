@@ -99,8 +99,8 @@
                 .strip_news dd span {padding-right:435px;}
             .strip_news .body {margin-top:14px; min-height:729px; width:597px;}
                 .strip_news .body .top {background:url('images/css/index-body-top_bg.png'); height:12px; width:639px;}
-                .strip_news .body .substrate {background:url('images/css/index-bodysubstrate_bg.png') repeat-y; width:597px; padding:8px 19px 23px 23px;}
-                .strip_news .body .bottom {background:url(images/css/index-body-bottom_bg.png) no-repeat; width:639px; height:16px;}
+                .strip_news .body .substrate {background:url('images/css/index-bodysubstrate_bg.png') repeat-y; width:597px; padding:8px 19px 0 23px;}
+                .strip_news .body .bottom {background:url(images/css/index-body-bottom_bg.png) no-repeat; width:639px; height:16px; margin-bottom:20px}
 
                 .top_news {margin-bottom:28px;}
                     .top_news .tdate {display: inline; margin-bottom:4px;color:#838c94; vertical-align:top;}
@@ -439,7 +439,7 @@
             .article .date {font:14px 'Arial Narrow', 'Arial'; color:#7b848d; margin-bottom:10px;}
             .wrp_substrate {width:680px; margin-left:2px;}
                 .wrp_substrate .top {background:url('images/css/substrate_top.png') no-repeat; width:680px; height:8px;}
-                .wrp_substrate .substrate {width:669px; padding:6px 0 7px 11px; background:url(images/css/substrate_center.png);}
+                .wrp_substrate .substrate {width:669px; padding:6px 0 7px 11px; overflow:hidden; background:url(images/css/substrate_center.png);}
                      .wrp_substrate .substrate dt {width:55px; height:62px; background:url(images/css/substrate_owner.png) no-repeat; float:left;}
                     .wrp_substrate .substrate dd {width:518px; margin-left:80px; font:16px 'Arial';}
                 .wrp_substrate .bottom {background:url('images/css/substrate_bottom.png') no-repeat; width:680px; height:9px;}

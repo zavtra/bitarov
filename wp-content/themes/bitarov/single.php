@@ -14,6 +14,7 @@ $breadcrumbs = "<span class='current'><a href='" . SITE_URL . "'><ins></ins>bita
 foreach (get_cat_path($post_category_id) as $cat)
   $breadcrumbs .= "<span><a href='" . get_category_link($cat->term_id) . "'>{$cat->name}</a><ins class='r'></ins></span>";
 echo "                    $breadcrumbs";
+the_post();
 ?>
                     </div>
                     <h2><?php the_title() ?></h2>
@@ -27,7 +28,7 @@ echo "                    $breadcrumbs";
 <?php
 $post_category = get_category($post_category_id);
 $post_category_link = get_category_link($post_category_id);
-$liked_arr = new WP_Query(array('posts_per_page'=>get_option('bt_liked_pp'), 'cat'=>$post_category_id, 'post__not_in'=>array($post->ID)));
+$liked_arr = new WP_Query(array('posts_per_page'=>get_option('bt_liked_pp', 5), 'cat'=>$post_category_id, 'post__not_in'=>array($post->ID)));
 $liked = '';
 while ($liked_arr->have_posts())
  {
@@ -46,7 +47,22 @@ HTML;
 ?>
                 <div class='article'>
                     <div class='date'><?php echo rusdate('j F Y', strtotime($post->post_date)); ?></div>
-                    <?php the_post(); the_content(); ?>
+<?php
+
+$opinion = get_post_meta($post->ID, 'bt_opinion', true);
+if ($opinion) echo <<<HTML
+                    <div class='wrp_substrate'>
+                        <div class='top'></div>
+                        <div class='substrate'><dl>
+                            <dt></dt>
+                            <dd>$opinion</dd>
+                        </dl></div>
+                        <div class='bottom'></div>
+                    </div>
+HTML;
+
+the_content();
+?>
                 </div>
                 <div class='clear'></div>
                 <div class='wrp-send_comment normal'>

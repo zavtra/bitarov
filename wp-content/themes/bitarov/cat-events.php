@@ -95,10 +95,11 @@ HTML;
 
 ?>
                     <div class='rubrikator-advanced'>
-                        <div class='podate'>
-                            <span>по годам:</span>
-                            <a href='#'>2012</a> <a href='#'>2011</a> <a href='#'>2010</a>
-                        </div>
+<?php
+
+$years
+
+?>
                         <p id='back-top'>
                             <a href='#top'><span></span></a>
                         </p>

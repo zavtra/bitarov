@@ -34,9 +34,9 @@ function bt_options()
  {
  $okmsg = '';
 
- if (chkpost('bt_event_w1,bt_event_h1,bt_event_w2,bt_event_h2,bt_opinion_h1,bt_opinion_w1,bt_opinion_cat,bt_opinion_pp'))
+ if (chkpost('bt_event_w1,bt_event_h1,bt_event_w2,bt_event_h2,bt_opinion_h1,bt_opinion_w1,bt_opinion_cat,bt_opinion_pp,bt_liked_pp'))
   {
-  extract(ep('bt_event_w1>>i,bt_event_h1>>i,bt_event_w2>>i,bt_event_h2>>i,bt_opinion_h1>>i,bt_opinion_w1>>i,bt_opinion_cat>>i,bt_opinion_pp>>i'));
+  extract(ep('bt_event_w1>>i,bt_event_h1>>i,bt_event_w2>>i,bt_event_h2>>i,bt_opinion_h1>>i,bt_opinion_w1>>i,bt_opinion_cat>>i,bt_opinion_pp>>i,bt_liked_pp>>i'));
   if ($bt_event_w1<10) $bt_event_w1 = BT_EVENT_W1;
   if ($bt_event_h1<10) $bt_event_h1 = BT_EVENT_H1;
   if ($bt_event_w2<10) $bt_event_w2 = BT_EVENT_W2;
@@ -44,6 +44,7 @@ function bt_options()
   if ($bt_opinion_h1<10) $bt_opinion_h1 = BT_OPINION_W1;
   if ($bt_opinion_w1<10) $bt_opinion_w1 = BT_OPINION_H1;
   if ($bt_opinion_pp<1) $bt_opinion_pp = 5;
+  if ($bt_liked_pp<1) $bt_liked_pp = 5;
   update_option('bt_event_w1', $bt_event_w1);
   update_option('bt_event_h1', $bt_event_h1);
   update_option('bt_event_w2', $bt_event_w2);
@@ -52,6 +53,7 @@ function bt_options()
   update_option('bt_opinion_h1', $bt_opinion_h1);
   update_option('bt_opinion_cat', $bt_opinion_cat);
   update_option('bt_opinion_pp', $bt_opinion_pp);
+  update_option('bt_liked_pp', $bt_liked_pp);
   $okmsg = okmsg('Настройки сохранены');
   }
 
@@ -63,12 +65,30 @@ function bt_options()
  $bt_opinion_w1 = get_option('bt_opinion_h1', BT_OPINION_H1);
  $bt_opinion_cat = get_option('bt_opinion_cat', 1);
  $bt_opinion_pp = get_option('bt_opinion_pp', 5);
+ $bt_liked_pp = get_option('bt_liked_pp', 5);
 
  $cats_arr = get_categories(array('hide_empty'=>0));
  $cats = '';
  foreach ($cats_arr as $cat) $cats .= "<option value='" . intval($cat->term_id) . "'".($cat->term_id==$bt_opinion_cat ? ' selected' : '').">" . htmltext($cat->name) . "</option>";
 
+ if (chkget('rebuild_years'))
+  {
+  $years = implode(', ', rebuild_years());
+  $msg = okmsg("Операция пересчёта годов записей завершена. Найдены записи по следующим годам: $years<br>[ <a href='?page=bt_options'>Вернуться к настройкам</a> ]", false);
+  return print "<div class='wrap' style='padding-top:10px; font-weight:bold'>$msg</div>";
+  }
+
  return print <<<HTML
+<script type='text/javascript'>
+function rebuild_years(btn)
+ {
+ document.form1.submitbtn.disabled = true;
+ btn.disabled = true;
+ btn.value = 'Ожидайте завершения операции...';
+ document.location = '?page=bt_options&rebuild_years';
+ }
+</script>
+
 <form method='POST' name='form1' action='' class='wrap'>
   <div id='icon-options-general' class='icon32'></div>
   <h2>Настройки</h2>
@@ -82,8 +102,13 @@ function bt_options()
   <tr><td>Мнение, высота картинки:</td><td><input type='text' name='bt_opinion_w1' size='5' value='$bt_opinion_w1'> px</td></tr>
   <tr><td>Мнение, рубрика:</td><td><select name='bt_opinion_cat'>$cats</select></td></tr>
   <tr><td>Мнение, заголовков на главной:</td><td><input type='text' name='bt_opinion_pp' size='5' value='$bt_opinion_pp'></td></tr>
-  <tr><td colspan='2'><input type='submit' class='button-primary' value='Сохранить настройки'></td></tr>
+  <tr><td>Число похожих записей:</td><td><input type='text' name='bt_liked_pp' size='5' value='$bt_liked_pp'></td></tr>
+  <tr><td colspan='2'><input type='submit' class='button-primary' name='submitbtn' value='Сохранить настройки'></td></tr>
   </table>
+
+  <div style='margin-top:10px; padding-top:4px; border-top:1px dotted #AAA'>
+  <input type='button' class='button' value='Проверить года' onclick='rebuild_years(this)'> - эта функция заново составляет список годов всех записей имеющихся на сайте. Выполнение операции может занять длительное время (1-5 минут) в зависимости от размера базы данных сайта. Функция выполняется автоматически 1 января каждого года.
+  </div>
 </form>
 HTML;
  }
