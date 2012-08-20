@@ -63,6 +63,9 @@ $(window).load(function() {
 	
 //jScrollPane v2
 	jQuery('.scroll-pane').jScrollPane();
+	
+//Scrolling-parallax
+
 });
 
 
