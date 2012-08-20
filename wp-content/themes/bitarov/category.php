@@ -2,9 +2,11 @@
 if (!is_category()) return include TEMPLATEPATH . '/404.php';
 
 // Информация о текущей категории
-$id_cat = get_query_var('cat');
+$current_category_id = $id_cat = get_query_var('cat');
 $current_category = get_category($id_cat);
 $current_cat_link = rtrim(get_category_link($id_cat), '/');
+$current_cat_link_opt = $current_cat_link;
+$uri_year = chkget('posts-year') ? ('year'.intval($_GET['posts-year']).'/') : '';
 
 // Число страниц категории
 $current_page = intval(get_query_var('paged'));

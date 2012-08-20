@@ -1,4 +1,5 @@
 <?php
+
 ini_set('display_errors', 'on');
 error_reporting(E_ALL);
 
@@ -95,19 +96,30 @@ function gen_pages($current_page, $pages_count, $range)
 
 function get_years($id_cat)
  {
+ $clean_interval = 3600;
+ $cache_period = 86400;
  $id_cat = intval($id_cat);
- $res = db_query("SELECT expire, data FROM pref_bt_category_cache WHERE id_cat='?1'", $id_cat);
+ $bt_category_cache_cleantime = get_option('bt_category_cache_cleantime', 0);
+ if (time()-$bt_category_cache_cleantime>$clean_interval)
+  {
+  db_query("DELETE FROM pref_bt_category_cache WHERE expire<'?1'", time());
+  update_option('bt_category_cache_cleantime', time());
+  }
+ $res = db_query("SELECT data AS years FROM pref_bt_category_cache WHERE id_cat='?1' AND expire>", $id_cat, time());
  if ($res['cnt']>0)
   {
-
+  extract(db_result($res));
+  $years = unserialize($years);
   }
-
- $res = db_query("SELECT DISTINCT year(post_date) AS year
- FROM pref_posts, pref_term_relationships
- WHERE pref_term_relationships.object_id=pref_posts.ID AND pref_term_relationships.term_taxonomy_id='?1'", $id_cat);
- $years = array();
- while (extract(db_result($res, 'i'))) $years[] = $year;
- db_query();
+ else
+  {
+  $res = db_query("SELECT DISTINCT year(post_date) AS year
+  FROM pref_posts, pref_term_relationships
+  WHERE pref_term_relationships.object_id=pref_posts.ID AND pref_term_relationships.term_taxonomy_id='?1'", $id_cat);
+  $years = array();
+  while (extract(db_result($res, 'i'))) $years[] = $year;
+  db_query("REPLACE INTO pref_bt_category_cache VALUES('?1', '?2', '?3')", $id_cat, $cache_period, serialize($years));
+  }
  return $years;
  }
 
