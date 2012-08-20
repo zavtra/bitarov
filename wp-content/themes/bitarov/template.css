@@ -180,8 +180,8 @@
                 .wrp-rubrikator-fixed .podate {margin-top:20px;}
                     .wrp-rubrikator-fixed .podate span {display:block; margin-bottom:7px; color:#8c8c8c; font:12px 'Arial';}
                     .wrp-rubrikator-fixed .podate a {display: -moz-inline-box; display: inline-block; margin-right:5px;color:#404040; font:18px 'PFDinTextCondPro', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
-                .rubrikator-advanced {position:relative; margin:0 auto; width:281px; top:210px; left:353px;}
-                #back-top {position:fixed; bottom:90px; /* отступ кнопки снизу */margin-right:-150px; /* отступ кнопки слева */}
+                .rubrikator-advanced {position:relative; margin:0 auto; width:281px; top:240px; left:353px;}
+                #back-top {bottom:90px; /* отступ кнопки снизу */}
                     #back-top a {display: block;width:85px; height:31px; -webkit-transition: 1s; -moz-transition: 1s; transition: 1s;}
                     #back-top a:hover { }
                     /* иконка стрелки (тег span) */
