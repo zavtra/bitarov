@@ -45,14 +45,12 @@ while ($liked_raw->have_posts())
  $liked .= "<li><a href='$liked_link'>$liked_title</a></li>\n                        ";
  }
 if ($liked) $liked = <<<HTML
-                <div class='right_float_article'>
-                    <div class='like_records'>
-                        <h3><strong>похожие записи</strong></h3>
-                        <span>из рубрики <a href="$post_category_link">{$post_category->name}</a></span>
-                        <ul>
-                            $liked
-                        </ul>
-                    </div>
+                <div class='like_records'>
+                    <h3><strong>похожие записи</strong></h3>
+                    <span>из рубрики <a href="$post_category_link">{$post_category->name}</a></span>
+                    <ul>
+                        $liked
+                    </ul>
                 </div>
 HTML;
 
@@ -75,7 +73,6 @@ $breadcrumbs
         <div class='wrap'>
             <div class='wrp_article'>
 $liked
-            <div class='left_float_article'>
                 <div class='article'>
                     <div class='date'>$post_date</div>
 $opinion
@@ -130,7 +127,6 @@ $post_content
                     </div>
                     </div>
                 </div>
-        </div>
             </div>
             <div class='clear'></div>
         </div>

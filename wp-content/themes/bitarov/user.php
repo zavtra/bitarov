@@ -8,15 +8,23 @@ function drop_filters()
  remove_filter('the_content', 'shortcode_unautop');
  remove_filter('the_content', 'capital_P_dangit');
  }
-
 //add_action('init', 'drop_filters');
 
-global $posts_year;
-if (preg_match('/\/year\-([0-9]+)(\/|$)/', $_SERVER['REQUEST_URI'], $year))
+function set_year()
  {
- $posts_year = intval($year[1]);
- $_SERVER['REQUEST_URI'] = preg_replace('/\/year\-([0-9]+)(\/|$)/', '/', $_SERVER['REQUEST_URI']);
+ global $wp_query;
+ //$wp_query->set('year', 2011);
+ //print_r($wp_query->query_vars);exit;
+ //print_r($_GET);
+ if (chkget('posts-year')) $wp_query->set('year', intval($_GET['posts-year']));
  }
-elseif (chkget('year')) $posts_year = intval($_GET['year']);
+add_action('parse_query', 'set_year');
+
+global $posts_year;
+if (preg_match('/\/year([0-9]+)(\/|$)/', $_SERVER['REQUEST_URI'], $year))
+ {
+ $_GET['posts-year'] = $year[1];
+ $_SERVER['REQUEST_URI'] = preg_replace('/\/year([0-9]+)(\/|$)/', '/', $_SERVER['REQUEST_URI']);
+ }
 
 ?>

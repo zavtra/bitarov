@@ -48,8 +48,8 @@ if ($category_paginagor)
  $width = count($category_paginagor)*20; // ширина линии
  $margin = ($current_page-1) * 20; // маргин указателя страницы
  foreach ($category_paginagor as $page_number)
-   if ($page_number==$current_page) $paginator .= "<a href='$current_cat_link/page/$page_number/' class='current'>$page_number</a> ";
-   else $paginator .= "<a href='$current_cat_link/page/$page_number/'>$page_number</a> ";
+   if ($page_number==$current_page) $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' class='current'>$page_number</a> ";
+   else $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/'>$page_number</a> ";
  $paginator = <<<HTML
                     <div class='paginator'>
                         <div class='top-fixed'>
@@ -70,9 +70,9 @@ if ($subcategories)
  {
  foreach ($subcategories as $category)
    if ($category['id']<>$current_category_id)
-     $subcategories_block .= "<li><span><a href='$category[link]'>$category[name]</a></span></li>\n                            ";
+     $subcategories_block .= "<li><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
    else
-     $subcategories_block .= "<li class='current'><span><a href='$category[link]'>$category[name]</a></span></li>\n                            ";
+     $subcategories_block .= "<li class='current'><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
  $subcategories_block = <<<HTML
                     <div class='rubrikator-fixed'>
                         <ul>
@@ -80,6 +80,15 @@ if ($subcategories)
                         </ul>
                     </div>
 HTML;
+ }
+
+// --- Года
+$years = '';
+$years_raw = get_years($current_category_id);
+if (count($years_raw)>1)
+ {
+ foreach ($years_raw as $year) $years .= "<a href='$current_cat_link/year$year/'>$year</a> ";
+ $years = "                        <div class='podate'><span>по годам:</span> $years</div>";
  }
 
 echo <<<HTML
@@ -113,7 +122,7 @@ $paginator
 $subcategories_block
 
                     <div class='rubrikator-advanced'>
-тут будут года
+$years
                         <p id='back-top'>
                             <a href='#top'><span></span></a>
                         </p>
