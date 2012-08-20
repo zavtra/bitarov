@@ -80,7 +80,7 @@ function bt_installed()
  db_query("CREATE TABLE wp_bt_thanks(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, pos TINYINT UNSIGNED, caption VARCHAR(50), text BLOB)");
 
  db_query("DROP TABLE wp_bt_category_cache");
- db_query("CREATE TABLE wp_bt_category_cache(id_cat INTEGER UNSIGNED, expire INTEGER UNSIGNED, data VARCHAR(255))");
+ db_query("CREATE TABLE wp_bt_category_cache(id_cat INTEGER UNSIGNED PRIMARY KEY, expire INTEGER UNSIGNED, data VARCHAR(255))");
  }
 
 function gen_pages($current_page, $pages_count, $range)
@@ -105,7 +105,7 @@ function get_years($id_cat)
   db_query("DELETE FROM pref_bt_category_cache WHERE expire<'?1'", time());
   update_option('bt_category_cache_cleantime', time());
   }
- $res = db_query("SELECT data AS years FROM pref_bt_category_cache WHERE id_cat='?1' AND expire>", $id_cat, time());
+ $res = db_query("SELECT data AS years FROM pref_bt_category_cache WHERE id_cat='?1' AND expire>'?2'", $id_cat, time());
  if ($res['cnt']>0)
   {
   extract(db_result($res));
@@ -118,7 +118,7 @@ function get_years($id_cat)
   WHERE pref_term_relationships.object_id=pref_posts.ID AND pref_term_relationships.term_taxonomy_id='?1'", $id_cat);
   $years = array();
   while (extract(db_result($res, 'i'))) $years[] = $year;
-  db_query("REPLACE INTO pref_bt_category_cache VALUES('?1', '?2', '?3')", $id_cat, $cache_period, serialize($years));
+  db_query("REPLACE INTO pref_bt_category_cache VALUES('?1', '?2', '?3')", $id_cat, time()+$cache_period, serialize($years));
   }
  return $years;
  }
