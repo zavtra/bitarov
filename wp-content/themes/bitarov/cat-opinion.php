@@ -86,9 +86,9 @@ if ($category_paginagor)
  {
  $pages_html = '';
  $width = count($category_paginagor)*20;
- $margin = ($current_page-1) * 20;
+ $margin = ($current_page_number-1) * 20;
  foreach ($category_paginagor as $p)
-   if ($p==$current_page) $pages_html .= "<a href='$current_cat_link/page/$p/' class='current'>$p</a> ";
+   if ($p==$current_page_number) $pages_html .= "<a href='$current_cat_link/page/$p/' class='current'>$p</a> ";
    else $pages_html .= "<a href='$current_cat_link/page/$p/'>$p</a> ";
  echo <<<HTML
                     <div class='paginator'>

@@ -46,7 +46,7 @@ HTML;
                     <div class='karta'>
 <!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (начало) -->
 <div id="ymaps-map-id_1345180514674467712684"></div>
-<script type="text/javascript">function fid_1345180514674467712684(ymaps) {var map = new ymaps.Map("ymaps-map-id_1345180514674467712684", {center: [104.30181382006826, 52.27906285872691], zoom: 16, type: "yandex#map"});map.controls.add("zoomControl").add("mapTools").add(new ymaps.control.TypeSelector(["yandex#map", "yandex#satellite", "yandex#hybrid", "yandex#publicMap"]));map.geoObjects.add(new ymaps.Placemark([104.2805983632738, 52.290168559594015], {balloonContent: "Метка"}, {preset: "twirl#lightblueDotIcon"})).add(new ymaps.Placemark([104.30189965075674, 52.278944407150604], {balloonContent: "Метка"}, {preset: "twirl#lightblueDotIcon"}));};</script>
+<script type="text/javascript">function fid_1345180514674467712684(ymaps) {var map = new ymaps.Map("ymaps-map-id_1345180514674467712684", {center: [104.30181382006826, 52.27906285872691], zoom: 16, type: "yandex#map"});map.controls.add("smallZoomControl");map.geoObjects.add(new ymaps.Placemark([104.30181382006826, 52.27906285872691]));};</script>
 <script type="text/javascript" src="http://api-maps.yandex.ru/2.0/?coordorder=longlat&load=package.full&wizard=constructor&lang=ru-RU&onload=fid_1345180514674467712684"></script>
 <!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (конец) -->
 

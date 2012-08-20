@@ -9,8 +9,8 @@ $current_cat_link_opt = $current_cat_link;
 $uri_year = chkget('posts-year') ? ('year'.intval($_GET['posts-year']).'/') : '';
 
 // Число страниц категории
-$current_page = intval(get_query_var('paged'));
-if ($current_page<1) $current_page = 1;
+$current_page_number = intval(get_query_var('paged'));
+if ($current_page_number<1) $current_page_number = 1;
 $per_page = intval(get_query_var('posts_per_page'));
 $total_posts = intval($wp_query->found_posts);
 if ($per_page>0 and $total_posts>0)
@@ -19,7 +19,7 @@ if ($per_page>0 and $total_posts>0)
  if (is_float($pages_count)) $pages_count = intval($pages_count)+1;
  }
 else $pages_count = 1;
-$category_paginagor = ($pages_count>1) ? gen_pages($current_page, $pages_count, 3) : array();
+$category_paginagor = ($pages_count>1) ? gen_pages($current_page_number, $pages_count, 3) : array();
 
 // Подкатегории
 $cats = get_categories(array('parent'=>$id_cat, 'hide_empty'=>0));
