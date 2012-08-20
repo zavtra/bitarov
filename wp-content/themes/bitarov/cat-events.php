@@ -27,7 +27,7 @@ while (have_posts())
    {
    $tag_link = get_tag_link($tag->term_id);
    $tag_name = $tag->name;
-   $post_tags .= "<div class='tag'><a href='$tag_link'>$tag_name</a></div> ";
+   $post_tags .= "<a href='$tag_link'>$tag_name</a> ";
    }
  $posts_list .= <<<HTML
                     <div class='item'>
@@ -36,19 +36,31 @@ while (have_posts())
                         <p>$post_excerpt</p>
                         <div class='more'><a href='$post_link'>подробнее</a></div>
                         <div class='date'>$post_date</div>
-                        $post_tags
+                        <div class='tag'>$post_tags</div>
                     </div>
 HTML;
  }
+
+// --- Шаблон поста для подгрузки через JSON
+$json_post_template = <<<HTML
+                    <div class='item'>
+                        <div class='breadcrumbs'><a href='#'>Фонд Битарова</a> &rarr;</div>
+                        <h3><a href='__POST_LINK__'>__POST_TITLE__</a></h3>
+                        <p>__POST_EXCERPT__t</p>
+                        <div class='more'><a href='__POST_LINK__'>подробнее</a></div>
+                        <div class='date'>__POST_DATE__</div>
+                    </div>
+HTML;
+$json_post_template = json_encode($json_post_template);
 
 // --- Пагинатор
 $paginator = '';
 if ($category_paginagor)
  {
  $width = count($category_paginagor)*20; // ширина линии
- $margin = ($current_page-1) * 20; // маргин указателя страницы
+ $margin = ($current_page_number-1) * 20; // маргин указателя страницы
  foreach ($category_paginagor as $page_number)
-   if ($page_number==$current_page) $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' class='current'>$page_number</a> ";
+   if ($page_number==$current_page_number) $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' class='current'>$page_number</a> ";
    else $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/'>$page_number</a> ";
  $paginator = <<<HTML
                     <div class='paginator'>
@@ -91,7 +103,18 @@ if (count($years_raw)>1)
  $years = "                        <div class='podate'><span>по годам:</span> $years</div>";
  }
 
+// --- Показать предыдущие сообщения
+$display_more = ($pages_count>$current_page_number) ? 'block' : 'none';
+
 echo <<<HTML
+<script type='text/javascript'>
+current_category_id = $current_category_id;
+current_page_number = $current_page_number;
+current_page_number_more = $current_page_number;
+more_loading = false;
+post_template = $json_post_template;
+</script>
+
 <!-- контент -->
     <div class='content'>
         <div class='event-header'>
@@ -108,19 +131,18 @@ $breadcrumbs
         <div class='event-bottom-img'></div>
         <div class='wrap event'>
             <div class='event-body'>
-                <div class='list_items'>
+                <div class='list_items' id='posts_list'>
 
 $posts_list
 
-                    <div class='button-show-old'>
-                        <a href='#'>Показать предыдущие события</a>
-                        <img src='wp-content/themes/bitarov/images/ico/loading.gif' width='50' height='50' alt='' />
+                    <div class='button-show-old' style='display:$display_more'>
+                        <a href='#' onclick='showmore(); return false;'>Показать предыдущие события</a>
+                        <img id='old-loader' src='wp-content/themes/bitarov/images/ico/loading.gif' alt='' />
                     </div>
                 </div>
                 <div class='wrp-rubrikator-fixed'>
 $paginator
 $subcategories_block
-
                     <div class='rubrikator-advanced'>
 $years
                         <p id='back-top'>
