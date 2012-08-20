@@ -24,10 +24,18 @@ case 'get_posts':
      'post_link' => get_permalink($posts->post->ID),
      'category_id' => $post_category_id,
      'category_name' => $post_category->name,
-     'category_link' => get_category_link($post_category_id)
+     'category_link' => get_category_link($post_category_id),
+     'opinion' => get_post_meta($posts->post->ID, 'bt_opinion', false),
+     'tags' => ''
    );
-   $opinion = get_post_meta($posts->post->ID, 'bt_opinion', false);
-   if ($opinion) $item['opinion'] = $opinion;
+   if (is_array($tags_raw=get_the_tags()))
+    foreach ($tags_raw as $tag)
+     {
+     $tag_link = get_tag_link($tag->term_id);
+     $tag_name = $tag->name;
+     $item['tags'] .= "<a href='$tag_link'>$tag_name</a> ";
+     }
+
    $resp_items[] = $item;
    }
   unset($posts);

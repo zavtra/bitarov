@@ -61,13 +61,42 @@ $(window).load(function() {
 		});
 	});
 
-//jScrollPane v2
+    //jScrollPane v2
 	jQuery('.scroll-pane').jScrollPane();
 
-//Scrolling-parallax
+    //Scrolling-parallax
+
+    $(window).scroll(function() {
+        var top = $(window).scrollTop();
+        if (top>fixed_top)
+         {
+         if (fixed_fix) return;
+         fixed_fix = true;
+         fixed_div.style.position = 'fixed';
+         $('#wrap-fixed').css('top', '-'+fixed_top+'px');
+         }
+        else
+         {
+         if (!fixed_fix) return;
+         fixed_fix = false;
+         fixed_div.style.position = 'absolute';
+         $('#wrap-fixed').css('top', '0');
+         }
+    });
 
 });
 
+fixed_div = null;
+fixed_top = 0;
+fixed_fix = false;
+$(window).ready(function() {
+  var div;
+  if (div=elem('paginator-fixed')) fixed_top = $(div).position().top;
+  else if (div=elem('rubrikator-fixed')) fixed_top = $(div).position().top;
+  else if (div=elem('years-fixed')) fixed_top = $(div).position().top;
+  fixed_top -= 20;
+  fixed_div = elem('wrap-fixed');
+});
 
 // -------------------------------------------------- Показать предыдущие записи
 
@@ -109,8 +138,8 @@ function showmore()
   snipet = snipet.replace(/__POST_TITLE__/, response.items[num].post_title);
   snipet = snipet.replace(/__POST_EXCERPT__/, response.items[num].post_excerpt);
   snipet = snipet.replace(/__POST_DATE__/, response.items[num].post_date);
+  snipet = snipet.replace(/__TAGS__/, response.items[num].tags);
   /*
-  snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
   snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
   snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
   snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
