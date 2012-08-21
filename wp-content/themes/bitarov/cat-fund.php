@@ -17,7 +17,7 @@
         <div class='event-bottom-img'></div>
 
         <div class='wrap'>
-        <div class='overLayer blago' style='display:none'>
+        <div class='overLayer blago' id='messageFundShadow' style='display:none' onclick='messageFundClose()'>
         </div>
             <div class='fond-header'>
                 <div class='content'>
@@ -28,10 +28,10 @@
                 <div class='wrp-send-message'>
                     <div class='send_message'>
                         <img src='wp-content/themes/bitarov/images/ico/send_message.png' width='25' height='19' alt='' />
-                        <a href=''>Оставить обращение</a><span>&darr;</span>
-                        <div class='wrp-window-comment' style='display:none'>
+                        <a href='#' onclick='return messageFundOpen()'>Оставить обращение</a><span>&darr;</span>
+                        <div class='wrp-window-comment' style='display:none' id='messageFundBox'>
                         <div class='window-comment'>
-                            <a href='#' class='exit'></a>
+                            <a href='#' class='exit' onclick='return messageFundClose()'></a>
                             <form>
                                 <div class='msg'>
                                     <textarea name="msg" placeholder='Ваше обращение' onfocus="this.className='active'" onblur="this.className='idle'"></textarea>
@@ -79,6 +79,13 @@ $mons = array(
   11 => 'Ноября',
   12 => 'Декабря'
 );
+
+$exclude = array();
+foreach ($subcategories as $subcategory)
+ if ($subcategory['id']<>$current_category_id) $exclude[] = $subcategory['id'];
+$args = $wp_query->query_vars;
+$args['category__not_in'] = array_merge($args['category__not_in'], $exclude);
+query_posts($args);
 
 while (have_posts())
  {

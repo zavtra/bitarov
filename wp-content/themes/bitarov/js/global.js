@@ -67,6 +67,7 @@ $(window).load(function() {
     //Scrolling-parallax
 
     $(window).scroll(function() {
+        if (!fixed_div) return;
         var top = $(window).scrollTop();
         if (top>fixed_top)
          {
@@ -111,10 +112,26 @@ function newcomment()
 
 function actFrameNavigate(link)
  {
+ // var top = $('.wrp-activity').position().top; // неправильно считается
+ $('body,html').animate({scrollTop:420}, 800);
  $('.list_news .news').removeClass('current');
  $(link.parentNode).addClass('current');
  var url = link.href.replace(/\/$/, '') + '/framed/';
  document.actionsFrame.navigate(url);
+ return false;
+ }
+
+function messageFundClose()
+ {
+ $('#messageFundShadow').fadeOut(400);
+ $('#messageFundBox').fadeOut(400);
+ return false;
+ }
+
+function messageFundOpen()
+ {
+ $('#messageFundShadow').fadeIn(600);
+ $('#messageFundBox').fadeIn(400);
  return false;
  }
 

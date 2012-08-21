@@ -2,7 +2,6 @@
 get_header();
 
 // --- Список постов текущей категории
-
 $posts_list = '';
 $first_post_id = 0;
 while (have_posts()):
@@ -37,7 +36,9 @@ $paginator
 HTML;
  }
 
+// --- Ссылка на первый пост во фрейме
 $first_post_link = $first_post_id ? rtrim(get_permalink($first_post_id), '/') . '/framed/' : 'about:blank';
+
 
 echo <<<HTML
 
