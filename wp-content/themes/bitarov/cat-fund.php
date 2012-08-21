@@ -17,14 +17,14 @@
         <div class='event-bottom-img'></div>
 
         <div class='wrap'>
-        <div class='overLayer blago' id='messageFundShadow' style='display:none' onclick='messageFundClose()'>
-        </div>
+        <div class='overLayer blago' id='messageFundShadow' style='display:none' onclick='messageFundClose()'></div>
             <div class='fond-header'>
                 <div class='content'>
                 Благотворительная деятельность фонда «Кто, если не Я?» направлена на оказание помощи детям, находящихся в трудной жизненной ситуации, создание благоприятных условий для образования и развития детей-сирот в детских домах и повышение квалификации специалистов, работающих с детьми.
                 </div>
             </div>
             <div class='fond-body'>
+                <!-- начало сообщения -->
                 <div class='wrp-send-message'>
                     <div class='send_message'>
                         <img src='wp-content/themes/bitarov/images/ico/send_message.png' width='25' height='19' alt='' />
@@ -54,6 +54,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- конец сообщения -->
                 <div class='menu'>
                     <img src='wp-content/themes/bitarov/images/css/fond-menu-shadow.png' alt='' />
                     <ul>
