@@ -37,19 +37,16 @@
 /* Шапка! */
 .wrap {position:relative; margin:0 auto; padding: 0 10px 0 10px; width:1000px;}
 .container {position:relative; min-height:100%; height:100%; height:auto!important;}
-    .header {position:relative; z-index:10000;min-height:102px; background:url('images/css/header-bg.png') repeat-x; font:17px PFDinTextCondPro-b, Arial;}
+    .header {position:relative; z-index:10000; height:102px; background:url('images/css/header-bg.png') repeat-x; font:17px PFDinTextCondPro-b, Arial;}
             .header .wrap {min-height:102px; width:1000px; overflow:hidden;}
+				/*Эту хрень потом надо удалить*/
                 .h_menu-left {overflow:hidden; margin:36px 0 0 0;width:368px; text-align: justify; text-transform:uppercase;}
-                .h_menu-left {*width:387px;}
                         .h_menu-left li { display: -moz-inline-box; display: inline-block; margin:0;padding:0; zoom: 1; *display: inline; padding-bottom:5px;}
-                        .h_menu-left li {*margin:0 16px 0 0;}
-                        .h_menu-left li:last-child {margin:0;}
+                         .h_menu-left li:last-child {margin:0;}
                         .h_menu-left li.helper { visibility: hidden; width: 100%;height:0;}
                             .h_menu-left a {color:#333; text-decoration:none; border-bottom:1px solid #999999;}
                             .h_menu-left a:hover {color:#266a86; border-bottom:1px solid #266a86;}
                             .h_menu-left a.current {color:#1d8aba; border-bottom:1px solid #8ec4dc;}
-                .wrp_h_owner { position:absolute; left:50%; margin-left:-118px; width:237px; height:94px; background:url('images/css/header-owner.png') 0 0 no-repeat #1f89bb;}
-                    .h_owner {width:236px; height:93px; border-right:1px solid #dfe8ed; border-left:1px solid #dfe8ed;}
                 .h_menu-right { float:right; overflow:hidden; margin:36px 0 0 0; width:366px; text-transform:uppercase;}
                         .h_menu-right li { display: -moz-inline-box; display: inline-block; margin:0 16px 0 0; padding:0; zoom: 1; *display: inline; padding-bottom:5px;}
                         .h_menu-right li:last-child {margin:0;}
@@ -57,7 +54,20 @@
                             .h_menu-right a {color:#333; text-decoration:none; border-bottom:1px solid #999999;}
                             .h_menu-right a:hover {color:#266a86; border-bottom:1px solid #266a86;}
                             .h_menu-right a.current {color:#1d8aba; border-bottom:1px solid #8ec4dc;}
-
+				/*Эту хрень потом надо удалить*/
+/* Нормальное меню */
+                .wrp_h_owner { position:absolute; left:50%; top:0; margin-left:-118px; width:237px; height:94px; background:url('images/css/header-owner.png') 0 0 no-repeat #1f89bb;}
+                    .h_owner {display:block; width:236px; height:93px; border-right:1px solid #dfe8ed; border-left:1px solid #dfe8ed;}
+						.menu {margin:36px 0 0 0; text-transform:uppercase; vertical-align:middle; overflow:hidden;}						                      
+						.menu li {  float:left; margin:0 0 0 13px; padding:0;  padding-bottom:5px;  line-height:20px;}
+                        .menu li:first-child {margin:0;}
+                        .menu li.helper { visibility: hidden; width: 100%;height:0;}
+                            .menu a {color:#333; text-decoration:none; border-bottom:1px solid #999999;}
+                            .menu a:hover {color:#266a86; border-bottom:1px solid #266a86;}
+                            .menu li.current-menu-item a,.menu li.current-menu-parent a {color:#1d8aba; border-bottom:1px solid #8ec4dc;}			
+						.menu-top_left-container {width:380px; float:left; }
+						.menu-top_right-container { float:right; width:363px;}							
+							
 /* Индекс! */
     .content {padding-bottom:70px;}
         .overlay {background:url(images/css/Overlayer_bg.png); height:440px; width:100%; display:none; position:absolute; z-index:9999;}
@@ -406,7 +416,7 @@
                 .rekviziti .email a {color:#333;}
 
     /* Биорграфия */
-    .bf_body { padding-bottom:75px;}
+    .bf_body { padding-bottom:78px;}
         .goda_block {width:269px; max-height:244px; float:left; padding:22px 48px 0 19px; font-size:12px; background:url('images/css/goda_block-bg.png') no-repeat;}
             .wrp-goda_block_scroll {width:332px; max-height:261px; border:1px solid #dde4e8; background:#FFF; float:left; position:relative;}
                 .wrp-goda_block_scroll.one {border:none; max-height:244px!important; width:346px!important;}
@@ -506,12 +516,14 @@
 
 /*  Подвал!  */
     .footer {position:absolute; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
-        .footer .wrap {padding-top:34px;}
-            .vendor {float:right;width:235px; text-align:right; font:13px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
+        .footer .wrap {padding-top:31px;}
+            .vendor {float:right; width:235px; margin-top:5px; text-align:right; font:13px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .vendor a {color:#1572c6;}
-            .footer-menu {float:left; font:14px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
-                .footer-menu ul {margin:-1px 0 0 0; padding:0;}
-                .footer-menu li {display: -moz-inline-box; display: inline-block; margin-right:20px;padding:0; zoom: 1; *display: inline;}
-                    .footer-menu ul li a {color:#54a5d4; text-decoration:underline;}
+            .footer-menu {font:14px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; margin:0;}			
+				.menu-footer-container { float:left;  overflow:hidden;  height:80px;}							
+                .footer-menu li { margin-right:20px;padding:0; line-height:1.3;}
+				.footer-menu li  {display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;	}  	
+                    .footer-menu a {color:#54a5d4; text-decoration:none; border-bottom:1px solid #8ec4dc;}
+					.footer-menu li.current-menu-item a,.footer-menu li.current-menu-parent a {color:#1d8aba; border-bottom:1px solid #8ec4dc; }	
                     .footer-menu ul li a:hover {text-decoration:none;}
 /* end  Подвал!  */
