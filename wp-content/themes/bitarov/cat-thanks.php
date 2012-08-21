@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php
+get_header();
+
+$res = db_query("SELECT id, caption, text FROM pref_bt_thanks");
+
+
+$html = <<<HTML
 
 <!-- контент -->
     <div class='content'>
@@ -63,47 +69,14 @@
                     </ul>
                 </div>
                 <div class='items'>
-<?php
-global $post;
-$mons = array(
-  1  => 'Января',
-  2  => 'Февраля',
-  3  => 'Марта',
-  4  => 'Апреля',
-  5  => 'Мая',
-  6  => 'Июня',
-  7  => 'Июля',
-  8  => 'Августа',
-  9  => 'Сентября',
-  10 => 'Октября',
-  11 => 'Ноября',
-  12 => 'Декабря'
-);
-
-while (have_posts())
- {
- the_post();
- $d = intval(get_post_meta($post->ID, 'bt_fund_announce_d', true));
- $m = intval(get_post_meta($post->ID, 'bt_fund_announce_m', true));
- if (isset($mons[$m]) and $d>=1 and $d<=31) $date = "$d<span>$mons[$m]</span>";
- else $date = '';
- $title = get_the_title();
- $content = bt_post_content();
- echo <<<HTML
-                    <dl>
-                        <dt><div>$date</div></dt>
-                        <dd>
-                            <h3>$title</h3>
-                            <p>$content</p>
-                        </dd>
-                    </dl>
-HTML;
- }
-?>
+$thank_slides
                 </div>
             </div>
 
         </div>
     </div>
 
-<?php get_footer(); ?>
+HTML;
+
+get_footer();
+?>
