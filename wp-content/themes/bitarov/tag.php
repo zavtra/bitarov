@@ -2,15 +2,13 @@
 get_header();
 
 // --- Хлебные крошки
-$categories_path = get_cat_path($current_category_id);
 $siteurl = SITE_URL;
-$breadcrumbs = "<span class='current'><a href='$siteurl'><ins></ins>bitarov.as</a></span>\n";
-foreach ($categories_path as $category)
- {
- $category_link = get_category_link($category->term_id);
- $category_name = $category->name;
- $breadcrumbs .= "                        <span><a href='$category_link'>$category_name</a><ins class='r'></ins></span>\n";
- }
+$tag = get_queried_object();
+$tag_name = $tag->name;
+$tag_link = get_tag_link($tag->term_id);
+
+$breadcrumbs = "<span class='current'><a href='$siteurl'><ins></ins>bitarov.as</a></span>
+                <span><a href='$tag_link'>Метка &laquo;$tag_name&raquo;</a><ins class='r'></ins></span>";
 
 // --- Список постов
 $posts_list = '';
@@ -45,6 +43,7 @@ while (have_posts())
 HTML;
  }
 
+/* надеюсь не понадобится
 // --- Шаблон поста для подгрузки через JSON
 $json_post_template = <<<HTML
                     <div class='item'>
@@ -57,6 +56,20 @@ $json_post_template = <<<HTML
                     </div>
 HTML;
 $json_post_template = json_encode($json_post_template);
+*/
+
+// Число страниц категории
+$current_page_number = intval(get_query_var('paged'));
+if ($current_page_number<1) $current_page_number = 1;
+$per_page = intval(get_query_var('posts_per_page'));
+$total_posts = intval($wp_query->found_posts);
+if ($per_page>0 and $total_posts>0)
+ {
+ $pages_count = $total_posts / $per_page;
+ if (is_float($pages_count)) $pages_count = intval($pages_count)+1;
+ }
+else $pages_count = 1;
+$category_paginagor = ($pages_count>1) ? gen_pages($current_page_number, $pages_count, 3) : array();
 
 // --- Пагинатор
 $paginator = '';
@@ -81,24 +94,7 @@ if ($category_paginagor)
 HTML;
  }
 
-// --- Подкатегории
-$subcategories_block = '';
-if ($subcategories)
- {
- foreach ($subcategories as $category)
-   if ($category['id']<>$current_category_id)
-     $subcategories_block .= "<li><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
-   else
-     $subcategories_block .= "<li class='current'><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
- $subcategories_block = <<<HTML
-                    <div class='rubrikator-fixed' id='rubrikator-fixed'>
-                        <ul>
-                        $subcategories_block
-                        </ul>
-                    </div>
-HTML;
- }
-
+/* вроде не нужны
 // --- Года
 $years = '';
 $years_raw = get_years($current_category_id);
@@ -107,28 +103,16 @@ if (count($years_raw)>1)
  foreach ($years_raw as $year) $years .= "<a href='$current_cat_link/year$year/'>$year</a> ";
  $years = "        <div class='podate'><span>по годам:</span> $years</div>";
  }
+*/
 
 // --- Показать предыдущие сообщения
-$display_more = ($pages_count>$current_page_number) ? 'block' : 'none';
+//$display_more = ($pages_count>$current_page_number) ? 'block' : 'none';
 
 echo <<<HTML
-<script type='text/javascript'>
-current_category_id = $current_category_id;
-current_page_number = $current_page_number;
-current_page_number_more = $current_page_number;
-more_loading = false;
-post_template = $json_post_template;
-</script>
-
 <!-- контент -->
 
     <div class='wrp-rubrikator-fixed' id='wrap-fixed'>
 $paginator
-$subcategories_block
-        <div class='rubrikator-advanced' id='years-fixed'>
-$years
-        <p id='back-top'><a href='#top'><span></span></a></p>
-        </div>
     </div>
 
     <div class='content'>
@@ -138,7 +122,7 @@ $years
                     <div class='breadcrumbs'>
 $breadcrumbs
                     </div>
-                    <h2>События</h2>
+                    <h2>Записи отмеченные тегом &laquo;$tag_name&raquo;</h2>
                 </div>
                 <div class='clear'></div>
             </div>
@@ -150,10 +134,6 @@ $breadcrumbs
 
 $posts_list
 
-                    <div class='button-show-old' style='display:$display_more'>
-                        <a href='#' onclick='showmore(); return false;'>Показать предыдущие события</a>
-                        <img id='old-loader' src='wp-content/themes/bitarov/images/ico/loading.gif' alt='' />
-                    </div>
                 </div>
                 <div class='clear'></div>
             </div>

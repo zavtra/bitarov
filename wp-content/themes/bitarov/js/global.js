@@ -141,6 +141,10 @@ function showmore()
  if (typeof(response.info.next_page)!='number') $('.button-show-old').css('display', 'none');
  var posts_list = elem('posts_list');
  var div, snipet;
+ div = document.createElement('div');
+ div.style.margin = '10px 0';
+ div.style.borderTop = '1px dashed #CCC';
+ posts_list.appendChild(div);
  for (num in response.items)
   {
   div = document.createElement('div');
@@ -151,7 +155,7 @@ function showmore()
   snipet = snipet.replace(/__CATEGORY_LINK__/, response.items[num].category_link);
   snipet = snipet.replace(/__POST_EXCERPT__/, response.items[num].post_excerpt);
   snipet = snipet.replace(/__OPINION__/, response.items[num].opinion);
-  snipet = snipet.replace(/__POST_DATE__/, response.items[num].post_dm + ' ' + response.items[num].post_y);
+  snipet = snipet.replace(/__POST_DATE__/, response.items[num].post_date_dm + ' ' + response.items[num].post_date_y);
   snipet = snipet.replace(/__POST_DATE_DM__/, response.items[num].post_date_dm);
   snipet = snipet.replace(/__POST_DATE_Y__/, response.items[num].post_date_y);
   snipet = snipet.replace(/__TAGS__/, response.items[num].tags);
@@ -159,7 +163,7 @@ function showmore()
   div.innerHTML = snipet;
   posts_list.appendChild(div);
   }
- $('body,html').animate({scrollTop:top+30}, 800);
+ $('body,html').animate({scrollTop:top}, 800);
  }
 
 //Placeholder

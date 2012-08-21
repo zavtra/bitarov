@@ -205,10 +205,10 @@
                     .event-body .item p {margin:9px 0; color:#333; font:14px 'Arial'; line-height:20px;}
                     .event-body .item .more {display:none;float:right; margin:3px 2px 0 0;}
                         .event-body .item .more a {color:#777; font:12px 'Arial';}
-                    .event-body .item .date {margin-right:40px; color:#898989;font:13px 'Arial Narrow', 'Arial'; display:inline;}
+                    .event-body .item .date {margin-right:20px; color:#898989;font:13px 'Arial Narrow', 'Arial'; display:inline;}
                     .event-body .item .tag {display:inline;}
                         .event-body .item .tag img {}
-                        .event-body .item .tag a {background:url(images/ico/event-tag.png) 0 1px no-repeat; padding-left:25px; margin-right:10px; color:#8d949c; font:11px 'Arial'; display:inline; vertical-align:top;}
+                        .event-body .item .tag a {background:url(images/ico/event-tag.png) 0 3px no-repeat; padding-left:25px; margin-right:16px; color:#8d949c; font:11px 'Arial'; display:inline; vertical-align:top;}
             .button-show-old {margin:22px 0 0 0;}
                 .button-show-old .button {}
                     .event-body .button-show-old a {font:16px 'Georgia', 'Arial'; color:#FFF; text-decoration:none; float:left; padding:9px 0 0 19px; margin:6px 6px 0 0; width:257px; height:34px; background:url('images/css/buttons-pack.png') -2px -145px no-repeat; display:block;}
@@ -236,14 +236,15 @@
                         .fond-body .menu li a.current {border:none; color:#1a9150;}
         .fond-body .items { }
             .fond-body .items img {margin-top:13px; width:1005px; height:8px;}
-            .fond-body .items dl {margin-top:3px; padding-top:15px; border-top:1px dotted #99a8ae;}
+            /* .fond-body .items dl {margin-top:3px; padding-top:15px; border-top:1px dotted #99a8ae;} зачем точки вверху? */
+            .fond-body .items dl {margin-top:3px; padding-top:15px}
             .fond-body .items dl:first-child {padding:0;border:none;}
                 .fond-body .items dt {float:left;width:73px; height:55px; background:url('images/css/fond-item-data_bg.png') no-repeat; color:#444; font:18px 'Arial';}
                     .fond-body .items dt div {margin:6px 0 0 2px; width:63px; text-align:center;}
                     .fond-body .items dt span {display:block; font:11px 'Arial'; margin-left:1px;}
                 .fond-body .items dd {margin-left:91px; width:736px; font:14px 'Arial';}
                     .fond-body .items dd h3 {margin:0 0 10px 0; font:18px 'Arial';}
-                    .fond-body .items dd p {padding:0 0 3px 0;}
+                    .fond-body .items dd p {padding:0; margin:0}
 
     /* Мнение! */
     .event-body .list_items { }
@@ -258,7 +259,7 @@
                         .event-body .item dd p span {color:#808080;}
                             .event-body .item dd p span a {color:#808080;}
                  .vista_item {padding:8px 0; height:3px;background:url('images/css/vista_item-border_bottom.png') no-repeat;}
-                 .vista_item .number_comment {float:left; margin-right:55px;color:#9ab17c; font:11px 'Arial';}
+                 .vista_item .number_comment {float:left; margin-right:20px;color:#9ab17c; font:11px 'Arial';}
                     .vista_item .number_comment img {float:left; margin-right:5px;}
                     .vista_item .number_comment a {color:#9ab17c;}
 

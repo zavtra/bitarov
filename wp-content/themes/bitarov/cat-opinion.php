@@ -76,7 +76,7 @@ $json_post_template = <<<HTML
                                 <div class='vista_item'>
                                     <div class='number_comment'>
                                         <img src='wp-content/themes/bitarov/images/ico/comment-ava.png' width='15' height='15' alt='' />
-                                        <a href='$post_link#comments'>__COMMENTS_COUNT__</a>
+                                        <a href='__POST_LINK__#comments'>__COMMENTS_COUNT__</a>
                                     </div>
                                     <div class='tag'>__TAGS__</div>
                                 </div>
@@ -180,7 +180,7 @@ $breadcrumbs
 $posts_list
 
                     <div class='button-show-old' style='display:$display_more'>
-                        <a href='#' onclick='showmore(); return false;'>Показать предыдущие события</a>
+                        <a href='#' onclick='showmore(); return false;'>Показать предыдущие записи</a>
                         <img id='old-loader' src='wp-content/themes/bitarov/images/ico/loading.gif' alt='' />
                     </div>
                 </div>
