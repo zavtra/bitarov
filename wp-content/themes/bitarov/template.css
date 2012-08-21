@@ -230,8 +230,7 @@
     /* Благотворительный фонд! */
     .fond-header {overflow:hidden; margin-bottom:7px; padding:18px 0 0 16px; height:96px;background:url('images/css/fond-header.png') no-repeat;}
         .fond-header .content {max-height:70px; width:593px; color:#000; font:13px 'Arial'; line-height:16px;}
-    .fond-body {position:relative;}
-        .fond-body .wrp-send-message { }
+    .fond-body {position:relative; padding-bottom: 50px;}
             .wrp-send-message .send_message {position:relative;}
                 .wrp-send-message .send_message img {float:left; margin-right:5px;}
                 .wrp-send-message .send_message a {border-bottom:1px dotted #0088c0; color:#0088c0; text-decoration:none;font:14px 'Arial';}
@@ -244,7 +243,6 @@
                     .fond-body .menu li a {border-bottom:1px dotted #333;color:#707070; text-decoration:none;}
                     .fond-body .menu li a:hover {border:none;text-decoration:none;}
                         .fond-body .menu li a.current {border:none; color:#1a9150;}
-        .fond-body .items { }
             .fond-body .items img {margin-top:13px; width:1005px; height:8px;}
             .fond-body .items dl {margin-top:3px; padding-top:15px; border-top:1px dotted #99a8ae;}
             .fond-body .items dl:first-child {padding:0;border:none;}
@@ -256,9 +254,6 @@
                     .fond-body .items dd p {padding:0 0 3px 0;}
 
     /* Мнение! */
-    .event-body .list_items { }
-        .event-body .item { }
-            .event-body .item dl { }
                 .event-body .item dt {float:left;text-align:left;}
                     .event-body .item dt div {width:56px; height:63px; background:url('images/css/substrate_owner.png') no-repeat}
                     .event-body .item dt span {display:block; margin-top:7px; color:#7b848d; font:12px 'Arial Narrow', 'Arial';}
