@@ -2,9 +2,52 @@
 get_header();
 
 $res = db_query("SELECT id, caption, text FROM pref_bt_thanks");
+$slides_count = $res['cnt'] / 4;
+if (is_float($slides_count)) $slides_count = intval($slides_count)+1;
+$thank_slides = '';
+for ($current_slide=1; $current_slide<=$slides_count; $current_slide++)
+ {
+ $miniblock1 = $miniblock2 = $miniblock3 = $miniblock4 = '';
+ for ($j=1; $j<=4; $j++) if (extract(db_result($res, 'i,h,h')))
+  {
+  $var = "$miniblock$j";
+  $$var = <<<HTML
+                                                <dt><img src='wp-content/uploads/thanks/$id.jpg' width='100' height='100' alt='' /></dt>
+                                                <dd>
+                                                    <span class='name'>$caption</span>
+                                                    <span class='text'>$text</span>
+                                                </dd>
+HTML;
+  }
 
+ $thank_slides .= <<<HTML
+                        <div class='slide1'>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                    <td class='miniblock'><dl>
+$miniblock1
+                                    </dl></td>
+                                    <td class='miniblock'><dl>
+$miniblock2
+                                    </dl></td>
+                                    </tr>
+                                    <tr>
+                                    <td class='miniblock'><dl>
+$miniblock3
+                                    </dl></td>
+                                    <td class='miniblock'><dl>
+$miniblock4
+                                    </dl></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+HTML;
 
-$html = <<<HTML
+ }
+
+echo <<<HTML
 
 <!-- контент -->
     <div class='content'>
@@ -69,7 +112,13 @@ $html = <<<HTML
                     </ul>
                 </div>
                 <div class='items'>
+                <div class='slider_container'>
+                    <div id='fond-slider'>
 $thank_slides
+                    </div>
+                    <div class='border-bottom'><img src="wp-content/themes/Bitarov/images/css/bitarov_fond-slova_border_bottom.png" width="1000" height="4" alt="" /></div>
+                </div>
+
                 </div>
             </div>
 
