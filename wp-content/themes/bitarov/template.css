@@ -148,7 +148,8 @@
 
             .event-header h2 {display:block; line-height: 26px!important; max-width:658px; margin:6px 0 0 0; padding:0; font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
     .event-body {margin-bottom:0px; padding-right:321px; width: 677px;}
-            .wrp-rubrikator-fixed {top: 0; left: 0; position:fixed; width: 100%;}
+            .wrp-rubrikator-fixed {top:0; left:0; position:absolute; width: 100%;}
+            .wrp-rubrikator-fixed a {z-index:10; position:relative}
                 .wrp-rubrikator-fixed .paginator {width:220px; height:38px; margin:0 auto; position:relative; top:135px; left:320px;}
                     .paginator .top-fixed {}
                         .paginator .wrp-line {width:101px; margin:0 30px 0 0; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
@@ -214,6 +215,7 @@
                     .event-body .button-show-old a:hover {text-decoration:underline; background:url('images/css/buttons-pack.png') -2px -189px no-repeat; text-decoration:none;}
                     .event-body .button-show-old a:active {background:url('images/css/buttons-pack.png') -2px -232px no-repeat;}
                     .event-body .button-show-old img {display:block;}
+                    #old-loader {width:50px; height:50px; display:none}
 
     /* Благотворительный фонд! */
     .fond-header {overflow:hidden; margin-bottom:7px; padding:18px 0 0 16px; height:96px;background:url('images/css/fond-header.png') no-repeat;}
@@ -243,7 +245,7 @@
 
     /* Мнение! */
                 .event-body .item dt {float:left;text-align:left;}
-                    .event-body .item dt div {width:56px; height:63px;}
+                    .event-body .item dt div {width:56px; height:63px; background:url('images/css/substrate_owner.png') no-repeat}
                     .event-body .item dt span {display:block; margin-top:7px; color:#7b848d; font:12px 'Arial Narrow', 'Arial';}
                 .event-body .item dd {margin-left:81px;}
                     .event-body .item dd strong {display:block; padding-top:5px;width:100%; font:13px 'Arial'; font-weight:bold;}
@@ -407,17 +409,17 @@
                 .wrp-goda_block_scroll .scroll-pane {position:relative; z-index:1; overflow:hidden; max-height:261px;}
                     .goda_block_scroll {width:290px; padding:17px 23px 8px 19px; font-size:12px;}
                         .goda_block_scroll p {margin-bottom:12px;}
-        
+
 		.bf_body h1 {font:28px Georgia, 'Arial'; margin-bottom:25px;}
         .bf_body .lemma {font-size:16px; margin-left:388px;padding-right:5px; color:#000;}
 		.text-bio p { line-height:1.5; }
 		.text-bio h4 { font-size:1.1em; line-height:1.3;}
-		
+
 		.img-bio-1 {	background:url('images/css/story1.jpg') no-repeat;}
 		.img-bio-2 {	background:url('images/css/story2.jpg') no-repeat;}
 		.img-bio-3 {	background:url('images/css/story3.jpg') no-repeat;}
 		.img-bio-4 {	background:url('images/css/story4.jpg') no-repeat;}
-		
+
 		.section-bio {overflow:hidden;}
 		.imageHolder {
 			display: block;
@@ -429,16 +431,16 @@
 			background-repeat: no-repeat;
 			background-position: 50% 50%;
 			background-attachment: fixed;
-		}	
-		.text-bio { 
+		}
+		.text-bio {
 			font-size:16px;
-			line-height:1.5;			
+			line-height:1.5;
 			overflow:hidden;
-			margin:0 auto; 
-			padding: 30px 10px 30px 10px; 
+			margin:0 auto;
+			padding: 30px 10px 30px 10px;
 			width:1000px;
 			min-height:500px;
-	
+
 		}
 
        #section-bio4 td {vertical-align:top; }
@@ -447,7 +449,7 @@
     /* Статья */
     .wrp_article {margin-top:18px; padding-bottom:150px;}
         .right_float_article {float:right;}
-        .like_records {width:276px; margin-bottom:30px;}
+        .like_records {width:276px; margin-bottom:30px; float:right}
             .like_records h3 {margin:0 0 1px 0; color:#000; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; text-transform:uppercase;}
             .like_records span {color:#000; font:20px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .like_records span a {color:#718c4f;}

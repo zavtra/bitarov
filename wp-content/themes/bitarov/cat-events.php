@@ -22,36 +22,53 @@ while (have_posts())
  $post_link = get_permalink($post->ID);
  $post_date = rusdate('j F Y', strtotime($post->post_date));
  $post_tags = '';
+ $post_category_id = bt_post_category($post->ID);
+ $post_category = get_category($post_category_id);
+ $post_category_name = $post_category->name;
+ $post_category_link = get_category_link($post_category_id);
  if (is_array($tags_raw=get_the_tags()))
   foreach ($tags_raw as $tag)
    {
    $tag_link = get_tag_link($tag->term_id);
    $tag_name = $tag->name;
-   $post_tags .= "<div class='tag'><a href='$tag_link'>$tag_name</a></div> ";
+   $post_tags .= "<a href='$tag_link'>$tag_name</a> ";
    }
  $posts_list .= <<<HTML
                     <div class='item'>
-                        <div class='breadcrumbs'><a href='#'>Фонд Битарова</a> &rarr;</div>
+                        <div class='breadcrumbs'><a href='$post_category_link'>$post_category_name</a> &rarr;</div>
                         <h3><a href='$post_link'>$post_title</a></h3>
                         <p>$post_excerpt</p>
                         <div class='more'><a href='$post_link'>подробнее</a></div>
                         <div class='date'>$post_date</div>
-                        $post_tags
+                        <div class='tag'>$post_tags</div>
                     </div>
 HTML;
  }
+
+// --- Шаблон поста для подгрузки через JSON
+$json_post_template = <<<HTML
+                    <div class='item'>
+                        <div class='breadcrumbs'><a href='#'>Фонд Битарова</a> &rarr;</div>
+                        <h3><a href='__POST_LINK__'>__POST_TITLE__</a></h3>
+                        <p>__POST_EXCERPT__</p>
+                        <div class='more'><a href='__POST_LINK__'>подробнее</a></div>
+                        <div class='date'>__POST_DATE__</div>
+                        <div class='tag'>__TAGS__</div>
+                    </div>
+HTML;
+$json_post_template = json_encode($json_post_template);
 
 // --- Пагинатор
 $paginator = '';
 if ($category_paginagor)
  {
  $width = count($category_paginagor)*20; // ширина линии
- $margin = ($current_page-1) * 20; // маргин указателя страницы
+ $margin = ($current_page_number-1) * 20; // маргин указателя страницы
  foreach ($category_paginagor as $page_number)
-   if ($page_number==$current_page) $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' class='current'>$page_number</a> ";
+   if ($page_number==$current_page_number) $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' class='current'>$page_number</a> ";
    else $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/'>$page_number</a> ";
  $paginator = <<<HTML
-                    <div class='paginator'>
+                    <div class='paginator' id='paginator-fixed'>
                         <div class='top-fixed'>
                             <div class='wrp-line'>
                                 $paginator
@@ -74,7 +91,7 @@ if ($subcategories)
    else
      $subcategories_block .= "<li class='current'><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
  $subcategories_block = <<<HTML
-                    <div class='rubrikator-fixed'>
+                    <div class='rubrikator-fixed' id='rubrikator-fixed'>
                         <ul>
                         $subcategories_block
                         </ul>
@@ -88,11 +105,32 @@ $years_raw = get_years($current_category_id);
 if (count($years_raw)>1)
  {
  foreach ($years_raw as $year) $years .= "<a href='$current_cat_link/year$year/'>$year</a> ";
- $years = "                        <div class='podate'><span>по годам:</span> $years</div>";
+ $years = "        <div class='podate'><span>по годам:</span> $years</div>";
  }
 
+// --- Показать предыдущие сообщения
+$display_more = ($pages_count>$current_page_number) ? 'block' : 'none';
+
 echo <<<HTML
+<script type='text/javascript'>
+current_category_id = $current_category_id;
+current_page_number = $current_page_number;
+current_page_number_more = $current_page_number;
+more_loading = false;
+post_template = $json_post_template;
+</script>
+
 <!-- контент -->
+
+    <div class='wrp-rubrikator-fixed' id='wrap-fixed'>
+$paginator
+$subcategories_block
+        <div class='rubrikator-advanced' id='years-fixed'>
+$years
+        <p id='back-top'><a href='#top'><span></span></a></p>
+        </div>
+    </div>
+
     <div class='content'>
         <div class='event-header'>
             <div class='wrap'>
@@ -108,24 +146,13 @@ $breadcrumbs
         <div class='event-bottom-img'></div>
         <div class='wrap event'>
             <div class='event-body'>
-                <div class='list_items'>
+                <div class='list_items' id='posts_list'>
 
 $posts_list
 
-                    <div class='button-show-old'>
-                        <a href='#'>Показать предыдущие события</a>
-                        <img src='wp-content/themes/bitarov/images/ico/loading.gif' width='50' height='50' alt='' />
-                    </div>
-                </div>
-                <div class='wrp-rubrikator-fixed'>
-$paginator
-$subcategories_block
-
-                    <div class='rubrikator-advanced'>
-$years
-                        <p id='back-top'>
-                            <a href='#top'><span></span></a>
-                        </p>
+                    <div class='button-show-old' style='display:$display_more'>
+                        <a href='#' onclick='showmore(); return false;'>Показать предыдущие события</a>
+                        <img id='old-loader' src='wp-content/themes/bitarov/images/ico/loading.gif' alt='' />
                     </div>
                 </div>
                 <div class='clear'></div>

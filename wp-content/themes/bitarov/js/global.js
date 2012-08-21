@@ -5,7 +5,7 @@ $(window).load(function() {
      animation: 'horizontal-push',        // вид анимации: fade, horizontal-slide, vertical-slide, horizontal-push
      animationSpeed: 300,                // скорость анимации в мс
      timer: false,              // показывать таймер: true или false
-     advanceSpeed: 4000,          // если таймер включен, то указываетс€ врем€ между переходами в мс 
+     advanceSpeed: 4000,          // если таймер включен, то указываетс€ врем€ между переходами в мс
      pauseOnHover: false,          // пауза слайдера при наведении курсора
      startClockonmouseout: true,      // запускать часы при выводе курсора из области слайдера
      startClockonmouseoutAfter: 1,      // через какое врем€ после вывода курсора из области слайдера таймер запуститс€
@@ -18,13 +18,13 @@ $(window).load(function() {
      bulletThumbLocation: '',         // путь до местонахождени€ миниатюр
      afterSlideChange: function(){}      // пуста€ функци€
 	});
-	
+
 // Orbit Slider
      $('#fond-slider').orbit({
      animation: 'horizontal-slide',        // вид анимации: fade, horizontal-slide, vertical-slide, horizontal-push
      animationSpeed: 300,                // скорость анимации в мс
      timer: false,              // показывать таймер: true или false
-     advanceSpeed: 4000,          // если таймер включен, то указываетс€ врем€ между переходами в мс 
+     advanceSpeed: 4000,          // если таймер включен, то указываетс€ врем€ между переходами в мс
      pauseOnHover: true,          // пауза слайдера при наведении курсора
      startClockonmouseout: true,      // запускать часы при выводе курсора из области слайдера
      startClockonmouseoutAfter: 1,      // через какое врем€ после вывода курсора из области слайдера таймер запуститс€
@@ -60,14 +60,107 @@ $(window).load(function() {
 			return false;
 		});
 	});
-	
-//jScrollPane v2
+
+    //jScrollPane v2
 	jQuery('.scroll-pane').jScrollPane();
-	
-//Scrolling-parallax
+
+    //Scrolling-parallax
+
+    $(window).scroll(function() {
+        var top = $(window).scrollTop();
+        if (top>fixed_top)
+         {
+         if (fixed_fix) return;
+         fixed_fix = true;
+         fixed_div.style.position = 'fixed';
+         $('#wrap-fixed').css('top', '-'+fixed_top+'px');
+         }
+        else
+         {
+         if (!fixed_fix) return;
+         fixed_fix = false;
+         fixed_div.style.position = 'absolute';
+         $('#wrap-fixed').css('top', '0');
+         }
+    });
 
 });
 
+fixed_div = null;
+fixed_top = 0;
+fixed_fix = false;
+$(window).ready(function() {
+  var div;
+  if (div=elem('paginator-fixed')) fixed_top = $(div).position().top;
+  else if (div=elem('rubrikator-fixed')) fixed_top = $(div).position().top;
+  else if (div=elem('years-fixed')) fixed_top = $(div).position().top;
+  fixed_top -= 20;
+  fixed_div = elem('wrap-fixed');
+
+  if (location.hash=='#comments') $('.wrp-artic-comment').css('display', 'block');
+
+});
+
+function newcomment()
+ {
+ var display = $('.wrp-artic-comment').css('display');
+ if (display=='none') $('.wrp-artic-comment').fadeIn();
+ else $('.wrp-artic-comment').fadeOut();
+ return false;
+ }
+
+// -------------------------------------------------- ѕоказать предыдущие записи
+
+function elem(id) {return document.getElementById(id)}
+
+function httpget(url)
+ {
+ var xhr, result;
+ if (window.XMLHttpRequest) xhr = new XMLHttpRequest();
+ else xhr = new ActiveXObject("Microsoft.XMLHTTP");
+ xhr.open('GET', url, false);
+ xhr.send('');
+ if ((xhr.status<200) || (xhr.status>299)) result = false;
+ else result = xhr.responseText;
+ delete xhr;
+ return result;
+ }
+
+function showmore()
+ {
+ if (more_loading) return;
+ more_loading = true;
+ $('#old-loader').css('display', 'inline');
+ current_page_number_more++;
+ var url = '/index.php?bt_json=get_posts';
+ url += '&category_id=' + current_category_id;
+ url += '&pg=' + current_page_number_more;
+ try {var response = eval('('+httpget(url)+')');}
+ catch (error) {$('.button-show-old').css('display', 'none'); return;}
+ var top = $('.button-show-old').position().top;
+ if (typeof(response.info.next_page)!='number') $('.button-show-old').css('display', 'none');
+ var posts_list = elem('posts_list');
+ var div, snipet;
+ for (num in response.items)
+  {
+  div = document.createElement('div');
+  snipet = post_template.replace(/__POST_LINK__/, response.items[num].post_link);
+  snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
+  snipet = snipet.replace(/__POST_TITLE__/, response.items[num].post_title);
+  snipet = snipet.replace(/__CATEGORY_NAME__/, response.items[num].category_name);
+  snipet = snipet.replace(/__CATEGORY_LINK__/, response.items[num].category_link);
+  snipet = snipet.replace(/__POST_EXCERPT__/, response.items[num].post_excerpt);
+  snipet = snipet.replace(/__OPINION__/, response.items[num].opinion);
+  snipet = snipet.replace(/__POST_DATE__/, response.items[num].post_dm + ' ' + response.items[num].post_y);
+  snipet = snipet.replace(/__POST_DATE_DM__/, response.items[num].post_date_dm);
+  snipet = snipet.replace(/__POST_DATE_Y__/, response.items[num].post_date_y);
+  snipet = snipet.replace(/__TAGS__/, response.items[num].tags);
+  snipet = snipet.replace(/__COMMENTS_COUNT__/, response.items[num].comments_count);
+  div.innerHTML = snipet;
+  posts_list.appendChild(div);
+  }
+ $('body,html').animate({scrollTop:top+30}, 800);
+ }
 
 //Placeholder
 (function(a){a.extend({placeholder:{settings:{focusClass:"placeholderFocus",activeClass:"placeholder",overrideSupport:false,preventRefreshIssues:true},debug:false,log:function(b){if(!a.placeholder.debug){return}b="[Placeholder] "+b;a.placeholder.hasFirebug?console.log(b):a.placeholder.hasConsoleLog?window.console.log(b):alert(b)},hasFirebug:"console" in window&&"firebug" in window.console,hasConsoleLog:"console" in window&&"log" in window.console}});a.support.placeholder="placeholder" in document.createElement("input");a.fn.plVal=a.fn.val;a.fn.val=function(e){a.placeholder.log("in val");if(this[0]){a.placeholder.log("have found an element");var d=a(this[0]);if(e!=undefined){a.placeholder.log("in setter");var c=d.plVal();var b=a(this).plVal(e);if(d.hasClass(a.placeholder.settings.activeClass)&&c==d.attr("placeholder")){d.removeClass(a.placeholder.settings.activeClass)}return b}if(d.hasClass(a.placeholder.settings.activeClass)&&d.plVal()==d.attr("placeholder")){a.placeholder.log("returning empty because it's a placeholder");return""}else{a.placeholder.log("returning original val");return d.plVal()}}a.placeholder.log("returning undefined");return undefined};a(window).bind("beforeunload.placeholder",function(){var b=a("input."+a.placeholder.settings.activeClass);if(b.length>0){b.val("").attr("autocomplete","off")}});a.fn.placeholder=function(b){b=a.extend({},a.placeholder.settings,b);if(!b.overrideSupport&&a.support.placeholder){return this}return this.each(function(){var c=a(this);if(!c.is("[placeholder]")){return}if(c.is(":password")){return}if(b.preventRefreshIssues){c.attr("autocomplete","off")}c.bind("focus.placeholder",function(){var d=a(this);if(this.value==d.attr("placeholder")&&d.hasClass(b.activeClass)){d.val("").removeClass(b.activeClass).addClass(b.focusClass)}});c.bind("blur.placeholder",function(){var d=a(this);d.removeClass(b.focusClass);if(this.value==""){d.val(d.attr("placeholder")).addClass(b.activeClass)}});c.triggerHandler("blur");c.parents("form").submit(function(){c.triggerHandler("focus.placeholder")})})}})(jQuery);
