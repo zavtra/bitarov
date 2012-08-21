@@ -58,16 +58,16 @@
 /* Нормальное меню */
                 .wrp_h_owner { position:absolute; left:50%; top:0; margin-left:-118px; width:237px; height:94px; background:url('images/css/header-owner.png') 0 0 no-repeat #1f89bb;}
                     .h_owner {display:block; width:236px; height:93px; border-right:1px solid #dfe8ed; border-left:1px solid #dfe8ed;}
-						.menu {margin:36px 0 0 0; text-transform:uppercase; vertical-align:middle; overflow:hidden;}
+						.menu {margin:36px 0 0 0; text-transform:uppercase; vertical-align:middle; overflow:hidden;}						                      
 						.menu li {  float:left; margin:0 0 0 13px; padding:0;  padding-bottom:5px;  line-height:20px;}
                         .menu li:first-child {margin:0;}
                         .menu li.helper { visibility: hidden; width: 100%;height:0;}
                             .menu a {color:#333; text-decoration:none; border-bottom:1px solid #999999;}
                             .menu a:hover {color:#266a86; border-bottom:1px solid #266a86;}
-                            .menu li.current-menu-item a,.menu li.current-menu-parent a {color:#1d8aba; border-bottom:1px solid #8ec4dc;}
+                            .menu li.current-menu-item a,.menu li.current-menu-parent a {color:#1d8aba; border-bottom:1px solid #8ec4dc;}			
 						.menu-top_left-container {width:380px; float:left; }
-						.menu-top_right-container { float:right; width:363px;}
-
+						.menu-top_right-container { float:right; width:363px;}							
+							
 /* Индекс! */
     .content {padding-bottom:70px;}
         .overlay {background:url(images/css/Overlayer_bg.png); height:440px; width:100%; display:none; position:absolute; z-index:9999;}
@@ -215,10 +215,10 @@
                     .event-body .item p {margin:9px 0; color:#333; font:14px 'Arial'; line-height:20px;}
                     .event-body .item .more {display:none;float:right; margin:3px 2px 0 0;}
                         .event-body .item .more a {color:#777; font:12px 'Arial';}
-                    .event-body .item .date {margin-right:20px; color:#898989;font:13px 'Arial Narrow', 'Arial'; display:inline;}
+                    .event-body .item .date {margin-right:40px; color:#898989;font:13px 'Arial Narrow', 'Arial'; display:inline;}
                     .event-body .item .tag {display:inline;}
                         .event-body .item .tag img {}
-                        .event-body .item .tag a {background:url(images/ico/event-tag.png) 0 3px no-repeat; padding-left:25px; margin-right:16px; color:#8d949c; font:11px 'Arial'; display:inline; vertical-align:top;}
+                        .event-body .item .tag a {background:url(images/ico/event-tag.png) 0 1px no-repeat; padding-left:25px; margin-right:10px; color:#8d949c; font:11px 'Arial'; display:inline; vertical-align:top;}
             .button-show-old {margin:22px 0 0 0;}
                 .button-show-old .button {}
                     .event-body .button-show-old a {font:16px 'Georgia', 'Arial'; color:#FFF; text-decoration:none; float:left; padding:9px 0 0 19px; margin:6px 6px 0 0; width:257px; height:34px; background:url('images/css/buttons-pack.png') -2px -145px no-repeat; display:block;}
@@ -244,15 +244,14 @@
                     .fond-body .menu li a:hover {border:none;text-decoration:none;}
                         .fond-body .menu li a.current {border:none; color:#1a9150;}
             .fond-body .items img {margin-top:13px; width:1005px; height:8px;}
-            /* .fond-body .items dl {margin-top:3px; padding-top:15px; border-top:1px dotted #99a8ae;} зачем точки вверху? */
-            .fond-body .items dl {margin-top:3px; padding-top:15px}
+            .fond-body .items dl {margin-top:3px; padding-top:15px; border-top:1px dotted #99a8ae;}
             .fond-body .items dl:first-child {padding:0;border:none;}
                 .fond-body .items dt {float:left;width:73px; height:55px; background:url('images/css/fond-item-data_bg.png') no-repeat; color:#444; font:18px 'Arial';}
                     .fond-body .items dt div {margin:6px 0 0 2px; width:63px; text-align:center;}
                     .fond-body .items dt span {display:block; font:11px 'Arial'; margin-left:1px;}
                 .fond-body .items dd {margin-left:91px; width:736px; font:14px 'Arial';}
                     .fond-body .items dd h3 {margin:0 0 10px 0; font:18px 'Arial';}
-                    .fond-body .items dd p {padding:0; margin:0}
+                    .fond-body .items dd p {padding:0 0 3px 0;}
 
     /* Мнение! */
                 .event-body .item dt {float:left;text-align:left;}
@@ -264,7 +263,7 @@
                         .event-body .item dd p span {color:#808080;}
                             .event-body .item dd p span a {color:#808080;}
                  .vista_item {padding:8px 0; height:3px;background:url('images/css/vista_item-border_bottom.png') no-repeat;}
-                 .vista_item .number_comment {float:left; margin-right:20px;color:#9ab17c; font:11px 'Arial';}
+                 .vista_item .number_comment {float:left; margin-right:55px;color:#9ab17c; font:11px 'Arial';}
                     .vista_item .number_comment img {float:left; margin-right:5px;}
                     .vista_item .number_comment a {color:#9ab17c;}
 
@@ -297,7 +296,7 @@
                         .smi-body .paginator li span a:hover {border:none; background:none; text-decoration:none;}
 
     /* Мероприятия! */
-    .wrp-activity {overflow:hidden; height:600px; border-top:1px solid #d9e2e9; border-right:1px solid #d9e2e9; border-bottom:1px solid #d9e2e9; border-left:1px solid #efefef;}
+    .wrp-activity {overflow:hidden; position:relative; height:600px; border-top:1px solid #d9e2e9; border-right:1px solid #d9e2e9; border-bottom:1px solid #d9e2e9; border-left:1px solid #efefef;}
         .wrp-activity .content {position:relative; z-index:999; padding:0 0 200px 0!important; background:url('images/css/activity_content-item-bordertop.png') repeat-x;}
             .independen-item {overflow:hidden; padding:13px 0 25px 22px; width:680px; font:14px 'Arial';}
                 .independen-item h1 {margin:0 0 18px 2px; padding:0; font:28px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
@@ -309,7 +308,7 @@
                 .independen-item p {margin:0 0 16px 0; line-height:20px; }
             .wrp-send_comment {padding:0 0 0 27px;}
                 .wrp-send_comment.normal {padding:0;}
-                .wrp-send_comment .send_comment {padding-bottom:4px;font:14px 'Arial'}
+                .wrp-send_comment .send_comment {padding-bottom:4px;font:14px 'Arial';}
                     .wrp-send_comment .send_comment img {float:left; margin-right:6px;}
                     .wrp-send_comment .send_comment a {border-bottom:1px dotted #7b848d;color:#4d5358; text-decoration:none;}
                     .wrp-send_comment .send_comment a:hover {border:none;}
@@ -347,7 +346,7 @@
             .wrp-activity table td .content {width:722px;}
                 .scroll-container-main {height:600px; width: 729px; position:relative; z-index:999; background:url('images/css/activity_content-item-bordertop.png') 0 top repeat-x;}
                     .scroll-container-main .scroll-pane {position:relative; z-index:1; overflow:hidden; height:600px;}
-                        .wrp-activity table .left-menu .fade img {position:absolute; top:678px; right:20px; z-index:1001; width:700px;}
+                        .wrp-activity .fade img {position:absolute; bottom:0; right:10px; z-index:9999; width:710px;}
 
     /* Слова благодарности! */
     .slider_container {width:1002px;}
@@ -516,11 +515,11 @@
         .footer .wrap {padding-top:31px;}
             .vendor {float:right; width:235px; margin-top:5px; text-align:right; font:13px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .vendor a {color:#1572c6;}
-            .footer-menu {font:14px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; margin:0;}
-				.menu-footer-container { float:left;  overflow:hidden;  height:80px;}
+            .footer-menu {font:14px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; margin:0;}			
+				.menu-footer-container { float:left;  overflow:hidden;  height:80px;}							
                 .footer-menu li { margin-right:20px;padding:0; line-height:1.3;}
-				.footer-menu li  {display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;	}
+				.footer-menu li  {display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;	}  	
                     .footer-menu a {color:#54a5d4; text-decoration:none; border-bottom:1px solid #8ec4dc;}
-					.footer-menu li.current-menu-item a,.footer-menu li.current-menu-parent a {color:#1d8aba; border-bottom:1px solid #8ec4dc; }
+					.footer-menu li.current-menu-item a,.footer-menu li.current-menu-parent a {color:#1d8aba; border-bottom:1px solid #8ec4dc; }	
                     .footer-menu ul li a:hover {text-decoration:none;}
 /* end  Подвал!  */
