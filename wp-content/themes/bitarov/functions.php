@@ -50,6 +50,15 @@ function bt_post_category($id_post)
  return $result;
  }
 
+function bt_post_content()
+ {
+ ob_start();
+ the_content();
+ $result = ob_get_contents();
+ ob_end_clean();
+ return $result;
+ }
+
 function get_cat_path($id_cat)
  {
  $id_cat = intval($id_cat);

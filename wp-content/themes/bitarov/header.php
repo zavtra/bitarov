@@ -21,21 +21,11 @@
 <div class='container'>
 <!-- шапка -->
     <div class='header'>
-        <div class='wrap'>
-            <ul class='h_menu-right'>
-                <li><a href='/events/'>события</a></li>
-                <li><a href='/media/'>сми</a></li>
-                <li><a href='/contacts/'>контактная информация</a></li>
-                <li class='helper'></li>
-            </ul>
+        <div class='wrap'>  
             <div class='wrp_h_owner'>
-                <a href="http://bitarov.zavtradigital.ru/"><div class='h_owner'></div></a>
+                <a href="/"><span class='h_owner'></span></a>
             </div>
-            <ul class='h_menu-left'>
-                <li><a href='/biography/'>биография</a></li>
-                <li><a href='/opinion/'>мнение</a></li>
-                <li><a href='/fund/'>благотворительный фонд</a></li>
-                <li class='helper'></li>
-            </ul>
+			<?php wp_nav_menu('menu=top_right'); ?>
+			<?php wp_nav_menu('menu=top_left'); ?>
         </div>
     </div>
