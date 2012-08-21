@@ -57,9 +57,9 @@
                 <div class='menu'>
                     <img src='wp-content/themes/bitarov/images/css/fond-menu-shadow.png' alt='' />
                     <ul>
-                        <li><a href='/fund/' class='current'>Анонсы</a></li>
-                        <li><a href='/fund/actions/'>Мероприятия</a></li>
-                        <li><a href='/fund/thanks/'>Слова благодарности</a></li>
+                        <li><a href='/category/fund/' class='current'>Анонсы</a></li>
+                        <li><a href='/category/fund/actions/'>Мероприятия</a></li>
+                        <li><a href='/category/fund/thanks/'>Слова благодарности</a></li>
                     </ul>
                 </div>
                 <div class='items'>

@@ -109,6 +109,15 @@ function newcomment()
  return false;
  }
 
+function actFrameNavigate(link)
+ {
+ $('.list_news .news').removeClass('current');
+ $(link.parentNode).addClass('current');
+ var url = link.href.replace(/\/$/, '') + '/framed/';
+ document.actionsFrame.navigate(url);
+ return false;
+ }
+
 // -------------------------------------------------- Показать предыдущие записи
 
 function elem(id) {return document.getElementById(id)}

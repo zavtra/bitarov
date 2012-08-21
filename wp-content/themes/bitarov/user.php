@@ -27,11 +27,10 @@ function bt_modify_query()
  }
 add_action('parse_query', 'bt_modify_query');
 
-global $posts_year;
-if (preg_match('/\/year([0-9]+)(\/|$)/', $_SERVER['REQUEST_URI'], $year))
+if (preg_match('/\/framed\/?$/', $_SERVER['REQUEST_URI'], $year))
  {
- $_GET['posts-year'] = $year[1];
- $_SERVER['REQUEST_URI'] = preg_replace('/\/year([0-9]+)(\/|$)/', '/', $_SERVER['REQUEST_URI']);
+ $_GET['framed'] = 1;
+ $_SERVER['REQUEST_URI'] = preg_replace('/\/framed\/?$/', '/', $_SERVER['REQUEST_URI']);
  }
 
 ?>
