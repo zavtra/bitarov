@@ -222,7 +222,7 @@ function bt_thanks()
   {
   $id_thank = intval($_GET['del']);
   db_query("DELETE FROM pref_bt_thanks WHERE id='?1'", $id_thank);
-  unlink(BASEDIR . "wp-content/uploads/thanks/$id_thank.jpg");
+  unlink(BASEDIR . "wp-content/uploads/thanks/$id_thank.png");
   $okmsg = okmsg('Отзыв удалён');
   }
 
