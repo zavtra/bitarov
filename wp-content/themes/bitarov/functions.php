@@ -13,8 +13,8 @@ define('BT_OPINION_H1', 56);
 define('BT_OPINION_W1', 63);
 define('BT_SLIDE_W', 1017);
 define('BT_SLIDE_H', 296);
-define('BT_THANK_W', 97);
-define('BT_THANK_H', 97);
+define('BT_THANK_W', 100);
+define('BT_THANK_H', 100);
 
 function rusdate($format, $timestamp)
  {

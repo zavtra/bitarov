@@ -256,7 +256,7 @@ function bt_thanks()
   if (!$err and !is_array($ih_src=imagecreatefromfile($_FILES['pic']['tmp_name']))) $err = 'Ошибка загрузки фотографии (1)';
   if (!$err and !is_array($ih_dst=thumb($ih_src['ih'], $bt_thank_w, $bt_thank_h))) $err = 'Ошибка загрузки фотографии (2)';
 //if (!$err and !is_resource($ih_dst['ih']=centrize($ih_dst['ih'], $bt_thank_w, $bt_thank_h))) $err = 'Ошибка загрузки фотографии (3)';
-  if (!$err and !imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/thanks/$id_thank.jpg", 90)) $err = 'Ошибка загрузки фотографии (2)';
+  if (!$err and !imagepng($ih_dst['ih'], BASEDIR . "wp-content/uploads/thanks/$id_thank.png")) $err = 'Ошибка загрузки фотографии (2)';
   if ($err)
    {
    db_query("DELETE FROM pref_thanks WHERE id='?1'", $id_thank);
@@ -265,11 +265,23 @@ function bt_thanks()
   $okmsg = okmsg('Отзыв успешно добавлен');
   }
 
- if (chkpost('save,caption,text'))
+ if (chkpost('save,caption,text,bt_thank_h,bt_thank_w'))
   {
-  extract(ep('save>id_thank>i,caption,text'));
+  extract(ep('save>id_thank>i,caption,text,bt_thank_h>>i,bt_thank_w>>i'));
   if (!chklen($caption, 2, 100)) return print errmsg('Имя должно иметь длину от 2 до 50 символова');
   db_query("UPDATE pref_bt_thanks SET caption='?1', text='?2' WHERE id='?3'", $caption, $text, $id_thank);
+  if ($bt_thank_w<10) $bt_thank_w = BT_THANK_W;
+  if ($bt_thank_h<10) $bt_thank_h = BT_THANK_H;
+  update_option('bt_thank_w', $bt_thank_w);
+  update_option('bt_thank_h', $bt_thank_h);
+  $err = '';
+  if (!empty($_FILES['pic']['tmp_name']))
+   {
+   if (!$err and !is_array($ih_src=imagecreatefromfile($_FILES['pic']['tmp_name']))) $err = 'Ошибка загрузки фотографии (1)';
+   if (!$err and !is_array($ih_dst=thumb($ih_src['ih'], $bt_thank_w, $bt_thank_h))) $err = 'Ошибка загрузки фотографии (2)';
+   //if (!$err and !is_resource($ih_dst['ih']=centrize($ih_dst['ih'], $bt_thank_w, $bt_thank_h))) $err = 'Ошибка загрузки фотографии (3)';
+   if (!$err and !imagepng($ih_dst['ih'], BASEDIR . "wp-content/uploads/thanks/$id_thank.png")) $err = 'Ошибка загрузки фотографии (2)';
+   }
   $okmsg = okmsg('Отзыв сохранён');
   }
 
@@ -288,7 +300,9 @@ function bt_thanks()
   <table>
   <tr><td>Имя:</td><td><input type='text' size='70' name='caption' value='$caption'></td></tr>
   <tr><td valign='top'>Отзыв:</td><td><textarea rows='4' style='width:100%' name='text'>$text</textarea></td></tr>
-  <tr><td valign='top'>Фотография:&nbsp;&nbsp;</td><td><img style='border:1px solid #DDD; border-radius:3px' src='/wp-content/uploads/thanks/$id_thank.jpg'></td></tr>
+  <tr><td valign='top'>Фотография:&nbsp;&nbsp;</td><td><img style='border:1px solid #DDD; border-radius:3px' src='/wp-content/uploads/thanks/$id_thank.png'></td></tr>
+  <tr><td>Новая фотография:</td><td><input type='file' style='width:100%' name='pic'></td></tr>
+  <tr><td>Уменьшить до:</td><td><input type='text' size='5' name='bt_thank_w' value='$bt_thank_w'> x <input type='text' size='5' name='bt_thank_h' value='$bt_thank_h'></td></tr>
   <tr><td colspan='2'><hr></td></tr>
   <tr><td colspan='2'><input type='submit' class='button-primary' value='Сохранить отзыв'></td></tr>
   </table>
