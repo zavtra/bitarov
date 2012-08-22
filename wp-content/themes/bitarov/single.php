@@ -27,14 +27,7 @@ if ($opinion) $opinion = <<<HTML
 HTML;
 
 // --- Хлебные крошки
-$siteurl = SITE_URL;
-$breadcrumbs = "<span class='current'><a href='$siteurl'><ins></ins>bitarov.as</a></span>";
-foreach (get_cat_path($post_category_id) as $cat)
- {
- $breadcrumb_link = get_category_link($cat->term_id);
- $breadcrumb_text = $cat->name;
- $breadcrumbs .= "<span><a href='$breadcrumb_link'>$breadcrumb_text</a><ins class='r'></ins></span>";
- }
+$breadcrumbs = breadcrumbs_post($post);
 
 // --- Комментарии
 ob_start();
