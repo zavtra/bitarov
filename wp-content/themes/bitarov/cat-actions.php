@@ -120,7 +120,7 @@ $paginator
                                 </td>
 
                                 <td class='content'>
-                                    <iframe name='actionsFrame' frameborder='0' width='729' height='600' src='$first_post_link'></iframe>
+                                    <iframe id='actionsFrame' frameborder='0' width='729' height='600' src='$first_post_link'></iframe>
                                 </td>
                             </tr>
                         </tbody>

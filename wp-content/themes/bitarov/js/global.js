@@ -116,8 +116,9 @@ function actFrameNavigate(link)
  $('body,html').animate({scrollTop:420}, 800);
  $('.list_news .news').removeClass('current');
  $(link.parentNode).addClass('current');
+ var frame = elem('actionsFrame');
  var url = link.href.replace(/\/$/, '') + '/framed/';
- document.actionsFrame.navigate(url);
+ frame.src = url;
  return false;
  }
 
