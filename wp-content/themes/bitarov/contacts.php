@@ -58,35 +58,36 @@ the_post();
 the_content();
 ?>
                 <div class="wrp-send-message">
-    <div class="send_message">
-        <img width="25" height="19" alt="" src="wp-content/themes/bitarov/images/ico/send_message.png">
-        <a href="">Оставить обращение</a>
-        <span>↓</span>
-        <div class="wrp-window-comment" style="display:none">
-            <div class="window-comment">
-                <a class="exit" href="#"></a>
-            <form>
-            <div class="msg">
-                <textarea onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваше обращение" name="msg"></textarea>
+                    <div class="send_message">
+                        <img width="25" height="19" alt="" src="wp-content/themes/bitarov/images/ico/send_message.png">
+                        <a href="">Оставить обращение</a>
+                        <span>↓</span>
+                        <span class='send_ok' style='display:block;'>Ваше обращение успешно отправлено</span>
+                        <div class="wrp-window-comment" style="display:none">
+                            <div class="window-comment">
+                                <a class="exit" href="#"></a>
+                            <form>
+                            <div class="msg">
+                                <textarea onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваше обращение" name="msg"></textarea>
+                            </div>
+                            <div class="email">
+                                <input type="text" onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваш e-mail" name="email">
+                            </div>
+                            <div class="name">
+                                <input type="text" onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваше имя" name="name">
+                            </div>
+                            <div class="phone">
+                                <input type="text" onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваш телефон" name="phone">
+                            </div>
+                            <div class="clear"></div>
+                            <div class="send">
+                                <input type="submit" value="">
+                            </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
             </div>
-            <div class="email">
-                <input type="text" onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваш e-mail" name="email">
-            </div>
-            <div class="name">
-                <input type="text" onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваше имя" name="name">
-            </div>
-            <div class="phone">
-                <input type="text" onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваш телефон" name="phone">
-            </div>
-            <div class="clear"></div>
-            <div class="send">
-                <input type="submit" value="">
-            </div>
-            </form>
-            </div>
-        </div>
-    </div>
-</div>
                 </div>
             </div>
         </div>
