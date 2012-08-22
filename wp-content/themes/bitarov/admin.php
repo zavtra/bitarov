@@ -71,24 +71,7 @@ function bt_options()
  $cats = '';
  foreach ($cats_arr as $cat) $cats .= "<option value='" . intval($cat->term_id) . "'".($cat->term_id==$bt_opinion_cat ? ' selected' : '').">" . htmltext($cat->name) . "</option>";
 
- if (chkget('rebuild_years'))
-  {
-  $years = implode(', ', rebuild_years());
-  $msg = okmsg("Операция пересчёта годов записей завершена. Найдены записи по следующим годам: $years<br>[ <a href='?page=bt_options'>Вернуться к настройкам</a> ]", false);
-  return print "<div class='wrap' style='padding-top:10px; font-weight:bold'>$msg</div>";
-  }
-
  return print <<<HTML
-<script type='text/javascript'>
-function rebuild_years(btn)
- {
- document.form1.submitbtn.disabled = true;
- btn.disabled = true;
- btn.value = 'Ожидайте завершения операции...';
- document.location = '?page=bt_options&rebuild_years';
- }
-</script>
-
 <form method='POST' name='form1' action='' class='wrap'>
   <div id='icon-options-general' class='icon32'></div>
   <h2>Настройки</h2>
@@ -106,9 +89,11 @@ function rebuild_years(btn)
   <tr><td colspan='2'><input type='submit' class='button-primary' name='submitbtn' value='Сохранить настройки'></td></tr>
   </table>
 
+  <!--
   <div style='margin-top:10px; padding-top:4px; border-top:1px dotted #AAA'>
   <input type='button' class='button' value='Проверить года' onclick='rebuild_years(this)'> - эта функция заново составляет список годов всех записей имеющихся на сайте. Выполнение операции может занять длительное время (1-5 минут) в зависимости от размера базы данных сайта. Функция выполняется автоматически 1 января каждого года.
   </div>
+  -->
 </form>
 HTML;
  }
@@ -641,12 +626,12 @@ function bt_post_saved($id_post)
 
 function bt_admin_menu_handler()
  {
- add_menu_page('Настройки', 'Битаров', 0, 'bt_options', 'bt_options');
+ add_menu_page('Настройки', 'Надстройки CMS', 0, 'bt_options', 'bt_options');
  add_submenu_page('bt_options', 'СМИ', 'Список СМИ', 0, 'bt_media', 'bt_media');
  add_submenu_page('bt_options', 'Слайдер на главной', 'Слайдер на главной', 0, 'bt_slider', 'bt_slider');
  add_submenu_page('bt_options', 'Благодарности', 'Благодарности', 0, 'bt_thanks', 'bt_thanks');
  global $submenu;
- if (!empty($submenu['bt_options'][0][0]) and $submenu['bt_options'][0][0]=='Битаров') $submenu['bt_options'][0][0] = 'Настройки';
+ if (!empty($submenu['bt_options'][0][0]) and $submenu['bt_options'][0][0]=='Надстройки CMS') $submenu['bt_options'][0][0] = 'Настройки';
  }
 
 function bt_metaboxes()
