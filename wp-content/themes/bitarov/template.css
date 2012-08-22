@@ -513,7 +513,7 @@
             .not_found .message .back a:hover {border:none; color:#22a7e3;}
 
 /*  Подвал!  */
-    .footer {position:absolute; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
+    .footer {position:absolute; z-index:50; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
         .footer .wrap {padding-top:31px;}
             .vendor {float:right; width:235px; margin-top:5px; text-align:right; font:13px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .vendor a {color:#1572c6;}
