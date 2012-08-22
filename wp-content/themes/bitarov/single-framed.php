@@ -41,6 +41,7 @@ echo <<<HTML
 $post_content
                                                 <img src='wp-content/themes/bitarov/images/css/activity_content-item-borderbottom.png' width='680' height='3' alt='' />
 $comments
+											<div class='height'></div>
                                             </div>
                                             <div class='clear'></div>
                                             </div>
