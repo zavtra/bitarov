@@ -1,9 +1,9 @@
 <?php
-if (chkget('framed')) require TEMPLATEPATH . '/single-framed.php';
 
+if (chkget('framed')) require TEMPLATEPATH . '/single-framed.php';
 get_header();
 
-// --- Информация о текущем посте
+// -------------------------------------------------- Информация о текущем посте
 the_post();
 $post_id = $post->ID;
 $post_category_id = bt_post_category($post->ID);
@@ -26,16 +26,16 @@ if ($opinion) $opinion = <<<HTML
                     </div>
 HTML;
 
-// --- Хлебные крошки
+// -------------------------------------------------------------- Хлебные крошки
 $breadcrumbs = breadcrumbs_post($post);
 
-// --- Комментарии
+// ----------------------------------------------------------------- Комментарии
 ob_start();
 comments_template();
 $comments = ob_get_contents();
 ob_end_clean();
 
-// --- Похожие посты
+// --------------------------------------------------------------- Похожие посты
 $liked_raw = new WP_Query(array('posts_per_page'=>get_option('bt_liked_pp', 5), 'cat'=>$post_category_id, 'post__not_in'=>array($post->ID)));
 $liked = '';
 while ($liked_raw->have_posts())
@@ -54,6 +54,8 @@ if ($liked) $liked = <<<HTML
                     </ul>
                 </div>
 HTML;
+
+// -------------------------------------------------------------- Вывод страницы
 
 echo <<<HTML
 

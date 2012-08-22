@@ -57,6 +57,7 @@ echo <<<HTML
                                 <div class='send'>
                                     <input type='submit' value='' />
                                 </div>
+                                <img src='wp-content/themes/bitarov/images/css/feedback-loader.gif' style='position:absolute; left:470px; top:190px'>
                             </form>
                         </div>
                         </div>

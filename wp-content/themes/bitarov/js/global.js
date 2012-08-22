@@ -100,6 +100,13 @@ $(window).ready(function() {
 
   if (location.hash=='#comments') $('.wrp-artic-comment').css('display', 'block');
 
+  if ($('#messageFundShadow').size()>0)
+   {
+   window.shadowTop = getTop(elem('messageFundShadow'));
+   window.footerHeight = $('.footer').height();
+   window.footerElem = $('.footer')[0];
+   $(window).resize(shadowResize);
+   }
 });
 
 function newcomment()
@@ -108,6 +115,20 @@ function newcomment()
  if (display=='none') $('.wrp-artic-comment').fadeIn();
  else $('.wrp-artic-comment').fadeOut();
  return false;
+ }
+
+function getTop(obj)
+ {
+ if (!obj) return 0;
+ objTop = parseInt(obj.offsetTop);
+ if (isNaN(objTop)) objTop = 0;
+ return objTop + getTop(obj.parentNode);
+ }
+
+function shadowResize()
+ {
+ var new_height = getTop(footerElem) - shadowTop + footerHeight + 50;
+ $('#messageFundShadow').height(new_height);
  }
 
 function actFrameNavigate(link)
@@ -124,15 +145,16 @@ function actFrameNavigate(link)
 
 function messageFundClose()
  {
- $('#messageFundShadow').fadeOut(400);
- $('#messageFundBox').fadeOut(400);
+ $('#messageFundShadow').fadeOut(200);
+ $('#messageFundBox').slideUp(200);
  return false;
  }
 
 function messageFundOpen()
  {
- $('#messageFundShadow').fadeIn(600);
- $('#messageFundBox').fadeIn(400);
+ shadowResize();
+ $('#messageFundShadow').css('display', 'block');
+ $('#messageFundBox').slideDown(200);
  return false;
  }
 
