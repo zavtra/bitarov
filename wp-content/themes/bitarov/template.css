@@ -242,7 +242,7 @@
                 .fond-body .menu li {display: -moz-inline-box; display: inline-block;margin-right:45px; font:25px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
                     .fond-body .menu li a {border-bottom:1px dotted #333;color:#707070; text-decoration:none;}
                     .fond-body .menu li a:hover {border:none;text-decoration:none;}
-                        .fond-body .menu li a.current {border:none; color:#1a9150;}
+                        .fond-body .menu .current-menu-item a {border:none; color:#1a9150;}
             .fond-body .items img {margin-top:13px; width:1005px; height:8px;}
             .fond-body .items dl {margin-top:3px; padding-top:15px; border-top:1px dotted #99a8ae;}
             .fond-body .items dl p {margin:0; padding:0}

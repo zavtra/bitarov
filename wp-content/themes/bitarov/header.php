@@ -7,7 +7,7 @@
             <div class='wrp_h_owner'>
                 <a href="/"><span class='h_owner'></span></a>
             </div>
-			<?php wp_nav_menu('menu=top_right'); ?>
-			<?php wp_nav_menu('menu=top_left'); ?>
+			<?php wp_nav_menu(array('menu'=>'top_right')); ?>
+			<?php wp_nav_menu(array('menu'=>'top_left')); ?>
         </div>
     </div>

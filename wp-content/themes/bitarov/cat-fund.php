@@ -1,71 +1,12 @@
-<?php get_header(); ?>
+<?php get_header();
 
-<!-- контент -->
-    <div class='content'>
-        <div class='event-header'>
-            <div class='wrap'>
-                <div class='b-top-left'>
-                    <div class='breadcrumbs'>
-                        <span class='current'><a href='<?php echo SITE_URL; ?>'><ins></ins>bitarov.as</a></span>
-                        <span><a href='http://bitarov/fund/'>Благотворительный фонд</a><ins class='r'></ins></span>
-                    </div>
-                    <h2>Благотворительный фонд Александра Битарова</h2>
-                </div>
-                <div class='clear'></div>
-            </div>
-        </div>
-        <div class='event-bottom-img'></div>
+// ----------------------------------------------------------------- Шапка фонда
+ob_start();
+require TEMPLATEPATH . '/fund-header.php';
+$fund_header = ob_get_contents();
+ob_end_clean();
 
-        <div class='wrap'>
-        <div class='overLayer blago' id='messageFundShadow' style='display:none' onclick='messageFundClose()'></div>
-            <div class='fond-header'>
-                <div class='content'>
-                Благотворительная деятельность фонда «Кто, если не Я?» направлена на оказание помощи детям, находящихся в трудной жизненной ситуации, создание благоприятных условий для образования и развития детей-сирот в детских домах и повышение квалификации специалистов, работающих с детьми.
-                </div>
-            </div>
-            <div class='fond-body'>
-                <!-- начало сообщения -->
-                <div class='wrp-send-message'>
-                    <div class='send_message'>
-                        <img src='wp-content/themes/bitarov/images/ico/send_message.png' width='25' height='19' alt='' />
-                        <a href='#' onclick='return messageFundOpen()'>Оставить обращение</a><span>&darr;</span>
-                        <div class='wrp-window-comment' style='display:none' id='messageFundBox'>
-                        <div class='window-comment'>
-                            <a href='#' class='exit' onclick='return messageFundClose()'></a>
-                            <form>
-                                <div class='msg'>
-                                    <textarea name="msg" placeholder='Ваше обращение' onfocus="this.className='active'" onblur="this.className='idle'"></textarea>
-                                </div>
-                                <div class='email'>
-                                    <input type="text" name="email" placeholder='Ваш e-mail' onfocus="this.className='active'" onblur="this.className='idle'" />
-                                </div>
-                                <div class='name'>
-                                    <input type="text" name="name" placeholder='Ваше имя' onfocus="this.className='active'" onblur="this.className='idle'" />
-                                </div>
-                                <div class='phone'>
-                                    <input type="text" name="phone" placeholder='Ваш телефон' onfocus="this.className='active'" onblur="this.className='idle'" />
-                                </div>
-                                <div class='clear'></div>
-                                <div class='send'>
-                                    <input type='submit' value='' />
-                                </div>
-                            </form>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- конец сообщения -->
-                <div class='menu'>
-                    <img src='wp-content/themes/bitarov/images/css/fond-menu-shadow.png' alt='' />
-                    <ul>
-                        <li><a href='/category/fund/' class='current'>Анонсы</a></li>
-                        <li><a href='/category/fund/actions/'>Мероприятия</a></li>
-                        <li><a href='/category/fund/thanks/'>Слова благодарности</a></li>
-                    </ul>
-                </div>
-                <div class='items'>
-<?php
-global $post;
+// ---------------------------------------------------------------------- Анонсы
 $mons = array(
   1  => 'Января',
   2  => 'Февраля',
@@ -80,14 +21,13 @@ $mons = array(
   11 => 'Ноября',
   12 => 'Декабря'
 );
-
 $exclude = array();
 foreach ($subcategories as $subcategory)
  if ($subcategory['id']<>$current_category_id) $exclude[] = $subcategory['id'];
 $args = $wp_query->query_vars;
 $args['category__not_in'] = array_merge($args['category__not_in'], $exclude);
 query_posts($args);
-
+$fund_announces = '';
 while (have_posts())
  {
  the_post();
@@ -97,7 +37,7 @@ while (have_posts())
  else $date = '';
  $title = get_the_title();
  $content = bt_post_content();
- echo <<<HTML
+ $fund_announces .= <<<HTML
                     <dl>
                         <dt><div>$date</div></dt>
                         <dd>
@@ -107,11 +47,25 @@ while (have_posts())
                     </dl>
 HTML;
  }
-?>
+
+// -------------------------------------------------------------- Вывод страницы
+
+echo <<<HTML
+
+<!-- контент -->
+    <div class='content'>
+
+$fund_header
+
+                <div class='items'>
+$fund_announces
                 </div>
             </div>
 
         </div>
     </div>
 
-<?php get_footer(); ?>
+HTML;
+
+get_footer();
+?>
