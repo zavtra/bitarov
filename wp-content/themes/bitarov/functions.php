@@ -1,7 +1,7 @@
 <?php
 
-ini_set('display_errors', 'on');
-error_reporting(E_ALL);
+ini_set('display_errors', 'off');
+error_reporting(0);
 
 require dirname(__FILE__) . '/libpascal.php';
 
@@ -96,11 +96,23 @@ function gen_pages($current_page, $pages_count, $range)
  {
  $left = $current_page - $range;
  $right = $current_page + $range;
- $result = array();
- //if ($left-$range>0) $result[] = '<';
- for ($p=$left; $p<=$right; $p++) if ($p>0 and $p<= $pages_count) $result[] = $p;
- //if ($right+$range<$pages_count) $result[] = '>';
- return $result;
+ $max_range = $range*2+1;
+ $possible_min = $current_page - $max_range - 1;
+ $possible_max = $current_page + $max_range - 1;
+ $pages = array();
+ for ($p=$left; $p<$current_page; $p++) if ($p>0) $pages[] = $p;
+ for ($p=$current_page; $p<=$right; $p++) if ($p<=$pages_count) $pages[] = $p;
+ $pages_generated = count($pages);
+ $pages_need = $max_range - $pages_generated;
+ if ($pages_need<1) return $pages;
+  {
+  $first_page = min($pages);
+  $last_page = max($pages);
+  for ($j=$last_page+1; ($j<=$possible_max and $pages_generated<$max_range); $j++) if ($j<=$pages_count) {$pages[]=$j; $pages_generated++;}
+  for ($j=$first_page-1; ($j>=$possible_min and $pages_generated<$max_range); $j--) if ($j>0) {$pages[]=$j; $pages_generated++;}
+  }
+ sort($pages);
+ return $pages;
  }
 
 function get_years($id_cat)

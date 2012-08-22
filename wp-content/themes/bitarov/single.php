@@ -1,4 +1,6 @@
 <?php
+if (chkget('framed')) require TEMPLATEPATH . '/single-framed.php';
+
 get_header();
 
 // --- Информация о текущем посте

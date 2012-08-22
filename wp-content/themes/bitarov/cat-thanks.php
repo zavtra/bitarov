@@ -1,4 +1,53 @@
-<?php get_header(); ?>
+<?php
+get_header();
+
+$res = db_query("SELECT id, caption, text FROM pref_bt_thanks");
+$slides_count = $res['cnt'] / 4;
+if (is_float($slides_count)) $slides_count = intval($slides_count)+1;
+$thank_slides = '';
+for ($current_slide=1; $current_slide<=$slides_count; $current_slide++)
+ {
+ $miniblock1 = $miniblock2 = $miniblock3 = $miniblock4 = '';
+ for ($j=1; $j<=4; $j++) if (extract(db_result($res, 'i,h,h')))
+  {
+  $var = "$miniblock$j";
+  $$var = <<<HTML
+                                                <dt><img src='wp-content/uploads/thanks/$id.jpg' width='100' height='100' alt='' /></dt>
+                                                <dd>
+                                                    <span class='name'>$caption</span>
+                                                    <span class='text'>$text</span>
+                                                </dd>
+HTML;
+  }
+
+ $thank_slides .= <<<HTML
+                        <div class='slide1'>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                    <td class='miniblock'><dl>
+$miniblock1
+                                    </dl></td>
+                                    <td class='miniblock'><dl>
+$miniblock2
+                                    </dl></td>
+                                    </tr>
+                                    <tr>
+                                    <td class='miniblock'><dl>
+$miniblock3
+                                    </dl></td>
+                                    <td class='miniblock'><dl>
+$miniblock4
+                                    </dl></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+HTML;
+
+ }
+
+echo <<<HTML
 
 <!-- контент -->
     <div class='content'>
@@ -17,21 +66,21 @@
         <div class='event-bottom-img'></div>
 
         <div class='wrap'>
-        <div class='overLayer blago' id='messageFundShadow' style='display:none' onclick='messageFundClose()'></div>
+        <div class='overLayer blago' style='display:none'>
+        </div>
             <div class='fond-header'>
                 <div class='content'>
                 Благотворительная деятельность фонда «Кто, если не Я?» направлена на оказание помощи детям, находящихся в трудной жизненной ситуации, создание благоприятных условий для образования и развития детей-сирот в детских домах и повышение квалификации специалистов, работающих с детьми.
                 </div>
             </div>
             <div class='fond-body'>
-                <!-- начало сообщения -->
                 <div class='wrp-send-message'>
                     <div class='send_message'>
                         <img src='wp-content/themes/bitarov/images/ico/send_message.png' width='25' height='19' alt='' />
-                        <a href='#' onclick='return messageFundOpen()'>Оставить обращение</a><span>&darr;</span>
-                        <div class='wrp-window-comment' style='display:none' id='messageFundBox'>
+                        <a href=''>Оставить обращение</a><span>&darr;</span>
+                        <div class='wrp-window-comment' style='display:none'>
                         <div class='window-comment'>
-                            <a href='#' class='exit' onclick='return messageFundClose()'></a>
+                            <a href='#' class='exit'></a>
                             <form>
                                 <div class='msg'>
                                     <textarea name="msg" placeholder='Ваше обращение' onfocus="this.className='active'" onblur="this.className='idle'"></textarea>
@@ -54,64 +103,29 @@
                         </div>
                     </div>
                 </div>
-                <!-- конец сообщения -->
                 <div class='menu'>
                     <img src='wp-content/themes/bitarov/images/css/fond-menu-shadow.png' alt='' />
                     <ul>
-                        <li><a href='/category/fund/' class='current'>Анонсы</a></li>
-                        <li><a href='/category/fund/actions/'>Мероприятия</a></li>
-                        <li><a href='/category/fund/thanks/'>Слова благодарности</a></li>
+                        <li><a href='/fund/' class='current'>Анонсы</a></li>
+                        <li><a href='/fund/actions/'>Мероприятия</a></li>
+                        <li><a href='/fund/thanks/'>Слова благодарности</a></li>
                     </ul>
                 </div>
                 <div class='items'>
-<?php
-global $post;
-$mons = array(
-  1  => 'Января',
-  2  => 'Февраля',
-  3  => 'Марта',
-  4  => 'Апреля',
-  5  => 'Мая',
-  6  => 'Июня',
-  7  => 'Июля',
-  8  => 'Августа',
-  9  => 'Сентября',
-  10 => 'Октября',
-  11 => 'Ноября',
-  12 => 'Декабря'
-);
+                <div class='slider_container'>
+                    <div id='fond-slider'>
+$thank_slides
+                    </div>
+                    <div class='border-bottom'><img src="wp-content/themes/Bitarov/images/css/bitarov_fond-slova_border_bottom.png" width="1000" height="4" alt="" /></div>
+                </div>
 
-$exclude = array();
-foreach ($subcategories as $subcategory)
- if ($subcategory['id']<>$current_category_id) $exclude[] = $subcategory['id'];
-$args = $wp_query->query_vars;
-$args['category__not_in'] = array_merge($args['category__not_in'], $exclude);
-query_posts($args);
-
-while (have_posts())
- {
- the_post();
- $d = intval(get_post_meta($post->ID, 'bt_fund_announce_d', true));
- $m = intval(get_post_meta($post->ID, 'bt_fund_announce_m', true));
- if (isset($mons[$m]) and $d>=1 and $d<=31) $date = "$d<span>$mons[$m]</span>";
- else $date = '';
- $title = get_the_title();
- $content = bt_post_content();
- echo <<<HTML
-                    <dl>
-                        <dt><div>$date</div></dt>
-                        <dd>
-                            <h3>$title</h3>
-                            <p>$content</p>
-                        </dd>
-                    </dl>
-HTML;
- }
-?>
                 </div>
             </div>
 
         </div>
     </div>
 
-<?php get_footer(); ?>
+HTML;
+
+get_footer();
+?>
