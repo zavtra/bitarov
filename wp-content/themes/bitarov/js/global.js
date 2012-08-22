@@ -62,7 +62,7 @@ $(window).load(function() {
 	});
 
     //jScrollPane v2
-	jQuery('.scroll-pane').jScrollPane();
+	$('.scroll-pane').jScrollPane();
 
     //Scrolling-parallax
 
@@ -109,11 +109,24 @@ $(window).ready(function() {
    }
 });
 
+function commentsOpened()
+ {
+ var api = $('.scroll-pane').data('jsp');
+ if (api) {api.reinitialise(); api.scrollToBottom();}
+ else $(window).scrollTop(getTop(elem('comments')));
+ }
+
+function commentsClosed()
+ {
+ var api = $('.scroll-pane').data('jsp');
+ if (api) api.reinitialise();
+ }
+
 function newcomment()
  {
  var display = $('.wrp-artic-comment').css('display');
- if (display=='none') $('.wrp-artic-comment').fadeIn();
- else $('.wrp-artic-comment').fadeOut();
+ if (display=='none') $('.wrp-artic-comment').fadeIn('fast', commentsOpened);
+ else $('.wrp-artic-comment').fadeOut('fast', commentsClosed);
  return false;
  }
 
