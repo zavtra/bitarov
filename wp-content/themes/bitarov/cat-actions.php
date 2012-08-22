@@ -48,8 +48,9 @@ echo <<<HTML
             <div class='wrap'>
                 <div class='b-top-left'>
                     <div class='breadcrumbs'>
-                        <span class='current'><a href='#'><ins></ins>bitarov.as</a></span>
-                        <span><a href='#'>Благотворительный фонд</a><ins class='r'></ins></span>
+                        <span class='current'><a href='/'><ins></ins>bitarov.as</a></span>
+                        <span><a href='/category/fund/'>Благотворительный фонд</a><ins class='r'></ins></span>
+                        <span><a href='/category/fund/actions/'>Мероприятия</a><ins class='r'></ins></span>
                     </div>
                     <h2>Благотворительный фонд Александра Битарова</h2>
                 </div>
