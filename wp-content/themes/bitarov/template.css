@@ -346,7 +346,7 @@
         .wrp-activity table {overflow:hidden; margin:0;padding:0; width:100%; height:600px;}
             .wrp-activity .left-menu {overflow:hidden!important;width:251px; height:600px;}
             .wrp-activity table td .content {width:722px;}
-                .scroll-container-main {height:600px; width: 729px; position:relative; z-index:999; background:url('images/css/activity_content-item-bordertop.png') 0 top repeat-x;}
+                .scroll-container-main {height:600px; width: 729px; position:relative; z-index:1; background:url('images/css/activity_content-item-bordertop.png') 0 top repeat-x;}
                     .scroll-container-main .scroll-pane {position:relative; z-index:1; overflow:hidden; height:600px;}
                         .wrp-activity .fade img {position:absolute; bottom:0; right:10px; z-index:9999; width:710px;}
 
@@ -360,7 +360,7 @@
          .slider_container .border-bottom {width:100%; margin:0 0 0 1px;}
 
     /* Окно обращение с overlay */
-    .overLayer {height:100%; width:102%; margin:0 -8px; position:absolute; z-index:1; display:block; left:0; top:0; opacity:0.97; filter: alpha(opacity = 97); background:url('images/css/Overlayer_bg.png');}
+    .overLayer {height:100%; width:102%; margin:0 -8px; position:absolute; z-index:1000; display:block; left:0; top:0; opacity:0.97; filter: alpha(opacity = 97); background:url('images/css/Overlayer_bg.png');}
         .overLayer.blago {}
         .overLayer.smi {position:absolute; display:none; width:100%; left:17px;}
             .wrp-window-comment {width:504px; height:227px; display:block; padding:15px 16px 12px 14px; position:absolute; z-index:1000; left:0px; top:25px; background:url('images/css/window-comment_bg.png') no-repeat;}
@@ -369,18 +369,18 @@
                     .window-comment .exit:hover {background:url('images/css/buttons-pack.png') -186px -44px no-repeat; text-decoration:none;}
                     .window-comment .exit:active {background:url('images/css/buttons-pack.png') -186px -87px no-repeat;}
                     .window-comment form .msg textarea {width:491px; height:116px; resize:vertical; max-height:116px; padding:11px 0 0 10px; font:14px 'Arial'; margin-bottom:16px; -webkit-box-shadow:2px 2px 1px #e8e8e8 inset; -moz-box-shadow:2px 2px 1px #e8e8e8 inset; box-shadow:2px 2px 1px #e8e8e8 inset;  border-left:1px solid #cfd6d7; border-top:1px solid #cfd6d7; border-right:1px solid #c0c8d0; border-bottom:1px solid #c0c8d0;}
-                        .window-comment form .msg:hover textarea {border:1px solid #0088c0;}
-                        .window-comment form .msg .active {border:1px solid #0088c0; color:#000;}
+                        .window-comment form .msg:hover textarea {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8;}
+                        .window-comment form .msg .active {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8; color:#000; -webkit-box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95); -moz-box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95); box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95);}
                         .window-comment form textarea {color:#7b848d;}
                     .window-comment form input {font:13px 'Arial'; padding-left:11px; border-left:1px solid #cfd6d7; border-top:1px solid #cfd6d7; border-right:1px solid #c0c8d0; border-bottom:1px solid #c0c8d0;}
                         .window-comment form input {color:#7b848d; -webkit-box-shadow:2px 2px 1px #e8e8e8 inset; -moz-box-shadow:2px 2px 1px #e8e8e8 inset; box-shadow:2px 2px 1px #e8e8e8 inset;}
-                        .window-comment form .active {border:1px solid #0088c0; color:#000;}
+                        .window-comment form .active {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8; color:#000; -webkit-box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95); -moz-box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95); box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95);}
                             .window-comment form .name input {width:139px; height:22px; float:left; margin-right:23px;}
-                                .window-comment form .name:hover input {border:1px solid #0088c0;}
+                                .window-comment form .name:hover input {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8;}
                             .window-comment form .phone input {width:139px; height:22px; float:left;}
-                                .window-comment form .phone:hover input {border:1px solid #0088c0;}
+                                .window-comment form .phone:hover input {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8;}
                             .window-comment form .email input {width:139px; height:22px; float:right;}
-                                .window-comment form .email:hover input {border:1px solid #0088c0;}
+                                .window-comment form .email:hover input {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8;}
                             .window-comment form .send {margin:13px 0 0 0px; width:148px;}
                                 .window-comment form .send input {width:148px; height:35px; box-shadow:none; border:none; background:url('images/css/buttons-pack.png') -4px -2px no-repeat;}
                                 .window-comment form .send:hover input {background:url('images/css/buttons-pack.png') -4px -43px no-repeat; cursor:pointer;}
@@ -513,7 +513,7 @@
             .not_found .message .back a:hover {border:none; color:#22a7e3;}
 
 /*  Подвал!  */
-    .footer {position:absolute; z-index:50; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
+    .footer {position:absolute; z-index:1001; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
         .footer .wrap {padding-top:31px;}
             .vendor {float:right; width:235px; margin-top:5px; text-align:right; font:13px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .vendor a {color:#1572c6;}
