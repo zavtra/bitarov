@@ -232,6 +232,7 @@
         .fond-header .content {max-height:70px; width:593px; color:#000; font:13px 'Arial'; line-height:16px;}
     .fond-body {position:relative; padding-bottom: 50px;}
             .wrp-send-message .send_message {position:relative;}
+                .wrp-send-message .send_message .send_ok {display:block; font-size:13px; width:300px; background:url(images/ico/200ok.png) no-repeat; color:#5aa700; padding:3px 0 5px 30px; margin:20px 0 0 0;}
                 .wrp-send-message .send_message img {float:left; margin-right:5px;}
                 .wrp-send-message .send_message a {border-bottom:1px dotted #0088c0; color:#0088c0; text-decoration:none;font:14px 'Arial';}
                 .wrp-send-message .send_message a:hover {border-bottom:none;}
@@ -300,7 +301,7 @@
     .wrp-activity {overflow:hidden; position:relative; height:600px; border-top:1px solid #d9e2e9; border-right:1px solid #d9e2e9; border-bottom:1px solid #d9e2e9; border-left:1px solid #efefef;}
         .wrp-activity .content {position:relative; z-index:999; padding:0 0 200px 0!important; background:url('images/css/activity_content-item-bordertop.png') repeat-x;}
             .independen-item {overflow:hidden; padding:13px 0 25px 22px; width:680px; font:14px 'Arial';}
-                .independen-item .height {padding-bottom:270px;}
+                .independen-item .height {padding-bottom:50px;}
                 .independen-item h1 {margin:0 0 18px 2px; padding:0; font:28px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .independen-item dl {overflow:hidden; margin-bottom:10px;}
                     .independen-item dt {float:left; max-width:259px;}
