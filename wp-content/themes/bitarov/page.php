@@ -1,28 +1,32 @@
-<?php get_header(); ?>
-
-<!-- контент -->
-    <div class='content'>
 <?php
-$bt_page_breadcrumbs = intval(get_post_meta($post->ID, 'bt_page_breadcrumbs', true));
-$bt_page_title = intval(get_post_meta($post->ID, 'bt_page_title', true));
-$page_breadcrumbs = $page_title = '';
-if ($bt_page_breadcrumbs)
- {
- $current_post = $post;
- $breadcrumbs = '';
- while (true)
-  {
-  $link = get_permalink($current_post->ID);
-  $breadcrumbs = "<span><a href='$link'>{$current_post->post_title}</a><ins class='r'></ins></span>$breadcrumbs";
-  if ($current_post->post_parent<1) break;
-  else $current_post = get_post($current_post->post_parent);
-  }
- $breadcrumbs = "<span class='current'><a href='" . SITE_URL . "'><ins></ins>bitarov.as</a></span>$breadcrumbs";
- $page_breadcrumbs = "                    <div class='breadcrumbs'>\n                        $breadcrumbs\n                    </div>\n";
- }
-if ($bt_page_title) $page_title = "                    <h2>{$post->post_title}</h2>";
+get_header();
 
-if ($page_breadcrumbs or $page_title) echo <<<HTML
+// ------------------------------------------------------------ Контент страницы
+the_post();
+$page_content = bt_post_content($post->ID);
+
+// -------------------------------------------------------------- Хлебные крошки
+$breadcrumbs_enabled = intval(get_post_meta($post->ID, 'bt_page_breadcrumbs', true));
+$page_breadcrumbs = '';
+if ($breadcrumbs_enabled)
+ {
+ $page_breadcrumbs = breadcrumbs_page($post);
+ $page_breadcrumbs = <<<HTML
+                    <div class='breadcrumbs'>
+                        $page_breadcrumbs
+                    </div>
+HTML;
+ }
+
+// ---------------------------------------------------------- Заголовок страницы
+$title_enabled = intval(get_post_meta($post->ID, 'bt_page_title', true));
+$page_title = '';
+if ($title_enabled) $page_title = "                    <h2>{$post->post_title}</h2>";
+
+
+// --------------------- Панель навигации (если есть хлеб. крошки или заголовок)
+$navigation_panel = '';
+if ($page_breadcrumbs or $page_title) $navigation_panel = <<<HTML
 <div class='event-header'>
             <div class='wrap'>
                 <div class='b-top-left'>
@@ -35,16 +39,22 @@ $page_title
 <div class='event-bottom-img'></div>
 HTML;
 
-?>
+// -------------------------------------------------------------- Вывод страницы
+
+echo <<<HTML
+<!-- контент -->
+    <div class='content'>
+
+$navigation_panel
+
         <div class='wrap'>
             <div class='contacts'>
-<?php
-the_post();
-the_content();
-?>
+$page_content
             </div>
         </div>
 
     </div>
+HTML;
 
-<?php get_footer(); ?>
+get_footer();
+?>

@@ -1,7 +1,7 @@
 <?php
 
-ini_set('display_errors', 'off');
-error_reporting(0);
+//ini_set('display_errors', 'off'); error_reporting(0);
+ini_set('display_errors', 'on'); error_reporting(E_ALL);
 
 require dirname(__FILE__) . '/libpascal.php';
 
@@ -76,6 +76,40 @@ function get_cat_path($id_cat)
   }
  $result = array_reverse($result);
  return $result;
+ }
+
+function breadcrumbs_category()
+ {
+
+ }
+
+function breadcrumbs_post($post_object)
+ {
+ $siteurl = SITE_URL;
+ $breadcrumbs = "<span class='current'><a href='$siteurl'><ins></ins>bitarov.as</a></span>";
+ foreach (get_cat_path(bt_post_category($post_object->ID)) as $cat)
+  {
+  $breadcrumb_link = get_category_link($cat->term_id);
+  $breadcrumb_text = $cat->name;
+  $breadcrumbs .= "<span><a href='$breadcrumb_link'>$breadcrumb_text</a><ins class='r'></ins></span>";
+  }
+ return $breadcrumbs;
+ }
+
+function breadcrumbs_page($page_object)
+ {
+ $current_page = $page_object;
+ $breadcrumbs = '';
+ while (true)
+  {
+  $link = get_permalink($current_page->ID);
+  $breadcrumbs = "<span><a href='$link'>{$current_page->post_title}</a><ins class='r'></ins></span>$breadcrumbs";
+  if ($current_page->post_parent<1) break;
+  else $current_page = get_post($current_page->post_parent);
+  }
+ $siteurl = SITE_URL;
+ $breadcrumbs = "<span class='current'><a href='$siteurl'><ins></ins>bitarov.as</a></span>$breadcrumbs";
+ return $breadcrumbs;
  }
 
 function bt_installed()
