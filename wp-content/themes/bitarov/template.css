@@ -348,7 +348,7 @@
             .wrp-activity table td .content {width:722px;}
                 .scroll-container-main {height:600px; width: 729px; position:relative; z-index:1; background:url('images/css/activity_content-item-bordertop.png') 0 top repeat-x;}
                     .scroll-container-main .scroll-pane {position:relative; z-index:1; overflow:hidden; height:600px;}
-                        .wrp-activity .fade img {position:absolute; bottom:0; right:10px; z-index:9999; width:710px;}
+                        .wrp-activity .fade img {position:absolute; bottom:0; right:10px; z-index:1000; width:710px;}
 
     /* Слова благодарности! */
     .slider_container {width:1002px;}
@@ -360,10 +360,10 @@
          .slider_container .border-bottom {width:100%; margin:0 0 0 1px;}
 
     /* Окно обращение с overlay */
-    .overLayer {height:100%; width:102%; margin:0 -8px; position:absolute; z-index:1000; display:block; left:0; top:0; opacity:0.97; filter: alpha(opacity = 97); background:url('images/css/Overlayer_bg.png');}
+    .overLayer {height:100%; width:102%; margin:0 -8px; position:absolute; z-index:1001; display:block; left:0; top:0; opacity:0.97; filter: alpha(opacity = 97); background:url('images/css/Overlayer_bg.png');}
         .overLayer.blago {}
         .overLayer.smi {position:absolute; display:none; width:100%; left:17px;}
-            .wrp-window-comment {width:504px; height:227px; display:block; padding:15px 16px 12px 14px; position:absolute; z-index:1000; left:0px; top:25px; background:url('images/css/window-comment_bg.png') no-repeat;}
+            .wrp-window-comment {width:504px; height:227px; display:block; padding:15px 16px 12px 14px; position:absolute; z-index:1002; left:0px; top:25px; background:url('images/css/window-comment_bg.png') no-repeat;}
                 .window-comment {position:relative;}
                     .window-comment .exit {width:33px; height:32px; text-decoration:none; border:none!important; background:url('images/css/buttons-pack.png') -186px -1px no-repeat; top:-32px; right:-31px; position:absolute;}
                     .window-comment .exit:hover {background:url('images/css/buttons-pack.png') -186px -44px no-repeat; text-decoration:none;}
@@ -513,7 +513,7 @@
             .not_found .message .back a:hover {border:none; color:#22a7e3;}
 
 /*  Подвал!  */
-    .footer {position:absolute; z-index:1001; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
+    .footer {position:absolute; z-index:1002; bottom:0px; overflow:hidden; width:100%;height:78px; background:url('images/css/footer-bg.png') repeat-x;}
         .footer .wrap {padding-top:31px;}
             .vendor {float:right; width:235px; margin-top:5px; text-align:right; font:13px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .vendor a {color:#1572c6;}
