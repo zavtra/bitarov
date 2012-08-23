@@ -1,15 +1,13 @@
 <?php get_header(); ?>
-        <div class='event-header'>
-            <div class='wrap'>
-                <div class='b-top-left'><h2>Ошибка 404</h2></div>
-                <div class='clear'></div>
-            </div>
-        </div>
-        <div class='event-bottom-img'></div>
-        <div class='wrap'>
-            <div class='contacts'>
-            Запрашиваемая вами страница не найдена.
+
+    <div class='wrap'>
+        <div class='not_found'>
+            <div class='img'></div>
+            <div class='message'>
+                <h1>Страница не найдена</h1>
+                <div class='back'><span>Вернуться на</span> <a href="/">главную</a></div>
             </div>
         </div>
     </div>
+
 <?php get_footer(); ?>

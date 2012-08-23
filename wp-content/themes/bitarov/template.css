@@ -148,7 +148,7 @@
                     .event-header .breadcrumbs span ins.r {position:absolute; top:0; right:-11px; z-index:9999; width:11px; height:21px;background:url('images/css/breadcrumbs-right.png') no-repeat;}
                     .event-header .breadcrumbs span a ins {position:absolute; top:3px; left:6px;width:14px; height:14px; background:url('images/ico/home.png') no-repeat;}
 
-            .event-header .smi-parts-top {float:right; margin:27px 372px 0 auto;width:233px; font:18px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
+            .event-header .smi-parts-top {float:right; margin:30px 372px -3px auto;width:233px; font:18px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .event-header .smi-parts-top span { }
                     .event-header .smi-parts-top a {display: -moz-inline-box; display: inline-block;padding:3px 10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; color:#000; text-decoration:none; zoom: 1; *display: inline;}
                     .event-header .smi-parts-top a:hover span {border:none;}
@@ -279,10 +279,11 @@
             .smi-body .depiction {color:#8f8f8f;font:12px 'Arial';}
                 .smi-body .depiction .txt {margin:0; padding:2px 0 0 18px;background:url('images/ico/i-text.png') no-repeat;}
                 .smi-body .depiction .avi {margin:0; padding:2px 0 0 21px;background:url('images/ico/i-avi.png') no-repeat;}
-            .smi-body .block p {margin:14px 0 0 0;font:13px 'Arial';}
+            .smi-body .blocklimiter {max-height:139px; max-width:264px; overflow:hidden}
+            .smi-body .block p {margin:14px 0 0 0;font:13px 'Arial'}
             .smi-body .block .read-more {position:absolute; bottom:11px; border-bottom:1px dotted; color:#666666; text-decoration:none;font:13px 'Arial';}
             .smi-body .block .read-more:hover {margin-bottom:1px;border:none;}
-            .smi-body .block .video-more {position:absolute; bottom:11px; padding-left:16px; background:url('images/ico/i-video.png') 0 3px no-repeat; color:#0a8a44; text-decoration:none;font:13px 'Arial';}
+            .smi-body .block .video-more {position:absolute; bottom:11px; padding-left:16px; background:url('images/ico/i-video.png') 0 3px no-repeat; color:#0a8a44; text-decoration:none; font:13px 'Arial';}
                 .smi-body .block .video-more {background-position:0 2px\9;}
                 .smi-body .block .video-more span {border-bottom:1px dotted;}
                 .smi-body .block .video-more:hover span {margin-bottom:1px;border:none;}
@@ -388,14 +389,15 @@
                                 .window-comment form .send:hover input {background:url('images/css/buttons-pack.png') -4px -43px no-repeat; cursor:pointer;}
                                 .window-comment form .send:active input {background:url('images/css/buttons-pack.png') -4px -86px no-repeat;}
     /* ќкно видео с overlay */
-    .video-window {width:973px; height:359px; display:block; position:absolute; z-index:10000; left:10px; top:-57px; margin:0 -10px; padding:26px 21px 23px 21px; background:url('images/css/window-video_bg.png') repeat-x; border-left:1px solid #edf2f4; border-top:1px solid #ebf0f3; border-right:1px solid #ebf0f3; border-bottom:1px solid #e3e9ec;}
-        .video-window .exit {width:27px; height:27px; border:1px solid #000; border:none!important; text-decoration:none; background:url('images/css/video-window-exitt.png') no-repeat; top:17px; right:14px; position:absolute; z-index:999;}
-        .video-window .exit:hover {background:url('images/css/video-window-exitt_hover.png') no-repeat;}
+    .video-window {width:973px; display:block; position:absolute; z-index:10000; left:10px; top:-67px; margin:0 -10px; padding:26px 21px 23px 21px; background:scroll #F7FAFB url('images/css/window-video_bg.png') 0 0 repeat-x; border-left:1px solid #edf2f4; border-top:1px solid #ebf0f3; border-right:1px solid #ebf0f3; border-bottom:1px solid #e3e9ec;}
+        .video-window .exit {width:33px; height:32px; border:1px solid #000; border:none!important; text-decoration:none; background:url('images/css/buttons-pack.png') -186px -1px no-repeat; top:-15px; right:-15px; position:absolute; z-index:999;}
+        .video-window .exit:hover {background-position:-186px -44px}
+        .video-window .exit:active {background-position:-186px -87px}
         .video-window .video-left_b {float:left; width:482px; height:358px; overflow:hidden; position:relative; background:#e7f0f5; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
             .video-left_b img {position:relative; width:482px; height:358px;}
         .video-window .wrp-text-right_b {margin-left:511px; overflow:hidden;}
-            .wrp-text-right_b .scroll-pane {height:355px; overflow:scroll;}
-            .video-window .text-right_b {height:355px; overflow:auto; padding-left:0px;}
+            .wrp-text-right_b .scroll-pane {height:100%; overflow:scroll;}
+            .video-window .text-right_b {height:100%; overflow:auto; padding-left:0px;}
                 .video-window .text-right_b .padding {padding-left:10px;}
                 .text-right_b h1 {font:28px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; color:#333; margin:0 0 4px 4px; width:430px;}
                 .text-right_b .date {font:14px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; color:#666666; margin-bottom:18px;}

@@ -78,9 +78,18 @@ function get_cat_path($id_cat)
  return $result;
  }
 
-function breadcrumbs_category()
+function breadcrumbs_category($category_id)
  {
-
+ $categories_path = get_cat_path($category_id);
+ $siteurl = SITE_URL;
+ $breadcrumbs = "<span class='current'><a href='$siteurl'><ins></ins>bitarov.as</a></span>\n";
+ foreach ($categories_path as $category)
+  {
+  $category_link = get_category_link($category->term_id);
+  $category_name = $category->name;
+  $breadcrumbs .= "                        <span><a href='$category_link'>$category_name</a><ins class='r'></ins></span>\n";
+  }
+ return $breadcrumbs;
  }
 
 function breadcrumbs_post($post_object)
