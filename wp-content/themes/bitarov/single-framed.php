@@ -29,6 +29,11 @@ ob_start();
 comments_template();
 $comments = ob_get_contents();
 ob_end_clean();
+if ($comments) $comments = <<<HTML
+<div class='wrp-send_comment-framed'>
+$comments
+</div>
+HTML;
 
 echo <<<HTML
 
@@ -41,7 +46,6 @@ echo <<<HTML
 $post_content
                                                 <img src='wp-content/themes/bitarov/images/css/activity_content-item-borderbottom.png' width='680' height='3' alt='' />
 $comments
-											<div class='height'></div>
                                             </div>
                                             <div class='clear'></div>
                                             </div>

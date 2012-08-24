@@ -16,10 +16,12 @@ function okmsg($msg, $escape=true)
 <p><strong>$msg</strong></p></div>\r\n";
  }
 
-global $medias;
-$medias = array(
+global $media_types;
+$media_types = array(
   1 => 'Газета',
-  2 => 'Телеканал'
+  2 => 'Телеканал',
+  3 => 'Информ. агентство',
+  4 => 'Веб-сайт'
 );
 
 // ------------------------------------------------------------------- Настройки
@@ -340,7 +342,7 @@ HTML;
 
 function bt_media()
  {
- global $medias;
+ global $media_types;
  $okmsg = '';
 
  if (chkget('del'))
@@ -353,7 +355,7 @@ function bt_media()
   {
   extract(ep('savemedia>id_media>i,name,typ>>i'));
   if (!chklen($name, 2, 50)) return print errmsg('Название источника информации  должно иметь длину от 2 до 50 символов');
-  if (!isset($medias[$typ])) return print errmsg('Тип источника информации  должно иметь длину от 2 до 50 символов');
+  if (!isset($media_types[$typ])) return print errmsg('Тип источника информации  указан неверно');
   db_query("UPDATE pref_bt_media SET typ='?1', name='?2' WHERE id='?3'", $typ, $name, $id_media);
   $okmsg = okmsg('Источник информации сохранён');
   }
@@ -364,7 +366,7 @@ function bt_media()
   $res =db_query("SELECT typ, name FROM pref_bt_media WHERE id='?1'", $id_media);
   if ($res['cnt']<1) return print errmsg('Указанный вами источник информации не существует');
   extract(db_result($res, 'i,h'));
-  $sel_medias = optlist($medias, $typ);
+  $sel_medias = optlist($media_types, $typ);
   return print <<<HTML
 <form method='POST' action='?page=bt_media' class='wrap'><input type='hidden' name='savemedia' value='$id_media'>
   <div id='icon-options-general' class='icon32'></div>
@@ -381,8 +383,8 @@ HTML;
  if (chkpost('addmedia,typ'))
   {
   extract(ep('addmedia>id_media>i,name,typ>>i'));
-  if (!chklen($name, 2, 50)) return print errmsg('Название источника информации  должно иметь длину от 2 до 50 символов');
-  if (!isset($medias[$typ])) return print errmsg('Тип источника информации  должно иметь длину от 2 до 50 символов');
+  if (!chklen($name, 2, 50)) return print errmsg('Название источника информации должно иметь длину от 2 до 50 символов');
+  if (!isset($media_types[$typ])) return print errmsg('Тип источника информации указан неверно');
   if ($id_media<0) return print errmsg('Идентификатор источника информации не может быть отрицательным');
   if (extract(db_result(db_query("SELECT name AS namex FROM pref_bt_media WHERE id='?1'", $id_media), 'h'))) return print errmsg("Источник информации с идентификатором $id_media уже занят источником $namex");
   db_insert('bt_media', $id_media, $typ, $name);
@@ -391,7 +393,7 @@ HTML;
 
  if (chkget('new'))
   {
-  $sel_medias = optlist($medias);
+  $sel_types = optlist($media_types);
   extract(db_result(db_query("SELECT max(id)+1 AS id_media FROM pref_bt_media")));
   return print <<<HTML
 <form method='POST' action='?page=bt_media' class='wrap'>
@@ -399,7 +401,7 @@ HTML;
   <h2>Список СМИ &raquo; Новый источник информации</h2>
   <table>
   <tr><td>Название:</td><td><input type='text' size='50' name='name'></td></tr>
-  <tr><td>Тип:</td><td><select name='typ'>$sel_medias</select></td></tr>
+  <tr><td>Тип:</td><td><select name='typ'>$sel_types</select></td></tr>
   <tr><td>ID:</td><td><input type='text' name='addmedia' value='$id_media' size='3'></td></tr>
   <tr><td colspan='2'><input type='submit' class='button-primary' value='Добавить'></td></tr>
   </table>
@@ -409,7 +411,7 @@ HTML;
 
  $media_list = '';
  $res = db_query("SELECT id AS id_media, typ, name FROM pref_bt_media ORDER BY typ, id");
- while (extract(db_result($res, 'i,i,h'))) $media_list .= "  <li>$name ($medias[$typ]) &nbsp;&nbsp;&nbsp; [ <a href='?page=bt_media&edit=$id_media'>Редактировать</a> | <a href='?page=bt_media&del=$id_media' onclick=\"return confirm('Вы действительно хотите удалить этот источник информации?')\">Удалить</a> ]</li>\n";
+ while (extract(db_result($res, 'i,i,h'))) $media_list .= "  <li>$name ($media_types[$typ]) &nbsp;&nbsp;&nbsp; [ <a href='?page=bt_media&edit=$id_media'>Редактировать</a> | <a href='?page=bt_media&del=$id_media' onclick=\"return confirm('Вы действительно хотите удалить этот источник информации?')\">Удалить</a> ]</li>\n";
  echo <<<HTML
 <div method='POST' class='wrap'>
   <div id='icon-options-general' class='icon32'></div>
@@ -489,13 +491,15 @@ HTML;
 
 function bt_media_metabox($post)
  {
- global $medias;
+ global $media_types;
  $res = db_query("SELECT id, typ, name FROM pref_bt_media ORDER BY typ, id");
  $mediaz = array(0=>'<Не выбрано>', -1=>'<Новый источник>');
- while (extract(db_result($res, 'i,i,h'))) $mediaz[$id] = "$name ($medias[$typ])";
+ while (extract(db_result($res, 'i,i,h'))) $mediaz[$id] = "$name ($media_types[$typ])";
  $bt_id_media = intval(get_post_meta($post->ID, 'bt_id_media', true));
  $sel_medias = optlist($mediaz, $bt_id_media);
- $media_types = optlist($medias);
+ $media_types = optlist($media_types);
+ $bt_youtube_id = htmltext(get_post_meta($post->ID, 'bt_youtube_id', true));
+ $youtube_link = $bt_youtube_id ? "http://www.youtube.com/watch?v=$bt_youtube_id" : '';
 
  echo <<<HTML
 <script type='text/javascript'>
@@ -522,6 +526,7 @@ function chmedia(sel)
 <tr><td>Источник информации:</td><td><select name='bt_id_media' onchange='chmedia(this)'>$sel_medias</select></td></tr>
 <tr id='new1' style='display:none'><td>Название:</td><td><input type='text' name='newmedia' size='35'></td></tr>
 <tr id='new2' style='display:none'><td>Тип:</td><td><select name='typ'>$media_types</select></td></tr>
+<tr><td>Ссылка Youtube:</td><td><input type='text' name='youtube_link' value='$youtube_link' size='55'></td></tr>
 </table>
 HTML;
  }
@@ -604,6 +609,18 @@ function bt_post_saved($id_post)
   }
  if ($id_media>0) update_post_meta($id_post, 'bt_id_media', $id_media);
  else delete_post_meta($id_post, 'bt_id_media');
+ // Youtube ↓
+ $bt_youtube_id = '';
+ if (chkpost('youtube_link'))
+  {
+  $youtube_link = stripslashes($_POST['youtube_link']);
+  if (preg_match('/^(https?\:\/\/)?(www\.)?youtube\.com\/.*[\?\&]v\=([a-z0-9\_\.\-\%]{8,16})(\&|$)/i', $youtube_link, $m)) $bt_youtube_id = $m[3];
+  elseif (preg_match('/^(https?\:\/\/)?(www\.)?youtu\.be\/([a-z0-9\_\.\-\%]{8,16})$/i', $youtube_link, $m)) $bt_youtube_id = $m[3];
+  elseif (preg_match('/^(https?\:\/\/)?(www\.)?youtube\.com\/embed\/([a-z0-9\_\.\-\%]{8,16})$/i', $youtube_link, $m)) $bt_youtube_id = $m[3];
+  elseif (preg_match('/^[a-z0-9\_\.\-\%]{8,16}$/i', $youtube_link, $m)) $bt_youtube_id = $m[0];
+  }
+ if ($bt_youtube_id) update_post_meta($id_post, 'bt_youtube_id', $bt_youtube_id);
+ else delete_post_meta($id_post, 'bt_youtube_id');
 
  // --- Благотворительный фонд, анонс
  if (chkpost('bt_fund_announce_d,bt_fund_announce_m'))

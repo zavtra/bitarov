@@ -44,11 +44,11 @@ HTML;
             <div class='contacts'>
                 <div class='wrp-karta'>
                     <div class='karta'>
-<!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (начало) -->
+<!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (начало)
 <div id="ymaps-map-id_1345180514674467712684"></div>
 <script type="text/javascript">function fid_1345180514674467712684(ymaps) {var map = new ymaps.Map("ymaps-map-id_1345180514674467712684", {center: [104.30181382006826, 52.27906285872691], zoom: 16, type: "yandex#map"});map.controls.add("smallZoomControl");map.geoObjects.add(new ymaps.Placemark([104.30181382006826, 52.27906285872691]));};</script>
 <script type="text/javascript" src="http://api-maps.yandex.ru/2.0/?coordorder=longlat&load=package.full&wizard=constructor&lang=ru-RU&onload=fid_1345180514674467712684"></script>
-<!-- Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (конец) -->
+ Этот блок кода нужно вставить в ту часть страницы, где вы хотите разместить карту (конец) -->
 
                     </div>
                 </div>
@@ -63,7 +63,7 @@ the_content();
                         <a href="">Оставить обращение</a>
                         <span>↓</span>
                         <span class='send_ok' style='display:block;'>Ваше обращение успешно отправлено</span>
-                        <div class="wrp-window-comment" style="display:none">
+                        <div class="wrp-window-comment" style="display:block">
                             <div class="window-comment">
                                 <a class="exit" href="#"></a>
                             <form>

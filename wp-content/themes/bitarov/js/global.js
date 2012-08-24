@@ -62,30 +62,40 @@ $(window).load(function() {
 	});
 
     //jScrollPane v2
-	jQuery('.scroll-pane').jScrollPane();
+	$('.scroll-pane').jScrollPane();
 
     //Scrolling-parallax
 
-    $(window).scroll(function() {
-        if (!fixed_div) return;
-        var top = $(window).scrollTop();
-        if (top>fixed_top)
-         {
-         if (fixed_fix) return;
-         fixed_fix = true;
-         fixed_div.style.position = 'fixed';
-         $('#wrap-fixed').css('top', '-'+fixed_top+'px');
-         }
-        else
-         {
-         if (!fixed_fix) return;
-         fixed_fix = false;
-         fixed_div.style.position = 'absolute';
-         $('#wrap-fixed').css('top', '0');
-         }
-    });
+    $(window).scroll(windowScrolled);
+    $(window).resize(windowResized);
 
 });
+
+function windowScrolled()
+ {
+ if (!fixed_div) return;
+ var top = $(window).scrollTop();
+ if (top>fixed_top)
+  {
+  if (fixed_fix) return;
+  fixed_fix = true;
+  fixed_div.style.position = 'fixed';
+  $('#wrap-fixed').css('top', '-'+fixed_top+'px');
+  }
+ else
+  {
+  if (!fixed_fix) return;
+  fixed_fix = false;
+  fixed_div.style.position = 'absolute';
+  $('#wrap-fixed').css('top', '0');
+ }
+}
+
+function windowResized()
+ {
+ // Если открыто окно просмотра СМИ
+ mediaWindowSetSize();
+ }
 
 fixed_div = null;
 fixed_top = 0;
@@ -109,20 +119,36 @@ $(window).ready(function() {
    }
 });
 
+function commentsOpened()
+ {
+ var api = $('.scroll-pane').data('jsp');
+ if (api) {api.reinitialise(); api.scrollToBottom();}
+ else $(window).scrollTop(getTop(elem('comments')));
+ }
+
+function commentsClosed()
+ {
+ var api = $('.scroll-pane').data('jsp');
+ if (api) api.reinitialise();
+ }
+
 function newcomment()
  {
  var display = $('.wrp-artic-comment').css('display');
- if (display=='none') $('.wrp-artic-comment').fadeIn();
- else $('.wrp-artic-comment').fadeOut();
+ if (display=='none') $('.wrp-artic-comment').fadeIn('fast', commentsOpened);
+ else $('.wrp-artic-comment').fadeOut('fast', commentsClosed);
  return false;
  }
 
-function getTop(obj)
+function getTop(elem)
  {
- if (!obj) return 0;
- objTop = parseInt(obj.offsetTop);
- if (isNaN(objTop)) objTop = 0;
- return objTop + getTop(obj.parentNode);
+ var result = 0;
+ while (elem)
+  {
+  result += parseInt(elem.offsetTop);
+  elem = elem.offsetParent;
+  }
+ return result;
  }
 
 function shadowResize()
@@ -156,6 +182,30 @@ function messageFundOpen()
  $('#messageFundShadow').css('display', 'block');
  $('#messageFundBox').slideDown(200);
  return false;
+ }
+
+current_media_id = 0;
+function watchmedia(id_post)
+ {
+ current_media_id = id_post;
+ elem('video-'+id_post).style.display = 'block';
+ mediaWindowSetSize();
+ }
+
+function mediaWindowSetClose()
+ {
+ $('#video-'+current_media_id).fadeOut('fast');
+ current_media_id = 0;
+ return false;
+ }
+
+function mediaWindowSetSize()
+ {
+ if (current_media_id<1) return;
+ var new_height = getTop($('.footer')[0]) - getTop(elem('video-'+current_media_id)) - 51;
+ $('#video-'+current_media_id).height(new_height);
+ $('.text-right_b').height(new_height-10);
+ $('.scroll-pane').jScrollPane();
  }
 
 // -------------------------------------------------- Показать предыдущие записи
