@@ -36,7 +36,7 @@
 }
 /* Шапка! */
 .wrap {position:relative; margin:0 auto; padding: 0 10px 0 10px; width:1000px;}
-.container {position:relative; min-height:100%; height:100%; height:auto!important;}
+.container {position:relative; min-height:100%; height:100%; height:auto!important; overflow:hidden;}
     .header {position:relative; z-index:10000; height:102px; background:url('images/css/header-bg.png') repeat-x; font:17px PFDinTextCondPro-b, Arial;}
             .header .wrap {min-height:102px; width:1000px; overflow:hidden;}
 				/*Эту хрень потом надо удалить*/
@@ -270,7 +270,7 @@
                     .vista_item .number_comment a {color:#9ab17c;}
 
     /* Сми! */
-    .smi-body {margin-top:25px; padding-bottom:10px; position:relative;}
+    .smi-body {margin-top:25px; padding-bottom:50px; position:relative;}
         .smi-body .block {position:relative; float:left; margin:0 25px 23px 0; padding:13px 25px 9px 14px;width:264px; height:161px; border:1px solid #cfdde8; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px; background:#f9fdff; -webkit-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); -moz-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); box-shadow:1px 1px 1px rgba(239, 241, 243, 1);}
         .smi-body .block:hover {border:1px solid #bdccd8;-webkit-box-shadow: 2px 2px 5px rgba(234, 237, 239, 0.9); -moz-box-shadow:2px 2px 5px rgba(234, 237, 239, 0.9); box-shadow:2px 2px 5px rgba(234, 237, 239, 0.9);}
             .smi-body .block h3 {margin:0 0 10px 0;font:18px 'Arial', 'Myriad Pro'; width: 275px; line-height:18px;}
@@ -378,11 +378,14 @@
                     .window-comment form input {font:13px 'Arial'; padding-left:11px; border-left:1px solid #cfd6d7; border-top:1px solid #cfd6d7; border-right:1px solid #c0c8d0; border-bottom:1px solid #c0c8d0;}
                         .window-comment form input {color:#7b848d; -webkit-box-shadow:2px 2px 1px #e8e8e8 inset; -moz-box-shadow:2px 2px 1px #e8e8e8 inset; box-shadow:2px 2px 1px #e8e8e8 inset;}
                         .window-comment form .active {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8; color:#000; -webkit-box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95); -moz-box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95); box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95);}
-                            .window-comment form .name input {width:139px; height:22px; float:left; margin-right:23px;}
+                        .window-comment form .name {display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin:0 19px 0 0;}
+                            .window-comment form .name input {width:139px; height:22px;}
                                 .window-comment form .name:hover input {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8;}
-                            .window-comment form .phone input {width:139px; height:22px; float:left;}
+                        .window-comment form .phone {display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin:0;}
+                            .window-comment form .phone input {width:139px; height:22px;}
                                 .window-comment form .phone:hover input {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8;}
-                            .window-comment form .email input {width:139px; height:22px; float:right;}
+                        .window-comment form .email {display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin:0 20px 0 0;}
+                            .window-comment form .email input {width:139px; height:22px;}
                                 .window-comment form .email:hover input {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8;}
                             .window-comment form .send {margin:13px 0 0 0px; width:148px;}
                                 .window-comment form .send input {width:148px; height:35px; box-shadow:none; border:none; background:url('images/css/buttons-pack.png') -4px -2px no-repeat;}
@@ -399,13 +402,17 @@
             .wrp-text-right_b .scroll-pane {height:100%; overflow:scroll;}
             .video-window .text-right_b {height:100%; overflow:auto; padding-left:0px;}
                 .video-window .text-right_b .padding {padding-left:10px;}
-                .text-right_b h1 {font:28px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; color:#333; margin:0 0 4px 4px; width:430px;}
-                .text-right_b .date {font:14px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; color:#666666; margin-bottom:18px;}
-                .text-right_b p {font:16px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; line-height:18px; color:#222; margin-bottom:12px;}
-                .video-window .text-right_b .jspVerticalBar {left:0;}
-                .video-window .text-right_b .jspPane {margin-left:10px!important;}
+                .text-right_b h1, .wrp-text .text h1 {font:28px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; color:#333; margin:0 0 4px 4px; width:430px;}
+                .text-right_b .date, .wrp-text .text .date {font:14px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; color:#666666; margin-bottom:18px;}
+                .text-right_b p, .wrp-text .text p {font:16px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; line-height:18px; color:#222; margin-bottom:12px;}
+                .video-window .text-right_b .jspVerticalBar, .wrp-text .text .jspVerticalBar {right:0;}
+                .video-window .text-right_b .jspPane,.wrp-text .text .jspPane {margin-left:10px!important;}
+    /* Окно текста с overlay */
+    .wrp-text {width:974px; overflow:hidden;}
+        .wrp-text .scroll-pane {height:100%; overflow:scroll;}
+        .wrp-text .text {height:100%; overflow:auto; padding-left:0px;}
     /* Контакты */
-    .contacts {margin-top:25px;}
+    .contacts {margin-top:25px; min-height:500px;}
         .wrp-karta {float:right; width:605px; margin:6px 79px 0 0; height:282px; background:url('images/css/karta_bg.png') 0 0px no-repeat;}
             .karta div {width:600px; height:277px; margin:-3px 0 0 -6px; border:1px solid #e1ddce;}
         .rekviziti {float:left; width:224px;}

@@ -63,26 +63,27 @@ the_content();
                         <a href="">Оставить обращение</a>
                         <span>↓</span>
                         <span class='send_ok' style='display:block;'>Ваше обращение успешно отправлено</span>
-                        <div class="wrp-window-comment" style="display:block">
+                        <div class="wrp-window-comment" style="display:block" id='messageFundBox'>
                             <div class="window-comment">
-                                <a class="exit" href="#"></a>
+                                <a class="exit" href="#" onclick='return messageFundClose()'></a>
                             <form>
                             <div class="msg">
-                                <textarea onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваше обращение" name="msg"></textarea>
+                                <textarea name="msg" placeholder='Ваше обращение' onfocus="this.className='active'" onblur="this.className='idle'"></textarea>
                             </div>
                             <div class="email">
-                                <input type="text" onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваш e-mail" name="email">
+                                <input type="text" name="email" placeholder='Ваш e-mail' onfocus="this.className='active'" onblur="this.className='idle'">
                             </div>
                             <div class="name">
-                                <input type="text" onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваше имя" name="name">
+                                <input type="text" name="name" placeholder='Ваше имя' onfocus="this.className='active'" onblur="this.className='idle'">
                             </div>
                             <div class="phone">
-                                <input type="text" onblur="this.className='idle'" onfocus="this.className='active'" placeholder="Ваш телефон" name="phone">
+                                <input type="text" name="phone" placeholder='Ваш телефон' onfocus="this.className='active'" onblur="this.className='idle'">
                             </div>
                             <div class="clear"></div>
                             <div class="send">
                                 <input type="submit" value="">
                             </div>
+                            <img src='wp-content/themes/bitarov/images/css/feedback-loader.gif' style='position:absolute; left:470px; top:190px'>
                             </form>
                             </div>
                         </div>
