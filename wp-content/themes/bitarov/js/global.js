@@ -1,76 +1,87 @@
+// РќР°С‡Р°Р»Рѕ Р·Р°РіСЂСѓР·РєРё СЃС‚СЂР°РЅРёС†С‹
 $(window).load(function() {
 
-// Orbit Slider
-     $('#featured').orbit({
-     animation: 'horizontal-slide',        // вид анимации: fade, horizontal-slide, vertical-slide, horizontal-push
-     animationSpeed: 400,                // скорость анимации в мс
-     timer: false,              // показывать таймер: true или false
-     advanceSpeed: 4000,          // если таймер включен, то указывается время между переходами в мс
-     pauseOnHover: false,          // пауза слайдера при наведении курсора
-     startClockonmouseout: true,      // запускать часы при выводе курсора из области слайдера
-     startClockonmouseoutAfter: 1,      // через какое время после вывода курсора из области слайдера таймер запустится
-     directionalNav: true,          // ручная навигация
-     captions: true,              // использовать заголовки?
-     captionAnimation: 'slideOpen',          // анимация для заголовков: fade, slideOpen, none
-     captionAnimationSpeed: 800,      // скорость анимации заголовков в мс
-     bullets: true,             // true или false для активации навигации с миниатюрами
-     bulletThumbs: false,         // миниатюры для "точек"
-     bulletThumbLocation: '',         // путь до местонахождения миниатюр
-     afterSlideChange: function(){}      // пустая функция
-	});
+  // РЎР»Р°Р№РґРµСЂ РЅР° РіР»Р°РІРЅРѕР№
+  $('#featured').orbit({
+    animation: 'horizontal-slide',        // РІРёРґ Р°РЅРёРјР°С†РёРё: fade, horizontal-slide, vertical-slide, horizontal-push
+    animationSpeed: 400,                // СЃРєРѕСЂРѕСЃС‚СЊ Р°РЅРёРјР°С†РёРё РІ РјСЃ
+    timer: false,              // РїРѕРєР°Р·С‹РІР°С‚СЊ С‚Р°Р№РјРµСЂ: true РёР»Рё false
+    advanceSpeed: 4000,          // РµСЃР»Рё С‚Р°Р№РјРµСЂ РІРєР»СЋС‡РµРЅ, С‚Рѕ СѓРєР°Р·С‹РІР°РµС‚СЃСЏ РІСЂРµРјСЏ РјРµР¶РґСѓ РїРµСЂРµС…РѕРґР°РјРё РІ РјСЃ
+    pauseOnHover: false,          // РїР°СѓР·Р° СЃР»Р°Р№РґРµСЂР° РїСЂРё РЅР°РІРµРґРµРЅРёРё РєСѓСЂСЃРѕСЂР°
+    startClockonmouseout: true,      // Р·Р°РїСѓСЃРєР°С‚СЊ С‡Р°СЃС‹ РїСЂРё РІС‹РІРѕРґРµ РєСѓСЂСЃРѕСЂР° РёР· РѕР±Р»Р°СЃС‚Рё СЃР»Р°Р№РґРµСЂР°
+    startClockonmouseoutAfter: 1,      // С‡РµСЂРµР· РєР°РєРѕРµ РІСЂРµРјСЏ РїРѕСЃР»Рµ РІС‹РІРѕРґР° РєСѓСЂСЃРѕСЂР° РёР· РѕР±Р»Р°СЃС‚Рё СЃР»Р°Р№РґРµСЂР° С‚Р°Р№РјРµСЂ Р·Р°РїСѓСЃС‚РёС‚СЃСЏ
+    directionalNav: true,          // СЂСѓС‡РЅР°СЏ РЅР°РІРёРіР°С†РёСЏ
+    captions: true,              // РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р·Р°РіРѕР»РѕРІРєРё?
+    captionAnimation: 'slideOpen',          // Р°РЅРёРјР°С†РёСЏ РґР»СЏ Р·Р°РіРѕР»РѕРІРєРѕРІ: fade, slideOpen, none
+    captionAnimationSpeed: 800,      // СЃРєРѕСЂРѕСЃС‚СЊ Р°РЅРёРјР°С†РёРё Р·Р°РіРѕР»РѕРІРєРѕРІ РІ РјСЃ
+    bullets: true,             // true РёР»Рё false РґР»СЏ Р°РєС‚РёРІР°С†РёРё РЅР°РІРёРіР°С†РёРё СЃ РјРёРЅРёР°С‚СЋСЂР°РјРё
+    bulletThumbs: false,         // РјРёРЅРёР°С‚СЋСЂС‹ РґР»СЏ "С‚РѕС‡РµРє"
+    bulletThumbLocation: '',         // РїСѓС‚СЊ РґРѕ РјРµСЃС‚РѕРЅР°С…РѕР¶РґРµРЅРёСЏ РјРёРЅРёР°С‚СЋСЂ
+    afterSlideChange: function(){}      // РїСѓСЃС‚Р°СЏ С„СѓРЅРєС†РёСЏ
+  });
 
-// Orbit Slider
-     $('#fond-slider').orbit({
-     animation: 'horizontal-slide',        // вид анимации: fade, horizontal-slide, vertical-slide, horizontal-push
-     animationSpeed: 300,                // скорость анимации в мс
-     timer: false,              // показывать таймер: true или false
-     advanceSpeed: 4000,          // если таймер включен, то указывается время между переходами в мс
-     pauseOnHover: true,          // пауза слайдера при наведении курсора
-     startClockonmouseout: true,      // запускать часы при выводе курсора из области слайдера
-     startClockonmouseoutAfter: 1,      // через какое время после вывода курсора из области слайдера таймер запустится
-     directionalNav: true,          // ручная навигация
-     captions: true,              // использовать заголовки?
-     captionAnimation: 'slideOpen',          // анимация для заголовков: fade, slideOpen, none
-     captionAnimationSpeed: 800,      // скорость анимации заголовков в мс
-     bullets: false,             // true или false для активации навигации с миниатюрами
-     bulletThumbs: false,         // миниатюры для "точек"
-     bulletThumbLocation: '',         // путь до местонахождения миниатюр
-     afterSlideChange: function(){}      // пустая функция
-	});
+  // РЎР»Р°Р№РґРµСЂ Р±Р»Р°РіРѕРґР°СЂРЅРѕСЃС‚РµР№
+  $('#fond-slider').orbit({
+    animation: 'horizontal-slide',        // РІРёРґ Р°РЅРёРјР°С†РёРё: fade, horizontal-slide, vertical-slide, horizontal-push
+    animationSpeed: 300,                // СЃРєРѕСЂРѕСЃС‚СЊ Р°РЅРёРјР°С†РёРё РІ РјСЃ
+    timer: false,              // РїРѕРєР°Р·С‹РІР°С‚СЊ С‚Р°Р№РјРµСЂ: true РёР»Рё false
+    advanceSpeed: 4000,          // РµСЃР»Рё С‚Р°Р№РјРµСЂ РІРєР»СЋС‡РµРЅ, С‚Рѕ СѓРєР°Р·С‹РІР°РµС‚СЃСЏ РІСЂРµРјСЏ РјРµР¶РґСѓ РїРµСЂРµС…РѕРґР°РјРё РІ РјСЃ
+    pauseOnHover: true,          // РїР°СѓР·Р° СЃР»Р°Р№РґРµСЂР° РїСЂРё РЅР°РІРµРґРµРЅРёРё РєСѓСЂСЃРѕСЂР°
+    startClockonmouseout: true,      // Р·Р°РїСѓСЃРєР°С‚СЊ С‡Р°СЃС‹ РїСЂРё РІС‹РІРѕРґРµ РєСѓСЂСЃРѕСЂР° РёР· РѕР±Р»Р°СЃС‚Рё СЃР»Р°Р№РґРµСЂР°
+    startClockonmouseoutAfter: 1,      // С‡РµСЂРµР· РєР°РєРѕРµ РІСЂРµРјСЏ РїРѕСЃР»Рµ РІС‹РІРѕРґР° РєСѓСЂСЃРѕСЂР° РёР· РѕР±Р»Р°СЃС‚Рё СЃР»Р°Р№РґРµСЂР° С‚Р°Р№РјРµСЂ Р·Р°РїСѓСЃС‚РёС‚СЃСЏ
+    directionalNav: true,          // СЂСѓС‡РЅР°СЏ РЅР°РІРёРіР°С†РёСЏ
+    captions: true,              // РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р·Р°РіРѕР»РѕРІРєРё?
+    captionAnimation: 'slideOpen',          // Р°РЅРёРјР°С†РёСЏ РґР»СЏ Р·Р°РіРѕР»РѕРІРєРѕРІ: fade, slideOpen, none
+    captionAnimationSpeed: 800,      // СЃРєРѕСЂРѕСЃС‚СЊ Р°РЅРёРјР°С†РёРё Р·Р°РіРѕР»РѕРІРєРѕРІ РІ РјСЃ
+    bullets: false,             // true РёР»Рё false РґР»СЏ Р°РєС‚РёРІР°С†РёРё РЅР°РІРёРіР°С†РёРё СЃ РјРёРЅРёР°С‚СЋСЂР°РјРё
+    bulletThumbs: false,         // РјРёРЅРёР°С‚СЋСЂС‹ РґР»СЏ "С‚РѕС‡РµРє"
+    bulletThumbLocation: '',         // РїСѓС‚СЊ РґРѕ РјРµСЃС‚РѕРЅР°С…РѕР¶РґРµРЅРёСЏ РјРёРЅРёР°С‚СЋСЂ
+    afterSlideChange: function(){}      // РїСѓСЃС‚Р°СЏ С„СѓРЅРєС†РёСЏ
+  });
 
-//Кнопка вверх
-    // hide #back-top first
-	$("#back-top").hide();
+  //РљРЅРѕРїРєР° РІРІРµСЂС…
+  $("#back-top").hide();
+  $(function() {
+    $(window).scroll(function () {
+      if ($(this).scrollTop()>100) $('#back-top').fadeIn();
+      else $('#back-top').fadeOut();
+    });
+    $('#back-top a').click(function () {
+      $('body,html').animate({scrollTop:0}, 800);
+      return false;
+    });
+  });
 
-	// fade in #back-top
-	$(function () {
-		$(window).scroll(function () {
-			if ($(this).scrollTop() > 100) {
-				$('#back-top').fadeIn();
-			} else {
-				$('#back-top').fadeOut();
-			}
-		});
-
-		// scroll body to 0px on click
-		$('#back-top a').click(function () {
-			$('body,html').animate({
-				scrollTop: 0
-			}, 800);
-			return false;
-		});
-	});
-
-    //jScrollPane v2
-	$('.scroll-pane').jScrollPane();
-
-    //Scrolling-parallax
-
-    $(window).scroll(windowScrolled);
-    $(window).resize(windowResized);
-
+  $('.scroll-pane').jScrollPane();
+  $(window).scroll(windowScrolled);
+  $(window).resize(windowResized);
 });
 
+// РЎС‚СЂР°РЅРёС†Р° Р·Р°РіСЂСѓР¶РµРЅР°
+fixed_div = null;
+fixed_top = 0;
+fixed_fix = false;
+$(window).ready(function() {
+  var div;
+  if (div=elem('paginator-fixed')) fixed_top = $(div).position().top;
+  else if (div=elem('rubrikator-fixed')) fixed_top = $(div).position().top;
+  else if (div=elem('years-fixed')) fixed_top = $(div).position().top;
+  fixed_top -= 20;
+  fixed_div = elem('wrap-fixed');
+
+  if (location.hash=='#comments') $('.wrp-artic-comment').css('display', 'block');
+
+  // Р”Р»СЏ СЃС‚СЂР°РЅРёС†С‹ СЃ С„РѕСЂРјРѕР№ РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·Рё
+  if ($('#feedbackShadow').size()>0)
+   {
+   window.shadowTop = getTop(elem('feedbackShadow'));
+   window.footerHeight = $('.footer').height();
+   window.footerElem = $('.footer')[0];
+   $(window).resize(shadowResize);
+   }
+});
+
+// РџСЂРё СЃРєСЂРѕР»Р»РёРЅРіРµ РѕРєРЅР°
 function windowScrolled()
  {
  if (!fixed_div) return;
@@ -91,47 +102,25 @@ function windowScrolled()
  }
 }
 
+// РџСЂРё РёР·РјРµРЅРµРЅРёРё СЂР°Р·РјРµСЂРѕРІ РѕРєРЅР°
 function windowResized()
  {
- // Если открыто окно просмотра СМИ
- mediaWindowSetSize();
+ mediaWindowSetSize(); // Р•СЃР»Рё РѕС‚РєСЂС‹С‚Рѕ РѕРєРЅРѕ РїСЂРѕСЃРјРѕС‚СЂР° РЎРњР
  }
 
-fixed_div = null;
-fixed_top = 0;
-fixed_fix = false;
-$(window).ready(function() {
-  var div;
-  if (div=elem('paginator-fixed')) fixed_top = $(div).position().top;
-  else if (div=elem('rubrikator-fixed')) fixed_top = $(div).position().top;
-  else if (div=elem('years-fixed')) fixed_top = $(div).position().top;
-  fixed_top -= 20;
-  fixed_div = elem('wrap-fixed');
 
-  if (location.hash=='#comments') $('.wrp-artic-comment').css('display', 'block');
-
-  if ($('#messageFundShadow').size()>0)
-   {
-   window.shadowTop = getTop(elem('messageFundShadow'));
-   window.footerHeight = $('.footer').height();
-   window.footerElem = $('.footer')[0];
-   $(window).resize(shadowResize);
-   }
-});
-
+// --- РљРѕРјРјРµРЅС‚Р°СЂРёРё
 function commentsOpened()
  {
  var api = $('.scroll-pane').data('jsp');
  if (api) {api.reinitialise(); api.scrollToBottom();}
  else $(window).scrollTop(getTop(elem('comments')));
  }
-
 function commentsClosed()
  {
  var api = $('.scroll-pane').data('jsp');
  if (api) api.reinitialise();
  }
-
 function newcomment()
  {
  var display = $('.wrp-artic-comment').css('display');
@@ -151,15 +140,10 @@ function getTop(elem)
  return result;
  }
 
-function shadowResize()
- {
- var new_height = getTop(footerElem) - shadowTop + footerHeight + 50;
- $('#messageFundShadow').height(new_height);
- }
-
+// РџРѕРґРіСЂСѓР·РёС‚СЊ РЅРѕРІСѓСЋ СЃС‚СЂР°РЅРёС†Сѓ РІРѕ С„СЂРµР№Рј РЅР° СЃС‚СЂР°РЅРёС†Рµ РјРµСЂРѕРїСЂРёСЏС‚РёР№
 function actFrameNavigate(link)
  {
- // var top = $('.wrp-activity').position().top; // неправильно считается
+ // var top = $('.wrp-activity').position().top; // РЅРµРїСЂР°РІРёР»СЊРЅРѕ СЃС‡РёС‚Р°РµС‚СЃСЏ
  $('body,html').animate({scrollTop:420}, 800);
  $('.list_news .news').removeClass('current');
  $(link.parentNode).addClass('current');
@@ -169,20 +153,113 @@ function actFrameNavigate(link)
  return false;
  }
 
-function messageFundClose()
+// --- Р¤РѕСЂРјР° РѕР±СЂР°С‚РЅРѕР№ СЃРІСЏР·Рё
+
+function showGood()
  {
- $('#messageFundShadow').fadeOut(200);
- $('#messageFundBox').slideUp(200);
+ $('#feedbackmsg').css('display', 'block');
+ $('#feedbackmsg').css('top', '-60px');
+ $('#feedbackmsg').animate({top:'+=30'});
+ $('#feedbacklink').animate({top:'+=40'});
+ $('#send_ok').fadeIn('fast');
+ setTimeout(showMsglink, 6000);
+ setTimeout(function(){$('#send_ok').fadeOut('slow');}, 6000);
  return false;
  }
 
-function messageFundOpen()
+function showMsglink()
  {
- shadowResize();
- $('#messageFundShadow').css('display', 'block');
- $('#messageFundBox').slideDown(200);
+ $('#feedbackmsg').animate({top:'+=40'});
+ $('#feedbacklink').css({top:'-30px'});
+ $('#feedbacklink').animate({top:'+=30'});
  return false;
  }
+
+function feedbackClose()
+ {
+ $('#feedbackShadow').fadeOut(200);
+ $('#feedbackBox').slideUp(200);
+ return false;
+ }
+
+function shadowResize()
+ {
+ var new_height = getTop(footerElem) - shadowTop + footerHeight + 50;
+ $('#feedbackShadow').height(new_height);
+ }
+
+function feedbackLock(lock)
+ {
+ document.feedbackform.message.disabled = lock;
+ document.feedbackform._name.disabled = lock;
+ document.feedbackform.email.disabled = lock;
+ document.feedbackform.phone.disabled = lock;
+ document.feedbackform.sendbtn.disabled = lock;
+ }
+
+function feedbackOpen()
+ {
+ elem('feedback-errmsg').style.display = 'none';
+ elem('feedback-errors').style.display = 'none';
+ document.feedbackform.message.value = '';
+ document.feedbackform._name.value = '';
+ document.feedbackform.email.value = '';
+ document.feedbackform.phone.value = '';
+ feedbackLock(false);
+ shadowResize();
+ $('#feedbackShadow').css('display', 'block');
+ $('#feedbackBox').slideDown(200);
+ return false;
+ }
+
+function feedbackError(err)
+ {
+ var errors = new Array;
+ if (err && err.err && typeof(err.err)=='object')
+   {for (num in err.err) if (typeof(err.err[num])=='string') errors[errors.length] = err.err[num];}
+ else if (typeof(err)=='string') errors[0] = err;
+ if (errors.length<1) elem('feedback-errmsg').innerHTML = 'РџСЂРѕРёР·РѕС€Р»Р° РЅРµРїСЂРµРґРІРёРґРµРЅРЅР°СЏ РѕС€РёР±РєР°. РџРѕСЃС‚Р°СЂР°РµРјСЃСЏ РёСЃРїСЂР°РІРёС‚СЊ РµС‘ РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ.';
+ else if (errors.length==1) elem('feedback-errmsg').innerHTML = '<strong>РћС€РёР±РєР°:</strong> ' + errors[0];
+ else
+  {
+  elem('feedback-errmsg').innerHTML = '<strong>РћР±РЅР°СЂСѓР¶РµРЅС‹ РѕС€РёР±РєРё:</strong>';
+  var msg = '';
+  for (num in errors) msg += "<li>" + errors[num] + "</li>";
+  elem('feedback-errors').innerHTML = msg;
+  $('#feedback-errors').slideDown('fast');
+  }
+ $('#feedback-errmsg').slideDown('fast');
+ return false;
+ }
+
+function feedbackSend()
+ {
+ $('#feedback-errmsg').slideUp('fast');
+ $('#feedback-errors').slideUp('fast');
+
+ var postdata = {
+   form: document.feedbackform.form.value,
+   message: document.feedbackform.message.value,
+   name: document.feedbackform._name.value,
+   email: document.feedbackform.email.value,
+   phone: document.feedbackform.phone.value
+ }
+ elem('msg-loader').style.display = 'block';
+ feedbackLock(true);
+ httppost('/index.php?bt_json=feedback', postdata, function(response) {
+   elem('msg-loader').style.display = 'none';
+   feedbackLock(false);
+   try {var response = eval('('+response+')');}
+   catch (error) {feedbackError(); return false;}
+   if (!response || !response.ok) return feedbackError(response);
+   showGood();
+   feedbackClose();
+ });
+
+ return false;
+ }
+
+// --- РЎРњР
 
 current_media_id = 0;
 function watchmedia(id_post)
@@ -208,7 +285,7 @@ function mediaWindowSetSize()
  $('.scroll-pane').jScrollPane();
  }
 
-// -------------------------------------------------- Показать предыдущие записи
+// -------------------------------------------------- РџРѕРєР°Р·Р°С‚СЊ РїСЂРµРґС‹РґСѓС‰РёРµ Р·Р°РїРёСЃРё
 
 function elem(id) {return document.getElementById(id)}
 
@@ -222,6 +299,38 @@ function httpget(url)
  if ((xhr.status<200) || (xhr.status>299)) result = false;
  else result = xhr.responseText;
  delete xhr;
+ return result;
+ }
+
+function httppost(url, params, callback)
+ {
+ var postdata, param, xhr, result;
+ postdata = '';
+ if (params && typeof(params)=='object') for (param in params) postdata += encodeURIComponent(param) + '=' + encodeURIComponent(params[param]) + '&';
+ if (window.XMLHttpRequest) xhr = new XMLHttpRequest();
+ else xhr = new ActiveXObject("Microsoft.XMLHTTP");
+ if (callback)
+  {
+  xhr.cbfunc = callback;
+  xhr.onreadystatechange = function () {if (this.readyState==4 && typeof(this.cbfunc)=='function') this.cbfunc(this.responseText, this)};
+  xhr.open('POST', url, true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send(postdata);
+  return true;
+  }
+ xhr.open('POST', url, false);
+ xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+ xhr.send(postdata);
+ if ((xhr.status<200) || (xhr.status>299)) result = false;
+ else result = xhr.responseText;
+ delete xhr;
+ return result;
+ }
+
+function scanObject(obj)
+ {
+ var result = '';
+ for (prop in obj) result += prop + ': ' + typeof(obj[prop]) + "\n";
  return result;
  }
 

@@ -61,6 +61,7 @@ break;
 
 case 'feedback':
   if (!chkpost('form,message,name,phone,email')) json_die('Требуются POST-параметры form, message, name, phone, email');
+  sleep(3);
   extract(ep('form,message,name,phone,email'));
   if ($form=='fund') $form = 'благотворительный фонд';
   elseif ($form=='contacts') $form = 'контакты';
@@ -71,11 +72,15 @@ case 'feedback':
   elseif ($len<10) $errors[] = 'Текст сообщения не должен быть короче 10 символов';
   elseif ($len>3000) $errors[] = 'Текст сообщения не должен быть длинее 3000 символов';
   $message = correct_eol($message);
+  $len = strlen($name);
+  if ($len<1) $errors[] = 'Не указано имя';
+  elseif ($len<2) $errors[] = 'Имя указано неверно';
+  elseif ($len>40) $errors[] = 'Длина имени не должна превышать 40 символов';
   if ($email and !ismail($email)) $errors[] = 'Адрес e-mail указан неверно';
   if (!$phone) $errors[] = 'Пожалуйста, укажите номер телефона для связи с Вами';
   elseif (!chklen(preg_replace('/[^0-9]+/', '', $phone), 6, 20)) $errors[] = 'Номер телефона указан неверно';
   else $phone = ($phone[0]=='+' ? '+' : '') . trim(preg_replace('/[^0-9]+/', ' ', $phone));
-  if ($phone) die(json_encode(array('err'=>$errors)));
+  if ($errors) die(json_encode(array('err'=>$errors)));
   $letter  = "Сообщение отправлено со страницы $form\n";
   $letter .= "Телефон: $phone\n";
   if ($email) $letter .= "E-mail: $email\n";

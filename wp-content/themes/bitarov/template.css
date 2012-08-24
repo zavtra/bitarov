@@ -232,11 +232,14 @@
         .fond-header .content {max-height:70px; width:593px; color:#000; font:13px 'Arial'; line-height:16px;}
     .fond-body {position:relative; padding-bottom: 50px;}
             .wrp-send-message .send_message {position:relative;}
-                .wrp-send-message .send_message .send_ok {display:block; font-size:13px; width:300px; background:url(images/ico/200ok.png) no-repeat; color:#5aa700; padding:3px 0 5px 30px; margin:20px 0 0 0;}
+                .wrp-send-message .send_message .send_ok {display:none; font-size:13px; width:300px; background:url(images/ico/200ok.png) no-repeat; color:#5aa700; padding:3px 0 5px 30px; margin:20px 0 0 0;}
                 .wrp-send-message .send_message img {float:left; margin-right:5px;}
                 .wrp-send-message .send_message a {border-bottom:1px dotted #0088c0; color:#0088c0; text-decoration:none;font:14px 'Arial';}
                 .wrp-send-message .send_message a:hover {border-bottom:none;}
                 .wrp-send-message .send_message span {padding-left:4px;font:14px 'Arial';}
+                .fund-animation {height:40px; margin-bottom:-24px; overflow:hidden}
+                #feedbacklink {display:block; position:relative; left:0; top:0}
+                #feedbackmsg {position:relative; left:0; top:-60px}
         .fond-body .menu {width:100%; position:relative; margin:26px 0;height:53px; border-top:1px solid #e6ebee; border-right:1px solid #e6e6e5; border-bottom:1px solid #dbdbdb; border-left:1px solid #ebeff1; background:url('images/css/fond-menu.png') repeat-x;}
             .fond-body .menu img {position:absolute; bottom:-23px; left:50%; width:980px; height:22px; margin-left:-459px;}
             .fond-body .menu ul {margin:0; padding:11px 0 0 47px;}
@@ -365,6 +368,7 @@
     /* Окно обращение с overlay */
     .overLayer {height:100%; width:102%; margin:0 -8px; position:absolute; z-index:1001; display:block; left:0; top:0; opacity:0.97; filter: alpha(opacity = 97); background:url('images/css/Overlayer_bg.png');}
         .overLayer.blago {}
+        .overLayer.contacts {top:-50px}
         .overLayer.smi {position:absolute; display:none; width:100%; left:17px;}
             .wrp-window-comment {width:504px; display:block; padding:15px 16px 12px 14px; position:absolute; z-index:1002; left:0px; top:25px; background:url('images/css/comment_bg_repeat.png') repeat-x #F2F6F8; border:1px solid #D9E7E9; box-shadow:1px 1px 2px rgba(115,143,160,0.2);  border-radius:3px;}
                 .window-comment {position:relative;}
@@ -379,6 +383,10 @@
                         .window-comment form input {color:#7b848d; -webkit-box-shadow:2px 2px 1px #e8e8e8 inset; -moz-box-shadow:2px 2px 1px #e8e8e8 inset; box-shadow:2px 2px 1px #e8e8e8 inset;}
                         .window-comment form .active {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8; color:#000; -webkit-box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95); -moz-box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95); box-shadow:0px 0px 7px rgba(204, 230, 240, 0.95);}
                         .window-comment form .name {float:left; margin:0 21px 0 0;}
+                        #feedback-errmsg {color:#F22; margin:8px 0 -6px 0; display:none}
+                        #feedback-errors {margin-top:6px; margin-bottom:-6px; display:none}
+                        #feedback-errors li {margin-top:2px; margin-bottom:0; color:#D00000}
+                        #msg-loader {position:absolute; left:470px; bottom:0; display:none}
                             .window-comment form .name input {width:139px; height:22px;}
                                 .window-comment form .name:hover input {border-left:1px solid #9bcbe9; border-top:1px solid #9bcbe9; border-right:1px solid #60b5d8; border-bottom:1px solid #60b5d8;}
                         .window-comment form .phone {float:right; margin:0;}
@@ -391,6 +399,7 @@
                                 .window-comment form .send input {width:148px; height:35px; box-shadow:none; border:none; background:url('images/css/buttons-pack.png') -4px -2px no-repeat;}
                                 .window-comment form .send:hover input {background:url('images/css/buttons-pack.png') -4px -43px no-repeat; cursor:pointer;}
                                 .window-comment form .send:active input {background:url('images/css/buttons-pack.png') -4px -86px no-repeat;}
+                                .window-comment form .send input:disabled {background-position:-6px -278px;}
     /* Окно видео с overlay */
     .video-window {width:973px; display:block; position:absolute; z-index:10000; left:10px; top:-67px; margin:0 -10px; padding:26px 21px 23px 21px; background:scroll #F7FAFB url('images/css/window-video_bg.png') 0 0 repeat-x; border-left:1px solid #edf2f4; border:1px solid #D9E7E9;}
         .video-window .exit {width:33px; height:32px; border:1px solid #000; border:none!important; text-decoration:none; background:url('images/css/buttons-pack.png') -186px -1px no-repeat; top:-15px; right:-15px; position:absolute; z-index:999;}

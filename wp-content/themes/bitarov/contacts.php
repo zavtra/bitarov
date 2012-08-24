@@ -41,6 +41,7 @@ HTML;
 
 ?>
         <div class='wrap'>
+        <div class='overLayer contacts' id='feedbackShadow' style='display:none' onclick='feedbackClose()'></div>
             <div class='contacts'>
                 <div class='wrp-karta'>
                     <div class='karta'>
@@ -60,30 +61,36 @@ the_content();
                 <div class="wrp-send-message">
                     <div class="send_message">
                         <img width="25" height="19" alt="" src="wp-content/themes/bitarov/images/ico/send_message.png">
-                        <a href="">Оставить обращение</a>
-                        <span>↓</span>
-                        <span class='send_ok' style='display:block;'>Ваше обращение успешно отправлено</span>
-                        <div class="wrp-window-comment" style="display:block" id='messageFundBox'>
+                        <a href="#" onclick='return feedbackOpen()'>Оставить обращение</a><span>&darr;</span>
+                        <div class='send_ok' id='send_ok'>Ваше обращение успешно отправлено</div>
+                        <div class="wrp-window-comment" style="display:none" id='feedbackBox'>
                             <div class="window-comment">
-                                <a class="exit" href="#" onclick='return messageFundClose()'></a>
-                            <form>
+                                <a class="exit" href="#" onclick='return feedbackClose()'></a>
+                            <form name='feedbackform' onsubmit='return feedbackSend()'>
                             <div class="msg">
-                                <textarea name="msg" placeholder='Ваше обращение' onfocus="this.className='active'" onblur="this.className='idle'"></textarea>
+                                <textarea name="message" placeholder='Ваше обращение' onfocus="this.className='active'" onblur="this.className='idle'"></textarea>
                             </div>
                             <div class="email">
                                 <input type="text" name="email" placeholder='Ваш e-mail' onfocus="this.className='active'" onblur="this.className='idle'">
                             </div>
                             <div class="name">
-                                <input type="text" name="name" placeholder='Ваше имя' onfocus="this.className='active'" onblur="this.className='idle'">
+                                <input type="text" name="_name" placeholder='Ваше имя' onfocus="this.className='active'" onblur="this.className='idle'">
                             </div>
                             <div class="phone">
                                 <input type="text" name="phone" placeholder='Ваш телефон' onfocus="this.className='active'" onblur="this.className='idle'">
                             </div>
                             <div class="clear"></div>
+                            <div id="feedback-errmsg"><strong>Обнаружены ошибки:</strong></div>
+                            <ol id="feedback-errors">
+                              <li>Адрес e-mail указан неверно</li>
+                              <li>Пожалуйста укажите номер телефона</li>
+                              <li>Пожалуйста, идите нафиг</li>
+                            </ol>
                             <div class="send">
                                 <input type="submit" value="">
+                                <input type='hidden' name='form' value='contacts'>
                             </div>
-                            <img src='wp-content/themes/bitarov/images/css/feedback-loader.gif' style='position:absolute; left:470px; top:190px'>
+                            <img id='msg-loader' src='wp-content/themes/bitarov/images/css/feedback-loader.gif' alt='' />
                             </form>
                             </div>
                         </div>
