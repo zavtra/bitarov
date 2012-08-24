@@ -1,10 +1,12 @@
 <?php
-if (!chkget('bt_json')) exit;
+
+function json_die($msg) {die(json_encode(array('err'=>array($msg))));}
+if (!chkget('bt_json')) json_error('Требуется GET-параметр bt_json');
 $action = $_GET['bt_json'];
 
 switch ($action):
 case 'get_posts':
-  if (!chkget('category_id,pg')) die('требуются параметры category_id, pg');
+  if (!chkget('category_id,pg')) json_die('Требуются GET-параметры category_id, pg');
   extract(eg('category_id>>i,pg>>i'));
   $args = array('paged'=>$pg, 'cat'=>$category_id);
   if (chkget('year')) $args['year'] = intval($_GET['year']);
@@ -55,7 +57,37 @@ case 'get_posts':
     'items' => $resp_items,
     'info' => $resp_info
   ));
-  break;
+break;
+
+case 'feedback':
+  if (!chkpost('form,message,name,phone,email')) json_die('Требуются POST-параметры form, message, name, phone, email');
+  extract(ep('form,message,name,phone,email'));
+  if ($form=='fund') $form = 'благотворительный фонд';
+  elseif ($form=='contacts') $form = 'контакты';
+  else json_die('Неверное значение параметра form');
+  $errors = array();
+  $len = strlen($message);
+  if ($len<1) $errors[] = 'Пустой текст сообщения';
+  elseif ($len<10) $errors[] = 'Текст сообщения не должен быть короче 10 символов';
+  elseif ($len>3000) $errors[] = 'Текст сообщения не должен быть длинее 3000 символов';
+  $message = correct_eol($message);
+  if ($email and !ismail($email)) $errors[] = 'Адрес e-mail указан неверно';
+  if (!$phone) $errors[] = 'Пожалуйста, укажите номер телефона для связи с Вами';
+  elseif (!chklen(preg_replace('/[^0-9]+/', '', $phone), 6, 20)) $errors[] = 'Номер телефона указан неверно';
+  else $phone = ($phone[0]=='+' ? '+' : '') . trim(preg_replace('/[^0-9]+/', ' ', $phone));
+  if ($phone) die(json_encode(array('err'=>$errors)));
+  $letter  = "Сообщение отправлено со страницы $form\n";
+  $letter .= "Телефон: $phone\n";
+  if ($email) $letter .= "E-mail: $email\n";
+  $letter .= is_int(strpos($message, "\n")) ? "\nСообщение:\n" : 'Сообщение: ';
+  $letter .= $message;
+  $to = get_option('admin_email', 'admin@' . REQUEST_HOST);
+  $subj = 'Сообщение с сайта ' . REQUEST_HOST;
+  $headers = 'Content-Type: text/plain; charset=utf-8';
+  if ($email) $headers .= "\nFrom: $email";
+  mail($to, $subj, $letter, $headers);
+  echo json_encode(array('ok'=>'Ваше сообщение успешно отправлено'));
+break;
 endswitch;
 
 exit;
