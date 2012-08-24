@@ -2,8 +2,8 @@ $(window).load(function() {
 
 // Orbit Slider
      $('#featured').orbit({
-     animation: 'horizontal-push',        // вид анимации: fade, horizontal-slide, vertical-slide, horizontal-push
-     animationSpeed: 300,                // скорость анимации в мс
+     animation: 'horizontal-slide',        // вид анимации: fade, horizontal-slide, vertical-slide, horizontal-push
+     animationSpeed: 400,                // скорость анимации в мс
      timer: false,              // показывать таймер: true или false
      advanceSpeed: 4000,          // если таймер включен, то указывается время между переходами в мс
      pauseOnHover: false,          // пауза слайдера при наведении курсора
