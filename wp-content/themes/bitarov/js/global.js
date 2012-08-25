@@ -79,6 +79,9 @@ $(window).ready(function() {
    window.footerElem = $('.footer')[0];
    $(window).resize(shadowResize);
    }
+
+  // Для страницы просмотра медиа
+  $('#smi-parts-top a').click(changeMediaCategory);
 });
 
 // При скроллинге окна
@@ -261,17 +264,43 @@ function feedbackSend()
 
 // --- СМИ
 
-current_media_id = 0;
-function watchmedia(id_post)
+function changeMediaCategory()
  {
- current_media_id = id_post;
- elem('video-'+id_post).style.display = 'block';
- mediaWindowSetSize();
+ $('#smi-parts-top li').removeClass('current-menu-item');
+ $(this.parentNode).addClass('current-menu-item');
+ $('#posts_list').html('');
+ $('#paginator').html('');
+ $('#blocks_list').html('');
+ $('#media-loader').css('display', 'inline');
+ var url = this.href + '/?xhr';
+ httpget(url, function(new_content) {
+   $('#media-loader').css('display', 'none');
+   new_content = json_parse(new_content);
+   if (!new_content) return false;
+   $('#breadcrumbs').html(new_content.breadcrumbs);
+   $('#posts_list').html(new_content.posts_list);
+   $('#paginator').html(new_content.paginator);
+   $('#blocks_list').html(new_content.blocks_list);
+ });
+ return false;
  }
 
-function mediaWindowSetClose()
+current_media_id = 0;
+function mediaWindowOpen(id_post)
  {
- $('#video-'+current_media_id).fadeOut('fast');
+ current_media_id = id_post;
+ elem('media-'+id_post).style.display = 'block';
+ $('#breadcrumb-x a').attr('href', $('#post-link-'+id_post).attr('href'));
+ $('#breadcrumb-x a').html($('#post-title-'+id_post).html());
+ $('#breadcrumb-x').css('display', 'inline');
+ mediaWindowSetSize();
+ return false;
+ }
+
+function mediaWindowClose()
+ {
+ $('#media-'+current_media_id).fadeOut('fast');
+ $('#breadcrumb-x').css('display', 'none');
  current_media_id = 0;
  return false;
  }
@@ -279,9 +308,10 @@ function mediaWindowSetClose()
 function mediaWindowSetSize()
  {
  if (current_media_id<1) return;
- var new_height = getTop($('.footer')[0]) - getTop(elem('video-'+current_media_id)) - 51;
- $('#video-'+current_media_id).height(new_height);
+ var new_height = getTop($('.footer')[0]) - getTop(elem('media-'+current_media_id)) - 51;
+ $('#media-'+current_media_id).height(new_height);
  $('.text-right_b').height(new_height-10);
+ $('.video-window .text').height(new_height-10);
  $('.scroll-pane').jScrollPane();
  }
 
@@ -289,13 +319,28 @@ function mediaWindowSetSize()
 
 function elem(id) {return document.getElementById(id)}
 
-function httpget(url)
+function json_parse(json)
+ {
+ try {json=eval('('+json+')')}
+ catch (error) {return null}
+ return json;
+ }
+
+function httpget(url, callback)
  {
  var xhr, result;
  if (window.XMLHttpRequest) xhr = new XMLHttpRequest();
  else xhr = new ActiveXObject("Microsoft.XMLHTTP");
+ if (callback)
+  {
+  xhr.cbfunc = callback;
+  xhr.onreadystatechange = function () {if (this.readyState==4 && typeof(this.cbfunc)=='function') this.cbfunc(this.responseText, this)};
+  xhr.open('GET', url, true);
+  xhr.send(null);
+  return true;
+  }
  xhr.open('GET', url, false);
- xhr.send('');
+ xhr.send(null);
  if ((xhr.status<200) || (xhr.status>299)) result = false;
  else result = xhr.responseText;
  delete xhr;

@@ -140,6 +140,7 @@
         .event-header.artic {background:url('images/css/event-header_artic-bg.png') repeat-x;}
             .event-header .b-top-left {float:left; min-width:300px; position: relative; z-index: 9999;}
             .event-header .breadcrumbs {margin:3px 0 0 0; padding:0; height:22px; font:12px 'Tahoma';}
+            #breadcrumb-x {display:none}
                 .event-header .breadcrumbs span {position:relative; float:left; margin-right:-2px; padding: 2px 15px 2px 20px; height:16px; border-top:1px solid #ebf4f5; border-bottom:1px solid #d0dcde;background:url('images/css/breadcrumbs-bg.png') 0 0 repeat-x #e5f1f2;}
                     .event-header .breadcrumbs span.current {position:relative; padding-top:3px; z-index:9999; margin-right:-12px; padding-right:14px; padding-left:25px; width:55px; height:18px; border:none; background:url('images/css/breadcrumbs-current-bg.png') no-repeat;}
                     .event-header .breadcrumbs span.current a {color:#143244;}
@@ -150,11 +151,12 @@
 
             .event-header .smi-parts-top {float:right; margin:30px 372px -3px auto;width:233px; font:18px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
                 .event-header .smi-parts-top span { }
+                    .smi-parts-top ol, .smi-parts-top li {margin:0; padding:0; display:inline}
                     .event-header .smi-parts-top a {display: -moz-inline-box; display: inline-block;padding:3px 10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; color:#000; text-decoration:none; zoom: 1; *display: inline;}
                     .event-header .smi-parts-top a:hover span {border:none;}
                     .event-header .smi-parts-top a span {border-bottom:1px dotted #000;}
-                    .event-header .smi-parts-top a.current {background:url('images/css/smi-parts-top_bg.png') repeat-x #3f9d35; color:#FFF;}
-                    .event-header .smi-parts-top a.current span {border:none;}
+                    .event-header .smi-parts-top .current-menu-item a {background:url('images/css/smi-parts-top_bg.png') repeat-x #3f9d35; color:#FFF;}
+                    .event-header .smi-parts-top .current-menu-item a span {border:none;}
 
             .event-header h2 {display:block; line-height: 26px!important; max-width:658px; margin:6px 0 0 0; padding:0; font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial';}
     .event-body {margin-bottom:0px; padding-right:321px; width: 677px;}
@@ -273,6 +275,7 @@
                     .vista_item .number_comment a {color:#9ab17c;}
 
     /* —ми! */
+    #media-loader {position:absolute; left:50%; top:50%; z-index:100; display:none}
     .smi-body {margin-top:25px; padding-bottom:50px; position:relative;}
         .smi-body .block {position:relative; float:left; margin:0 25px 23px 0; padding:13px 25px 9px 14px;width:264px; height:161px; border:1px solid #cfdde8; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px; background:#f9fdff; -webkit-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); -moz-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); box-shadow:1px 1px 1px rgba(239, 241, 243, 1);}
         .smi-body .block:hover {border:1px solid #bdccd8;-webkit-box-shadow: 2px 2px 5px rgba(234, 237, 239, 0.9); -moz-box-shadow:2px 2px 5px rgba(234, 237, 239, 0.9); box-shadow:2px 2px 5px rgba(234, 237, 239, 0.9);}
@@ -401,17 +404,17 @@
                                 .window-comment form .send:active input {background:url('images/css/buttons-pack.png') -4px -86px no-repeat;}
                                 .window-comment form .send input:disabled {background-position:-6px -278px;}
     /* ќкно видео с overlay */
-    .video-window {width:973px; display:block; position:absolute; z-index:10000; left:10px; top:-67px; margin:0 -10px; padding:26px 21px 23px 21px; background:scroll #F7FAFB url('images/css/window-video_bg.png') 0 0 repeat-x; border-left:1px solid #edf2f4; border:1px solid #D9E7E9;}
+    .video-window {width:973px; display:none; position:absolute; z-index:10000; left:10px; top:-67px; margin:0 -10px; padding:26px 21px 23px 21px; background:scroll #F7FAFB url('images/css/window-video_bg.png') 0 0 repeat-x; border-left:1px solid #edf2f4; border:1px solid #D9E7E9;}
         .video-window .exit {width:33px; height:32px; border:1px solid #000; border:none!important; text-decoration:none; background:url('images/css/buttons-pack.png') -186px -1px no-repeat; top:-15px; right:-15px; position:absolute; z-index:999;}
         .video-window .exit:hover {background-position:-186px -44px}
         .video-window .exit:active {background-position:-186px -87px}
-        .video-window .video-left_b {float:left; width:482px; height:358px; overflow:hidden; position:relative; background:#e7f0f5; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
-            .video-left_b img {position:relative; width:482px; height:358px;}
+        .video-window .video-left_b {float:left; width:482px; height:358px; overflow:hidden; position:relative; background:#e7f0f5}
+            .video-left_b iframe {-webkit-border-radius:10px; -moz-border-radius:10px; border-radius:4px;}
         .video-window .wrp-text-right_b {margin-left:511px; overflow:hidden;}
             .wrp-text-right_b .scroll-pane {height:100%; overflow:scroll;}
             .video-window .text-right_b {height:100%; overflow:auto; padding-left:0px;}
                 .video-window .text-right_b .padding {padding-left:10px;}
-                .text-right_b h1, .wrp-text .text h1 {font:28px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; color:#333; margin:0 0 4px 4px; width:430px;}
+                .text-right_b h1, .wrp-text .text h1 {font:28px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; color:#333; margin:0 0 4px 4px}
                 .text-right_b .date, .wrp-text .text .date {font:14px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; color:#666666; margin-bottom:18px;}
                 .text-right_b p, .wrp-text .text p {font:16px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; line-height:18px; color:#222; margin-bottom:12px;}
                 .video-window .text-right_b .jspVerticalBar, .wrp-text .text .jspVerticalBar {right:0;}

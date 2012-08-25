@@ -1,6 +1,4 @@
 <?php
-get_header();
-
 // --- Хлебные крошки
 $breadcrumbs = breadcrumbs_category($current_category_id);
 
@@ -8,22 +6,24 @@ $breadcrumbs = breadcrumbs_category($current_category_id);
 $res = db_query("SELECT id, name FROM pref_bt_media ORDER BY typ, id");
 $mediaz = array();
 while (extract(db_result($res, 'i,h'))) $mediaz[$id] = $name;
+
 $posts_list = $video_list = '';
 for ($j=1; ($j<=6 and have_posts()); $j++)
  {
  the_post();
  $post_title = get_the_title();
  $post_excerpt = get_the_excerpt(); // аннотация
+ $post_content = bt_post_content();
  $post_link = get_permalink($post->ID);
- $post_date = rusdate('j F Y', strtotime($post->post_date));
+ $post_date = rusdate('d.m.Y', strtotime($post->post_date));
  $post_info = array();
  $bt_youtube_id = htmltext(get_post_meta($post->ID, 'bt_youtube_id', true));
  if ($bt_youtube_id)
    {$icon = 'avi';
-   $link_more = "<a href='javascript:watchmedia({$post->ID})' class='video-more'><span>смотреть видео</span></a>";}
+   $link_more = "<a href='$post_link' onclick='return mediaWindowOpen({$post->ID})' class='video-more'><span>смотреть видео</span></a>";}
  else
    {$icon = 'txt';
-   $link_more = "<a href='$post_link' class='read-more'>читать далее</a>";}
+   $link_more = "<a href='$post_link' onclick='return mediaWindowOpen({$post->ID})' class='read-more'>читать далее</a>";}
  $bt_id_media = intval(get_post_meta($post->ID, 'bt_id_media', true));
  if (isset($mediaz[$bt_id_media])) $post_info[] = $mediaz[$bt_id_media];
  $post_info[] = $post_date;
@@ -31,7 +31,7 @@ for ($j=1; ($j<=6 and have_posts()); $j++)
  $posts_list .= <<<HTML
                 <div class='block'>
                     <div class='blocklimiter'>
-                      <h3><a href='$post_link'>$post_title</a></h3>
+                      <h3><a href='$post_link' id='post-link-{$post->ID}' onclick='return mediaWindowOpen({$post->ID})'>$post_title</a></h3>
                       <div class='depiction'><span class='$icon'>$post_info</span></div>
                       <p>$post_excerpt</p>
                     </div>
@@ -39,47 +39,44 @@ for ($j=1; ($j<=6 and have_posts()); $j++)
                 </div>
 HTML;
 
- if (!$bt_youtube_id) continue;
-
- $video_list = <<<HTML
-                <div class='video-window' id='video-{$post->ID}' style='display:none'>
-                    <a href='#' class='exit' onclick='return mediaWindowSetClose()'></a>
+ if ($bt_youtube_id) $blocks_list .= <<<HTML
+                <div class='video-window' id='media-{$post->ID}'>
+                    <a href='#' class='exit' onclick='return mediaWindowClose()'></a>
                     <div class='video-left_b'>
-                        <img src="wp-content/themes/bitarov/images/slider/bitarov_video.png" />
+                        <iframe width="100%" height="100%" src="http://www.youtube.com/embed/$bt_youtube_id" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class='wrp-text-right_b'>
                         <div class='text-right_b'>
                             <div class='scroll-pane'>
                                 <div class='padding'>
-                                    <h1>День памяти и скорби</h1>
-                                    <div class='date'>добавлено 05.06.2012</div>
-                                    <p>В канун дня памяти и скорби торжественный вечер для
-                                    ветеранов, совместно с администрацией округа, организовал
-                                    фонд поддержки гражданских инициатив Александра Битарова.</p>
-                                    <p>В канун дня памяти и скорби торжественный вечер для
-                                    ветеранов, совместно с администрацией округа, организовал
-                                    фонд поддержки гражданских инициатив Александра Битарова.</p>
-                                    <p>В канун дня памяти и скорби торжественный вечер для
-                                    ветеранов, совместно с администрацией округа, организовал
-                                    фонд поддержки гражданских инициатив Александра Битарова.</p>
-                                    <p>В канун дня памяти и скорби торжественный вечер для
-                                    ветеранов, совместно с администрацией округа, организовал
-                                    фонд поддержки гражданских инициатив Александра Битарова.</p>
-                                    <p>В канун дня памяти и скорби торжественный вечер для
-                                    ветеранов, совместно с администрацией округа, организовал
-                                    фонд поддержки гражданских инициатив Александра Битарова.</p>
-                                    <p>В канун дня памяти и скорби торжественный вечер для
-                                    ветеранов, совместно с администрацией округа, организовал
-                                    фонд поддержки гражданских инициатив Александра Битарова.</p>
-                                    <p>В канун дня памяти и скорби торжественный вечер для
-                                    ветеранов, совместно с администрацией округа, организовал
-                                    фонд поддержки гражданских инициатив Александра Битарова.</p>
+                                    <h1 id='post-title-{$post->ID}'>$post_title</h1>
+                                    <div class='date'>добавлено $post_date</div>
+$post_content
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class='clear'></div>
                 </div>
+HTML;
+
+ else $blocks_list .= <<<HTML
+                <div class='video-window' id='media-{$post->ID}'>
+                    <a href='#' class='exit' onclick='return mediaWindowClose()'></a>
+                    <div class='wrp-text'>
+                        <div class='text'>
+                            <div class='scroll-pane'>
+                                <div class='padding'>
+                                    <h1 id='post-title-{$post->ID}'>$post_title</h1>
+                                    <div class='date'>добавлено $post_date</div>
+$post_content
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='clear'></div>
+                </div>
+
 HTML;
 
  }
@@ -101,23 +98,47 @@ $paginator
 HTML;
  }
 
+$media_menu = wp_nav_menu(array(
+  'menu' => 'media',
+  'container' => '',
+  'echo' => false,
+  'items_wrap' => '%3$s'
+));
+
+// Если контент запрошен с помощью XHR
+if (chkget('xhr'))
+ {
+ $result = array(
+   'breadcrumbs' => $breadcrumbs,
+   'posts_list' => $posts_list,
+   'blocks_list' => $blocks_list,
+   'paginator' => $paginator
+ );
+ die(json_encode($result));
+ }
+
 // -------------------------------------------------------------- Вывод страницы
 
+get_header();
+
 echo <<<HTML
+
+<img id='media-loader' src='wp-content/themes/bitarov/images/css/media-loader.gif' />
 
 <!-- контент -->
     <div class='content'>
         <div class='event-header'>
             <div class='wrap'>
                 <div class='b-top-left'>
-                    <div class='breadcrumbs'>$breadcrumbs</div>
+                    <div class='breadcrumbs'>
+                    <div id='breadcrumbs'>$breadcrumbs</div>
+                    <span id='breadcrumb-x'><a onclick='return false'></a><ins class='r'></ins></span>
+                    </div>
                     <h2>{$current_category->name}</h2>
                 </div>
-                <div class='smi-parts-top'>
-                    <a href='/media/' class='current'><span>Все</span></a>
-                    <a href='/media/video/'><span>Видео</span></a>
-                    <a href='/media/papers/'><span>Публикации</span></a>
-                </div>
+                <div class='smi-parts-top' id='smi-parts-top'><ol>
+$media_menu
+                </ol></div>
                 <div class='clear'></div>
             </div>
         </div>
@@ -126,10 +147,21 @@ echo <<<HTML
         <div class='overLayer smi'>
         </div>
             <div class='smi-body'>
+
+<div id='posts_list'>
 $posts_list
+</div>
+
 <div class='clear'></div>
+
+<div id='paginator'>
 $paginator
-$video_list
+</div>
+
+<div id='blocks_list'>
+$blocks_list
+</div>
+
             </div>
         </div>
     </div>
