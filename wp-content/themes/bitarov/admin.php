@@ -475,17 +475,44 @@ function bt_opinion_matabox($post)
  $bt_opinion_w1 = get_option('bt_opinion_w1', BT_OPINION_W1);
  $bt_opinion_h1 = get_option('bt_opinion_h1', BT_OPINION_H1);
  $bt_opinion = get_post_meta($post->ID, 'bt_opinion', true);
+ $bt_opinionpic = get_post_meta($post->ID, 'bt_opinionpic', true);
  $pic = $pic_line = '';
- if (intval(get_post_meta($post->ID, 'bt_opinionpic', true)))
-  {
-  $pic = "<div style='text-align:center; white-space:nowrap; padding:2px 0 0 3px'><img src='/wp-content/uploads/opinion/{$post->ID}.png'><div><label><input type='checkbox' name='opinionpic-del'> Удалить</label></div>";
-  $pic_line = " style='border-right:1px dashed #DDD; padding-right:8px'";
-  }
+ $pics = "<option value=''>&lt;Не выбрано&gt;</option><option value='new'>&lt;Новая&gt;</option>";
+ foreach (scandir(BASEDIR . 'wp-content/uploads/opinion/') as $node) if ($node!='.' and $node!='..' and is_file(BASEDIR . "wp-content/uploads/opinion/$node"))
+   $pics .= "<option" . ($node==$bt_opinionpic ? ' selected' : '') . ">" . htmltext($node) . "</option>";
  echo <<<HTML
 <table><tr>
-<td width='100%'><div$pic_line><textarea name='bt_opinion' cols='60' rows='6' style='width:100%'>$bt_opinion</textarea></div></td>
-<td valign='top'>$pic</td></tr></table>
-Картинка: <input type='file' name='opinionpic'> (уменьшится до {$bt_opinion_w1}x{$bt_opinion_h1})
+<td width='100%'><div id='opinionborder'><textarea name='bt_opinion' cols='60' rows='6' style='width:100%'>$bt_opinion</textarea></div></td>
+<td valign='top' id='opinion-img'>$pic</td></tr></table>
+<table>
+<tr><td>Картинка:</td><td><select name='opinionpic' id='opinionpic' onchange='opinionpic_select()'>$pics</select></td><tr>
+<tr id='newpic1'><td>Файл:</td><td><input type='file' name='opinionfile' size='30'> (уменьшится до {$bt_opinion_w1}x{$bt_opinion_h1})</td></tr>
+<tr id='newpic2'><td>Имя файла картинки:</td><td><input type='text' name='opinionfilename' size='30'> .png</td></tr>
+</table>
+
+<script type='text/javascript'>
+function opinionpic_select()
+ {
+ var pic = document.getElementById('opinionpic').value;
+ var display = '';
+ var imgview = '';
+ var style = '';
+ if (pic=='new') imgview = '';
+ else if (pic)
+  {
+  display = 'none';
+  style = 'border-right:1px dashed #DDD; padding-right:8px';
+  imgview = "<div style='text-align:center; white-space:nowrap; padding:2px 0 0 3px'><img src='/wp-content/uploads/opinion/" + pic + "'><br><label><input type='checkbox' name='opinionpic-del'> Удалить</label></div>";
+  }
+ else display='none';
+ document.getElementById('opinion-img').innerHTML = imgview;
+ document.getElementById('opinionborder').style = style;
+ document.getElementById('newpic1').style.display = display;
+ document.getElementById('newpic2').style.display = display;
+ }
+opinionpic_select();
+</script>
+
 HTML;
  }
 
@@ -559,16 +586,27 @@ function bt_post_saved($id_post)
  $bt_opinion_w1 = get_option('bt_opinion_h1', BT_OPINION_H1);
  if (empty($_POST['bt_opinion'])) delete_post_meta($id_post, 'bt_opinion');
  else update_post_meta($id_post, 'bt_opinion', stripslashes($_POST['bt_opinion']));
- if (chkpost('opinionpic-del'))
+ if (!empty($_POST['opinionpic']))
   {
-  unlink(BASEDIR . "wp-content/uploads/opinion/$id_post.png");
-  delete_post_meta($id_post, 'bt_opinionpic');
+  $opinionpic = ffilt($_POST['opinionpic']);
+  if (file_exists(BASEDIR . "wp-content/uploads/opinion/$opinionpic"))
+    if (chkpost('opinionpic-del'))
+      {unlink(BASEDIR . "wp-content/uploads/opinion/$opinionpic");
+      delete_post_meta($id_post, 'bt_opinionpic');}
+    else update_post_meta($id_post, 'bt_opinionpic', $opinionpic);
   }
- elseif (!empty($_FILES['opinionpic']['tmp_name']))
-  if (is_array($ih_src=imagecreatefromfile($_FILES['opinionpic']['tmp_name'])))
+ elseif (!empty($_FILES['opinionfile']['tmp_name']))
+  {
+  $filename = empty($_POST['opinionfilename']) ? '' : $_POST['opinionfilename'];
+  if (!$filename and !empty($_POST['opinionfile']['name'])) $filename = fname($_POST['opinionfile']['name']);
+  if (!$filename) $filename = keygen(8);
+  $filename = contrive(BASEDIR . 'wp-content/uploads/opinion/', "$filename.png");
+  if (is_array($ih_src=imagecreatefromfile($_FILES['opinionfile']['tmp_name'])))
    if (is_array($ih_dst=thumb($ih_src['ih'], $bt_opinion_w1, $bt_opinion_h1)))
-    if (imagepng($ih_dst['ih'], BASEDIR . "wp-content/uploads/opinion/$id_post.png"))
-     update_post_meta($id_post, 'bt_opinionpic', 1);
+    if (imagepng($ih_dst['ih'], $filename))
+     update_post_meta($id_post, 'bt_opinionpic', basename($filename));
+  }
+ else delete_post_meta($id_post, 'bt_opinionpic');
 
  // --- Событие, большая картинка
  $bt_event_w1 = get_option('bt_event_w1', BT_EVENT_W1);

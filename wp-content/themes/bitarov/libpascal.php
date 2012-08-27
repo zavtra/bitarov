@@ -102,18 +102,6 @@ function db_result($res, $convert=false)
  return $result;
  }
 
-function keygen($len=32)
- {
- if ($len<0) return false;
- $result = '';
- for ($j=0; $j<$len; $j++) switch(rand(0, 2)):
-   case 0: $result .= chr(rand(97, 122)); break;
-   case 1: $result .= chr(rand(65, 90)); break;
-   case 2: $result .= chr(rand(48, 57)); break;
- endswitch;
- return $result;
- }
-
 function chkget($params, $only=false)
  {
  $params = explode(',', $params);
@@ -395,6 +383,78 @@ function numberic($number, $words, $word_only=false)
  if ($num===1) return $word_only ? $words[1] : "$number $words[1]";
  if ($num>=2 and $num<=4) return $word_only ? $words[2] : "$number $words[2]";
  return $word_only ? $words[0] : "$number $words[0]";
+ }
+
+function keygen($len=32)
+ {
+ if ($len<0) return false;
+ $result = '';
+ for ($j=0; $j<$len; $j++) switch(rand(0, 2)):
+   case 0: $result .= chr(rand(97, 122)); break;
+   case 1: $result .= chr(rand(65, 90)); break;
+   case 2: $result .= chr(rand(48, 57)); break;
+ endswitch;
+ return $result;
+ }
+
+function ffilt($fname)
+ {
+ if ($fname=='.' or $fname=='..') return '';
+ return preg_replace('/([^\x20-\xFF]|[\|\<\>\\\'\"\\\\])/', '', $fname);
+ }
+
+function fname($fname)
+ {
+ return preg_match('/^(.*)\.[^\.]*$/s', $fname, $parsed) ? $parsed[1] : $fname;
+ }
+
+function fext($fname)
+ {
+ return preg_match('/^.*(\.[^\.]*)$/s', $fname, $parsed) ? $parsed[1] : false;
+ }
+
+function correct_dir($dir)
+ {
+ $dir = str_replace('\\', '/', $dir);
+ $dir = preg_replace('/\/{2,}/', '/', $dir);
+ return rtrim($dir, '/') . '/';
+ }
+
+function translit($s)
+ {
+ static $up1 = array('Ѓ','Ђ','Љ','Њ','Ќ','Ћ','Џ','Ў','І','Ґ','Ё' ,'Є','Ј','Ѕ','Ї','А','Б','В','Г','Д','Е','Ж','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Х','Ц','Ч' ,'Ш' ,'Щ' ,'Ъ','Ы','Ь','Э','Ю' ,'Я' );
+ static $up2 = array(' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','YO',' ',' ',' ',' ','A','B','V','G','D','E','J','Z','I','Y','K','L','M','N','O','P','R','S','T','U','F','H','C','CH','SH','SH',' ','I',' ','E','YU','YA');
+ static $low1 = array('ѓ','ђ','љ','њ','ќ','ћ','џ','ў','і','ґ','ё' ,'є','ј','ѕ','ї','а','б','в','г','д','е','ж','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч' ,'ш' ,'щ' ,'ъ','ы','ь','э','ю' ,'я' );
+ static $low2 = array(' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','yo',' ',' ',' ',' ','a','b','v','g','d','e','j','z','i','y','k','l','m','n','o','p','r','s','t','u','f','h','c','ch','sh','sh',' ','i',' ','e','yu','ya');
+ $s = str_replace($up1, $up2, $s);
+ $s = str_replace($low1, $low2, $s);
+ return $s;
+ }
+
+function contrive($dir, $filename)
+ {
+ if (!is_dir($dir) or !$filename) return false;
+ $filename = translit(trim($filename));
+ if (!$filename) return false;
+ $filename = preg_replace('/[^a-zA-Z0-9\_\.\-]+/', '_', $filename);
+ $filename = preg_replace('/_{2,}/', '_', $filename);
+ $filename = strtolower($filename);
+ $dir = correct_dir($dir);
+ $fullpath = $dir . $filename;
+ if (!is_dir($fullpath) and !is_file($fullpath)) return $fullpath;
+ $name = fname($filename);
+ $ext = fext($filename);
+ if ($name) for ($j=0; $j<100; $j++)
+  {
+  $fullpath = $dir . $name . '-' . strtoupper(keygen(8)) . $ext;
+  if (!is_dir($fullpath) and !is_file($fullpath)) return $fullpath;
+  }
+ else
+  {
+  $fullpath = $dir . strtoupper(keygen(8)) . $ext;
+  if (!is_dir($fullpath) and !is_file($fullpath)) return $fullpath;
+  }
+ return false;
  }
 
 // --------------------------------------------------------------- Инициализация
