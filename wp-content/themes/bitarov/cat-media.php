@@ -131,14 +131,15 @@ echo <<<HTML
             <div class='wrap'>
                 <div class='b-top-left'>
                     <div class='breadcrumbs'>
-                    <div id='breadcrumbs'>$breadcrumbs</div>
+                    <div id='breadcrumbs'>$breadcrumbs
                     <span id='breadcrumb-x'><a onclick='return false'></a><ins class='r'></ins></span>
                     </div>
+                    </div>
                     <h2>{$current_category->name}</h2>
-                </div>
-                <div class='smi-parts-top' id='smi-parts-top'><ol>
+                    <div class='smi-parts-top' id='smi-parts-top'><ol>
 $media_menu
                 </ol></div>
+                </div>
                 <div class='clear'></div>
             </div>
         </div>

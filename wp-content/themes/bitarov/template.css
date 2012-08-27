@@ -120,7 +120,7 @@
                     .top_news .title {margin:4px 0 10px 3px; font:24px 'DinDisplayPro-Reg', 'Arial';}
                     .top_news .photo {width:596px; height:205px; background:url('images/css/top_news-photo-bg.png') no-repeat; text-align:center;}
                         .top_news .photo img {margin:3px auto 0 1px;width:589px; height:198px;}
-                    .top_news .text {margin:10px 0 0 4px; padding-bottom:14px; width:589px; background:url('images/css/top-news_border-bottom.png') 0 100% no-repeat; font-size:16px;}
+                    .top_news .text {margin:10px 0 0 4px; padding-bottom:14px; width:589px; background:url('images/css/top-news_border-bottom.png') 0 100% no-repeat; font:16px 'DinDisplayPro-Reg','Arial';}
                 .other_news { }
                     .other_news .item {float:left; margin-left:45px;width:276px;}
                     .other_news .item:first-child {margin:0;}
@@ -132,27 +132,27 @@
                             .other_news .item .title a {line-height:22px;}
                         .other_news .item .photo {width:276px; height:179px; background:url('images/css/other_news-photo-bg.png') no-repeat;}
                             .other_news .item .photo img {margin-left:1px;width:271px; height:174px;}
-                        .other_news .item .text {margin:7px 0 0 1px; padding-bottom:14px;width:273px; font-size:14px;}
+                        .other_news .item .text {margin:7px 0 0 1px; padding-bottom:14px;width:273px; font:14px 'DinDisplayPro-Reg','Arial';;}
 
     /* События! */
-    .event-header {padding:13px 0 2px 0; background:url('images/css/header-event-bg.png') repeat-x #fafafa;}
+    .event-header {padding:13px 0 2px 0; background:url('images/css/header-event-bg.png') repeat-x #fafafa; overflow:hidden;}
         .event-bottom-img {height:13px; background:url('images/css/event-header_bottom-bg.png') 0 bottom repeat-x;}
         .event-header.artic {background:url('images/css/event-header_artic-bg.png') repeat-x;}
             .event-header .b-top-left {float:left; min-width:300px; position: relative; z-index: 9999;}
             .event-header .breadcrumbs {margin:3px 0 0 0; padding:0; height:22px; font:12px 'Tahoma';}
-            #breadcrumb-x {display:none}
+            #breadcrumb-x {display:none;}
                 .event-header .breadcrumbs span {position:relative; float:left; margin-right:-2px; padding: 2px 15px 2px 20px; height:16px; border-top:1px solid #ebf4f5; border-bottom:1px solid #d0dcde;background:url('images/css/breadcrumbs-bg.png') 0 0 repeat-x #e5f1f2;}
                     .event-header .breadcrumbs span.current {position:relative; padding-top:3px; z-index:9999; margin-right:-12px; padding-right:14px; padding-left:25px; width:55px; height:18px; border:none; background:url('images/css/breadcrumbs-current-bg.png') no-repeat;}
                     .event-header .breadcrumbs span.current a {color:#143244;}
-                    .event-header .breadcrumbs span a {margin:0; padding:0; color:#666666; text-decoration:none;}
+                    .event-header .breadcrumbs span a {margin:0; padding:0; color:#666666; text-decoration:none; text-shadow:1px 1px 1px #FFF;}
                     .event-header .breadcrumbs span a:hover {text-decoration:underline;}
                     .event-header .breadcrumbs span ins.r {position:absolute; top:0; right:-11px; z-index:9999; width:11px; height:21px;background:url('images/css/breadcrumbs-right.png') no-repeat;}
                     .event-header .breadcrumbs span a ins {position:absolute; top:3px; left:6px;width:14px; height:14px; background:url('images/ico/home.png') no-repeat;}
 
-            .event-header .smi-parts-top {float:right; margin:30px 372px -3px auto;width:233px; font:18px 'PT Sans Narrow', 'Arial Narrow', 'Arial';}
+            .event-header .smi-parts-top {margin:-24px 0 0px 405px;width:233px; font:18px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; overflow:hidden;}
                 .event-header .smi-parts-top span { }
                     .smi-parts-top ol, .smi-parts-top li {margin:0; padding:0; display:inline}
-                    .event-header .smi-parts-top a {display: -moz-inline-box; display: inline-block;padding:3px 10px; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; color:#000; text-decoration:none; zoom: 1; *display: inline;}
+                    .event-header .smi-parts-top a {padding:1px 10px 3px 10px; display: -moz-inline-box; display: inline-block; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px; color:#000; text-decoration:none; zoom: 1; *display: inline;}
                     .event-header .smi-parts-top a:hover span {border:none;}
                     .event-header .smi-parts-top a span {border-bottom:1px dotted #000;}
                     .event-header .smi-parts-top .current-menu-item a {background:url('images/css/smi-parts-top_bg.png') repeat-x #3f9d35; color:#FFF;}
@@ -211,7 +211,7 @@
                     .event-body .item .breadcrumbs {color:#a1ac93; font:14px 'Arial';}
                         .event-body .item .breadcrumbs a {color:#a1ac93; text-decoration:none;}
                         .event-body .item .breadcrumbs a:hover {text-decoration:underline;}
-                    .event-body .item h3 {margin:3px 0 0 0; font-size:24px; font-family:'DinDisplayPro-Reg','Arial'}
+                    .event-body .item h3 {margin:3px 0 0 0; font-size:24px; font-family:'DinDisplayPro-Reg','Arial'; text-align:left;}
                         .event-body .item h3 a {border-bottom:1px solid #bdd9ea; text-decoration:none;}
                         .event-body .item h3 a:hover {color:#60b5d8;}
                     .event-body .item p {margin:9px 0; color:#333; font:14px 'Arial'; line-height:20px;}
@@ -231,7 +231,7 @@
 
     /* Благотворительный фонд! */
     .fond-header {overflow:hidden; margin-bottom:7px; padding:18px 0 0 16px; height:96px;background:url('images/css/fond-header.png') no-repeat;}
-        .fond-header .content {max-height:70px; width:593px; color:#000; font:13px 'Arial'; line-height:16px;}
+        .fond-header .content {max-height:70px; width:593px; color:#000; font:13px 'Arial'; line-height:18px; text-shadow:1px 2px 1px #FFF;}
     .fond-body {position:relative; padding-bottom: 50px;}
             .wrp-send-message .send_message {position:relative;}
                 .wrp-send-message .send_message .send_ok {display:none; font-size:13px; width:300px; background:url(images/ico/200ok.png) no-repeat; color:#5aa700; padding:3px 0 5px 30px; margin:20px 0 0 0;}
@@ -246,9 +246,9 @@
             .fond-body .menu img {position:absolute; bottom:-23px; left:50%; width:980px; height:22px; margin-left:-459px;}
             .fond-body .menu ul {margin:0; padding:11px 0 0 47px;}
                 .fond-body .menu li {display: -moz-inline-box; display: inline-block;margin-right:45px; font:25px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
-                    .fond-body .menu li a {border-bottom:1px dotted #333;color:#707070; text-decoration:none;}
-                    .fond-body .menu li a:hover {border:none;text-decoration:none;}
-                        .fond-body .menu .current-menu-item a {border:none; color:#1a9150;}
+                    .fond-body .menu li a {border-bottom:1px solid #999999;color:#707070; text-decoration:none;}
+                    .fond-body .menu li a:hover {color:#266a86; border-bottom:1px solid #266a86;}
+                        .fond-body .menu .current-menu-item a {color: #1D8ABA; border-bottom:1px solid #8EC4DC;}
             .fond-body .items img {margin-top:13px; width:1005px; height:8px;}
             .fond-body .items dl {margin-top:3px; padding-top:15px; border-top:1px dotted #99a8ae;}
             .fond-body .items dl p {margin:0; padding:0}
@@ -264,13 +264,13 @@
                 .event-body .item dt {float:left;text-align:left;}
                     .event-body .item dt div {width:56px; height:63px; background:url('images/css/substrate_owner.png') no-repeat}
                     .event-body .item dt span {display:block; margin-top:7px; color:#7b848d; font:12px 'Arial Narrow', 'Arial';}
-                .event-body .item dd {margin-left:81px;}
+                .event-body .item dd {margin-left:81px; text-align:justify;}
                     .event-body .item dd strong {display:block; padding-top:5px;width:100%; font:13px 'Arial'; font-weight:bold;}
-                    .event-body .item dd p {width:94%;font:13px 'Arial';}
+                    .event-body .item dd p {font:13px 'Arial';}
                         .event-body .item dd p span {color:#808080;}
                             .event-body .item dd p span a {color:#808080;}
                  .vista_item {padding:8px 0; height:3px;background:url('images/css/vista_item-border_bottom.png') no-repeat;}
-                 .vista_item .number_comment {float:left; margin-right:55px;color:#9ab17c; font:11px 'Arial';}
+                 .vista_item .number_comment {float:left; margin-right:41px;color:#9ab17c; font:11px 'Arial';}
                     .vista_item .number_comment img {float:left; margin-right:5px;}
                     .vista_item .number_comment a {color:#9ab17c;}
 
@@ -279,14 +279,14 @@
     .smi-body {margin-top:25px; padding-bottom:50px; position:relative;}
         .smi-body .block {position:relative; float:left; margin:0 25px 23px 0; padding:13px 25px 9px 14px;width:264px; height:161px; border:1px solid #cfdde8; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px; background:#f9fdff; -webkit-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); -moz-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); box-shadow:1px 1px 1px rgba(239, 241, 243, 1);}
         .smi-body .block:hover {border:1px solid #bdccd8;-webkit-box-shadow: 2px 2px 5px rgba(234, 237, 239, 0.9); -moz-box-shadow:2px 2px 5px rgba(234, 237, 239, 0.9); box-shadow:2px 2px 5px rgba(234, 237, 239, 0.9);}
-            .smi-body .block h3 {margin:0 0 10px 0;font:18px 'Arial', 'Myriad Pro'; width: 275px; line-height:18px;}
-                .smi-body .block h3 a {padding:0; color:#1f80ba; text-decoration:none; border-bottom:1px dotted #bdd9ea;}
+            .smi-body .block h3 {margin:0 0 10px 0;font:18px 'Arial', 'Myriad Pro'; width: 275px; line-height:19px;}
+                .smi-body .block h3 a {padding:0; text-decoration:none; border-bottom:1px dotted #BDD9EA;}
                 .smi-body .block h3 a:hover {color:#60b5d8;}
             .smi-body .depiction {color:#8f8f8f;font:12px 'Arial';}
                 .smi-body .depiction .txt {margin:0; padding:2px 0 0 18px;background:url('images/ico/i-text.png') no-repeat;}
                 .smi-body .depiction .avi {margin:0; padding:2px 0 0 21px;background:url('images/ico/i-avi.png') no-repeat;}
             .smi-body .blocklimiter {max-height:139px; max-width:264px; overflow:hidden}
-            .smi-body .block p {margin:14px 0 0 0;font:13px 'Arial'}
+            .smi-body .block p {margin:10px 0 0 0;font:13px 'Arial'}
             .smi-body .block .read-more {position:absolute; bottom:11px; border-bottom:1px dotted; color:#666666; text-decoration:none;font:13px 'Arial';}
             .smi-body .block .read-more:hover {margin-bottom:1px;border:none;}
             .smi-body .block .video-more {position:absolute; bottom:11px; padding-left:16px; background:url('images/ico/i-video.png') 0 3px no-repeat; color:#0a8a44; text-decoration:none; font:13px 'Arial';}
@@ -418,13 +418,12 @@
                 .text-right_b .date, .wrp-text .text .date {font:14px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; color:#666666; margin-bottom:18px;}
                 .text-right_b p, .wrp-text .text p {font:16px 'DinDisplayPro-Reg', 'Arial Narrow', 'Arial'; line-height:18px; color:#222; margin-bottom:12px;}
                 .video-window .text-right_b .jspVerticalBar, .wrp-text .text .jspVerticalBar {right:0;}
-                .video-window .text-right_b .jspPane,.wrp-text .text .jspPane {margin-left:10px!important;}
     /* Окно текста с overlay */
     .wrp-text {width:974px; overflow:hidden;}
         .wrp-text .scroll-pane {height:100%; overflow:scroll;}
         .wrp-text .text {height:100%; overflow:auto; padding-left:0px;}
     /* Контакты */
-    .contacts {margin-top:25px; min-height:500px;}
+    .contacts {margin:25px 0 20px 0; min-height:500px;}
         .wrp-karta {float:right; width:605px; margin:6px 79px 0 0; height:282px; background:url('images/css/karta_bg.png') 0 0px no-repeat;}
             .karta div {width:600px; height:277px; margin:-3px 0 0 -6px; border:1px solid #e1ddce;}
         .rekviziti {float:left; width:224px;}
