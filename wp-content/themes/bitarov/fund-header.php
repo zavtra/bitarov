@@ -76,7 +76,7 @@ echo <<<HTML
                     </div>
                 </div>
                 <!-- конец сообщения -->
-                <div class='menu'>
+                <div class='menu' id='fund_menu'>
                     <img src='wp-content/themes/bitarov/images/css/fond-menu-shadow.png' alt='' />
                     <ul>
 $fund_menu

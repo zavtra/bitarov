@@ -219,8 +219,8 @@
                         .event-body .item .more a {color:#777; font:12px 'Arial';}
                     .event-body .item .date {margin-right:40px; color:#898989;font:13px 'Arial Narrow', 'Arial'; display:inline;}
                     .event-body .item .tag {display:inline;}
-                        .event-body .item .tag img {}
-                        .event-body .item .tag a {background:url(images/ico/event-tag.png) 0 1px no-repeat; padding-left:25px; margin-right:10px; color:#8d949c; font:11px 'Arial'; display:inline; vertical-align:top;}
+                        .tags-img {vertical-align:middle}
+                        .event-body .item .tag a {color:#8d949c; font:11px 'Arial'; display:inline; vertical-align:top;}
             .button-show-old {margin:22px 0 0 0;}
                 .button-show-old .button {}
                     .event-body .button-show-old a {font:16px 'Georgia', 'Arial'; color:#FFF; text-decoration:none; float:left; padding:9px 0 0 19px; margin:6px 6px 0 0; width:257px; height:34px; background:url('images/css/buttons-pack.png') -2px -145px no-repeat; display:block;}

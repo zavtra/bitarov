@@ -1,4 +1,5 @@
-// Начало загрузки страницы
+// ---------------------------------------------------- Начало загрузки страницы
+
 $(window).load(function() {
 
   // Слайдер на главной
@@ -57,7 +58,8 @@ $(window).load(function() {
   $(window).resize(windowResized);
 });
 
-// Страница загружена
+// ---------------------------------------------------------- Страница загружена
+
 fixed_div = null;
 fixed_top = 0;
 fixed_fix = false;
@@ -84,7 +86,8 @@ $(window).ready(function() {
   $('#smi-parts-top a').click(changeMediaCategory);
 });
 
-// При скроллинге окна
+// --------------------------------------------------------- При скроллинге окна
+
 function windowScrolled()
  {
  if (!fixed_div) return;
@@ -105,19 +108,19 @@ function windowScrolled()
  }
 }
 
-// При изменении размеров окна
+// ------------------------------------------------- При изменении размеров окна
 function windowResized()
  {
  mediaWindowSetSize(); // Если открыто окно просмотра СМИ
  }
 
+// ----------------------------------------------------------------- Комментарии
 
-// --- Комментарии
 function commentsOpened()
  {
  var api = $('.scroll-pane').data('jsp');
  if (api) {api.reinitialise(); api.scrollToBottom();}
- else $(window).scrollTop(getTop(elem('comments')));
+ else docScroll(getTop(elem('comments')));
  }
 function commentsClosed()
  {
@@ -132,22 +135,12 @@ function newcomment()
  return false;
  }
 
-function getTop(elem)
- {
- var result = 0;
- while (elem)
-  {
-  result += parseInt(elem.offsetTop);
-  elem = elem.offsetParent;
-  }
- return result;
- }
+// ------------------ Подгрузить новую страницу во фрейм на странице мероприятий
 
-// Подгрузить новую страницу во фрейм на странице мероприятий
 function actFrameNavigate(link)
  {
  // var top = $('.wrp-activity').position().top; // неправильно считается
- $('body,html').animate({scrollTop:420}, 800);
+ docScroll(420);
  $('.list_news .news').removeClass('current');
  $(link.parentNode).addClass('current');
  var frame = elem('actionsFrame');
@@ -156,7 +149,7 @@ function actFrameNavigate(link)
  return false;
  }
 
-// --- Форма обратной связи
+// -------------------------------------------------------- Форма обратной связи
 
 function showGood()
  {
@@ -262,7 +255,7 @@ function feedbackSend()
  return false;
  }
 
-// --- СМИ
+// ------------------------------------------------------------------------- СМИ
 
 function changeMediaCategory()
  {
@@ -317,7 +310,65 @@ function mediaWindowSetSize()
 
 // -------------------------------------------------- Показать предыдущие записи
 
+function showmore()
+ {
+ if (more_loading) return;
+ more_loading = true;
+ $('#old-loader').css('display', 'inline');
+ current_page_number_more++;
+ var url = '/index.php?bt_json=get_posts';
+ url += '&category_id=' + current_category_id;
+ url += '&pg=' + current_page_number_more;
+ try {var response = eval('('+httpget(url)+')');}
+ catch (error) {$('.button-show-old').css('display', 'none'); return;}
+ var top = getTop(elem('button-show-old'));
+ if (typeof(response.info.next_page)!='number') $('.button-show-old').css('display', 'none');
+ var posts_list = elem('posts_list');
+ var div, snipet;
+ div = document.createElement('div');
+ div.style.margin = '10px 0';
+ div.style.borderTop = '1px dashed #CCC';
+ posts_list.appendChild(div);
+ for (num in response.items)
+  {
+  div = document.createElement('div');
+  snipet = post_template.replace(/__POST_LINK__/, response.items[num].post_link);
+  snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
+  snipet = snipet.replace(/__POST_TITLE__/, response.items[num].post_title);
+  snipet = snipet.replace(/__CATEGORY_NAME__/, response.items[num].category_name);
+  snipet = snipet.replace(/__CATEGORY_LINK__/, response.items[num].category_link);
+  snipet = snipet.replace(/__POST_EXCERPT__/, response.items[num].post_excerpt);
+  snipet = snipet.replace(/__OPINION__/, response.items[num].opinion);
+  snipet = snipet.replace(/__POST_DATE__/, response.items[num].post_date_dm + ' ' + response.items[num].post_date_y);
+  snipet = snipet.replace(/__POST_DATE_DM__/, response.items[num].post_date_dm);
+  snipet = snipet.replace(/__POST_DATE_Y__/, response.items[num].post_date_y);
+  snipet = snipet.replace(/__TAGS__/, response.items[num].tags);
+  snipet = snipet.replace(/__COMMENTS_COUNT__/, response.items[num].comments_count);
+  div.innerHTML = snipet;
+  posts_list.appendChild(div);
+  }
+ docScroll(top);
+ }
+
+// ----------------------------------------------------- Другие полезные функции
+
 function elem(id) {return document.getElementById(id)}
+
+function docScroll(top)
+ {
+ $('body,html').animate({scrollTop:top}, 800);
+ }
+
+function getTop(elem)
+ {
+ var result = 0;
+ while (elem)
+  {
+  result += parseInt(elem.offsetTop);
+  elem = elem.offsetParent;
+  }
+ return result;
+ }
 
 function json_parse(json)
  {
@@ -379,45 +430,5 @@ function scanObject(obj)
  return result;
  }
 
-function showmore()
- {
- if (more_loading) return;
- more_loading = true;
- $('#old-loader').css('display', 'inline');
- current_page_number_more++;
- var url = '/index.php?bt_json=get_posts';
- url += '&category_id=' + current_category_id;
- url += '&pg=' + current_page_number_more;
- try {var response = eval('('+httpget(url)+')');}
- catch (error) {$('.button-show-old').css('display', 'none'); return;}
- var top = $('.button-show-old').position().top;
- if (typeof(response.info.next_page)!='number') $('.button-show-old').css('display', 'none');
- var posts_list = elem('posts_list');
- var div, snipet;
- div = document.createElement('div');
- div.style.margin = '10px 0';
- div.style.borderTop = '1px dashed #CCC';
- posts_list.appendChild(div);
- for (num in response.items)
-  {
-  div = document.createElement('div');
-  snipet = post_template.replace(/__POST_LINK__/, response.items[num].post_link);
-  snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
-  snipet = snipet.replace(/__POST_TITLE__/, response.items[num].post_title);
-  snipet = snipet.replace(/__CATEGORY_NAME__/, response.items[num].category_name);
-  snipet = snipet.replace(/__CATEGORY_LINK__/, response.items[num].category_link);
-  snipet = snipet.replace(/__POST_EXCERPT__/, response.items[num].post_excerpt);
-  snipet = snipet.replace(/__OPINION__/, response.items[num].opinion);
-  snipet = snipet.replace(/__POST_DATE__/, response.items[num].post_date_dm + ' ' + response.items[num].post_date_y);
-  snipet = snipet.replace(/__POST_DATE_DM__/, response.items[num].post_date_dm);
-  snipet = snipet.replace(/__POST_DATE_Y__/, response.items[num].post_date_y);
-  snipet = snipet.replace(/__TAGS__/, response.items[num].tags);
-  snipet = snipet.replace(/__COMMENTS_COUNT__/, response.items[num].comments_count);
-  div.innerHTML = snipet;
-  posts_list.appendChild(div);
-  }
- $('body,html').animate({scrollTop:top}, 800);
- }
-
-//Placeholder
+// -------------------------------------------------------------- Какая-то хрень
 (function(a){a.extend({placeholder:{settings:{focusClass:"placeholderFocus",activeClass:"placeholder",overrideSupport:false,preventRefreshIssues:true},debug:false,log:function(b){if(!a.placeholder.debug){return}b="[Placeholder] "+b;a.placeholder.hasFirebug?console.log(b):a.placeholder.hasConsoleLog?window.console.log(b):alert(b)},hasFirebug:"console" in window&&"firebug" in window.console,hasConsoleLog:"console" in window&&"log" in window.console}});a.support.placeholder="placeholder" in document.createElement("input");a.fn.plVal=a.fn.val;a.fn.val=function(e){a.placeholder.log("in val");if(this[0]){a.placeholder.log("have found an element");var d=a(this[0]);if(e!=undefined){a.placeholder.log("in setter");var c=d.plVal();var b=a(this).plVal(e);if(d.hasClass(a.placeholder.settings.activeClass)&&c==d.attr("placeholder")){d.removeClass(a.placeholder.settings.activeClass)}return b}if(d.hasClass(a.placeholder.settings.activeClass)&&d.plVal()==d.attr("placeholder")){a.placeholder.log("returning empty because it's a placeholder");return""}else{a.placeholder.log("returning original val");return d.plVal()}}a.placeholder.log("returning undefined");return undefined};a(window).bind("beforeunload.placeholder",function(){var b=a("input."+a.placeholder.settings.activeClass);if(b.length>0){b.val("").attr("autocomplete","off")}});a.fn.placeholder=function(b){b=a.extend({},a.placeholder.settings,b);if(!b.overrideSupport&&a.support.placeholder){return this}return this.each(function(){var c=a(this);if(!c.is("[placeholder]")){return}if(c.is(":password")){return}if(b.preventRefreshIssues){c.attr("autocomplete","off")}c.bind("focus.placeholder",function(){var d=a(this);if(this.value==d.attr("placeholder")&&d.hasClass(b.activeClass)){d.val("").removeClass(b.activeClass).addClass(b.focusClass)}});c.bind("blur.placeholder",function(){var d=a(this);d.removeClass(b.focusClass);if(this.value==""){d.val(d.attr("placeholder")).addClass(b.activeClass)}});c.triggerHandler("blur");c.parents("form").submit(function(){c.triggerHandler("focus.placeholder")})})}})(jQuery);

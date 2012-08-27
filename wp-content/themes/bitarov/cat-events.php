@@ -21,18 +21,19 @@ while (have_posts())
  $post_excerpt = get_the_excerpt(); // аннотация
  $post_link = get_permalink($post->ID);
  $post_date = rusdate('j F Y', strtotime($post->post_date));
- $post_tags = '';
  $post_category_id = bt_post_category($post->ID);
  $post_category = get_category($post_category_id);
  $post_category_name = $post_category->name;
  $post_category_link = get_category_link($post_category_id);
+ $post_tags = '';
  if (is_array($tags_raw=get_the_tags()))
   foreach ($tags_raw as $tag)
    {
    $tag_link = get_tag_link($tag->term_id);
    $tag_name = $tag->name;
-   $post_tags .= "<a href='$tag_link'>$tag_name</a> ";
+   $post_tags .= "<a href='$tag_link'>$tag_name</a>, ";
    }
+ if ($post_tags) $post_tags = "<img src='wp-content/themes/bitarov/images/ico/event-tag.png' class='tags-img' /> " . rtrim($post_tags, ', ');
  $posts_list .= <<<HTML
                     <div class='item'>
                         <div class='breadcrumbs'><a href='$post_category_link'>$post_category_name</a> &rarr;</div>
@@ -150,7 +151,7 @@ $breadcrumbs
 
 $posts_list
 
-                    <div class='button-show-old' style='display:$display_more'>
+                    <div class='button-show-old' id='button-show-old' style='display:$display_more'>
                         <a href='#' onclick='showmore(); return false;'>Показать предыдущие события</a>
                         <img id='old-loader' src='wp-content/themes/bitarov/images/ico/loading.gif' alt='' />
                     </div>

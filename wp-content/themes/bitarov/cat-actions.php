@@ -53,6 +53,11 @@ echo <<<HTML
     <div class='content'>
 
 $fund_header
+<script type='text/javascript'>
+$(window).ready(function() {
+  docScroll(getTop(elem('fund_menu'))-12);
+});
+</script>
 
                 <div class='wrp-activity'>
                     <table>

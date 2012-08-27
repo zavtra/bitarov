@@ -23,19 +23,20 @@ while (have_posts())
  $post_date = strtotime($post->post_date);
  $post_date_dm = rusdate('j F', $post_date);
  $post_date_y = rusdate('Y', $post_date);
- $post_tags = '';
  $post_category_id = bt_post_category($post->ID);
  $post_category = get_category($post_category_id);
  $post_category_name = $post_category->name;
  $post_category_link = get_category_link($post_category_id);
  $opinion = get_post_meta($post->ID, 'bt_opinion', true);
+ $post_tags = '';
  if (is_array($tags_raw=get_the_tags()))
   foreach ($tags_raw as $tag)
    {
    $tag_link = get_tag_link($tag->term_id);
    $tag_name = $tag->name;
-   $post_tags .= "<a href='$tag_link'>$tag_name</a> ";
+   $post_tags .= "<a href='$tag_link'>$tag_name</a>, ";
    }
+ if ($post_tags) $post_tags = "<img src='wp-content/themes/bitarov/images/ico/event-tag.png' class='tags-img' /> " . rtrim($post_tags, ', ');
  $comments_count=wp_count_comments($post->ID);
  $comments_count = $comments_count->approved>0
                    ? numberic($comments_count->approved, array('комментариев', 'комментарий', 'комментария'))
@@ -179,7 +180,7 @@ $breadcrumbs
 
 $posts_list
 
-                    <div class='button-show-old' style='display:$display_more'>
+                    <div class='button-show-old' id='button-show-old' style='display:$display_more'>
                         <a href='#' onclick='showmore(); return false;'>Показать предыдущие записи</a>
                         <img id='old-loader' src='wp-content/themes/bitarov/images/ico/loading.gif' alt='' />
                     </div>
