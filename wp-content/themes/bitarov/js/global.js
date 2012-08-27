@@ -84,6 +84,8 @@ $(window).ready(function() {
 
   // Для страницы просмотра медиа
   $('#smi-parts-top a').click(changeMediaCategory);
+
+  $('#paginator-events').jScrollPane();
 });
 
 // --------------------------------------------------------- При скроллинге окна

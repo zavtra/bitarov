@@ -1,7 +1,8 @@
 <?php
 get_header();
 
-// --- Хлебные крошки
+// -------------------------------------------------------------- Хлебные крошки
+
 $categories_path = get_cat_path($current_category_id);
 $siteurl = SITE_URL;
 $breadcrumbs = "<span class='current'><a href='$siteurl'><ins></ins>bitarov.as</a></span>\n";
@@ -12,7 +13,8 @@ foreach ($categories_path as $category)
  $breadcrumbs .= "                        <span><a href='$category_link'>$category_name</a><ins class='r'></ins></span>\n";
  }
 
-// --- Список постов
+// --------------------------------------------------------------- Список постов
+
 $posts_list = '';
 while (have_posts())
  {
@@ -46,7 +48,8 @@ while (have_posts())
 HTML;
  }
 
-// --- Шаблон поста для подгрузки через JSON
+// --------------------------------------- Шаблон поста для подгрузки через JSON
+
 $json_post_template = <<<HTML
                     <div class='item'>
                         <div class='breadcrumbs'><a href='__CATEGORY_LINK__'>__CATEGORY_NAME__</a> &rarr;</div>
@@ -59,7 +62,8 @@ $json_post_template = <<<HTML
 HTML;
 $json_post_template = json_encode($json_post_template);
 
-// --- Пагинатор
+// ------------------------------------------------------------------- Пагинатор
+
 $paginator = '';
 if ($category_paginagor)
  {
@@ -69,6 +73,13 @@ if ($category_paginagor)
    if ($page_number==$current_page_number) $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' class='current'>$page_number</a> ";
    else $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/'>$page_number</a> ";
  $paginator = <<<HTML
+<!--
+                                $paginator
+                                <div class='poloska' style='width:{$width}px'>
+                                    <div class='underline' style='margin-left:{$margin}px'><ins></ins></div>
+                                </div>
+-->
+
                     <div class='paginator' id='paginator-fixed'>
                         <div class='top-fixed'>
                             <div class='wrp-line'>
@@ -79,10 +90,12 @@ if ($category_paginagor)
                             </div>
                         </div>
                     </div>
+
 HTML;
  }
 
-// --- Подкатегории
+// ---------------------------------------------------------------- Подкатегории
+
 $subcategories_block = '';
 if ($subcategories)
  {
@@ -100,7 +113,7 @@ if ($subcategories)
 HTML;
  }
 
-// --- Года
+// ------------------------------------------------------------------------ Года
 $years = '';
 $years_raw = get_years($current_category_id);
 if (count($years_raw)>1)
@@ -109,7 +122,8 @@ if (count($years_raw)>1)
  $years = "        <div class='podate'><span>по годам:</span> $years</div>";
  }
 
-// --- Показать предыдущие сообщения
+// ----------------------------------------------- Показать предыдущие сообщения
+
 $display_more = ($pages_count>$current_page_number) ? 'block' : 'none';
 
 echo <<<HTML
