@@ -123,7 +123,7 @@ get_header();
 
 echo <<<HTML
 
-<img id='media-loader' src='wp-content/themes/bitarov/images/css/media-loader.gif' />
+<img id='media-loader' src='wp-content/themes/bitarov/images/css/loader-circle.gif' />
 
 <!-- контент -->
     <div class='content'>

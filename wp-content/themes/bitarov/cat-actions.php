@@ -26,7 +26,7 @@ endwhile;
 
 // ------------------------------------------------------------------- Пагинатор
 $paginator = '';
-$category_paginagor = gen_pages($current_page_number, $pages_count, 2);
+$category_paginagor = gen_pages($current_page_number, $pages_count, 1);
 if (count($category_paginagor)>1)
  {
  $link_back = $link_next = '';
