@@ -278,7 +278,7 @@
                     .vista_item .number_comment a {color:#9ab17c;}
 
     /* Ñìè! */
-    #media-loader {position:absolute; left:50%; top:50%; z-index:100; display:none}
+    #media-loader {position:absolute; left:50%; top:50%; margin:-23px 0 0 -82px; z-index:100; display:none}
     .smi-body {margin-top:25px; padding-bottom:50px; position:relative;}
         .smi-body .block {position:relative; float:left; margin:0 25px 23px 0; padding:13px 25px 9px 14px;width:264px; height:161px; border:1px solid #cfdde8; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; background:#f9fdff; -webkit-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); -moz-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); box-shadow:1px 1px 1px rgba(239, 241, 243, 1);}
         .smi-body .block:hover {border:1px solid #bdccd8;-webkit-box-shadow: 2px 2px 5px rgba(234, 237, 239, 0.9); -moz-box-shadow:2px 2px 5px rgba(234, 237, 239, 0.9); box-shadow:2px 2px 5px rgba(234, 237, 239, 0.9);}

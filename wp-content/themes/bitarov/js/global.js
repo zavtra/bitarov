@@ -167,6 +167,10 @@ function actPagesLoad()
  var url = this.href.replace(/\/$/, '') + '/?xhr';
  var response = json_parse(httpget(url));
  if (!response) return false;
+ $('#posts_list').html(response.posts_list);
+ $('#paginator').html(response.paginator);
+ $('#actions-shadow').fadeOut();
+ $('#actions-paginator a').click(actPagesLoad);
  return false;
  }
 
