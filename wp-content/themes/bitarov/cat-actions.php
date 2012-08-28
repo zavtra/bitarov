@@ -86,9 +86,14 @@ $(window).ready(function() {
 
 <div id='actions-shadow'><div></div></div>
 
+<div id='posts_list'>
 $posts_list
+</div>
 
+<div id='paginator'>
 $paginator
+</div>
+
                                     </div>
                                     <div class='fade'><img src='wp-content/themes/bitarov/images/css/content_fade.png' width='733' height='46' alt='' /></div>
                                 </td>
