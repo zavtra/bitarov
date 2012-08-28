@@ -85,8 +85,11 @@ $(window).ready(function() {
   // Для страницы просмотра медиа
   $('#smi-parts-top a').click(changeMediaCategory);
 
-  $('#paginator-events').jScrollPane({horizontalDragMaxWidth:20, horizontalDragMinWidth:20});
-  setPage(0);
+  if (elem('paginator-events'))
+   {
+   $('#paginator-events').jScrollPane({horizontalDragMaxWidth:20, horizontalDragMinWidth:20});
+   setPage(0);
+   }
 });
 
 // ------------------------------------------------------------------- Пагинатор

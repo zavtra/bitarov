@@ -1,5 +1,4 @@
 <?php
-get_header();
 
 // ----------------------------------------------------------------- Шапка фонда
 ob_start();
@@ -27,25 +26,44 @@ endwhile;
 
 // ------------------------------------------------------------------- Пагинатор
 $paginator = '';
-if ($category_paginagor)
+$category_paginagor = gen_pages($current_page_number, $pages_count, 2);
+if (count($category_paginagor)>1)
  {
+ $link_back = $link_next = '';
+ if ($current_page_number>1)
+   {$link = "$current_cat_link/page/" . ($current_page_number-1) . '/';
+   $link_back = "<li><span><a href='$link'>&larr;&nbsp; новее</a></span></li>";}
+ if ($current_page_number<$pages_count)
+   {$link = "$current_cat_link/page/" . ($current_page_number+1) . '/';
+   $link_next = "<li><span><a href='$link'>раньше</a>&nbsp;&rarr;</span></li>";}
  foreach ($category_paginagor as $page_number)
-   if ($page_number==$current_page_number) $paginator .= "                                                <li><a href='$current_cat_link/page/$page_number/' class='current'>$page_number</a></li>\n";
-   else $paginator .= "                                                <li><a href='$current_cat_link/page/$page_number/'>$page_number</a></li>\n";
+   if ($page_number==$current_page_number) $paginator .= "  <li><a href='$current_cat_link/page/$page_number/' class='current'>$page_number</a></li>\n";
+   else $paginator .= "<li><a href='$current_cat_link/page/$page_number/'>$page_number</a></li>\n";
  $paginator = <<<HTML
-                                         <div class='paginator'>
-                                            <ul>
+<div class='paginator'>
+  <ul>
+$link_back
 $paginator
-                                                <!--<li><span><a href='#'>раньше</a>&nbsp;&rarr;</span></li>-->
-                                            </ul>
-                                        </div>
+$link_next
+  </ul>
+</div>
 HTML;
  }
 
 // --------------------------------------------- Ссылка на первый пост во фрейме
 $first_post_link = $first_post_id ? rtrim(get_permalink($first_post_id), '/') . '/framed/' : 'about:blank';
 
+// ----------------------------------------- Если контент запрошен с помощью XHR
+
+if (chkget('xhr'))
+ {
+ $result = array('posts_list'=>$posts_list, 'paginator'=>$paginator);
+ die(json_encode($result));
+ }
+
 // -------------------------------------------------------------- Вывод страницы
+
+get_header();
 
 echo <<<HTML
 
@@ -66,6 +84,7 @@ $(window).ready(function() {
                                 <td class='left-menu'>
                                     <div class='list_news'>
 
+<div style='position:absolute; left:0; top:0; width:268px; height:200px; background:scroll transparent url(wp-content/themes/bitarov/images/css/white75.png) 0 0 repeat'></div>
 $posts_list
 
 $paginator
