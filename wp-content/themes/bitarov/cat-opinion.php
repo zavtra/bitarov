@@ -29,7 +29,7 @@ while (have_posts())
  $post_category_link = get_category_link($post_category_id);
  $opinion = get_post_meta($post->ID, 'bt_opinion', true);
  $opinionpic = htmltext(get_post_meta($post->ID, 'bt_opinionpic', true));
- if ($opinionpic) $opinionpic = "background-image:url(wp-content/uploads/opinion/$opinionpic)";
+ if ($opinionpic) $opinionpic = "wp-content/uploads/opinion/$opinionpic";
  $post_tags = '';
  if (is_array($tags_raw=get_the_tags()))
   foreach ($tags_raw as $tag)
@@ -46,7 +46,7 @@ while (have_posts())
  $posts_list .= <<<HTML
                     <div class='item'>
                         <dl>
-                            <dt><div style='$opinionpic'></div><span>$post_date_dm<br />$post_date_y</span></dt>
+                            <dt><img src='$opinionpic' /><span>$post_date_dm<br />$post_date_y</span></dt>
                             <dd>
                                 <div class='breadcrumbs'><a href='$post_category_link'>$post_category_name</a> &rarr;</div>
                                 <h3><a href='$post_link'>$post_title</a></h3>

@@ -267,7 +267,7 @@
                 .event-body .item dt {float:left;text-align:left;}
                     .event-body .item dt div {width:56px; height:63px; background:url('images/css/bitarov1.jpg') no-repeat}
                     .event-body .item dt span {display:block; margin-top:7px; color:#7b848d; font:12px 'Arial Narrow', 'Arial';}
-                .event-body .item dd {margin-left:81px; text-align:justify;}
+                .event-body .item dd {margin-left:81px;}
                     .event-body .item dd strong {display:block; padding-top:5px;width:100%; font:13px 'Arial'; font-weight:bold;}
                     .event-body .item dd p {font:13px 'Arial';}
                         .event-body .item dd p span {color:#808080;}
