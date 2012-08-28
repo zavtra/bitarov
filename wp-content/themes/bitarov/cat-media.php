@@ -102,7 +102,9 @@ $media_menu = wp_nav_menu(array(
   'menu' => 'media',
   'container' => '',
   'echo' => false,
-  'items_wrap' => '%3$s'
+  'items_wrap' => '%3$s',
+  'before' => '<span>',
+  'after' => '</span>'
 ));
 
 // Если контент запрошен с помощью XHR

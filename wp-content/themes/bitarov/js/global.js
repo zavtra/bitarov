@@ -90,6 +90,8 @@ $(window).ready(function() {
    $('#paginator-events').jScrollPane({horizontalDragMaxWidth:20, horizontalDragMinWidth:20});
    setPage(0);
    }
+
+  $('#actions-paginator a').click(actPagesLoad);
 });
 
 // ------------------------------------------------------------------- Пагинатор
@@ -156,6 +158,17 @@ function newcomment()
  }
 
 // ------------------ Подгрузить новую страницу во фрейм на странице мероприятий
+
+function actPagesLoad()
+ {
+ $('.list_news div').removeClass('current');
+ $('#actions-shadow').height($('.list_news').height()+40);
+ $('#actions-shadow').css('display', 'block');
+ var url = this.href.replace(/\/$/, '') + '/?xhr';
+ var response = json_parse(httpget(url));
+ if (!response) return false;
+ return false;
+ }
 
 function actFrameNavigate(link)
  {

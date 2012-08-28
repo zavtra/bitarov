@@ -40,7 +40,7 @@ if (count($category_paginagor)>1)
    if ($page_number==$current_page_number) $paginator .= "  <li><a href='$current_cat_link/page/$page_number/' class='current'>$page_number</a></li>\n";
    else $paginator .= "<li><a href='$current_cat_link/page/$page_number/'>$page_number</a></li>\n";
  $paginator = <<<HTML
-<div class='paginator'>
+<div class='paginator' id='actions-paginator'>
   <ul>
 $link_back
 $paginator
@@ -84,7 +84,8 @@ $(window).ready(function() {
                                 <td class='left-menu'>
                                     <div class='list_news'>
 
-<div style='position:absolute; left:0; top:0; width:268px; height:200px; background:scroll transparent url(wp-content/themes/bitarov/images/css/white75.png) 0 0 repeat'></div>
+<div id='actions-shadow'><div></div></div>
+
 $posts_list
 
 $paginator
