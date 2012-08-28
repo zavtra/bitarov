@@ -340,6 +340,8 @@
                 .wrp-activity .left-menu .list_news .news.current {margin-bottom:9px; border-bottom:1px solid #f7f7f7; background:#FFF; -webkit-box-shadow:2px 2px 2px #dededd inset, -1px 0 0 #f7f7f7 inset; -moz-box-shadow:2px 2px 2px #dededd inset, -1px 0 0 #f7f7f7 inset; box-shadow:2px 2px 2px #dededd inset, -1px 0 0 #f7f7f7 inset;}
                     .wrp-activity .left-menu .list_news .news.current a {border:none; color:#000;}
                     .wrp-activity .left-menu .list_news .news.current .date {color:#555;}
+                    #actions-shadow {display:none; position:absolute; left:5px; top:5px; border:1px solid #DDD; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; width:256px; height:256px; background:scroll transparent url(images/css/white75.png) 0 0 repeat}
+                    #actions-shadow div {width:100%; height:100%; background:scroll transparent url(images/css/loader-circle.gif) center center no-repeat}
                 .wrp-activity .left-menu .list_news .news {margin:0 0 10px -17px;padding:6px 0 7px 17px; font:14px 'Arial';}
                     .wrp-activity .left-menu .list_news .news a {border-bottom:1px dotted;color:#1f80ba; text-decoration:none; line-height:19px;}
                     .wrp-activity .left-menu .list_news .news a:hover {border:none;}
