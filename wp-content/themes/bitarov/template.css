@@ -165,14 +165,15 @@
             .wrp-rubrikator-fixed a {z-index:10; position:relative}
                 .wrp-rubrikator-fixed .paginator {width:220px; height:38px; margin:0 auto; position:relative; top:135px; left:320px;}
                     .paginator .top-fixed {}
-                        #paginator-events {width:100px; height:40px}
-                        .paginator .wrp-line {white-space:nowrap; overflow:scroll; height:30px; width:100px; margin:0 30px 0 0; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
+                        #paginator-events {width:100px; height:45px; position:relative; z-index:10}
+                        .paginator .wrp-line {white-space:nowrap; height:30px; width:100px; margin:0 30px 0 0; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
                         .paginator .wrp-line {*margin:0 30px 0 0;}
+                        .paginator .jspDrag {background:scroll transparent url(images/ico/page-current.png) top center no-repeat}
+                        .paginator .jspTrack {background:transparent}
+                        .paginator .jspHorizontalBar {background:scroll transparent url(images/css/pginator-underline.gif) 0 0 repeat-x}
                             .paginator .wrp-line a {padding:1px 5px; color:#3fa5cf; font-size:16px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
                             .paginator .wrp-line a:hover {background:#f5f5f5;}
                                 .paginator .wrp-line a.current {background:#f5f5f5; color:#818181; text-decoration:none;}
-                            .paginator .poloska {height:4px; margin-top:7px; background:#ebebeb; position:relative;}
-                                .paginator .poloska .underline {height:11px; width:24px; margin-left:-1px; background:url(images/ico/page-current.png) no-repeat; position:absolute;}
                             .paginator .top-fixed .next {width:35px; height:17px; text-align:left; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin-top:5px;}
                                 .paginator .top-fixed .next a {background:url(images/css/pagination_buttons.png) -47px 0 no-repeat; width:35px; height:17px; display:block;}
                                 .paginator .top-fixed .next a:hover {background:url(images/css/pagination_buttons.png) -47px -21px no-repeat;}
