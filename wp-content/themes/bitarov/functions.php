@@ -1,12 +1,16 @@
 <?php
 
-ini_set('display_errors', 'off'); error_reporting(0);
-//ini_set('display_errors', 'on'); error_reporting(E_ALL);
+//ini_set('display_errors', 'off'); error_reporting(0);
+ini_set('display_errors', 'on'); error_reporting(E_ALL);
 
 require dirname(__FILE__) . '/libpascal.php';
 
-define('BT_EVENT_W1', 590);
-define('BT_EVENT_H1', 198);
+define('BT_EVENT_W1', 1024);
+define('BT_EVENT_H1', 768);
+define('BT_EVENT_BIGW', 589);
+define('BT_EVENT_BIGH', 198);
+define('BT_EVENT_MEDW', 271);
+define('BT_EVENT_MEDH', 174);
 define('BT_EVENT_W2', 270);
 define('BT_EVENT_H2', 170);
 define('BT_OPINION_H1', 56);
