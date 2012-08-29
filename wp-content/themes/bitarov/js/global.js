@@ -85,8 +85,28 @@ $(window).ready(function() {
   // Для страницы просмотра медиа
   $('#smi-parts-top a').click(changeMediaCategory);
 
-  $('#paginator-events').jScrollPane();
+  if (elem('paginator-events'))
+   {
+   $('#paginator-events').jScrollPane({horizontalDragMaxWidth:20, horizontalDragMinWidth:20});
+   setPage(0);
+   }
+
+  $('#actions-paginator a').click(actPagesLoad);
 });
+
+// ------------------------------------------------------------------- Пагинатор
+
+function setPage(num)
+ {
+ if (num)
+  {
+  $('#paginator-events .current').removeClass('current');
+  $('#page-'+num).addClass('current');
+  }
+ var api = $('#paginator-events').data('jsp');
+ var current_x = $('#paginator-events .current').position().left;
+ api.scrollByX(current_x-40);
+ }
 
 // --------------------------------------------------------- При скроллинге окна
 
@@ -138,6 +158,21 @@ function newcomment()
  }
 
 // ------------------ Подгрузить новую страницу во фрейм на странице мероприятий
+
+function actPagesLoad()
+ {
+ $('.list_news div').removeClass('current');
+ $('#actions-shadow').height($('.list_news').height()+40);
+ $('#actions-shadow').css('display', 'block');
+ var url = this.href.replace(/\/$/, '') + '/?xhr';
+ var response = json_parse(httpget(url));
+ if (!response) return false;
+ $('#posts_list').html(response.posts_list);
+ $('#paginator').html(response.paginator);
+ $('#actions-shadow').fadeOut();
+ $('#actions-paginator a').click(actPagesLoad);
+ return false;
+ }
 
 function actFrameNavigate(link)
  {
@@ -321,11 +356,13 @@ function showmore()
  var url = '/index.php?bt_json=get_posts';
  url += '&category_id=' + current_category_id;
  url += '&pg=' + current_page_number_more;
- try {var response = eval('('+httpget(url)+')');}
- catch (error) {$('.button-show-old').css('display', 'none'); return;}
+ response = json_parse(httpget(url));
+ more_loading = false;
+ $('#old-loader').css('display', 'none');
+ if (!response) {$('.button-show-old').css('display', 'none'); return;}
  var top = getTop(elem('button-show-old'));
  if (typeof(response.info.next_page)!='number') $('.button-show-old').css('display', 'none');
- var posts_list = elem('posts_list');
+ var posts_list = elem('posts_more');
  var div, snipet;
  div = document.createElement('div');
  div.style.margin = '10px 0';
@@ -349,6 +386,7 @@ function showmore()
   div.innerHTML = snipet;
   posts_list.appendChild(div);
   }
+ setPage(current_page_number_more);
  docScroll(top);
  }
 

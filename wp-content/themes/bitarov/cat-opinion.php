@@ -29,7 +29,7 @@ while (have_posts())
  $post_category_link = get_category_link($post_category_id);
  $opinion = get_post_meta($post->ID, 'bt_opinion', true);
  $opinionpic = htmltext(get_post_meta($post->ID, 'bt_opinionpic', true));
- if ($opinionpic) $opinionpic = "background-image:url(wp-content/uploads/opinion/$opinionpic)";
+ $opinionpic = $opinionpic ? "wp-content/uploads/opinion/$opinionpic" : "wp-content/themes/bitarov/images/css/bitarov1.jpg";
  $post_tags = '';
  if (is_array($tags_raw=get_the_tags()))
   foreach ($tags_raw as $tag)
@@ -46,7 +46,7 @@ while (have_posts())
  $posts_list .= <<<HTML
                     <div class='item'>
                         <dl>
-                            <dt><div style='$opinionpic'></div><span>$post_date_dm<br />$post_date_y</span></dt>
+                            <dt><img src='$opinionpic' /><span>$post_date_dm<br />$post_date_y</span></dt>
                             <dd>
                                 <div class='breadcrumbs'><a href='$post_category_link'>$post_category_name</a> &rarr;</div>
                                 <h3><a href='$post_link'>$post_title</a></h3>
@@ -94,22 +94,19 @@ $json_post_template = json_encode($json_post_template);
 $paginator = '';
 if ($category_paginagor)
  {
- $width = count($category_paginagor)*20; // ширина линии
- $margin = ($current_page_number-1) * 20; // маргин указателя страницы
  foreach ($category_paginagor as $page_number)
-   if ($page_number==$current_page_number) $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' class='current'>$page_number</a> ";
-   else $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/'>$page_number</a> ";
+   if ($page_number==$current_page_number) $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' class='current' id='page-$page_number'>$page_number</a> ";
+   else $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' id='page-$page_number'>$page_number</a> ";
  $paginator = <<<HTML
+
                     <div class='paginator' id='paginator-fixed'>
                         <div class='top-fixed'>
-                            <div class='wrp-line'>
+                            <div class='wrp-line' id='paginator-events'><div>
                                 $paginator
-                                <div class='poloska' style='width:{$width}px'>
-                                    <div class='underline' style='margin-left:{$margin}px'><ins></ins></div>
-                                </div>
-                            </div>
+                            </div></div>
                         </div>
                     </div>
+
 HTML;
  }
 
@@ -182,6 +179,7 @@ $breadcrumbs
 
 $posts_list
 
+                    <div id='posts_more'></div>
                     <div class='button-show-old' id='button-show-old' style='display:$display_more'>
                         <a href='#' onclick='showmore(); return false;'>Показать предыдущие записи</a>
                         <img id='old-loader' src='wp-content/themes/bitarov/images/ico/loading.gif' alt='' />

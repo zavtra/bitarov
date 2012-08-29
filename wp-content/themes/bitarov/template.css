@@ -165,14 +165,15 @@
             .wrp-rubrikator-fixed a {z-index:10; position:relative}
                 .wrp-rubrikator-fixed .paginator {width:220px; height:38px; margin:0 auto; position:relative; top:135px; left:320px;}
                     .paginator .top-fixed {}
-                        #paginator-events {width:100px; height:40px}
+                        #paginator-events {width:100px; height:45px; position:relative; z-index:10}
                         .paginator .wrp-line {white-space:nowrap; height:30px; width:100px; margin:0 30px 0 0; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
                         .paginator .wrp-line {*margin:0 30px 0 0;}
+                        .paginator .jspDrag {background:scroll transparent url(images/ico/page-current.png) top center no-repeat}
+                        .paginator .jspTrack {background:transparent}
+                        .paginator .jspHorizontalBar {background:scroll transparent url(images/css/pginator-underline.gif) 0 0 repeat-x}
                             .paginator .wrp-line a {padding:1px 5px; color:#3fa5cf; font-size:16px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
                             .paginator .wrp-line a:hover {background:#f5f5f5;}
                                 .paginator .wrp-line a.current {background:#f5f5f5; color:#818181; text-decoration:none;}
-                            .paginator .poloska {height:4px; margin-top:7px; background:#ebebeb; position:relative;}
-                                .paginator .poloska .underline {height:11px; width:24px; margin-left:-1px; background:url(images/ico/page-current.png) no-repeat; position:absolute;}
                             .paginator .top-fixed .next {width:35px; height:17px; text-align:left; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline; vertical-align:top; margin-top:5px;}
                                 .paginator .top-fixed .next a {background:url(images/css/pagination_buttons.png) -47px 0 no-repeat; width:35px; height:17px; display:block;}
                                 .paginator .top-fixed .next a:hover {background:url(images/css/pagination_buttons.png) -47px -21px no-repeat;}
@@ -266,7 +267,7 @@
                 .event-body .item dt {float:left;text-align:left;}
                     .event-body .item dt div {width:56px; height:63px; background:url('images/css/bitarov1.jpg') no-repeat}
                     .event-body .item dt span {display:block; margin-top:7px; color:#7b848d; font:12px 'Arial Narrow', 'Arial';}
-                .event-body .item dd {margin-left:81px; text-align:justify;}
+                .event-body .item dd {margin-left:81px;}
                     .event-body .item dd strong {display:block; padding-top:5px;width:100%; font:13px 'Arial'; font-weight:bold;}
                     .event-body .item dd p {font:13px 'Arial';}
                         .event-body .item dd p span {color:#808080;}
@@ -277,9 +278,9 @@
                     .vista_item .number_comment a {color:#9ab17c;}
 
     /* Ñìè! */
-    #media-loader {position:absolute; left:50%; top:50%; z-index:100; display:none}
+    #media-loader {position:absolute; left:50%; top:50%; margin:-23px 0 0 -82px; z-index:100; display:none}
     .smi-body {margin-top:25px; padding-bottom:50px; position:relative;}
-        .smi-body .block {position:relative; float:left; margin:0 25px 23px 0; padding:13px 25px 9px 14px;width:264px; height:161px; border:1px solid #cfdde8; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px; background:#f9fdff; -webkit-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); -moz-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); box-shadow:1px 1px 1px rgba(239, 241, 243, 1);}
+        .smi-body .block {position:relative; float:left; margin:0 25px 23px 0; padding:13px 25px 9px 14px;width:264px; height:161px; border:1px solid #cfdde8; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px; background:#f9fdff; -webkit-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); -moz-box-shadow:1px 1px 1px rgba(239, 241, 243, 1); box-shadow:1px 1px 1px rgba(239, 241, 243, 1);}
         .smi-body .block:hover {border:1px solid #bdccd8;-webkit-box-shadow: 2px 2px 5px rgba(234, 237, 239, 0.9); -moz-box-shadow:2px 2px 5px rgba(234, 237, 239, 0.9); box-shadow:2px 2px 5px rgba(234, 237, 239, 0.9);}
             .smi-body .block h3 {margin:0 0 10px 0;font:18px 'Arial', 'Myriad Pro'; width: 275px; line-height:19px;}
                 .smi-body .block h3 a {padding:0; text-decoration:none; border-bottom:1px dotted #BDD9EA;}
@@ -339,6 +340,8 @@
                 .wrp-activity .left-menu .list_news .news.current {margin-bottom:9px; border-bottom:1px solid #f7f7f7; background:#FFF; -webkit-box-shadow:2px 2px 2px #dededd inset, -1px 0 0 #f7f7f7 inset; -moz-box-shadow:2px 2px 2px #dededd inset, -1px 0 0 #f7f7f7 inset; box-shadow:2px 2px 2px #dededd inset, -1px 0 0 #f7f7f7 inset;}
                     .wrp-activity .left-menu .list_news .news.current a {border:none; color:#000;}
                     .wrp-activity .left-menu .list_news .news.current .date {color:#555;}
+                    #actions-shadow {display:none; position:absolute; left:5px; top:5px; border:1px solid #DDD; border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; width:256px; height:256px; background:scroll transparent url(images/css/white75.png) 0 0 repeat}
+                    #actions-shadow div {width:100%; height:100%; background:scroll transparent url(images/css/loader-circle.gif) center center no-repeat}
                 .wrp-activity .left-menu .list_news .news {margin:0 0 10px -17px;padding:6px 0 7px 17px; font:14px 'Arial';}
                     .wrp-activity .left-menu .list_news .news a {border-bottom:1px dotted;color:#1f80ba; text-decoration:none; line-height:19px;}
                     .wrp-activity .left-menu .list_news .news a:hover {border:none;}
