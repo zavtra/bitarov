@@ -166,7 +166,7 @@
                 .wrp-rubrikator-fixed .paginator {width:220px; height:38px; margin:0 auto; position:relative; top:135px; left:320px;}
                     .paginator .top-fixed {}
                         #paginator-events {width:100px; height:40px}
-                        .paginator .wrp-line {white-space:nowrap; overflow:scroll; height:30px; width:100px; margin:0 30px 0 0; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
+                        .paginator .wrp-line {white-space:nowrap; height:30px; width:100px; margin:0 30px 0 0; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
                         .paginator .wrp-line {*margin:0 30px 0 0;}
                             .paginator .wrp-line a {padding:1px 5px; color:#3fa5cf; font-size:16px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
                             .paginator .wrp-line a:hover {background:#f5f5f5;}
@@ -264,7 +264,7 @@
 
     /* Мнение! */
                 .event-body .item dt {float:left;text-align:left;}
-                    .event-body .item dt div {width:56px; height:63px; background:url('images/css/substrate_owner.png') no-repeat}
+                    .event-body .item dt div {width:56px; height:63px; background:url('images/css/bitarov1.jpg') no-repeat}
                     .event-body .item dt span {display:block; margin-top:7px; color:#7b848d; font:12px 'Arial Narrow', 'Arial';}
                 .event-body .item dd {margin-left:81px; text-align:justify;}
                     .event-body .item dd strong {display:block; padding-top:5px;width:100%; font:13px 'Arial'; font-weight:bold;}
