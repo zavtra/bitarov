@@ -842,9 +842,9 @@ function bt_post_saved($id_post)
         }
       if ($bt_crop_big) update_post_meta($id_post, 'bt_eventbig', $bt_crop_big);   else delete_post_meta($id_post, 'bt_eventbig');
       if ($bt_crop_med) update_post_meta($id_post, 'bt_eventmed', $bt_crop_med);   else delete_post_meta($id_post, 'bt_eventmed');
-      print_r($bt_crop_big);
-      print_r($bt_crop_med);
-      exit;
+      //print_r($bt_crop_big);
+      //print_r($bt_crop_med);
+      //exit;
       }
 
  /*
