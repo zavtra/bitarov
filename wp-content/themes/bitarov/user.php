@@ -27,6 +27,14 @@ function bt_modify_query()
  }
 add_action('parse_query', 'bt_modify_query');
 
+function bt_die($msg)
+ {
+ require TEMPLATEPATH . '/errmsg.php';
+ exit;
+ }
+function bt_die_func() {return 'bt_die';}
+add_filter('wp_die_handler', 'bt_die_func');
+
 if (preg_match('/\/year([0-9]+)(\/|$)/', $_SERVER['REQUEST_URI'], $year))
  {
  $_GET['posts-year'] = $year[1];

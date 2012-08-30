@@ -65,9 +65,9 @@ $json_post_template = json_encode($json_post_template);
 // ------------------------------------------------------------------- Пагинатор
 
 $paginator = '';
-if ($category_paginagor)
+if ($pages_count>1)
  {
- foreach ($category_paginagor as $page_number)
+ for ($page_number=1; $page_number<=$pages_count; $page_number++)
    if ($page_number==$current_page_number) $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' class='current' id='page-$page_number'>$page_number</a> ";
    else $paginator .= "<a href='$current_cat_link/{$uri_year}page/$page_number/' id='page-$page_number'>$page_number</a> ";
  $paginator = <<<HTML

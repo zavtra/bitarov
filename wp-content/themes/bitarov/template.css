@@ -222,7 +222,7 @@ box-shadow:         1px 1px 1px rgba(232, 234, 234, 1);}
                     .event-body .item p {margin:9px 0; color:#333; font:14px 'Arial'; line-height:20px;}
                     .event-body .item .more {display:none;float:right; margin:3px 2px 0 0;}
                         .event-body .item .more a {color:#777; font:12px 'Arial';}
-                    .event-body .item .date {margin-right:40px; color:#898989;font:13px 'Arial Narrow', 'Arial'; display:inline;}
+                    .event-body .item .date {margin-right:30px; color:#898989;font:13px 'Arial Narrow', 'Arial'; display:inline;}
                     .event-body .item .tag {display:inline;}
                         .tags-img {vertical-align:middle}
                         .event-body .item .tag a {color:#8d949c; font:11px 'Arial'; display:inline; vertical-align:top;}

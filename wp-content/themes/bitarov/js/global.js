@@ -106,7 +106,7 @@ function setPage(num)
   }
  var api = $('#paginator-events').data('jsp');
  var current_x = $('#paginator-events .current').position().left;
- api.scrollByX(current_x-40);
+ api.scrollToX(current_x-40);
  }
 
 // --------------------------------------------------------- При скроллинге окна

@@ -1,8 +1,10 @@
 <?php
 // --- Хлебные крошки
+
 $breadcrumbs = breadcrumbs_category($current_category_id);
 
 // --------------------------------------------------------------- Список постов
+
 $res = db_query("SELECT id, name FROM pref_bt_media ORDER BY typ, id");
 $mediaz = array();
 while (extract(db_result($res, 'i,h'))) $mediaz[$id] = $name;
@@ -82,17 +84,21 @@ HTML;
  }
 
 // ------------------------------------------------------------------- Пагинатор
+
 $paginator = '';
 if ($category_paginagor)
  {
+ $linkback = ($current_page_number>1) ? "<li><span><a href='$current_cat_link/{$uri_year}page/".($current_page_number-1)."/'>&larr; Новее</a></span></li>" : '';
+ $linknext = ($current_page_number<$pages_count) ? "<li><span><a href='$current_cat_link/{$uri_year}page/".($current_page_number+1)."/'>Раньше &rarr;</a></span></li>" : '';
  foreach ($category_paginagor as $page_number)
-   if ($page_number==$current_page_number) $paginator .= "                        <li><a class='current' href='$current_cat_link/{$uri_year}page/$page_number/'>$page_number</a>\n";
-   else $paginator .= "                        <li><a href='$current_cat_link/{$uri_year}page/$page_number/'>$page_number</a>\n";
+   if ($page_number==$current_page_number) $paginator .= "<li><a class='current' href='$current_cat_link/{$uri_year}page/$page_number/'>$page_number</a>\n";
+   else $paginator .= "<li><a href='$current_cat_link/{$uri_year}page/$page_number/'>$page_number</a>\n";
  $paginator = <<<HTML
                 <div class="paginator">
                     <ul>
+$linkback
 $paginator
-                        <!--<li><span><a href="#">Раньше →</a></span></li>-->
+$linknext
                     </ul>
                 </div>
 HTML;
@@ -138,13 +144,13 @@ echo <<<HTML
                     <h2>{$current_category->name}</h2>
                     <div class='smi-parts-top' id='smi-parts-top'><ol>
 
+<!--
 <li><a href="http://bitarov/category/media/">Все</a></li>
 <li class="current-menu-item"><a href="http://bitarov/category/media/video/">Видео</a></li>
 <li><a href="http://bitarov/category/media/printmedia/">Публикации</a></li>
-
-<!--
-$media_menu
 -->
+
+$media_menu
 
                 </ol></div>
                 </div>

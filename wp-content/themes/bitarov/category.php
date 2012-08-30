@@ -19,8 +19,9 @@ if ($per_page>0 and $total_posts>0)
  if (is_float($pages_count)) $pages_count = intval($pages_count)+1;
  }
 else $pages_count = 1;
-$category_paginagor = array();
-for ($j=1; $j<=$pages_count; $j++) $category_paginagor[] = $j;
+$category_paginagor = ($pages_count>1) ? gen_pages($current_page_number, $pages_count, 3) : array();
+//$category_paginagor = array();
+//for ($j=1; $j<=$pages_count; $j++) $category_paginagor[] = $j;
 
 // Подкатегории
 $cats = get_categories(array('parent'=>$id_cat, 'hide_empty'=>0));
@@ -40,7 +41,7 @@ unset($cats);
 
 // Выбор шаблона для текущей категории
 $cats = get_cat_path($id_cat);
-$selected_template = '/404.php';
+$selected_template = '/cat-default.php';
 foreach ($cats as $cat) if (file_exists(TEMPLATEPATH . "/cat-{$cat->slug}.php")) $selected_template = "/cat-{$cat->slug}.php";
 include TEMPLATEPATH . $selected_template;
 
