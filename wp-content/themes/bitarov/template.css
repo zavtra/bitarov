@@ -365,8 +365,8 @@
                         .wrp-activity .fade img {position:absolute; bottom:0; right:10px; z-index:1000; width:710px;}
 
     /* Слова благодарности! */
-    .slider_container {width:1002px;}
-        .slider_container .orbit-wrapper {margin:0; width:1006px; border:none; padding-bottom:0;}
+    .slider_container {width:1000px;}
+        .slider_container .orbit-wrapper {margin:0; width:1000px; border:none; padding-bottom:0;}
             .slider_container .slider-nav .right {height:50px; width:26px; right:-3px; background:url('images/css/fond-slider-buttons.png') -46px 0 no-repeat;}
             .slider_container .slider-nav .right:hover {background:url('images/css/fond-slider-buttons.png') -46px -62px no-repeat;}
             .slider_container .slider-nav .left {height:50px; width:26px; left:0px; background:url('images/css/fond-slider-buttons.png') 0 0 no-repeat;}

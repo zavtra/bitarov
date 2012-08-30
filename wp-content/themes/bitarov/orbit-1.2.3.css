@@ -9,7 +9,7 @@
 /* PUT IN YOUR SLIDER ID AND SIZE TO MAKE LOAD BEAUTIFULLY
    ================================================== */
 #featured {
-	width: 1000px!important;
+	width: 1000px;
 	height: 296px;
 	background: #FFF url('images/ico/loading.gif') no-repeat center center;
 	overflow: hidden;
