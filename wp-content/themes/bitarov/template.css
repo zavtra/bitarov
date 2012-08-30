@@ -130,7 +130,7 @@
                             .other_news .item .otag a:hover {text-decoration:none;}
                         .other_news .item .title {margin:4px 0 10px 0; font:20px 'DinDisplayPro-Reg','Arial';}
                             .other_news .item .title a {line-height:22px;}
-                        .other_news .item .photo {width:276px; height:179px; background:url('images/css/other_news-photo-bg.png') no-repeat;}
+                        .other_news .item .photo {width:276px; background:url('images/css/other_news-photo-bg.png') no-repeat;}
                             .other_news .item .photo img {margin-left:1px;width:271px; height:174px;}
                         .other_news .item .text {margin:7px 0 0 1px; padding-bottom:14px;width:273px; font:14px 'DinDisplayPro-Reg','Arial';;}
 

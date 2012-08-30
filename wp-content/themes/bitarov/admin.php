@@ -447,8 +447,8 @@ function bt_crop()
  $medk = round($medw/$medh, 3);
  $bigcrop = get_post_meta($id_post, 'bt_eventbig', true);
  $medcrop = get_post_meta($id_post, 'bt_eventmed', true);
- $bigcrop = '[' . ($bigcrop ? implode(',',$bigcrop) : "0,0,$bigw,$bigh") . ']';
- $medcrop = '[' . ($medcrop ? implode(',',$medcrop) : "0,0,$medw,$medh") . ']';
+ $bigcrop = '[' . (is_array($bigcrop) ? implode(',',$bigcrop) : "0,0,$bigw,$bigh") . ']';
+ $medcrop = '[' . (is_array($medcrop) ? implode(',',$medcrop) : "0,0,$medw,$medh") . ']';
  $bigscale = get_post_meta($id_post, 'bt_eventbig-scale', true);
  $medscale = get_post_meta($id_post, 'bt_eventmed-scale', true);
  $bigscale = ($bigscale==='') ? 1: intval($bigscale);
@@ -490,6 +490,7 @@ selected = function(){}
 function elem(id) {return document.getElementById(id)}
 function coord_big(c) {bigcrop=[c.x,c.y,c.x2,c.y2]}
 function coord_med(c) {medcrop=[c.x,c.y,c.x2,c.y2]}
+function set_api() {crop_api=this}
 
 function bigpic(setscale)
  {
@@ -498,7 +499,8 @@ function bigpic(setscale)
  var opt = {setSelect:bigcrop, onChange:coord_big, onSelect:coord_big}
  if (bigscale) {opt.aspectRatio=$bigk, opt.minSize=[$bigw,$bigh]}
  else {opt.aspectRatio=false; opt.minSize=[$bigw,100]}
- $('#cropimg').Jcrop(opt);
+ if (crop_api) crop_api.destroy();
+ $('#cropimg').Jcrop(opt, set_api);
  $('#topmenu a').css('font-weight', 'normal');
  $('#biglink').css('font-weight', 'bold');
  selected = bigpic;
@@ -512,8 +514,8 @@ function medpic(setscale)
  var opt = {setSelect:medcrop, onChange:coord_med, onSelect:coord_med}
  if (medscale) {opt.aspectRatio=$medk, opt.minSize=[$medw,$medh]}
  else {opt.aspectRatio=false; opt.minSize=[$medw,100]}
- alert(opt.setSelect);
- $('#cropimg').Jcrop(opt);
+ if (crop_api) crop_api.destroy();
+ $('#cropimg').Jcrop(opt, set_api);
  $('#topmenu a').css('font-weight', 'normal');
  $('#medlink').css('font-weight', 'bold');
  selected = medpic;
@@ -564,8 +566,7 @@ function httpget(url, callback)
  }
 
 $(window).ready(function(){
-  var jcrop_api = false;
-  $('#cropimg').Jcrop({setSelect:bigcrop})
+  window.crop_api = false;
   bigpic();
 });
 </script>
@@ -631,7 +632,7 @@ function bt_event_metabox($post)
  $bt_eventimg = get_post_meta($post->ID, 'bt_eventimg', true);
  $croplink = '';
  if ($bt_eventimg) $croplink = "<div style='margin-bottom:4px; font-weight:bold'>Есть картинка размером $bt_eventimg[0]x$bt_eventimg[1]. <a href='index.php?bt_crop={$post->ID}' target='_blank'>Выбрать область видимости</a></div>
- <div style='margin-bottom:4px'><label><input type='checkbox'> Удалить при сохранении записи</label></div>";
+ <div style='margin-bottom:4px'><label><input type='checkbox' name='deleventpic'> Удалить при сохранении записи</label></div>";
 
  //if (intval(get_post_meta($post->ID, 'bt_event-big', true))) $linksbig = "<label><input type='checkbox' name='delbig'> Удалить</labell> | <a href='/wp-content/uploads/event/{$post->ID}-big.jpg' target='_blank'>Посмотреть</a>";
  //if (intval(get_post_meta($post->ID, 'bt_event-med', true))) $linksmed = "<label><input type='checkbox' name='delmed'> Удалить</labell> | <a href='/wp-content/uploads/event/{$post->ID}-med.jpg' target='_blank'>Посмотреть</a>";
@@ -812,74 +813,38 @@ function bt_post_saved($id_post)
  $bigh = get_option('bt_event_bigh', BT_EVENT_BIGH);
  $medw = get_option('bt_event_medw', BT_EVENT_MEDW);
  $medh = get_option('bt_event_medh', BT_EVENT_MEDH);
- if (!empty($_FILES['eventpic']['tmp_name']))
-  if (is_array($ih_src=imagecreatefromfile($_FILES['eventpic']['tmp_name'])))
-   if ($ih_src['w']>=$bigw and $ih_src['w']>=$medw and $ih_src['h']>=$bigh and $ih_src['h']>=$medh)
-    if (is_array($ih_dst=thumb($ih_src['ih'], $bt_event_w1, $bt_event_h1)))
-     if (imagepng($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-src.png"))
-      {
-      update_post_meta($id_post, 'bt_eventimg', array($ih_dst['w'], $ih_dst['h']));
-      $bt_crop_big = $bt_crop_med = false;
-      // Сохраняем большую картинку
-      $ih_big_thumb = thumb($ih_src['ih'], $bigw, 0);
-      $ih_big = imagecreatetruecolor($bigw, $bigh);
-      if (imagecopyresampled($ih_big, $ih_big_thumb['ih'], 0, 0, 0, intval(($ih_big_thumb['h']-$bigh)/2), $bigw, $bigh, $bigw, $bigh));
-       if (imagejpeg($ih_big, BASEDIR . "wp-content/uploads/event/$id_post-big.jpg", 90))
-        {
-        $x1=intval(($ih_dst['w']-$bigw)/2);   $x2=$x1+$bigw;
-        $y1=intval(($ih_dst['h']-$bigh)/2);   $y2=$y1+$bigh;
-        $bt_crop_big = array($x1, $y1, $x2, $y2);
-        }
-      // Сохраняем среднюю картинку
-      $ih_med_thumb = thumb($ih_src['ih'], $medw, 0);
-      $ih_med = imagecreatetruecolor($medw, $medh);
-      if (imagecopyresampled($ih_med, $ih_med_thumb['ih'], 0, 0, 0, intval(($ih_med_thumb['h']-$medh)/2), $medw, $medh, $medw, $medh));
-       if (imagejpeg($ih_med, BASEDIR . "wp-content/uploads/event/$id_post-med.jpg", 90))
-        {
-        $x1=intval(($ih_dst['w']-$medw)/2);   $x2=$x1+$medw;
-        $y1=intval(($ih_dst['h']-$medh)/2);   $y2=$y1+$medh;
-        $bt_crop_med = array($x1, $y1, $x2, $y2);
-        }
-      if ($bt_crop_big) update_post_meta($id_post, 'bt_eventbig', $bt_crop_big);   else delete_post_meta($id_post, 'bt_eventbig');
-      if ($bt_crop_med) update_post_meta($id_post, 'bt_eventmed', $bt_crop_med);   else delete_post_meta($id_post, 'bt_eventmed');
-      print_r($bt_crop_big);
-      print_r($bt_crop_med);
-      exit;
-      }
-
- /*
- // --- Событие, большая картинка
- $bt_event_w1 = get_option('bt_event_w1', BT_EVENT_W1);
- $bt_event_h1 = get_option('bt_event_h1', BT_EVENT_H1);
- if (chkpost('delbig'))
+ if (chkpost('deleventpic'))
   {
+  unlink(BASEDIR . "wp-content/uploads/event/$id_post-src.png");
   unlink(BASEDIR . "wp-content/uploads/event/$id_post-big.jpg");
-  delete_post_meta($id_post, 'bt_event-big');
-  }
- elseif (!empty($_FILES['bigpic']['tmp_name']))
-  if (is_array($ih_src=imagecreatefromfile($_FILES['bigpic']['tmp_name'])))
-   if (is_array($ih_dst=thumb($ih_src['ih'], $bt_event_w1, 0)))
-    //if (is_resource($ih_dst['ih']=centrize($ih_dst['ih'], $bt_event_w1, $bt_event_h1)))
-     if (imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-big.jpg", 90))
-      update_post_meta($id_post, 'bt_event-big', 1);
-
- // --- Событие, средняя картинка
- $bt_event_w2 = get_option('bt_event_w2', BT_EVENT_W2);
- $bt_event_h2 = get_option('bt_event_h2', BT_EVENT_H2);
- if (chkpost('delmed'))
-  {
   unlink(BASEDIR . "wp-content/uploads/event/$id_post-med.jpg");
-  delete_post_meta($id_post, 'bt_event-med');
+  delete_post_meta($id_post, 'bt_eventimg');
+  delete_post_meta($id_post, 'bt_eventbig');
+  delete_post_meta($id_post, 'bt_eventmed');
+  delete_post_meta($id_post, 'bt_eventbig-scale');
+  delete_post_meta($id_post, 'bt_eventmed-scale');
   }
- if (!empty($_FILES['medpic']['tmp_name']))
-  if (is_array($ih_src=imagecreatefromfile($_FILES['medpic']['tmp_name'])))
-   if (is_array($ih_dst=thumb($ih_src['ih'], $bt_event_w2, 0)))
-    //if (is_resource($ih_dst['ih']=centrize($ih_dst['ih'], $bt_event_w2, $bt_event_h2)))
-     if (imagejpeg($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-med.jpg", 90))
-      {
-      update_post_meta($id_post, 'bt_event-med', 1);
-      }
- */
+ elseif (!empty($_FILES['eventpic']['tmp_name']))
+  if (is_array($ih_src=imagecreatefromfile($_FILES['eventpic']['tmp_name'])))
+    if (is_array($ih_dst=thumb($ih_src['ih'], $bt_event_w1, $bt_event_h1)))
+     if ($ih_dst['w']>=$bigw and $ih_dst['w']>=$medw and $ih_dst['h']>=$bigh and $ih_dst['h']>=$medh)
+      if (imagepng($ih_dst['ih'], BASEDIR . "wp-content/uploads/event/$id_post-src.png"))
+       {
+       update_post_meta($id_post, 'bt_eventimg', array($ih_dst['w'], $ih_dst['h']));
+       $big = $med = false;
+       // Сохраняем большую картинку
+       $by_width = thumb($ih_src['ih'], $bigw, 0);
+       $ih_big = imagecreatetruecolor($bigw, $bigh);
+       if (imagecopyresampled($ih_big, $by_width['ih'], 0, 0, 0, intval(($by_width['h']-$bigh)/2), $bigw, $bigh, $bigw, $bigh))
+        if (imagejpeg($ih_big, BASEDIR . "wp-content/uploads/event/$id_post-big.jpg", 90)) $big = true;
+       // Сохраняем среднюю картинку
+       $by_width = thumb($ih_src['ih'], $medw, 0);
+       $ih_med = imagecreatetruecolor($medw, $medh);
+       if (imagecopyresampled($ih_med, $by_width['ih'], 0, 0, 0, intval(($by_width['h']-$medh)/2), $medw, $medh, $medw, $medh))
+        if (imagejpeg($ih_med, BASEDIR . "wp-content/uploads/event/$id_post-med.jpg", 90)) $med = true;
+       update_post_meta($id_post, 'bt_eventbig', true);
+       update_post_meta($id_post, 'bt_eventmed', true);
+       }
 
  // --- Новость из СМИ
  $id_media = chkpost('bt_id_media') ? intval($_POST['bt_id_media']) : 0;

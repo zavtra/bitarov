@@ -80,6 +80,7 @@ $(window).ready(function() {
    window.footerHeight = $('.footer').height();
    window.footerElem = $('.footer')[0];
    $(window).resize(shadowResize);
+   if (location.hash=='#message') feedbackOpen();
    }
 
   // Для страницы просмотра медиа
