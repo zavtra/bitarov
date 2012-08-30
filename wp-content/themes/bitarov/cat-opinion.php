@@ -29,7 +29,7 @@ while (have_posts())
  $post_category_link = get_category_link($post_category_id);
  $opinion = get_post_meta($post->ID, 'bt_opinion', true);
  $opinionpic = htmltext(get_post_meta($post->ID, 'bt_opinionpic', true));
- if ($opinionpic) $opinionpic = "wp-content/uploads/opinion/$opinionpic";
+ $opinionpic = $opinionpic ? "wp-content/uploads/opinion/$opinionpic" : "wp-content/themes/bitarov/images/css/bitarov1.jpg";
  $post_tags = '';
  if (is_array($tags_raw=get_the_tags()))
   foreach ($tags_raw as $tag)
