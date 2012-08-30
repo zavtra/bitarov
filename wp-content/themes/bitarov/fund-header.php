@@ -1,5 +1,7 @@
 <?php
 
+$bt_fund_text = get_option('bt_fund_text');
+
 // ------------------------------------------------------------------ Меню фонда
 
 $fund_menu = wp_nav_menu(array(
@@ -28,7 +30,7 @@ echo <<<HTML
         <div class='overLayer blago' id='feedbackShadow' style='display:none' onclick='feedbackClose()'></div>
             <div class='fond-header'>
                 <div class='content'>
-                Благотворительная деятельность фонда «Кто, если не Я?» направлена на оказание помощи детям, находящихся в трудной жизненной ситуации, создание благоприятных условий для образования и развития детей-сирот в детских домах и повышение квалификации специалистов, работающих с детьми.
+                $bt_fund_text
                 </div>
             </div>
             <div class='fond-body'>

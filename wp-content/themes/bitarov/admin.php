@@ -36,9 +36,9 @@ function bt_options()
  {
  $okmsg = '';
 
- if (chkpost('bt_event_w1,bt_event_h1,bt_opinion_h1,bt_opinion_w1,bt_opinion_cat,bt_opinion_pp,bt_liked_pp,bt_event_bigh,bt_event_bigw,bt_event_medh,bt_event_medw'))
+ if (chkpost('bt_event_w1,bt_event_h1,bt_opinion_h1,bt_opinion_w1,bt_opinion_cat,bt_opinion_pp,bt_liked_pp,bt_event_bigh,bt_event_bigw,bt_event_medh,bt_event_medw,bt_fund_text'))
   {
-  extract(ep('bt_event_w1>>i,bt_event_h1>>i,bt_opinion_h1>>i,bt_opinion_w1>>i,bt_opinion_cat>>i,bt_opinion_pp>>i,bt_liked_pp>>i,bt_event_bigh>>i,bt_event_bigw>>i,bt_event_medh>>i,bt_event_medw>>i'));
+  extract(ep('bt_event_w1>>i,bt_event_h1>>i,bt_opinion_h1>>i,bt_opinion_w1>>i,bt_opinion_cat>>i,bt_opinion_pp>>i,bt_liked_pp>>i,bt_event_bigh>>i,bt_event_bigw>>i,bt_event_medh>>i,bt_event_medw>>i,bt_fund_text'));
   if ($bt_event_w1<10) $bt_event_w1 = BT_EVENT_W1;
   if ($bt_event_h1<10) $bt_event_h1 = BT_EVENT_H1;
   if ($bt_event_bigw<10) $bt_event_bigw = BT_EVENT_BIGW;
@@ -60,6 +60,7 @@ function bt_options()
   update_option('bt_opinion_cat', $bt_opinion_cat);
   update_option('bt_opinion_pp', $bt_opinion_pp);
   update_option('bt_liked_pp', $bt_liked_pp);
+  update_option('bt_fund_text', $bt_fund_text);
   $okmsg = okmsg('Настройки сохранены');
   }
 
@@ -74,6 +75,7 @@ function bt_options()
  $bt_opinion_cat = get_option('bt_opinion_cat', 1);
  $bt_opinion_pp = get_option('bt_opinion_pp', 5);
  $bt_liked_pp = get_option('bt_liked_pp', 5);
+ $bt_fund_text = htmltext(get_option('bt_fund_text'));
 
  $cats_arr = get_categories(array('hide_empty'=>0));
  $cats = '';
@@ -96,6 +98,10 @@ function bt_options()
   <tr><td>Мнение, рубрика:</td><td><select name='bt_opinion_cat'>$cats</select></td></tr>
   <tr><td>Мнение, заголовков на главной:</td><td><input type='text' name='bt_opinion_pp' size='5' value='$bt_opinion_pp'></td></tr>
   <tr><td>Число похожих записей:</td><td><input type='text' name='bt_liked_pp' size='5' value='$bt_liked_pp'></td></tr>
+  <tr><td colspan='2'>
+    Благотворительный фонд, аннотация (HTML):<br>
+    <textarea rows='6' cols='80' name='bt_fund_text' style='width:100%'>$bt_fund_text</textarea>
+  </td></tr>
   <tr><td colspan='2'><input type='submit' class='button-primary' name='submitbtn' value='Сохранить настройки'></td></tr>
   </table>
 
