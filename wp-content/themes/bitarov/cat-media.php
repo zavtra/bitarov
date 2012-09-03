@@ -144,9 +144,9 @@ echo <<<HTML
                     <h2>{$current_category->name}</h2>
                     <div class='smi-parts-top' id='smi-parts-top'><ol>
 
-<li><a href="http://bitarov/category/media/">Все</a></li>
-<li class="current-menu-item"><a href="http://bitarov/category/media/video/">Видео</a></li>
-<li><a href="http://bitarov/category/media/printmedia/">Публикации</a></li>
+<li><a href="http://bitarov/category/media/"><span>Все</span></a></li>
+<li class="current-menu-item"><a href="http://bitarov/category/media/video/"><span>Видео</span></a></li>
+<li><a href="http://bitarov/category/media/printmedia/"><span>Публикации</span></a></li>
 
 <!--
 $media_menu
