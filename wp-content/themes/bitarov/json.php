@@ -61,7 +61,6 @@ break;
 
 case 'feedback':
   if (!chkpost('form,message,name,phone,email')) json_die('Требуются POST-параметры form, message, name, phone, email');
-  sleep(3);
   extract(ep('form,message,name,phone,email'));
   if ($form=='fund') $form = 'благотворительный фонд';
   elseif ($form=='contacts') $form = 'контакты';

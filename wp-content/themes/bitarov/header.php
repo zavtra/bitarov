@@ -8,6 +8,7 @@ $siteurl = SITE_URL;
 $mainlink = is_home() ? "<span class='h_owner'></span>" : "<a href='$siteurl'><span class='h_owner'></span></a>";
 
 echo <<<HTML
+<body>
 <div class='container'>
 <!-- шапка -->
     <div class='header'>

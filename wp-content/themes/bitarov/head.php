@@ -24,4 +24,5 @@
 <script src='wp-content/themes/bitarov/js/jscroll.min.js' type="text/javascript"></script>
 <script src='wp-content/themes/bitarov/js/jquery.scrolling-parallax.js' type="text/javascript"></script>
 <script src='wp-content/themes/bitarov/js/global.js' type="text/javascript"></script>
+<?php wp_head(); ?>
 </head>

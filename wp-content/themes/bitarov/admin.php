@@ -61,6 +61,7 @@ function bt_options()
   update_option('bt_opinion_pp', $bt_opinion_pp);
   update_option('bt_liked_pp', $bt_liked_pp);
   update_option('bt_fund_text', $bt_fund_text);
+  set_user_setting('urlbutton', 'none');
   $okmsg = okmsg('Настройки сохранены');
   }
 
@@ -467,7 +468,7 @@ function bt_crop()
 
 <style type='text/css'>
 html, head {padding-top:0 !important; min-width:100%; min-height:100%}
-#topmenu {border-bottom: 1px solid #DDD; padding:4px 0 0 15px; background:#F8F8F8; background:-o-linear-gradient(top,#F8F8F8, #EEE); font-size:13px; overflow:hidden; height:22px; position:fixed; z-index:10; width:100%}
+#topmenu {border-bottom: 1px solid #DDD; padding:4px 0 0 15px; background:#F8F8F8; background:-o-linear-gradient(top,#F8F8F8, #EEE); font-size:13px; overflow:hidden; height:22px; position:fixed; z-index:1000; width:100%}
 #topmenu span {float:left}
 #topmenu label {float:right; margin:2px 27px 0 0;}
 table {width:100%; height:100%; border-collapse:collapse}
