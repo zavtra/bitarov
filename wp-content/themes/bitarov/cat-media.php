@@ -45,7 +45,7 @@ HTML;
                 <div class='video-window' id='media-{$post->ID}'>
                     <a href='#' class='exit' onclick='return mediaWindowClose()'></a>
                     <div class='video-left_b'>
-                        <iframe width="100%" height="100%" src="http://www.youtube.com/embed/$bt_youtube_id" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="iframe-{$post->ID}" width="100%" height="100%" src="wp-content/themes/bitarov/media-loader.html" lnk="http://www.youtube.com/embed/$bt_youtube_id" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class='wrp-text-right_b'>
                         <div class='text-right_b'>

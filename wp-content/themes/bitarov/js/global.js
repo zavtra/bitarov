@@ -320,6 +320,8 @@ current_media_id = 0;
 function mediaWindowOpen(id_post)
  {
  current_media_id = id_post;
+ var iframe = elem('iframe-' + current_media_id);
+ iframe.src = iframe.getAttribute('lnk');
  elem('media-'+id_post).style.display = 'block';
  $('#breadcrumb-x a').attr('href', $('#post-link-'+id_post).attr('href'));
  $('#breadcrumb-x a').html($('#post-title-'+id_post).html());
@@ -330,9 +332,11 @@ function mediaWindowOpen(id_post)
 
 function mediaWindowClose()
  {
- $('#media-'+current_media_id).fadeOut('fast');
+ $('#media-'+current_media_id).fadeOut('fast', function(){
+   elem('iframe-' + current_media_id).src = 'wp-content/themes/bitarov/media-loader.html';
+   current_media_id = 0;
+ });
  $('#breadcrumb-x').css('display', 'none');
- current_media_id = 0;
  return false;
  }
 
