@@ -45,7 +45,7 @@ HTML;
                 <div class='video-window' id='media-{$post->ID}'>
                     <a href='#' class='exit' onclick='return mediaWindowClose()'></a>
                     <div class='video-left_b'>
-                        <iframe id="iframe-{$post->ID}" width="100%" height="100%" src="wp-content/themes/bitarov/media-loader.html" lnk="http://www.youtube.com/embed/$bt_youtube_id" frameborder="0" allowfullscreen></iframe>
+                        <iframe id="iframe-{$post->ID}" width="100%" height="100%" src="http://www.youtube.com/embed/$bt_youtube_id" frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div class='wrp-text-right_b'>
                         <div class='text-right_b'>
@@ -104,14 +104,7 @@ $linknext
 HTML;
  }
 
-$media_menu = wp_nav_menu(array(
-  'menu' => 'media',
-  'container' => '',
-  'echo' => false,
-  'items_wrap' => '%3$s'
-));
-
-// Если контент запрошен с помощью XHR
+// ----------------------------------------- Если контент запрошен с помощью XHR
 if (chkget('xhr'))
  {
  $result = array(
@@ -122,6 +115,44 @@ if (chkget('xhr'))
  );
  die(json_encode($result));
  }
+
+// ---------------------------------------------------------------- Верхнее меню
+
+class mainMenuWalker extends Walker_Nav_Menu
+ {
+ function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 )
+  {
+  global $wp_query;
+  $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+  $class_names = $value = '';
+  $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+  $classes[] = 'menu-item-' . $item->ID;
+  $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+  $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+  $id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+  $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
+  $output .= $indent . '<li' . $id . $value . $class_names .'>';
+  $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+  $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+  $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+  $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+  $item_output = $args->before;
+  $item_output .= '<a'. $attributes .'><span>';
+  $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+  $item_output .= '</span></a>';
+  $item_output .= $args->after;
+  $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+  }
+ }
+
+$walker = new mainMenuWalker;
+$media_menu = wp_nav_menu(array(
+  'menu' => 'media',
+  'walker' => $walker,
+  'container' => '',
+  'echo' => false,
+  'items_wrap' => '%3$s'
+));
 
 // -------------------------------------------------------------- Вывод страницы
 
@@ -144,13 +175,7 @@ echo <<<HTML
                     <h2>{$current_category->name}</h2>
                     <div class='smi-parts-top' id='smi-parts-top'><ol>
 
-<li><a href="http://bitarov/category/media/"><span>Все</span></a></li>
-<li class="current-menu-item"><a href="http://bitarov/category/media/video/"><span>Видео</span></a></li>
-<li><a href="http://bitarov/category/media/printmedia/"><span>Публикации</span></a></li>
-
-<!--
 $media_menu
--->
 
                 </ol></div>
                 </div>

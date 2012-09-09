@@ -7,6 +7,8 @@ $current_category = get_category($id_cat);
 $current_cat_link = rtrim(get_category_link($id_cat), '/');
 $current_cat_link_opt = $current_cat_link;
 $uri_year = chkget('posts-year') ? ('year'.intval($_GET['posts-year']).'/') : '';
+$current_cat_path = get_cat_path($current_category_id);
+$current_cat_level = count($current_cat_path);
 
 // Число страниц категории
 $current_page_number = intval(get_query_var('paged'));

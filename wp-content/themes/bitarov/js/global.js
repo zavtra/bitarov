@@ -320,8 +320,6 @@ current_media_id = 0;
 function mediaWindowOpen(id_post)
  {
  current_media_id = id_post;
- var iframe = elem('iframe-' + current_media_id);
- iframe.src = iframe.getAttribute('lnk');
  elem('media-'+id_post).style.display = 'block';
  $('#breadcrumb-x a').attr('href', $('#post-link-'+id_post).attr('href'));
  $('#breadcrumb-x a').html($('#post-title-'+id_post).html());
@@ -333,7 +331,8 @@ function mediaWindowOpen(id_post)
 function mediaWindowClose()
  {
  $('#media-'+current_media_id).fadeOut('fast', function(){
-   elem('iframe-' + current_media_id).src = 'wp-content/themes/bitarov/media-loader.html';
+   var iframe = elem('iframe-' + current_media_id);
+   if (iframe) {var src=iframe.src; iframe.src='about:blank'; iframe.src=src;}
    current_media_id = 0;
  });
  $('#breadcrumb-x').css('display', 'none');
@@ -361,6 +360,7 @@ function showmore()
  var url = '/index.php?bt_json=get_posts';
  url += '&category_id=' + current_category_id;
  url += '&pg=' + current_page_number_more;
+ if (current_year>0) url += '&year=' + current_year
  response = json_parse(httpget(url));
  more_loading = false;
  $('#old-loader').css('display', 'none');

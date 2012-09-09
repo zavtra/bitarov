@@ -41,6 +41,7 @@ while (have_posts())
    $post_tags .= "<a href='$tag_link'>$tag_name</a>, ";
    }
  if ($post_tags) $post_tags = "<img src='wp-content/themes/bitarov/images/ico/event-tag.png' class='tags-img' /> " . rtrim($post_tags, ', ');
+ $post_category_show = ($current_cat_level<2) ? "<div class='breadcrumbs'><a href='$post_category_link'>$post_category_name</a> &rarr;</div>" : '';
  $comments_count=wp_count_comments($post->ID);
  $comments_count = $comments_count->approved>0
                    ? numberic($comments_count->approved, array('комментариев', 'комментарий', 'комментария'))
@@ -50,7 +51,7 @@ while (have_posts())
                         <dl>
                             <dt><img src='$opinionpic' /><span>$post_date_dm<br />$post_date_y</span></dt>
                             <dd>
-                                <div class='breadcrumbs'><a href='$post_category_link'>$post_category_name</a> &rarr;</div>
+                                $post_category_show
                                 <h3><a href='$post_link'>$post_title</a></h3>
                                 <strong>$opinion</strong>
                                 <p>$post_excerpt</p>
@@ -121,9 +122,9 @@ if ($subcategories)
  {
  foreach ($subcategories as $category)
    if ($category['id']<>$current_category_id)
-     $subcategories_block .= "<li><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
+     $subcategories_block .= "<li><span><a href='$category[link]'>$category[name]</a></span></li>\n                            ";
    else
-     $subcategories_block .= "<li class='current'><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
+     $subcategories_block .= "<li class='current'><span><a href='$category[link]'>$category[name]</a></span></li>\n                            ";
  $subcategories_block = <<<HTML
                     <div class='rubrikator-fixed' id='rubrikator-fixed'>
                         <ul>
@@ -135,13 +136,18 @@ HTML;
 
 // ------------------------------------------------------------------------ Года
 
+$current_year = chkget('posts-year') ? intval($_GET['posts-year']) : 0;
 $years = '';
 $years_raw = get_years($current_category_id);
 if (count($years_raw)>1)
  {
- foreach ($years_raw as $year) $years .= "<a href='$current_cat_link/year$year/'>$year</a> ";
+ $years = "<a href='$current_cat_link/' class='".(!$current_year?'current':'')."'>Все</a> ";
+ foreach ($years_raw as $year)
+   $years .= "<a href='$current_cat_link/year$year/' class='" . (($year==$current_year)?'current':'') . "'>$year</a> ";;
  $years = "        <div class='podate'><span>по годам:</span> $years</div>";
  }
+
+$h2_year = $current_year ? ", год $current_year" : '';
 
 // ----------------------------------------------- Показать предыдущие сообщения
 
@@ -149,6 +155,7 @@ $display_more = ($pages_count>$current_page_number) ? 'block' : 'none';
 
 echo <<<HTML
 <script type='text/javascript'>
+current_year = $current_year;
 current_category_id = $current_category_id;
 current_page_number = $current_page_number;
 current_page_number_more = $current_page_number;
@@ -174,7 +181,7 @@ $years
                     <div class='breadcrumbs'>
 $breadcrumbs
                     </div>
-                    <h2>События</h2>
+                    <h2>Мнение$h2_year</h2>
                 </div>
                 <div class='clear'></div>
             </div>

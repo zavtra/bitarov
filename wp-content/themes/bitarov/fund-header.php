@@ -2,6 +2,18 @@
 
 $bt_fund_text = get_option('bt_fund_text');
 
+// -------------------------------------------------------------- Хлебные крошки
+
+$categories_path = get_cat_path($current_category_id);
+$siteurl = SITE_URL;
+$breadcrumbs = "<span class='current'><a href='$siteurl'><ins></ins>bitarov.as</a></span>\n";
+foreach ($categories_path as $category)
+ {
+ $category_link = get_category_link($category->term_id);
+ $category_name = $category->name;
+ $breadcrumbs .= "                        <span><a href='$category_link'>$category_name</a><ins class='r'></ins></span>\n";
+ }
+
 // ------------------------------------------------------------------ Меню фонда
 
 $fund_menu = wp_nav_menu(array(
@@ -16,8 +28,7 @@ echo <<<HTML
             <div class='wrap'>
                 <div class='b-top-left'>
                     <div class='breadcrumbs'>
-                        <span class='current'><a href='<?php echo SITE_URL; ?>'><ins></ins>bitarov.as</a></span>
-                        <span><a href='http://bitarov/fund/'>Благотворительный фонд</a><ins class='r'></ins></span>
+$breadcrumbs
                     </div>
                     <h2>Благотворительный фонд Александра Битарова</h2>
                 </div>

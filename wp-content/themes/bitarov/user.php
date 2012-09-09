@@ -47,4 +47,6 @@ if (preg_match('/\/framed\/?$/', $_SERVER['REQUEST_URI'], $year))
  $_SERVER['REQUEST_URI'] = preg_replace('/\/framed\/?$/', '/', $_SERVER['REQUEST_URI']);
  }
 
+if (chkget('posts-year')) $_GET['posts-year'] = intval($_GET['posts-year']);
+
 ?>
