@@ -122,9 +122,9 @@ if ($subcategories)
  {
  foreach ($subcategories as $category)
    if ($category['id']<>$current_category_id)
-     $subcategories_block .= "<li><span><a href='$category[link]'>$category[name]</a></span></li>\n                            ";
+     $subcategories_block .= "<li><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
    else
-     $subcategories_block .= "<li class='current'><span><a href='$category[link]'>$category[name]</a></span></li>\n                            ";
+     $subcategories_block .= "<li class='current'><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
  $subcategories_block = <<<HTML
                     <div class='rubrikator-fixed' id='rubrikator-fixed'>
                         <ul>
