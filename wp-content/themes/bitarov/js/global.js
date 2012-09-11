@@ -98,7 +98,7 @@ $(window).ready(function() {
    }
 
   $('#actions-paginator a').click(actPagesLoad);
-  if (fixed_top) posts_peaks[current_page_number] = fixed_top;
+  if (window.current_page_number) posts_peaks[current_page_number] = fixed_top;
 });
 
 // ------------------------------------------------------------------- Пагинатор
@@ -183,12 +183,14 @@ function actPagesLoad()
  $('#actions-shadow').height($('.list_news').height()+40);
  $('#actions-shadow').css('display', 'block');
  var url = this.href.replace(/\/$/, '') + '/?xhr';
- var response = json_parse(httpget(url));
- if (!response) return false;
- $('#posts_list').html(response.posts_list);
- $('#paginator').html(response.paginator);
- $('#actions-shadow').fadeOut();
- $('#actions-paginator a').click(actPagesLoad);
+ httpget(url, function(response) {
+   response = json_parse(response);
+   if (!response) return false;
+   $('#posts_list').html(response.posts_list);
+   $('#paginator').html(response.paginator);
+   $('#actions-shadow').fadeOut();
+   $('#actions-paginator a').click(actPagesLoad);
+ });
  return false;
  }
 
@@ -378,40 +380,41 @@ function showmore()
  url += '&category_id=' + current_category_id;
  url += '&pg=' + current_page_number_more;
  if (current_year>0) url += '&year=' + current_year
- response = json_parse(httpget(url));
- more_loading = false;
- $('#old-loader').css('display', 'none');
- if (!response) {$('.button-show-old').css('display', 'none'); return;}
- var top = getTop(elem('button-show-old'));
- if (typeof(response.info.next_page)!='number') $('.button-show-old').css('display', 'none');
- var posts_list = elem('posts_more');
- var div, snipet;
- div = document.createElement('div');
- div.style.margin = '10px 0';
- div.style.borderTop = '1px dashed #CCC';
- div.id = 'posts-page-' + current_page_number_more;
- posts_list.appendChild(div);
- posts_peaks[current_page_number_more] = getTop(div);
- for (num in response.items)
-  {
-  div = document.createElement('div');
-  snipet = post_template.replace(/__POST_LINK__/, response.items[num].post_link);
-  snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
-  snipet = snipet.replace(/__POST_TITLE__/, response.items[num].post_title);
-  snipet = snipet.replace(/__CATEGORY_NAME__/, response.items[num].category_name);
-  snipet = snipet.replace(/__CATEGORY_LINK__/, response.items[num].category_link);
-  snipet = snipet.replace(/__POST_EXCERPT__/, response.items[num].post_excerpt);
-  snipet = snipet.replace(/__OPINION__/, response.items[num].opinion);
-  snipet = snipet.replace(/__POST_DATE__/, response.items[num].post_date_dm + ' ' + response.items[num].post_date_y);
-  snipet = snipet.replace(/__POST_DATE_DM__/, response.items[num].post_date_dm);
-  snipet = snipet.replace(/__POST_DATE_Y__/, response.items[num].post_date_y);
-  snipet = snipet.replace(/__TAGS__/, response.items[num].tags);
-  snipet = snipet.replace(/__COMMENTS_COUNT__/, response.items[num].comments_count);
-  div.innerHTML = snipet;
-  posts_list.appendChild(div);
-  }
- //setPage(current_page_number_more);
- docScroll(top);
+ httpget(url, function(response) {
+   response = json_parse(response);
+   more_loading = false;
+   $('#old-loader').css('display', 'none');
+   if (!response) {$('.button-show-old').css('display', 'none'); return;}
+   var top = getTop(elem('button-show-old'));
+   if (typeof(response.info.next_page)!='number') $('.button-show-old').css('display', 'none');
+   var posts_list = elem('posts_more');
+   var div, snipet;
+   div = document.createElement('div');
+   div.style.margin = '10px 0';
+   div.style.borderTop = '1px dashed #CCC';
+   div.id = 'posts-page-' + current_page_number_more;
+   posts_list.appendChild(div);
+   posts_peaks[current_page_number_more] = getTop(div);
+   for (num in response.items)
+    {
+    div = document.createElement('div');
+    snipet = post_template.replace(/__POST_LINK__/, response.items[num].post_link);
+    snipet = snipet.replace(/__POST_LINK__/, response.items[num].post_link);
+    snipet = snipet.replace(/__POST_TITLE__/, response.items[num].post_title);
+    snipet = snipet.replace(/__CATEGORY_NAME__/, response.items[num].category_name);
+    snipet = snipet.replace(/__CATEGORY_LINK__/, response.items[num].category_link);
+    snipet = snipet.replace(/__POST_EXCERPT__/, response.items[num].post_excerpt);
+    snipet = snipet.replace(/__OPINION__/, response.items[num].opinion);
+    snipet = snipet.replace(/__POST_DATE__/, response.items[num].post_date_dm + ' ' + response.items[num].post_date_y);
+    snipet = snipet.replace(/__POST_DATE_DM__/, response.items[num].post_date_dm);
+    snipet = snipet.replace(/__POST_DATE_Y__/, response.items[num].post_date_y);
+    snipet = snipet.replace(/__TAGS__/, response.items[num].tags);
+    snipet = snipet.replace(/__COMMENTS_COUNT__/, response.items[num].comments_count);
+    div.innerHTML = snipet;
+    posts_list.appendChild(div);
+    }
+   docScroll(top);
+ });
  }
 
 // ----------------------------------------------------- Другие полезные функции
