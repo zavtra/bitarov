@@ -91,9 +91,9 @@ if ($subcategories)
  {
  foreach ($subcategories as $category)
    if ($category['id']<>$current_category_id)
-     $subcategories_block .= "<li><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
+     $subcategories_block .= "<li><span><a href='$category[link]'>$category[name]</a></span></li>\n                            ";
    else
-     $subcategories_block .= "<li class='current'><span><a href='$category[link]$uri_year'>$category[name]</a></span></li>\n                            ";
+     $subcategories_block .= "<li class='current'><span><a href='$category[link]'>$category[name]</a></span></li>\n                            ";
  $subcategories_block = <<<HTML
                     <div class='rubrikator-fixed' id='rubrikator-fixed'>
                         <ul>
@@ -105,14 +105,15 @@ HTML;
 
 // ------------------------------------------------------------------------ Года
 
+$id_cat1 = $current_cat_path[0]->term_id;
+$cat1_link = get_category_link($id_cat1);
 $current_year = chkget('posts-year') ? intval($_GET['posts-year']) : 0;
 $years = '';
-$years_raw = get_years($current_category_id);
+$years_raw = get_years($id_cat1);
 if (count($years_raw)>1)
  {
- $years = "<a href='$current_cat_link/' class='".(!$current_year?'current':'')."'>Все</a> ";
  foreach ($years_raw as $year)
-   $years .= "<a href='$current_cat_link/year$year/' class='" . (($year==$current_year)?'current':'') . "'>$year</a> ";;
+   $years .= "<a href='{$cat1_link}year$year/' class='" . (($year==$current_year)?'current':'') . "'>$year</a> ";
  $years = "        <div class='podate'><span>по годам:</span> $years</div>";
  }
 
