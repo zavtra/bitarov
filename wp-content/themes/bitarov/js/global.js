@@ -63,6 +63,10 @@ $(window).load(function() {
 fixed_div = null;
 fixed_top = 0;
 fixed_fix = false;
+posts_peaks = new Object;
+page_switch_timer = 0;
+paginator_page = 0;
+
 $(window).ready(function() {
   var div;
   if (div=elem('paginator-fixed')) fixed_top = $(div).position().top;
@@ -89,10 +93,12 @@ $(window).ready(function() {
   if (elem('paginator-events'))
    {
    $('#paginator-events').jScrollPane({horizontalDragMaxWidth:20, horizontalDragMinWidth:20});
+   paginator_page = current_page_number;
    setPage(0);
    }
 
   $('#actions-paginator a').click(actPagesLoad);
+  if (fixed_top) posts_peaks[current_page_number] = fixed_top;
 });
 
 // ------------------------------------------------------------------- Пагинатор
@@ -101,12 +107,14 @@ function setPage(num)
  {
  if (num)
   {
+  if (paginator_page==num) return false;
   $('#paginator-events .current').removeClass('current');
   $('#page-'+num).addClass('current');
+  paginator_page = num;
   }
  var api = $('#paginator-events').data('jsp');
  var current_x = $('#paginator-events .current').position().left;
- api.scrollToX(current_x-40);
+ api.scrollToX(parseInt(current_x)-40, true);
  }
 
 // --------------------------------------------------------- При скроллинге окна
@@ -115,6 +123,15 @@ function windowScrolled()
  {
  if (!fixed_div) return;
  var top = $(window).scrollTop();
+
+ // Смена номеров страниц
+ var switch_to = false;
+ var half_screen = $(window).height()/2;
+ for (p in posts_peaks) if (p.match(/^[0-9]+$/)) if (top+250>posts_peaks[p]) switch_to = p;
+ clearTimeout(page_switch_timer);
+ if (switch_to) page_switch_timer = setTimeout('setPage('+switch_to+')', 100);
+
+ // Фиксированный пагинатор
  if (top>fixed_top)
   {
   if (fixed_fix) return;
@@ -128,8 +145,8 @@ function windowScrolled()
   fixed_fix = false;
   fixed_div.style.position = 'absolute';
   $('#wrap-fixed').css('top', '0');
+  }
  }
-}
 
 // ------------------------------------------------- При изменении размеров окна
 function windowResized()
@@ -372,7 +389,9 @@ function showmore()
  div = document.createElement('div');
  div.style.margin = '10px 0';
  div.style.borderTop = '1px dashed #CCC';
+ div.id = 'posts-page-' + current_page_number_more;
  posts_list.appendChild(div);
+ posts_peaks[current_page_number_more] = getTop(div);
  for (num in response.items)
   {
   div = document.createElement('div');
@@ -391,7 +410,7 @@ function showmore()
   div.innerHTML = snipet;
   posts_list.appendChild(div);
   }
- setPage(current_page_number_more);
+ //setPage(current_page_number_more);
  docScroll(top);
  }
 
