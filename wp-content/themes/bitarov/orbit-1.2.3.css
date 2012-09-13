@@ -10,7 +10,7 @@
    ================================================== */
 #featured {
 	width: 1000px;
-	height: 296px;
+	height: 387px;
 	background: #FFF url('images/ico/loading.gif') no-repeat center center;
 	overflow: hidden;
     position:relative;
@@ -19,9 +19,9 @@
 #featured>img,
 #featured>div,
 #featured>a { display: none; }
-#featured .slide1 {padding-top:39px; width: 1000px; height: 296px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#FFF;}
+#featured .slide1 {padding-top:39px; width: 1000px; height: 387px; font-family:'PFDinTextCondPro', 'Arial Narrow', 'Arial'; color:#000;}
     #featured .slide1 h4 {font:36px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial'; margin:0 0 0 127px;}
-    #featured .slide1 .content {position:absolute; top:64px; font-size:24px; line-height:28px; padding:54px 77px 10px 126px; width:380px; height:173px; background-size:cover; background:url(images/css/slider-content-bg.png) 18px -15px no-repeat;}
+    #featured .slide1 .content {position:absolute; top:85px; right:110px; font-size:22px; line-height:30px; padding:16px 18px 16px 18px; width:350px; background:url(images/css/trans_white.png) repeat 0 0; border-radius:8px;}
 
 
 
@@ -50,7 +50,7 @@
 
 div.orbit-wrapper {
     position: relative;
-    border:1px solid #dbdbdb;
+    border:1px solid #e1e9eb;
     margin:26px 0 35px 0; }
 
 div.orbit-wrapper:hover .slider-nav {
