@@ -61,7 +61,7 @@ $fund_header
                     <div id='fond-slider'>
 $thank_slides
                     </div>
-                    <div class='border-bottom'><img src="wp-content/themes/Bitarov/images/css/bitarov_fond-slova_border_bottom.png" width="1000" height="4" alt="" /></div>
+                    <div class='border-bottom'><img src="wp-content/themes/bitarov/images/css/bitarov_fond-slova_border_bottom.png" width="1000" height="4" alt="" /></div>
                 </div>
             </div>
         </div>

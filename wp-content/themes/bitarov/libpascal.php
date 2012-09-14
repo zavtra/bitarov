@@ -178,7 +178,7 @@ function ep($params, $all=true, $trim=true)
 
 function chklen(&$s, $min=1, $max=255)
  {
- $len = strlen($s);
+ $len = mb_strlen($s, 'UTF-8');
  return $len>=$min and $len<=$max;
  }
 

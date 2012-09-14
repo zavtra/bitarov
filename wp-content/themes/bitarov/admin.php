@@ -36,9 +36,9 @@ function bt_options()
  {
  $okmsg = '';
 
- if (chkpost('bt_event_w1,bt_event_h1,bt_opinion_h1,bt_opinion_w1,bt_opinion_cat,bt_opinion_pp,bt_liked_pp,bt_event_bigh,bt_event_bigw,bt_event_medh,bt_event_medw,bt_fund_text'))
+ if (chkpost('bt_event_w1,bt_event_h1,bt_opinion_h1,bt_opinion_w1,bt_opinion_cat,bt_opinion_pp,bt_liked_pp,bt_event_bigh,bt_event_bigw,bt_event_medh,bt_event_medw,bt_fund_text,bt_email'))
   {
-  extract(ep('bt_event_w1>>i,bt_event_h1>>i,bt_opinion_h1>>i,bt_opinion_w1>>i,bt_opinion_cat>>i,bt_opinion_pp>>i,bt_liked_pp>>i,bt_event_bigh>>i,bt_event_bigw>>i,bt_event_medh>>i,bt_event_medw>>i,bt_fund_text'));
+  extract(ep('bt_event_w1>>i,bt_event_h1>>i,bt_opinion_h1>>i,bt_opinion_w1>>i,bt_opinion_cat>>i,bt_opinion_pp>>i,bt_liked_pp>>i,bt_event_bigh>>i,bt_event_bigw>>i,bt_event_medh>>i,bt_event_medw>>i,bt_fund_text,bt_email'));
   if ($bt_event_w1<10) $bt_event_w1 = BT_EVENT_W1;
   if ($bt_event_h1<10) $bt_event_h1 = BT_EVENT_H1;
   if ($bt_event_bigw<10) $bt_event_bigw = BT_EVENT_BIGW;
@@ -62,6 +62,7 @@ function bt_options()
   update_option('bt_liked_pp', $bt_liked_pp);
   update_option('bt_fund_text', $bt_fund_text);
   set_user_setting('urlbutton', 'none');
+  if (ismail($bt_email)) update_option('bt_email', $bt_email);
   $okmsg = okmsg('Настройки сохранены');
   }
 
@@ -77,6 +78,7 @@ function bt_options()
  $bt_opinion_pp = get_option('bt_opinion_pp', 5);
  $bt_liked_pp = get_option('bt_liked_pp', 5);
  $bt_fund_text = htmltext(get_option('bt_fund_text'));
+ $bt_email = get_option('bt_email');
 
  $cats_arr = get_categories(array('hide_empty'=>0));
  $cats = '';
@@ -88,6 +90,7 @@ function bt_options()
   <h2>Настройки</h2>
   $okmsg
   <table style='margin-top:6px'>
+  <tr><td>E-mail обратной связи:</td><td><input type='text' name='bt_email' size='30' value='$bt_email'></td></tr>
   <tr><td>Оригинальная картинка события, ширина:</td><td><input type='text' name='bt_event_w1' size='5' value='$bt_event_w1'> px</td></tr>
   <tr><td>Оригинальная картинка события, высота:</td><td><input type='text' name='bt_event_h1' size='5' value='$bt_event_h1'> px</td></tr>
   <tr><td>Большая картинка события, ширина:</td><td><input type='text' name='bt_event_bigw' size='5' value='$bt_event_bigw'> px</td></tr>
@@ -246,7 +249,7 @@ function bt_thanks()
  if (chkpost('addthank,text,bt_thank_w,bt_thank_h'))
   {
   extract(ep('addthank>caption,text,bt_thank_w>>i,bt_thank_h>>i'));
-  if (!chklen($caption, 2, 50)) return print errmsg('Имя должно иметь длину от 2 до 50 символова');
+  if (!chklen($caption, 2, 100)) return print errmsg('Имя должно иметь длину от 2 до 100 символова');
   if ($bt_thank_w<10) $bt_thank_w = BT_THANK_W;
   if ($bt_thank_h<10) $bt_thank_h = BT_THANK_H;
   update_option('bt_thank_w', $bt_thank_w);
@@ -270,7 +273,7 @@ function bt_thanks()
  if (chkpost('save,caption,text,bt_thank_h,bt_thank_w'))
   {
   extract(ep('save>id_thank>i,caption,text,bt_thank_h>>i,bt_thank_w>>i'));
-  if (!chklen($caption, 2, 100)) return print errmsg('Имя должно иметь длину от 2 до 50 символова');
+  if (!chklen($caption, 2, 100)) return print errmsg('Имя должно иметь длину от 2 до 100 символова');
   db_query("UPDATE pref_bt_thanks SET caption='?1', text='?2' WHERE id='?3'", $caption, $text, $id_thank);
   if ($bt_thank_w<10) $bt_thank_w = BT_THANK_W;
   if ($bt_thank_h<10) $bt_thank_h = BT_THANK_H;
