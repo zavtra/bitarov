@@ -35,14 +35,14 @@
 #fond-slider>img,
 #fond-slider>div,
 #fond-slider>a { display: none; }
-#fond-slider .slide1 {width:1000px; padding:0 0 0 47px; height:256px;  font:12px 'Arial'; background:#FFF;}
-    #fond-slider .miniblock {width:387px; margin-left:75px; vertical-align:top; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
+#fond-slider .slide1 {width:1000px; padding:0 0 0 47px; height:305px; font:12px 'Arial'; background:#FFF;}
+    #fond-slider .miniblock {width:387px; height:130px; margin-left:75px; vertical-align:top; display: -moz-inline-box; display: inline-block; zoom: 1; *display: inline;}
     #fond-slider .miniblock:first-child {margin:0;}
         #fond-slider .miniblock dt {float:left; background:url(images/css/miniblock_img_bg.png) 2px 2px no-repeat; height:106px; width:106px;}
             #fond-slider .miniblock dt img {width:100px; height:100px; overflow:hidden; -webkit-border-radius:3px; -moz-border-radius:3px; border-radius:3px;}
         #fond-slider .miniblock dd {margin:0 0 0 123px;}
             #fond-slider .miniblock dd .name {font:16px 'Arial'; color:#03aac1; display:block;}
-            #fond-slider .miniblock dd .text {color:#444; margin-top:5px; display:block; line-height:16px; max-height:80px; overflow:hidden}
+            #fond-slider .miniblock dd .text {color:#444; margin-top:5px; display:block; line-height:16px; width:265px; max-height:110px; overflow:hidden}
     #fond-slider .slide1 table tbody td {margin-bottom:23px;}
 
 /* CONTAINER
