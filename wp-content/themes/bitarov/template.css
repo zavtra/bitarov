@@ -249,7 +249,7 @@ box-shadow:         1px 1px 1px rgba(232, 234, 234, 1);}
                 .fund-animation {height:40px; margin-bottom:-24px; overflow:hidden}
                 #feedbacklink {display:block; position:relative; left:0; top:0}
                 #feedbackmsg {position:relative; left:0; top:-60px}
-        .fond-body .menu {width:100%; position:relative; margin:26px 0;height:53px; border-top:1px solid #e6ebee; border-right:1px solid #e6e6e5; border-bottom:1px solid #dbdbdb; border-left:1px solid #ebeff1; background:url('images/css/fond-menu.png') repeat-x;}
+        .fond-body .menu {width:100%; position:relative; overflow:visible; margin:26px 0; height:53px; border-top:1px solid #e6ebee; border-right:1px solid #e6e6e5; border-bottom:1px solid #dbdbdb; border-left:1px solid #ebeff1; background:url('images/css/fond-menu.png') repeat-x;}
             .fond-body .menu img {position:absolute; bottom:-23px; left:50%; width:980px; height:22px; margin-left:-459px;}
             .fond-body .menu ul {margin:0; padding:11px 0 0 47px;}
                 .fond-body .menu li {display: -moz-inline-box; display: inline-block;margin-right:45px; font:25px 'PT Sans Narrow', 'Arial Narrow', 'Arial'; zoom: 1; *display: inline;}
