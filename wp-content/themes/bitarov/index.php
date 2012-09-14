@@ -29,7 +29,6 @@ $res = db_query("SELECT id, caption, text FROM pref_bt_slider ORDER BY pos, id")
 $slides = '';
 while (extract(db_result($res, 'i,h,h'))) $slides .= <<<HTML
                 <div class='slide1' style='background-image:url(wp-content/uploads/slider/$id.jpg)'>
-                    <h4>$caption</h4>
                     <div class='content'>$text</div>
                 </div>
 HTML;
