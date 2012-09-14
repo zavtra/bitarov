@@ -35,7 +35,7 @@
 #fond-slider>img,
 #fond-slider>div,
 #fond-slider>a { display: none; }
-#fond-slider .slide1 {width:1000px; padding:0 0 0 47px; font:12px 'Arial'; background:#FFF;}
+#fond-slider .slide1 {width:1000px; height: 410px; padding:0 0 0 47px; font:12px 'Arial'; background:#FFF;}
     #fond-slider .miniblock {width:387px; padding-right:75px; vertical-align:top; padding-bottom:23px; }
     #fond-slider .miniblock:first-child {margin:0;}
         #fond-slider .miniblock dt {float:left; background:url(images/css/miniblock_img_bg.png) 2px 2px no-repeat; height:106px; width:106px;}

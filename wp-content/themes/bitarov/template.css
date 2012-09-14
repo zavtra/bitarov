@@ -113,7 +113,7 @@
                 .strip_news .body .bottom {background:url(images/css/index-body-bottom_bg.png) no-repeat; width:639px; height:16px; margin-bottom:20px}
 
                 .top_news {margin-bottom:28px;}
-                    .top_news .tdate {display: inline; margin-bottom:4px;color:#838c94; vertical-align:top; font-family:'Arial Narrow', 'Arial';}
+                    .top_news .tdate {display: inline; margin-bottom:4px;color:#838c94; vertical-align:top; font-size:13px; font-family: 'Arial Narrow', 'Arial';}
                     .top_news .ttag {display: inline; margin-left:12px;color:#7da87a; vertical-align:top;}
                         .top_news .ttag a {color:#7da87a; text-decoration:underline;}
                         .top_news .ttag a:hover {text-decoration:none;}
@@ -124,7 +124,7 @@
                 .other_news { }
                     .other_news .item {float:left; margin-left:45px;width:276px;}
                     .other_news .item:first-child {margin:0;}
-                        .other_news .item .odate {display: inline; vertical-align:middle; margin:0px 12px 2px 0;color:#838c94; font-size:13px;}
+                        .other_news .item .odate {display: inline; vertical-align:middle; margin:0px 12px 2px 0;color:#838c94; font-size:13px; font-family: 'Arial Narrow', 'Arial';}
                         .other_news .item .otag {color:#7da87a; font-size:12px; display: inline; vertical-align:middle;}
                             .other_news .item .otag a {color:#7da87a; text-decoration:underline;}
                             .other_news .item .otag a:hover {text-decoration:none;}
