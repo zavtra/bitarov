@@ -237,7 +237,7 @@ box-shadow:         1px 1px 1px rgba(232, 234, 234, 1);}
                     #old-loader {width:50px; height:50px; display:none}
 
     /* ����������������� ����! */
-    .fond-header {overflow:hidden; margin-bottom:7px; padding:18px 0 0 16px; height:96px;background:url('images/css/fond-header.png') no-repeat;}
+    .fond-header {overflow:hidden; margin-bottom:7px; padding:9px 0 9px 16px; height:96px;background:url('images/css/fond-header.png') no-repeat;}
         .fond-header .content {max-height:70px; width:593px; color:#000; font:13px 'Arial'; line-height:18px; text-shadow:1px 2px 1px #FFF;}
     .fond-body {position:relative; padding-bottom: 50px;}
             .wrp-send-message .send_message {position:relative;}
