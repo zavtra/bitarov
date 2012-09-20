@@ -440,7 +440,7 @@ box-shadow:         1px 1px 1px rgba(232, 234, 234, 1);}
             .rekviziti .phone {position:relative; color:#000; margin-top:17px;}
                 .rekviziti .phone .img {background:url('images/ico/phone.png') no-repeat; padding:0px 10px; width:23px; height:24px; position:absolute; top:3px;}
                 .rekviziti .phone span {font:28px 'PFDinTextCondPro-b', 'Arial Narrow', 'Arial'; padding-left:27px;}
-                .rekviziti .phone .remark {font:12px 'Arial'; color:#333; margin:2px 0 13px 0;}
+                .rekviziti .phone .remark {font:12px 'Arial'; color:#333; margin:-16px 0 13px 0;}
             .rekviziti .email {font:14px 'Arial'; color:#434343; margin-bottom:22px;}
                 .rekviziti .email a {color:#333;}
 
