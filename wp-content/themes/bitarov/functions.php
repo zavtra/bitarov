@@ -133,9 +133,9 @@ function bt_installed()
  //db_query("DROP TABLE pref_bt_slider");
  db_query("CREATE TABLE wp_bt_slider(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, pos TINYINT UNSIGNED, caption VARCHAR(255), text BLOB)");
  //db_query("DROP TABLE pref_bt_thanks");
- db_query("CREATE TABLE wp_bt_thanks(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, pos TINYINT UNSIGNED, caption VARCHAR(50), text BLOB)");
+ db_query("CREATE TABLE wp_bt_thanks(id INTEGER UNSIGNED AUTO_INCREMENT PRIMARY KEY, pos TINYINT UNSIGNED, caption VARCHAR(100), text BLOB)");
 
- db_query("DROP TABLE wp_bt_category_cache");
+ //db_query("DROP TABLE wp_bt_category_cache");
  db_query("CREATE TABLE wp_bt_category_cache(id_cat INTEGER UNSIGNED PRIMARY KEY, expire INTEGER UNSIGNED, data VARCHAR(255))");
  }
 

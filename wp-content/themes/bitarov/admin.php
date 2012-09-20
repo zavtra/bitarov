@@ -28,7 +28,7 @@ $media_types = array(
 
 function bt_head()
  {
- echo "<script type='text/javascript' src='/wp-content/themes/bitarov/jquery.js'></script>\n";
+ //echo "<script type='text/javascript' src='/wp-content/themes/bitarov/jquery.js'></script>\n"; // Ломает добавление ссылки в пост
  echo "<script type='text/javascript' src='/wp-content/themes/bitarov/admin.js'></script>\n";
  }
 

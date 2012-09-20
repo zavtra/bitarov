@@ -85,11 +85,12 @@ case 'feedback':
   if ($email) $letter .= "E-mail: $email\n";
   $letter .= is_int(strpos($message, "\n")) ? "\nСообщение:\n" : 'Сообщение: ';
   $letter .= $message;
-  $to = get_option('admin_email', 'admin@' . REQUEST_HOST);
+  $to = get_option('bt_email', 'admin@' . REQUEST_HOST);
   $subj = 'Сообщение с сайта ' . REQUEST_HOST;
   $headers = 'Content-Type: text/plain; charset=utf-8';
   if ($email) $headers .= "\nFrom: $email";
   mail($to, $subj, $letter, $headers);
+  //file_put_contents(BASEDIR . '/log.txt', "$to\n---\n$subj\n---\n$letter\n---\n$headers");
   echo json_encode(array('ok'=>'Ваше сообщение успешно отправлено'));
 break;
 endswitch;

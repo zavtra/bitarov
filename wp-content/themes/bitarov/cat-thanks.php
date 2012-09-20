@@ -8,7 +8,7 @@ $fund_header = ob_get_contents();
 ob_end_clean();
 
 // --------------------------------------------------------------- Благодарности
-$res = db_query("SELECT id, caption, text FROM pref_bt_thanks");
+$res = db_query("SELECT id, caption, text FROM pref_bt_thanks ORDER BY pos");
 $slides_count = $res['cnt'] / 4;
 if (is_float($slides_count)) $slides_count = intval($slides_count)+1;
 $thank_slides = '';
