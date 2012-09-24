@@ -448,8 +448,8 @@ box-shadow:         1px 1px 1px rgba(232, 234, 234, 1);}
         .biografy h1 {font-family:'Georgia','Arial'; font-size:28px;}
         .screen-border {background:url('images/css/biografy-screen_bg.png') repeat-x; height:2px; margin:2px -30px 23px -30px;}
         .screen-border.more {margin-top:11px;}
-        .screen .photo1 {width:224px; height:297px; position:relative; background:url('images/slider/biografy/1.png') no-repeat; float:left; }
-            .screen p {margin-bottom:21px;}
+        .screen .photo1 {width:224px; height:297px; margin-top:5px; position:relative; background:url('images/slider/biografy/1.png') no-repeat; float:left; }
+
             .screen .photo1 span {position:absolute; bottom:-34px; left:0; display:block; font-size:14px; font-family:'Arial'; font-weight:bold; font-style:italic;}
         .screen .text {margin-left:257px;}
             .screen p {font-size:16px; font-family:'DinDisplayPro-Reg', 'Arial';}
@@ -458,22 +458,21 @@ box-shadow:         1px 1px 1px rgba(232, 234, 234, 1);}
                 .screen .title p {font-family:'Georgia','Arial';}
             .screen .before_text {padding-right:270px;}
             .screen .text {padding-right:264px;}
-        .screen .photo2 {width:225px; height:306px; margin-bottom:100px; position:relative; background:url('images/slider/biografy/2.png') no-repeat; float:right; }
-            .screen .photo2 span {position:absolute; bottom:-34px; left:0; display:block; font-size:14px; font-family:'Arial'; font-weight:bold; font-style:italic;}
+        .screen .photo2 {width:225px; height:306px; margin-top:8px; margin-bottom:100px; position:relative; background:url('images/slider/biografy/2.png') no-repeat; float:right; }
+            .screen .photo2 span {position:absolute; bottom:-37px; left:0; display:block; font-size:14px; font-family:'Arial'; font-weight:bold; font-style:italic;}
         .screen .photo3 {width:996px; height:415px; margin:0 -30px 26px -30px; background:url('images/slider/biografy/3.jpg') no-repeat;}
         .screen .photo4 {width:996px; height:476px; border-top:1px solid #cbd1d3; margin:0 -30px 26px -30px; background:url('images/slider/biografy/4.jpg') no-repeat;}
         .screen.last h1 {margin-bottom:8px;}
         .screen span {font-size:20px; font-family:'Georgia','Arial'; display:block; margin-bottom:11px;}
         .block_width_scroll p {padding-right:380px;}
         .block_width_scroll2 p {padding-right:370px;}
-
         .wrp-goda_block_scroll {width:332px; max-height:261px; margin:7px 0 0 0; border:1px solid #d4d4cb; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px; background:#FFF; float:right; position:relative;}
                 .wrp-goda_block_scroll.one {border:none; max-height:244px!important; width:346px!important;}
                 .wrp-goda_block_scroll .fade {position:absolute; width:322px; height:23px; bottom:0; left:0; z-index:99999; background:url('images/css/goda_block_overlay.png') repeat-x 0 0;}
                 .wrp-goda_block_scroll .scroll-pane {position:relative; z-index:1; overflow:hidden; max-height:261px;}
                     .goda_block_scroll {width:290px; padding:17px 23px 8px 19px; font-size:12px;}
                         .goda_block_scroll p {margin-bottom:12px;}
-
+		.screen1 p {margin:0 0 10px 0; }
     /* ������ */
     .wrp_article {margin-top:18px; padding-bottom:5px;}
         .right_float_article {float:right;}
