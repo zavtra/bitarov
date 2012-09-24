@@ -466,7 +466,8 @@ box-shadow:         1px 1px 1px rgba(232, 234, 234, 1);}
         .screen span {font-size:20px; font-family:'Georgia','Arial'; display:block; margin-bottom:11px;}
         .block_width_scroll p {padding-right:380px;}
         .block_width_scroll2 p {padding-right:370px;}
-        .wrp-goda_block_scroll {width:332px; max-height:261px; margin:7px 0 0 0; border:1px solid #d4d4cb; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px; background:#FFF; float:right; position:relative;}
+        .biografy .wrp-goda_block_scroll {border:1px solid #d4d4cb;}
+        .wrp-goda_block_scroll {width:332px; max-height:261px; margin:7px 0 0 0; border:1px solid #dde4e8; -webkit-border-radius:2px; -moz-border-radius:2px; border-radius:2px; background:#FFF; float:right; position:relative;}
                 .wrp-goda_block_scroll.one {border:none; max-height:244px!important; width:346px!important;}
                 .wrp-goda_block_scroll .fade {position:absolute; width:322px; height:23px; bottom:0; left:0; z-index:99999; background:url('images/css/goda_block_overlay.png') repeat-x 0 0;}
                 .wrp-goda_block_scroll .scroll-pane {position:relative; z-index:1; overflow:hidden; max-height:261px;}

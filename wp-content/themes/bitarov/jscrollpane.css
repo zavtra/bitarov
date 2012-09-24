@@ -64,17 +64,22 @@
 
 .jspTrack
 {
-	background: #f1f1e9;
+	background: #ecf1f4;
 	position: relative;
 }
-
+.biografy .jspTrack {
+    background: #f1f1e9;
+}
 .jspDrag
 {
-	background: #d6d6ce;
+	background: #d1d6db;
 	position: relative;
 	top: 0;
 	left: 0;
 	cursor: pointer;
+}
+.biografy .jspDrag {
+   background: #d6d6ce;
 }
 
 .jspHorizontalBar .jspTrack,
