@@ -51,7 +51,7 @@ HTML;
 					</script> 
 			
                     <div class='karta'>
-						<div id="myMapId" style="width: 605px; height: 300px;"></div>
+						<div id="myMapId" style="width: 635px; height: 300px;"></div>
                     </div>
                 </div>
                 <div class='rekviziti'>
