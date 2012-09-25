@@ -432,8 +432,7 @@ box-shadow:         1px 1px 1px rgba(232, 234, 234, 1);}
         .wrp-text .text {height:100%; overflow:auto; padding-left:0px;}
     /* �������� */
     .contacts {margin:25px 0 20px 0; min-height:500px;}
-        .wrp-karta {float:right; width:605px; margin:6px 79px 0 0; height:282px; background:url('images/css/karta_bg.png') 0 0px no-repeat;}
-            .karta div {width:600px; height:277px; margin:-3px 0 0 -6px; border:1px solid #e1ddce;}
+        .wrp-karta {float:right; width:605px; margin:6px 79px 0 0; height:300px; background:url('images/css/karta_bg.png') 0 0px no-repeat;  border:1px solid #e1ddce;}
         .rekviziti {float:left; width:224px;}
             .rekviziti h5 {font:16px 'Arial'; color:#333;}
             .rekviziti .phone {position:relative; color:#000; margin-top:17px;}
@@ -540,3 +539,7 @@ box-shadow:         1px 1px 1px rgba(232, 234, 234, 1);}
 					.footer-menu li.current-menu-item a,.footer-menu li.current-menu-parent a {color:#1d8aba; border-bottom:1px solid #8ec4dc; }
                     .footer-menu ul li a:hover {text-decoration:none;}
 /* end  ������!  */
+	.dg-map-btn-fullscreen {	 margin-top:110px;margin-right:30px;}
+	.dgZoom { margin-top:110px;}
+	.karta .dg-map-btn-fullscreen  { margin:0;}
+	.karta .dgZoom { margin:0;}
