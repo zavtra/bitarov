@@ -7,14 +7,7 @@ function map_init() {
 
 
             var myMarker = new DG.Markers.Common({
-                 geoPoint: new DG.GeoPoint(104.306,52.279582),
-                 clickCallback: function() {
-                    if (! map.balloons.getDefaultGroup().contains(myBalloon)) {
-                         map.balloons.add(myBalloon);
-                     } else {
-                         myBalloon.show();
-                     }
-                }
+                 geoPoint: new DG.GeoPoint(104.306,52.279582)
             });
             map.markers.add(myMarker);
         }); 
