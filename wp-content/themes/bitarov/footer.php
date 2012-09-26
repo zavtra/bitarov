@@ -17,9 +17,9 @@
 			wp_nav_menu($args); ?>
         </div>
     </div>
-</div>
+<div style="display:none;">
 <!-- Yandex.Metrika -->
-<div style="display:none;"><script type="text/javascript">
+<script type="text/javascript">
 (function(w, c) {
     (w[c] = w[c] || []).push(function() {
         try {
@@ -30,7 +30,7 @@
         } catch(e) {}
     });
 })(window, 'yandex_metrika_callbacks');
-</script></div>
+</script>
 <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript" defer="defer"></script>
 <noscript><div style="position:absolute"><img src="//mc.yandex.ru/watch/2026081" alt="" /></div></noscript>
 <!-- /Yandex.Metrika -->
@@ -49,6 +49,10 @@ __________________________________________________________-
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-</script>
+</script>	
+</div>
+
+</div>
+
 </body>
 </html>
